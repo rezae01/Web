@@ -1,0 +1,161 @@
+<div class="clearfix"></div>
+<form action="" method="post" [formGroup]="formTaghaza" (ngSubmit)="sendFormTaghaza()">
+  <div class="row">
+    <input type="hidden" [(ngModel)]="RequesterType" [value]="0" id="RequesterType" [formControl]="formTaghaza.controls['RequesterType']" name="RequesterType">
+    <fieldset class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <label for="NationalCode">کد ملی</label>
+          <div class="input-group">
+            <input type="text" id="NationalCode" class="form-control" #searchTerm maxlength="10" (keyup.enter)="onEnter(searchTerm.value)" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['NationalCode']" required>
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default" style="font-size:11.5px" (click)="serachByNationalCode(searchTerm)">جستجو</button>
+            </div>
+          </div>
+          <span class="pull-left">{{searchTerm.value.length}} / 10</span>
+          <small *ngIf="formTaghaza.controls['NationalCode'].hasError('required') && formTaghaza.controls['NationalCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <small *ngIf="formTaghaza.controls['NationalCode'].hasError('minlength') && formTaghaza.controls['NationalCode'].touched" class="mat-text-warn">کد ملی شما نامعتبر است</small>
+          <small *ngIf="formTaghaza.controls['NationalCode'].hasError('maxlength') && formTaghaza.controls['NationalCode'].touched" class="mat-text-warn">کد ملی شما نامعتبر است</small>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="firstName">نام</label>
+            <input [(ngModel)]="FirstName" [(value)]="FirstName" maxlength="30" #FirstNameR (keypress)="FirstName=$event.target.value" class="form-control" type="text" id="firstName"  [formControl]="formTaghaza.controls['FirstName']" required> 
+            <small *ngIf="formTaghaza.controls['FirstName'].hasError('required') && formTaghaza.controls['FirstName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+              <span class="pull-left">{{FirstNameR.value.length}} / 30</span> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="lastName">نام خانوادگی</label>
+            <input [(ngModel)]="LastName" [(value)]="LastName" maxlength="250" #LastNameR (keypress)="LastName=$event.target.value" type="text" id="lastName" class="form-control" [formControl]="formTaghaza.controls['LastName']" required>
+            <small *ngIf="formTaghaza.controls['LastName'].hasError('required') && formTaghaza.controls['LastName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+             <span class="pull-left">{{LastNameR.value.length}} / 250</span> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="FatherName">نام پدر</label>
+            <input [(ngModel)]="FatherName" type="text" id="FatherName" #FatherNameR maxlength="40"  [(value)]="FatherName" (keypress)="FatherName=$event.target.value" class="form-control" name="FatherName" [formControl]="formTaghaza.controls['FatherName']" required>
+            <small *ngIf="formTaghaza.controls['FatherName'].hasError('required') && formTaghaza.controls['FatherName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+             <span class="pull-left">{{FatherNameR.value.length}} / 40</span> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="shomareShenasname">شماره شناسنامه</label>
+            <input [(ngModel)]="ShomareShenasname" [(value)]="ShomareShenasname" maxlength="12" #shomareR (keypress)="ShomareShenasname=$event.target.value" type="text" id="shomareShenasname" class="form-control" [formControl]="formTaghaza.controls['shomareShenasname']" onkeypress="return isNumber(event)">
+            <span class="pull-left">{{shomareR.value.length}} / 12</span> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="IssuedFrom">محل صدور</label>
+            <input [(ngModel)]="IssuedFrom" [(value)]="IssuedFrom" maxlength="50" #IssuedFromR (keypress)="IssuedFrom=$event.target.value" type="text" id="IssuedFrom" class="form-control" [formControl]="formTaghaza.controls['IssuedFrom']" required>
+            <small *ngIf="formTaghaza.controls['IssuedFrom'].hasError('required') && formTaghaza.controls['IssuedFrom'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+             <span class="pull-left">{{IssuedFromR.value.length}} / 50</span> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="Gender">جنسیت</label>
+            <select class="form-control" [(ngModel)]="Gender" id="Gender" name="Gender" [formControl]="formTaghaza.controls['Gender']" required>
+              <option [value]="1" *ngIf="Gender == '1' && Gender == null" [selected]="Gender == '1'">مرد</option>
+              <option [value]="0" *ngIf="Gender == '0' && Gender == null" [selected]="Gender == '0'">زن</option>   
+              <option [value]="1">مرد</option>
+              <option [value]="0">زن</option> 
+            </select>
+            <small *ngIf="formTaghaza.controls['Gender'].hasError('required') && formTaghaza.controls['Gender'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="Email">پست الکتریکی</label>
+            <input class="form-control" [(ngModel)]="Email" maxlength="40" id="Email" #EmailR [formControl]="formTaghaza.controls['Email']" type="email" [value]="Email">
+            <small *ngIf="formTaghaza.controls['Email'].errors?.email && formTaghaza.controls['Email'].touched" class="mat-text-warn">ایمیل شما معتبر نمیباشد</small>
+            <span class="pull-left">{{EmailR.value.length}} / 40</span> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="MobileNo">شماره همراه</label>
+            <input type="text" [(ngModel)]="MobileNo" id="MobileNo" maxlength="11" #mobileNoR class="form-control" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['MobileNo']" [value]="MobileNo" required>
+            <small *ngIf="formTaghaza.controls['MobileNo'].hasError('required') && formTaghaza.controls['MobileNo'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <small *ngIf="formTaghaza.controls['MobileNo'].hasError('minlength') && formTaghaza.controls['MobileNo'].touched" class="mat-text-warn">شماره تلفن شما 8 تا 11 عدد باید باشد</small>
+            <small *ngIf="formTaghaza.controls['MobileNo'].hasError('maxlength') && formTaghaza.controls['MobileNo'].touched" class="mat-text-warn">شماره تلفن شما 8 تا 11 عدد باید باشد</small>
+            <span class="pull-left">{{mobileNoR.value.length}} / 11</span> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="">تاریخ تولد</label>
+              <div class="input-group" style="width:100%;">
+                <input  class="form-control" placeholder="yyyy-mm-dd" id="BirthDate" [(value)]="BirthDate" (keypress)="BirthDate=$event.target.value" required
+                       name="BirthDate" [(ngModel)]="BirthDate1" [firstDayOfWeek]="6" ngbDatepicker #d="ngbDatepicker" [formControl]="formTaghaza.controls['BirthDate']">
+                <div class="input-group-addon" (click)="d.toggle()">
+                  <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </div>
+              </div>
+              <small *ngIf="formTaghaza.controls['BirthDate'].hasError('required') && formTaghaza.controls['BirthDate'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+          </div>
+        </div> 
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="PostNumber">کد پستی</label>
+            <input [(ngModel)]="PoNum" type="text" id="PostNumber" maxlength="10" #PostNumberR class="form-control" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['PoNum']" required [value]="PoNum">
+            <small *ngIf="formTaghaza.controls['PoNum'].hasError('required') && formTaghaza.controls['PoNum'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <small *ngIf="formTaghaza.controls['PoNum'].hasError('minlength') && formTaghaza.controls['PoNum'].touched" class="mat-text-warn">کد پستی باید 10 رقم باشد</small>
+            <small *ngIf="formTaghaza.controls['PoNum'].hasError('maxlength') && formTaghaza.controls['PoNum'].touched" class="mat-text-warn">کد پستی باید 10 رقم باشد</small>
+            <span class="pull-left">{{PostNumberR.value.length}} / 10</span> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="FixedTel">تلفن ثابت</label>
+            <input [(ngModel)]="FixedTel" type="text" maxlength="11" #FixedTelR id="FixedTel" class="form-control" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['FixedTel']" required [value]="FixedTel">
+            <small *ngIf="formTaghaza.controls['FixedTel'].hasError('required') && formTaghaza.controls['FixedTel'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <small *ngIf="formTaghaza.controls['FixedTel'].hasError('minlength') && formTaghaza.controls['FixedTel'].touched" class="mat-text-warn">تلفن ثابت باید بین 8 تا 11 عدد باشد</small>
+            <small *ngIf="formTaghaza.controls['FixedTel'].hasError('maxlength') && formTaghaza.controls['FixedTel'].touched" class="mat-text-warn">تلفن ثابت باید بین 8 تا 11 عدد باشد</small>
+             <span class="pull-left">{{FixedTelR.value.length}} / 11</span> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div clas="form-group">
+            <label for="Cityid">نام منطقه</label> 
+            <select id="Cityid" class="form-control" #box name="Cityid" [(ngModel)]="Cityid" [formControl]="formTaghaza.controls['Cityid']"  (change)="setValue(box.value)" required>
+              <option *ngFor="let item of result" [value]="item.id" [selected]="item.regionName">
+                      {{ item.regionName + ' ' + '(' + item.id + ')'}}
+              </option>
+            </select>         
+            <small *ngIf="formTaghaza.controls['Cityid'].hasError('required') && formTaghaza.controls['Cityid'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div clas="form-group">
+            <label for="CityidLvlTwo">نام ناحیه</label> 
+            <select id="CityidLvlTwo" class="form-control" name="CityidLvlTwo" [(ngModel)]="CityidLvlTwo" [formControl]="formTaghaza.controls['CityidLvlTwo']" required>
+              <option *ngFor="let item of city" [value]="item.id" [selected]="item.cityName">
+                      {{ item.cityName + ' ' + '(' + item.id + ')'}}
+              </option>
+            </select>    
+            <!-- <small *ngIf="formTaghaza.controls['CityidLvlTwo'].hasError('required') && formTaghaza.controls['CityidLvlTwo'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>  -->
+           </div> 
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-6" style="height:80px;">
+          <div class="form-group"> 
+            <label for="Adress">آدرس</label>
+            <input [(ngModel)]="Address" id="Adress" type="text" #AdressR maxlength="1024" class="form-control" name="Adress" [formControl]="formTaghaza.controls['Adress']" required [value]="Address">
+            <small *ngIf="formTaghaza.controls['Adress'].hasError('required') && formTaghaza.controls['Adress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span class="pull-left">{{AdressR.value.length}} / 1024</span> 
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <button md-raised-button type="submit" class="btn btn-info" (click)="SaveRequst()" [disabled]="!formTaghaza.valid">ثبت</button>
+          <button md-raised-button class="btn btn-danger" (click)="resetForm()">انصراف</button> 
+        </div>
+      </div>
+    </fieldset>
+ </div>
+</form>

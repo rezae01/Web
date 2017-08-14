@@ -1,0 +1,265 @@
+<form action="" method="post" [formGroup]="submitLicense" (ngSubmit)="submitLicense()">
+  <!-- <h5> ثبت مجوز</h5> -->
+  <div class="row">
+    <fieldset>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test">کد مجوز</label>
+          <input type="text" id="test" class="form-control" *ngIf="test == null" [formControl]="submitLicense.controls['test']">
+          <small *ngIf="submitLicense.controls['test'].hasError('required') && submitLicense.controls['test'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test2">رمز مشترک</label>
+          <input type="text" id="test2" class="form-control" *ngIf="test2 == null" [formControl]="submitLicense.controls['test2']">
+          <small *ngIf="submitLicense.controls['test2'].hasError('required') && submitLicense.controls['test2'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test2 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="test3">تاریخ صدور مجوز</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="test3"
+                     name="test3" [(ngModel)]="modelFour" [firstDayOfWeek]="4" ngbDatepicker #d3="ngbDatepicker" [formControl]="submitLicense.controls['test3']">
+              <div class="input-group-addon" (click)="d3.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['test3'].hasError('required') && submitLicense.controls['test3'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="test3 != null"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="test4">تاریخ انقضاء مجوز</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="test4"
+                     name="test4" [(ngModel)]="modelThree" [firstDayOfWeek]="3" ngbDatepicker #d4="ngbDatepicker" [formControl]="submitLicense.controls['test4']">
+              <div class="input-group-addon" (click)="d4.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['test4'].hasError('required') && submitLicense.controls['test4'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="test4 != null"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test5">رمز مشترک</label>
+          <input type="text" id="test5" class="form-control" *ngIf="test5 == null" [formControl]="submitLicense.controls['test5']">
+          <small *ngIf="submitLicense.controls['test5'].hasError('required') && submitLicense.controls['test5'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test5 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test6">شماره کلاسه</label>
+          <input type="text" id="test6" class="form-control" *ngIf="test6 == null" [formControl]="submitLicense.controls['test6']">
+          <small *ngIf="submitLicense.controls['test4'].hasError('required') && submitLicense.controls['test6'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test6 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test7">نوع مجوز</label>
+          <input type="text" id="test7" class="form-control" *ngIf="test7 == null" [formControl]="submitLicense.controls['test7']">
+          <small *ngIf="submitLicense.controls['test7'].hasError('required') && submitLicense.controls['test7'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test7 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test8">کد ملی</label>
+          <input type="text" id="test8" class="form-control" *ngIf="test8 == null" [formControl]="submitLicense.controls['test8']">
+          <small *ngIf="submitLicense.controls['test8'].hasError('required') && submitLicense.controls['test8'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test8 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test9">کد ویژه</label>
+          <input type="text" id="test9" class="form-control" *ngIf="test9 == null" [formControl]="submitLicense.controls['test9']">
+          <small *ngIf="submitLicense.controls['test9'].hasError('required') && submitLicense.controls['test9'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test9 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test10">کد اختصاصی </label>
+          <input type="text" id="test10" class="form-control" *ngIf="test10 == null" [formControl]="submitLicense.controls['test10']">
+          <small *ngIf="submitLicense.controls['test10'].hasError('required') && submitLicense.controls['test10'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test10 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test11">محل نصب کنتور</label>
+          <input type="text" id="test11" class="form-control" *ngIf="test11 == null" [formControl]="submitLicense.controls['test11']">
+          <small *ngIf="submitLicense.controls['test11'].hasError('required') && submitLicense.controls['test11'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test11 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="test12">تاریخ اعتبار</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="test12"
+                     name="test12" [(ngModel)]="modelOne" [firstDayOfWeek]="2" ngbDatepicker #d1="ngbDatepicker" [formControl]="submitLicense.controls['test12']">
+              <div class="input-group-addon" (click)="d1.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['test12'].hasError('required') && submitLicense.controls['test12'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="test12 != null"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test14">شماره نامه</label>
+          <input type="text" id="test14" class="form-control" *ngIf="test14 == null" [formControl]="submitLicense.controls['test14']">
+          <small *ngIf="submitLicense.controls['test14'].hasError('required') && submitLicense.controls['test14'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test14 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="test13">تاریخ نامه</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="test13"
+                     name="test13" [(ngModel)]="modelTwo" [firstDayOfWeek]="1" ngbDatepicker #d2="ngbDatepicker" [formControl]="submitLicense.controls['test13']">
+              <div class="input-group-addon" (click)="d2.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['test13'].hasError('required') && submitLicense.controls['test13'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="test13 != null"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <button md-raised-button type="button" class="btn btn-success" name="button">جدید</button>
+        <button md-raised-button type="button" class="btn btn-info" name="button">اضافه به لیست</button>
+        <button md-raised-button type="button" class="btn btn-danger" name="button">حذف</button>
+        <button md-raised-button type="button" class="btn btn-info pull-left"  data-target=".submitLicense" data-toggle="modal" >آرشیو پرونده ها</button>
+      </div>
+    </fieldset>
+  </div>
+  <div class="modal customModal fade submitLicense" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg tabCustom-1-parent" role="document">
+      <!-- <div class="modal-content"> -->
+      <div class="mat-card customCard tabCustom-1">
+          <ul class="nav tabCustom-1">
+            <li class="active"><a href="#a" data-toggle="tab"><span>آرشیو پرونده ها</span></a></li>
+            <li><a href="#b" data-toggle="tab"><span>ارسال مدارک</span></a></li>
+          </ul>
+          <div class="tab-content">
+           <div class="tab-pane" id="a">
+             <!-- <h6 class="mt-0">Select files</h6> -->
+             <!-- <div ng2FileDrop
+               [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+               (fileOver)="fileOverBase($event)"
+               [uploader]="uploader" class="my-drop-zone mb-1">Base drop zone</div> -->
+
+             <!-- <div ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}" (fileOver)="fileOverAnother($event)" [uploader]="uploader" class="my-drop-zone mb-1">
+               Another drop zone
+             </div> -->
+
+             <!-- <p>آپلود فایل ها</p>
+             <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+
+             <div class="clearfix mb-1"></div> -->
+
+             <!-- <p>Single</p>
+             <input type="file" ng2FileSelect [uploader]="uploader" /> -->
+             <!-- <div fxFlex.gt-sm="80" fxFlex.gt-xs="50" fxFlex="100"> -->
+
+             <!-- </div> -->
+           </div>
+
+           <div class="tab-pane" id="b">
+             <label md-raised-button for="fileUploader" class="btn btn-info"> آپلود عکس ها </label>
+             <input type="file" id="fileUploader" ng2FileSelect [uploader]="uploader" multiple  style="display:none;" /><br/>
+             <!-- <p>Single</p>
+             <input type="file" id="files" ng2FileSelect [uploader]="uploader" /> -->
+             <h6 class="mt-2" fxLayout="row">
+               <span fxFlex>لیست آپلود ها</span>
+               <span>تعداد عکس های انتخاب شده : {{ uploader?.queue?.length }}</span>
+             </h6>
+             <ngx-datatable class="material ml-0 mr-0" [rows]="uploader.queue" [columnMode]="'flex'" [headerHeight]="50" [footerHeight]="0" [rowHeight]="'auto'" >
+               <ngx-datatable-column name="نام عکس" [flexGrow]="1">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   {{ row?.file?.name }}
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="حجم عکس" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   {{ row?.file?.size/1024/1024 | number:'.2' }} MB
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="نوع عکس" [flexGrow]="2">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   <select class="form-control">
+                     <option [value]="1">متن آزمایشی</option>
+                     <option [value]="2">متن آزمایشی</option>
+                     <option [value]="3">متن آزمایشی</option>
+                     <option [value]="4">متن آزمایشی</option>
+                   </select>
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="وضعیت پیشرفت" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   <md-progress-bar mode="determinate" value="{{row.progress}}"></md-progress-bar>
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="بارگذاری عکس" [flexGrow]="1">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   <span *ngIf="row.isSuccess"><md-icon>check</md-icon></span>
+                   <span *ngIf="row.isCancel"><md-icon>cancel</md-icon></span>
+                   <span *ngIf="row.isError"><md-icon>error</md-icon></span>
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="عملیات" [flexGrow]="3">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   <button md-raised-button md-button-sm color="primary" type="button"(click)="row.upload()" [disabled]="row.isReady || row.isUploading || row.isSuccess">
+                     آپلود
+                   </button>
+                   <button md-raised-button md-button-sm color="accent" type="button"(click)="row.cancel()" [disabled]="!row.isUploading">
+                     لغو
+                   </button>
+                   <button md-raised-button md-button-sm color="warn" type="button"(click)="row.remove()">
+                     حذف
+                   </button>
+                 </ng-template>
+               </ngx-datatable-column>
+             </ngx-datatable>
+
+             <div class="mt-1 mb-1">
+               <!-- <p>Queue progress:</p> -->
+               <md-progress-bar mode="determinate" value="{{uploader.progress}}"></md-progress-bar>
+             </div>
+             <button md-raised-button md-button-xs color="primary" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+               اپلود تمام تصاویر
+             </button>
+             <button md-raised-button md-button-xs color="accent" type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+               لغو همه
+             </button>
+             <button md-raised-button md-button-xs color="warn" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+               انصراف
+             </button>
+           </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</form>

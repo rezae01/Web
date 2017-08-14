@@ -1,0 +1,312 @@
+<form action="" method="post" [formGroup]="submitLicense" (ngSubmit)="SendsubmitLicense()">
+  <fieldset class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+        <div class="form-group">
+          <label for="RequestId">کد درخواست</label>
+          <input type="text" id="RequestId" class="form-control" [formControl]="submitLicense.controls['RequestId']" required>
+          <small *ngIf="submitLicense.controls['RequestId'].hasError('required') && submitLicense.controls['RequestId'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="RequestId != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+        <div class="form-group">
+          <label for="BranchId">رمز مشترک</label>
+          <input type="text" id="BranchId" class="form-control" [formControl]="submitLicense.controls['BranchId']" required>
+          <small *ngIf="submitLicense.controls['BranchId'].hasError('required') && submitLicense.controls['BranchId'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="BranchId != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+        <div class="form-group">
+          <label for="AuthorizationNum">کد مجوز</label>
+          <input type="text" id="AuthorizationNum" class="form-control" [formControl]="submitLicense.controls['AuthorizationNum']" required>
+          <small *ngIf="submitLicense.controls['AuthorizationNum'].hasError('required') && submitLicense.controls['AuthorizationNum'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="AuthorizationNum != null"></span>
+        </div>
+      </div>
+        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+         <div class="form-inline">
+          <div class="form-group">
+            <label for="AuthorizationIssueDate">تاریخ صدور مجوز</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="AuthorizationIssueDate"
+                      name="AuthorizationIssueDate" [(ngModel)]="modelFour" [firstDayOfWeek]="4" ngbDatepicker #d3="ngbDatepicker" [formControl]="submitLicense.controls['AuthorizationIssueDate']" required>
+              <div class="input-group-addon" (click)="d3.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['AuthorizationIssueDate'].hasError('required') && submitLicense.controls['AuthorizationIssueDate'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="AuthorizationIssueDate != null"></span>
+          </div>
+        </div> 
+      </div> 
+       <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+         <div class="form-inline">
+          <div class="form-group">
+            <label for="AuthorizationExpDate">تاریخ انقضاء مجوز</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="AuthorizationExpDate"
+                      name="AuthorizationExpDate" [(ngModel)]="modelThree" [firstDayOfWeek]="3" ngbDatepicker #d4="ngbDatepicker" [formControl]="submitLicense.controls['AuthorizationExpDate']" required>
+              <div class="input-group-addon" (click)="d4.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['AuthorizationExpDate'].hasError('required') && submitLicense.controls['AuthorizationExpDate'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="AuthorizationExpDate != null"></span>
+          </div>
+        </div> 
+      </div>
+        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+          <div clas="form-group">
+            <label for="AuthorizationIssuer">سازمان صادر کننده</label>
+            <select id="AuthorizationIssuer" class="form-control" name="AuthorizationIssuer" [(ngModel)]="AuthorizationIssuer" [formControl]="submitLicense.controls['AuthorizationIssuer']" required>
+              <option *ngFor="let item of result" [value]="item.id" >
+                      {{ item.paramDesc }}
+              </option>
+            </select>         
+            <small *ngIf="submitLicense.controls['AuthorizationIssuer'].hasError('required') && submitLicense.controls['AuthorizationIssuer'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> 
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+          <div clas="form-group">
+            <label for="AuthorizationType">نوع مجوز</label> 
+            <select id="AuthorizationType" class="form-control" name="AuthorizationType" [(ngModel)]="AuthorizationType" [formControl]="submitLicense.controls['AuthorizationType']" required>
+              <option *ngFor="let item of mkTwe" [value]="item.subCode" >
+                      {{ item.paramDesc }}
+              </option>
+            </select>         
+            <small *ngIf="submitLicense.controls['AuthorizationType'].hasError('required') && submitLicense.controls['AuthorizationType'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> 
+          </div>
+        </div>
+      <!-- <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div clas="form-group">  -->
+          <!-- <label for="Cityid">نام منطقه</label> -->
+          <!--<select id="Cityid" class="form-control" name="Cityid" [formControl]="formTaghaza.controls['Cityid']">
+            <option [value]="61">
+                تست
+            </option>
+          </select>-->            
+            <!-- <md-select id="AuthorizationType" name="AuthorizationType" placeholder="نوع مجوز" [formControl]="submitLicense.controls['AuthorizationType']" style="width:100%">
+            <md-option *ngFor="let item of mkTwe" [value]="item.subCode">
+                {{ item.paramDesc }}
+            </md-option>
+          </md-select>      -->
+          <!-- <small *ngIf="formTaghaza.controls['Cityid'].hasError('required') && formTaghaza.controls['Cityid'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
+        <!-- </div>
+      </div>  -->
+      <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+        <div class="form-group">
+          <label for="LetterNum">شماره نامه</label>
+          <input type="text" id="LetterNum" class="form-control" [formControl]="submitLicense.controls['LetterNum']" required>
+          <small *ngIf="submitLicense.controls['LetterNum'].hasError('required') && submitLicense.controls['LetterNum'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="LetterNum != null"></span>
+        </div>
+      </div>  
+       <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+        <div class="form-group">
+          <label for="DocumentType">شماره کلاسه</label>
+          <input type="text" id="DocumentType" class="form-control"  [formControl]="submitLicense.controls['DocumentType']" required>
+          <small *ngIf="submitLicense.controls['DocumentType'].hasError('required') && submitLicense.controls['DocumentType'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="DocumentType != null"></span>
+        </div>
+      </div> 
+      <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+        <div class="form-group">
+          <label for="NationalCode">کد ملی</label>
+          <input type="text" id="NationalCode" class="form-control" [formControl]="submitLicense.controls['NationalCode']" required>
+          <small *ngIf="submitLicense.controls['NationalCode'].hasError('required') && submitLicense.controls['NationalCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="NationalCode != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+        <div clas="form-group"> 
+          <label for="Phase">فاز</label> 
+           <select id="Phase" class="form-control" name="Phase" [formControl]="submitLicense.controls['Phase']" required>
+            <option [value]="1">
+                1
+            </option>
+            <option [value]="3">
+                3
+            </option>
+          </select>           
+          <small *ngIf="submitLicense.controls['Phase'].hasError('required') && submitLicense.controls['Phase'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>  
+        </div>
+      </div> 
+      <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+        <div clas="form-group"> 
+          <label for="Amper">آمپر</label> 
+           <select id="Amper" class="form-control" name="Amper" [formControl]="submitLicense.controls['Amper']" required>
+            <option [value]="0">0</option>
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+            <option [value]="15">15</option>
+            <option [value]="25">25</option>
+            <option [value]="32">32</option>
+            <option [value]="50">50</option>
+            <option [value]="75">75</option>
+            <option [value]="100">100</option>
+            <option [value]="107">107</option>
+            <option [value]="125">125</option>
+            <option [value]="150">150</option>
+            <option [value]="200">200</option>
+            <option [value]="250">250</option>
+            <option [value]="300">300</option>
+            <option [value]="400">400</option>
+          </select>           
+          <small *ngIf="submitLicense.controls['Amper'].hasError('required') && submitLicense.controls['Amper'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> 
+        </div>
+      </div> 
+      <div class="col-xs-12">
+        <button md-raised-button type="button" class="btn btn-success" name="button" (click)="SaveRequstSubmitLicense()" [disabled]="!submitLicense.valid">جدید</button>
+        <button md-raised-button type="button" class="btn btn-info" name="button" (click)="getdata()">اضافه به لیست</button>
+        <button md-raised-button type="button" class="btn btn-danger" name="button">حذف</button>
+        <!-- <button md-raised-button type="button" class="btn btn-info pull-left"  data-target=".submitLicense" data-toggle="modal" >آرشیو پرونده ها</button> -->
+      </div>
+      <div class="col-xs-12 mt-1">
+        <div class="scroll-X-fullWidth">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <!-- <th colspan="1">ردیف</th> -->
+                <th colspan="1">نام مالک </th>
+                <th colspan="1">رمز</th>
+                <th colspan="1">پرونده</th>
+                <th colspan="1">شناسایی</th>
+                <th colspan="1">تعرفه</th>
+                <th colspan="1">امور</th>
+                <th colspan="1">بخش</th>
+                <th colspan="1">فاز</th>
+                <th colspan="1">آمپر</th>
+                <th colspan="1">قدرت</th>
+                <th colspan="1">تلفن</th>
+                <th colspan="4">آدرس</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of list"><!--*ngFor="let index = index"-->
+                <!-- <td >{{ 1 }}</td> -->
+                <td colspan="1">{{ item.firstName + item.lastName }}</td>
+                <td colspan="1">{{ item.branchCode }}</td>
+                <td colspan="1">{{ item.branchSrl }}</td>
+                <td colspan="1">{{ item.cityId + '-' + item.workDayCode + '-' + item.rdrCode + '-' + item.rdgSrl }}</td>
+                <td colspan="1">{{ item.trfCode }}</td>
+                <td colspan="1">{{ item.cityName }}</td>
+                <td colspan="1">{{ item.regionName }}</td>
+                <td colspan="1">{{ item.phs }}</td>
+                <td colspan="1">{{ item.amp }}</td>
+                <td colspan="1">{{ item.pwrCnt }}</td>
+                <td colspan="1">{{ item.phoneNumber }}</td>
+                <td colspan="4">{{ item.address }}</td>  
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>
+<!-- 
+  <div class="modal customModal fade submitLicense" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg tabCustom-1-parent" role="document">
+      <div class="mat-card customCard tabCustom-1">
+          <ul class="nav tabCustom-1">
+            <li class="active"><a href="#a" data-toggle="tab"><span>آرشیو پرونده ها</span></a></li>
+            <li><a href="#b" data-toggle="tab"><span>ارسال مدارک</span></a></li>
+          </ul>
+          <div class="tab-content">
+           <div class="tab-pane active" id="a">
+            <div id="example-1" class="thumbs">
+              <div class="col-xs-12 col-sm-4 col-md-3">
+                <a href="assets/img/test-1.jpg">
+                  <img class="img-responsive" src="assets/img/test-1.jpg"/>
+                </a>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3">
+                <a href="assets/img/test-2.jpg">
+                  <img class="img-responsive" src="assets/img/test-2.jpg"/>
+                </a>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3">
+                <a href="assets/img/test-3.jpg">
+                  <img class="img-responsive" src="assets/img/test-3.jpg"/>
+                </a>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3">
+                <a href="assets/img/test-3.jpg">
+                  <img class="img-responsive" src="assets/img/test-3.jpg"/>
+                </a>
+              </div>
+            </div>
+           </div>
+           <div class="tab-pane" id="b">
+             <label md-raised-button for="fileUploader" class="btn btn-info"> آپلود عکس ها </label>
+             <input type="file" id="fileUploader" ng2FileSelect [uploader]="uploader" multiple  style="display:none;" /><br/>
+             <h6 class="mt-2" fxLayout="row">
+               <span fxFlex>لیست آپلود ها</span>
+               <span>تعداد عکس های انتخاب شده : {{ uploader?.queue?.length }}</span>
+             </h6>
+             <ngx-datatable class="material ml-0 mr-0" [rows]="uploader.queue" [columnMode]="'flex'" [headerHeight]="50" [footerHeight]="0" [rowHeight]="'auto'" >
+               <ngx-datatable-column name="نام عکس" [flexGrow]="1">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   {{ row?.file?.name }}
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="حجم عکس" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   {{ row?.file?.size/1024/1024 | number:'.2' }} MB
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="نوع عکس" [flexGrow]="2">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   <select class="form-control">
+                     <option [value]="1">متن آزمایشی</option>
+                     <option [value]="2">متن آزمایشی</option>
+                     <option [value]="3">متن آزمایشی</option>
+                     <option [value]="4">متن آزمایشی</option>
+                   </select>
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="وضعیت پیشرفت" *ngIf="uploader.options.isHTML5" [flexGrow]="1">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   <md-progress-bar mode="determinate" value="{{row.progress}}"></md-progress-bar>
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="بارگذاری عکس" [flexGrow]="1">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   <span *ngIf="row.isSuccess"><md-icon>check</md-icon></span>
+                   <span *ngIf="row.isCancel"><md-icon>cancel</md-icon></span>
+                   <span *ngIf="row.isError"><md-icon>error</md-icon></span>
+                 </ng-template>
+               </ngx-datatable-column>
+               <ngx-datatable-column name="عملیات" [flexGrow]="3">
+                 <ng-template let-row="row" ngx-datatable-cell-template>
+                   <button md-raised-button md-button-sm color="primary" type="button"(click)="row.upload()" [disabled]="row.isReady || row.isUploading || row.isSuccess">
+                     آپلود
+                   </button>
+                   <button md-raised-button md-button-sm color="accent" type="button"(click)="row.cancel()" [disabled]="!row.isUploading">
+                     لغو
+                   </button>
+                   <button md-raised-button md-button-sm color="warn" type="button"(click)="row.remove()">
+                     حذف
+                   </button>
+                 </ng-template>
+               </ngx-datatable-column>
+             </ngx-datatable>
+             <div class="mt-1 mb-1">
+               <md-progress-bar mode="determinate" value="{{uploader.progress}}"></md-progress-bar>
+             </div>
+             <button md-raised-button md-button-xs color="primary" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+               اپلود تمام تصاویر
+             </button>
+             <button md-raised-button md-button-xs color="accent" type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+               لغو همه
+             </button>
+             <button md-raised-button md-button-xs color="warn" type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+               انصراف
+             </button>
+           </div>
+          </div>
+      </div>
+    </div>
+  </div> -->

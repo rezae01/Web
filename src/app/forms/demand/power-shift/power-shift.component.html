@@ -1,0 +1,234 @@
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row">
+        <form method="post" [formGroup]="PowerShift" (ngSubmit)="PowerShiftRes()">
+          <input type="hidden" [formControl]="PowerShift.controls['FormId']">
+          <div class="col-xs-12 col-sm-4 col-md-4" style="height:80px;">
+            <label for="BranchCode">رمز</label>
+            <div class="input-group">
+              <input type="text" id="BranchCode" class="form-control" [formControl]="PowerShift.controls['BranchCode']" onkeypress="return isNumber(event)" #searchTerm required>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default" style="font-size:11.5px" (click)="serachByPassCodeAndBillId(searchTerm)">جستجو</button>
+              </div>
+            </div>
+            <small *ngIf="PowerShift.controls['BranchCode'].hasError('required') && PowerShift.controls['BranchCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          </div>
+          <div class="col-xs-12 col-sm-8">
+            <div class="row">
+              <div class="btn-group pull-left">
+                <button md-raised-button type="button" class="btn btn-default" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
+                <button md-raised-button type="button" class="btn btn-default" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
+                <button md-raised-button type="button" class="btn btn-default"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button>
+              </div>
+            </div>
+          </div>
+          <div class="dataRes col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 col-md-3">
+                <strong>نام مالک :</strong>
+                <span *ngIf="FirstName != null && LastName != null">{{FirstName + ' ' + LastName }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>رمز :</strong>
+                <span *ngIf="BranchCode != null">{{ BranchCode }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>پرونده :</strong>
+                <span *ngIf="BranchSrl != null">{{ BranchSrl }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>شناسایی :</strong>
+                <span *ngIf="Cityid != null && WorkDayCode != null && RdrCode != null && RdgSrl != null">{{ Cityid + ' - ' + WorkDayCode + ' - ' + RdrCode + ' - ' + RdgSrl }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>تعرفه :</strong>
+                <span *ngIf="TrfCode != null">{{ TrfCode }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>امور :</strong>
+                <span *ngIf="RegionId != null">{{ RegionId }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>بخش :</strong>
+                <span *ngIf="Cityid != null">{{ Cityid }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>فاز :</strong>
+                <span *ngIf="Phs != null">{{ Phs }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>آمپر :</strong>
+                <span *ngIf="Amp != null">{{ Amp }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>قدرت :</strong>
+                <span *ngIf="PwrCnt != null">{{ PwrCnt }}</span>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <strong>تلفن :</strong>
+                <span *ngIf="PhoneNumber != null">{{ PhoneNumber }}</span>
+              </div>
+              <div class="col-xs-12 col-md-12">
+                <strong>آدرس :</strong>
+                <span *ngIf="Adress != null">{{ Adress }}</span>
+              </div>
+            </div>
+            <hr>
+            <div class="row mt-1">
+              <div class="col-xs-12 col-sm-2">
+                <div class="form-group">
+                  <label for="request">نوع درخواست </label>
+                  <input class="form-control" id="request" value="کاهش" disabled="disabled">
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-2" style="height:80px;">
+                <div class="form-group">
+                  <label for="Reason">دلیل</label>
+                  <select id="Reason" class="form-control" [formControl]="PowerShift.controls['Reason']">
+                    <option [value]="1">عادی</option>
+                    <option [value]="2">استاندارد سازی</option>
+                  </select>
+                  <small *ngIf="PowerShift.controls['Reason'].hasError('required') && PowerShift.controls['Reason'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+
+
+              <div class="col-xs-12 col-sm-2" style="height:80px;">
+                <div class="form-group">
+                  <label for="TrfHcode">تعرفه</label>
+                  <select id="TrfHcode" class="form-control" [formControl]="PowerShift.controls['TrfHcode']">
+                    <option [value]="1">خانگی</option>
+                    <option [value]="2">عمومی</option>
+                    <option [value]="3">کشاورزی</option>
+                    <option [value]="4">صنعت و معدن</option>
+                    <option [value]="5">سایر مصارف</option>
+                  </select>
+                  <small *ngIf="PowerShift.controls['TrfHcode'].hasError('required') && PowerShift.controls['TrfHcode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-2" style="height:80px;">
+                <div class="form-group">
+                  <label for="VoltCode">ولتاژ</label>
+                  <select id="VoltCode" class="form-control" [formControl]="PowerShift.controls['VoltCode']">
+                    <option [value]="1">اولیه</option>
+                    <option [value]="2">ثانویه</option>
+                  </select>
+                  <small *ngIf="PowerShift.controls['VoltCode'].hasError('required') && PowerShift.controls['VoltCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-2" style="height:80px;">
+                <div class="form-group">
+                  <label for="BranchTypeCode">نوع مشترک</label>
+                  <select id="BranchTypeCode" class="form-control" [formControl]="PowerShift.controls['BranchTypeCode']">
+                    <option [value]="1">عادی</option>
+                    <option [value]="2">دیماندی</option>
+                  </select>
+                  <small *ngIf="PowerShift.controls['BranchTypeCode'].hasError('required') && PowerShift.controls['BranchTypeCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-2" style="height:80px;">
+                <div class="form-group">
+                  <label for="Phs">فاز</label>
+                  <select id="Phs" class="form-control" [formControl]="PowerShift.controls['Phs']">
+                    <option [value]="1">تگ فاز</option>
+                    <option [value]="3">سه فاز</option>
+                  </select>
+                  <small *ngIf="PowerShift.controls['Phs'].hasError('required') && PowerShift.controls['Phs'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-2" style="height:80px;">
+                <div class="form-group">
+                  <label for="Amp">آمپر</label>
+                  <select id="Amp" class="form-control" [formControl]="PowerShift.controls['Amp']">
+                    <option [value]="0">0</option>
+                    <option [value]="5">5</option>
+                    <option [value]="10">10</option>
+                    <option [value]="15">15</option>
+                    <option [value]="25">25</option>
+                    <option [value]="32">32</option>
+                    <option [value]="50">50</option>
+                    <option [value]="75">75</option>
+                    <option [value]="100">100</option>
+                    <option [value]="107">107</option>
+                    <option [value]="125">125</option>
+                    <option [value]="150">150</option>
+                    <option [value]="200">200</option>
+                    <option [value]="250">250</option>
+                    <option [value]="300">300</option>
+                    <option [value]="400">400</option>
+                  </select>
+                  <small *ngIf="PowerShift.controls['Amp'].hasError('required') && PowerShift.controls['Amp'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-2" style="height:80px;">
+                <div class="form-group">
+                  <label for="PwrCnt">قدرت </label>
+                  <input class="form-control" id="PwrCnt" [value]="" [formControl]="PowerShift.controls['PwrCnt']" onkeypress="return isNumber(event)">
+                  <small *ngIf="PowerShift.controls['PwrCnt'].hasError('required') && PowerShift.controls['PwrCnt'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-2" style="height:80px;">
+                <div class="form-group">
+                  <label for="PwrIcn">دیماندی مجاز</label>
+                  <input class="form-control" id="PwrIcn" [value]="" [formControl]="PowerShift.controls['PwrIcn']" onkeypress="return isNumber(event)">
+                  <small *ngIf="PowerShift.controls['PwrIcn'].hasError('required') && PowerShift.controls['PwrIcn'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 pbW-30" style="height:80px;">
+                <div class="checkbox rtlCheckbox">
+                  <label for="checkReus">
+                    <input type="checkbox" id="checkReus" value="1" [formControl]="PowerShift.controls['checkReus']">
+                    نیاز به تهیه طرح دارید ؟
+                  </label>
+                </div>
+                <div class="checkbox rtlCheckbox">
+                  <label for="checkTwo">
+                    <input type="checkbox" id="checkTwo" value="1" [formControl]="PowerShift.controls['checkTwo']">
+                    کاهش موقت
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row mt-1" id="changeDis">
+              <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="count">تعداد ماه های کاهش موقت</label>
+                  <input type="text" id="count" class="form-control" name="" [formControl]="PowerShift.controls['count']">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="countTwe">مرتبه</label>
+                  <input type="text" id="countTwe" class="form-control" name="" [formControl]="PowerShift.controls['countTwe']">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                <div class="form-inline">
+                  <div class="form-group">
+                    <label for="BirthDate">تاریخ انقضای کاهش موقت</label>
+                    <div class="input-group" style="width:100%;">
+                      <input class="form-control" placeholder="yyyy-mm-dd" id="BirthDate"
+                              [firstDayOfWeek]="1" ngbDatepicker #d="ngbDatepicker" [formControl]="PowerShift.controls['BirthDate']">
+                      <div class="input-group-addon" (click)="d.toggle()" id="checkboxOff">
+                        <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="row">
+                <button md-raised-button class="btn btn-info mb-1" [disabled]="!PowerShift.valid" (click)="SaveRequstPowerShiftRes()">ذخیره</button>
+                <button md-raised-button (click)="resetForm()" id="close" class="btn btn-danger" data-dismiss="modal" aria-label="Close">انصراف</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

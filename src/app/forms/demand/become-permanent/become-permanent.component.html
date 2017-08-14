@@ -1,0 +1,113 @@
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row">
+        <form method="post" [formGroup]="become" (ngSubmit)="BecomeRes()">
+          <input type="hidden" [formControl]="become.controls['FormName']">
+          <input type="hidden" [formControl]="become.controls['FormId']">
+          <div class="col-xs-12 col-sm-4 col-md-4" style="height:80px;">
+            <label for="BranchCode">رمز</label>
+            <div class="input-group">
+              <input type="text" id="BranchCode" class="form-control" [formControl]="become.controls['BranchCode']" onkeypress="return isNumber(event)" (keyup.enter)="onEnter(searchTerm.value)" #searchTerm required>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default" style="font-size:11.5px" (click)="serachByPassCodeAndBillId(searchTerm)">جستجو</button>
+              </div>
+            </div>
+            <small *ngIf="become.controls['BranchCode'].hasError('required') && become.controls['BranchCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          </div>
+          <div class="col-xs-12 col-sm-8">
+            <div class="row">
+              <div class="btn-group pull-left">
+                <button md-raised-button type="button" class="btn btn-default" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
+                <button md-raised-button type="button" class="btn btn-default" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
+                <button md-raised-button type="button" class="btn btn-default"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button>
+              </div>
+            </div>
+          </div>
+          <div class="dataRes col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">نام مالک :</label>
+                  <input type="text" class="form-control" [value]="FirstName + LastName" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">رمز :</label>
+                  <input type="text" class="form-control" [value]="BranchCode" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">پرونده :</label>
+                  <input type="text" class="form-control" [value]="BranchSrl" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">شناسایی :</label>
+                  <input type="text" class="form-control" [value]="CityId + '-' + WorkDayCode + '-' + RdrCode + '-' + RdgSrl" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">تعرفه :</label>
+                  <input type="text" class="form-control" [value]="TrfCode" disabled="disabled"> 
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">امور :</label>
+                  <input type="text" class="form-control" [value]="RegionName" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">بخش :</label>
+                  <input type="text" class="form-control" [value]="CityName" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="from-group">
+                  <label for="">فاز :</label>
+                  <input type="text" class="form-control" [value]="Phs" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">آمپر :</label>
+                  <input type="text" class="form-control" [value]="Amp" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">قدرت :</label>
+                  <input type="text" class="form-control" [value]="PwrCnt" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="form-group">
+                  <label for="">تلفن :</label>
+                  <input type="text" class="form-control" [value]="PhoneNumber" disabled="disabled">
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-12">
+                <div class="form-group">
+                  <label for="">آدرس :</label>
+                  <input type="text" class="form-control" [value]="Address" disabled="disabled">
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="row">
+                <button md-raised-button class="btn btn-info mb-1" [disabled]="!become.valid" (click)="SaveRequstBecome()">تبدیل به دائم</button>
+                <button md-raised-button (click)="resetForm()" id="close" class="btn btn-danger" data-dismiss="modal" aria-label="Close">انصراف</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

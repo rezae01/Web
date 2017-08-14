@@ -1,0 +1,228 @@
+@font-face {
+  font-family: 'IRANSans';
+  src: url('../fonts/iransans/IRANSans.eot');
+  src: url('../fonts/iransans/IRANSans.woff2') format('woff2'),
+  url('../fonts/iransans/IRANSans.woff') format('woff'),
+  url('../fonts/iransans/IRANSans.ttf') format('truetype'),
+  url('../fonts/iransans/IRANSans.svg#IRANSans') format('svg'),
+  url('../fonts/iransans/IRANSans.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'webYekan-Regular';
+  src: url('../fonts/yekan/webYekan-Regular.eot');
+  src: url('../fonts/yekan/webYekan-Regular.woff2') format('woff2'),
+       url('../fonts/yekan/webYekan-Regular.woff') format('woff'),
+       url('../fonts/yekan/webYekan-Regular.ttf') format('truetype'),
+       url('../fonts/yekan/webYekan-Regular.svg#webYekan-Regular') format('svg'),
+       url('../fonts/yekan/webYekan-Regular.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MaterialIcons-Regular';
+  src: url('../fonts/MaterialIcons/MaterialIcons-Regular.woff') format('woff'),
+       url('../fonts/MaterialIcons/MaterialIcons-Regular.ttf') format('truetype'),
+       url('../fonts/MaterialIcons/MaterialIcons-Regular.svg#MaterialIcons-Regular') format('svg');
+  src: url('../fonts/MaterialIcons/MaterialIcons-Regular.eot');
+  src: url('../fonts/MaterialIcons/MaterialIcons-Regular.woff2') format('woff2'),
+       url('../fonts/MaterialIcons/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+.material-icons {
+  font-family: 'MaterialIcons-Regular';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+.mat-button, .mat-fab, .mat-icon-button, .mat-mini-fab, .mat-raised-button,.mat-radio-button{
+  font-family: 'IRANSans' ,'MaterialIcons-Regular' !important;
+}
+.mat-nav-list .mat-list-item .mat-list-item-content,.mat-menu-item,.mat-checkbox{
+  font-family: 'IRANSans' !important;
+  font-size: 12px !important;
+}
+body{
+  font-family: 'IRANSans', 'MaterialIcons-Regular';
+}
+input, textarea, select, button , .mat-input-container,.mat-select,.mat-card{
+  font-family: 'IRANSans', 'MaterialIcons-Regular' !important;
+}
+.disabled-pointer{
+  pointer-events: none;
+  opacity: 0.9;
+}
+.not-allowed{
+  cursor: not-allowed;
+}
+body .mat-select-trigger{
+  height:29px !important;
+}
+.mt-10{
+  margin-top:10px;
+}
+.mt-20{
+  margin-top: 20px;
+}
+.mt-30{
+  margin-top:30px;
+}
+.mt-40{
+  margin-top:40px;
+}
+.mt-50{
+  margin-top:50px;
+}
+.mb-10{
+  margin-bottom:10px;
+}
+.mb-20{
+  margin-bottom: 20px;
+}
+.mb-30{
+  margin-bottom:30px;
+}
+.mb-40{
+  margin-bottom:40px;
+}
+.mb-50{
+  margin-bottom:50px;
+}
+.pt-10{
+  padding-top:10px;
+}
+.pt-20{
+  padding-top:20px;
+}
+.pt-30{
+  padding-top:30px;
+}
+.pt-40{
+  padding-top:40px;
+}
+.pt-50{
+  padding-top:50px;
+}
+.pb-10{
+  padding-bottom:10px;
+}
+.pb-20{
+  padding-bottom:20px;
+}
+.pb-30{
+  padding-bottom:30px;
+}
+.pb-40{
+  padding-bottom:40px;
+}
+.pb-50{
+  padding-bottom:50px;
+}
+.pbW-30{
+  padding-right:30px;
+  padding-left:30px;
+}
+.pbW-15{
+  padding-right:15px;
+  padding-left:15px;
+}
+.parent-container{
+  width: 100%;
+  position: relative;
+}
+.parent-container:after{
+  display: block;
+  content:'';
+  clear: both;
+}
+.modal.movie{
+  background-color:rgba(0,0,0,0.5);
+}
+.vertical label,.vertical input{
+  vertical-align: middle;
+}
+.vertical label{
+  margin: 0 0 5px;
+}
+.modal.movie .modal-content{
+  background-color:transparent;
+  border-radius: 0;
+  padding:10px;
+  box-shadow:none;
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  border:none;
+}
+.modal-content:after{
+  display: block;
+  content: '';
+  clear: both;
+}
+textarea{
+  resize: none;
+  height:70px !important;
+}
+.form-cover{
+  padding:15px 0 !important;
+  border-radius: 5px !important;
+  background-color:#fff !important;
+  border-top:3px solid orange !important;
+  box-shadow:0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  -moz-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  -webkit-box-shadow:0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  -o-box-shadow:0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  -ms-box-shadow:0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+}
+.form-cover:after{
+  content:'';
+  display: block;
+  clear:both;
+}
+.form-listrequst{
+  padding:15px 0 !important;
+  border-radius: 5px !important;
+  background-color:#fff !important;
+  border-top:3px solid orange !important;
+  box-shadow:0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  -moz-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  -webkit-box-shadow:0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  -o-box-shadow:0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  -ms-box-shadow:0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+}
+.mat-list, .mat-nav-list{
+  padding-top: 0px !important;
+}
+.form-listrequst:after{
+  content:'';
+  display:block;
+  clear:both;
+}
+@media (min-width:992px){
+  .content-form div.form-group:not(.textareaNotStyle){
+    height:67px;
+  }
+  /*.textareaNotStyle*/
+  .CPagination{
+    padding: 0;
+    margin-left: auto;
+    margin-right:auto;
+  }
+}
+.simple-notification.rtl-mode .sn-content{
+  padding: 0 50px 0 0 !important;
+  font-size:13px;
+}
+.simple-notification-wrapper{
+  width: 400px;
+}

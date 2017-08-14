@@ -1,0 +1,279 @@
+ <form [formGroup]="BranchingAddress" (ngSubmit)="BranchingAddressRes()"> 
+    <div class="col-xs-12" style="margin-top:5px;"> 
+        <ul class="nav nav-tabs" id="forIdTabDemand"> 
+            <li role="presentation" class="active"><a md-raised-button href="#panel-address-1" aria-controls="panel-address-1" role="tab" data-toggle="tab" class="btn btn-default">آدرس انشعاب</a></li>
+            <li role="presentation"><a md-raised-button href="#panel-address-2" aria-controls="panel-address-2" role="tab" data-toggle="tab" class="btn btn-default">آدرس محل کار</a></li> 
+        </ul> 
+    </div> 
+    <div class="col-xs-12 tab-list-parent"> 
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="panel-address-1">
+                <div class="row">
+                    <h5 class="col-xs-12">آدرس انشعاب</h5>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div clas="form-group">
+                            <label for="RegionIdBranch">نام منطقه</label> 
+                            <select id="RegionIdBranch" class="form-control" #box1 name="RegionIdBranch" [(ngModel)]="RegionIdBranch" [formControl]="BranchingAddress.controls['RegionIdBranch']" (change)="setValue(box1.value)" required>
+                                <option *ngFor="let item of result" [value]="item.id" >
+                                        {{ item.regionName + ' ' + '(' + item.id + ')'}}
+                                </option>
+                            </select>         
+                            <small *ngIf="BranchingAddress.controls['RegionIdBranch'].hasError('required') && BranchingAddress.controls['RegionIdBranch'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> 
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div clas="form-group">
+                            <label for="CityidBranchAddress">نام ناحیه</label> 
+                            <select id="CityidBranchAddress" class="form-control" name="CityidBranchAddress" [(ngModel)]="CityidBranchAddress" [formControl]="BranchingAddress.controls['CityidBranchAddress']" required>
+                                <option *ngFor="let item of city" [value]="item.id" >
+                                        {{ item.cityName + ' ' + '(' + item.id + ')'}}
+                                </option>
+                            </select>    
+                        </div> 
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="AlleyBranchAddress">کوچه اصلی</label>
+                            <input class="form-control" type="text" id="AlleyBranchAddress" formControlName="AlleyBranchAddress">
+                            <small *ngIf="BranchingAddress.controls['AlleyBranchAddress'].hasError('required') && BranchingAddress.controls['AlleyBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="Alley1BranchAddress">کوچه فرعی</label>
+                            <input class="form-control" type="text" id="Alley1BranchAddress" formControlName="Alley1BranchAddress">
+                            <small *ngIf="BranchingAddress.controls['Alley1BranchAddress'].hasError('required') && BranchingAddress.controls['Alley1BranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="PoNumBranchAddress">کد پستی</label>
+                            <input class="form-control" type="text" id="PoNumBranchAddress" onkeypress="return isNumber(event)" [formControl]="BranchingAddress.controls['PoNumBranchAddress']" maxlength="10" onkeypress="return isNumber(event)" required>
+                            <small *ngIf="BranchingAddress.controls['PoNumBranchAddress'].hasError('required') && BranchingAddress.controls['PoNumBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>   
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="FixedTelBranchAddress">تلفن ثابت</label>
+                            <input class="form-control" type="text" id="FixedTelBranchAddress" onkeypress="return isNumber(event)" [formControl]="BranchingAddress.controls['FixedTelBranchAddress']" maxlength="11" onkeypress="return isNumber(event)" required>
+                            <small *ngIf="BranchingAddress.controls['FixedTelBranchAddress'].hasError('required') && BranchingAddress.controls['FixedTelBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="FixedTel2BranchAddress">شماره همراه</label>
+                            <input class="form-control" type="text" id="FixedTel2BranchAddress" onkeypress="return isNumber(event)" [formControl]="BranchingAddress.controls['FixedTel2BranchAddress']" maxlength="11" required>
+                            <small *ngIf="BranchingAddress.controls['FixedTel2BranchAddress'].hasError('required') && BranchingAddress.controls['FixedTel2BranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="Street1BranchAddress">خیابان اصلی</label>
+                            <input class="form-control" type="text" id="Street1BranchAddress" [formControl]="BranchingAddress.controls['Street1BranchAddress']" required>
+                            <small *ngIf="BranchingAddress.controls['Street1BranchAddress'].hasError('required') && BranchingAddress.controls['Street1BranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="Street2BranchAddress">خیابان فرعی</label>
+                            <input class="form-control" type="text" id="Street2BranchAddress" [formControl]="BranchingAddress.controls['Street2BranchAddress']" required>
+                            <small *ngIf="BranchingAddress.controls['Street2BranchAddress'].hasError('required') && BranchingAddress.controls['Street2BranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4" style="height:80px;">
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-xs-12" for="">مختصات جغرافیایی</label>
+                                <div class="col-xs-6">
+                                    <input class="form-control col-xs-6" type="text" placeholder="طول" id="LongitudeyBranchAddress" formControlName="LongitudeyBranchAddress">
+                                    <small *ngIf="BranchingAddress.controls['LongitudeyBranchAddress'].hasError('required') && BranchingAddress.controls['LongitudeyBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input class="form-control col-xs-6" type="text" placeholder="عرض" id="LatituexBranchAddress" formControlName="LatituexBranchAddress">
+                                    <small *ngIf="BranchingAddress.controls['LatituexBranchAddress'].hasError('required') && BranchingAddress.controls['LatituexBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                                </div> 
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="FaxBranchAddress">دور نگار</label>
+                            <input class="form-control" type="text" id="FaxBranchAddress" [formControl]="BranchingAddress.controls['FaxBranchAddress']" required>
+                            <small *ngIf="BranchingAddress.controls['FaxBranchAddress'].hasError('required') && BranchingAddress.controls['FaxBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="PlakBranchAddress">پلاک</label>
+                            <input class="form-control" type="text" id="PlakBranchAddress" onkeypress="return isNumber(event)" [formControl]="BranchingAddress.controls['PlakBranchAddress']" maxlength="4" onkeypress="return isNumber(event)" required>
+                            <small *ngIf="BranchingAddress.controls['PlakBranchAddress'].hasError('required') && BranchingAddress.controls['PlakBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="BranchMojaverLeft">اشتراک چپ</label>
+                            <input type="text" class="form-control" name="BranchMojaverLeft" id="BranchMojaverLeft" [formControl]="BranchingAddress.controls['BranchMojaverLeft']" required>
+                            <small *ngIf="BranchingAddress.controls['BranchMojaverLeft'].hasError('required') && BranchingAddress.controls['BranchMojaverLeft'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="BranchMojaverRight">اشتراک راست</label>
+                            <input type="text" class="form-control" name="BranchMojaverRight" id="BranchMojaverRight" [formControl]="BranchingAddress.controls['BranchMojaverRight']" required>
+                            <small *ngIf="BranchingAddress.controls['BranchMojaverRight'].hasError('required') && BranchingAddress.controls['BranchMojaverRight'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="MojaverIDLeft">شناسایی چپ</label>
+                            <input type="text" class="form-control" name="MojaverIDLeft" id="MojaverIDLeft" [formControl]="BranchingAddress.controls['MojaverIDLeft']" required>
+                            <small *ngIf="BranchingAddress.controls['MojaverIDLeft'].hasError('required') && BranchingAddress.controls['MojaverIDLeft'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="MojaverIDRight">شناسایی راست</label>
+                            <input type="text" class="form-control" name="MojaverIDRight" id="MojaverIDRight" [formControl]="BranchingAddress.controls['MojaverIDRight']" required>
+                            <small *ngIf="BranchingAddress.controls['MojaverIDRight'].hasError('required') && BranchingAddress.controls['MojaverIDRight'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="TotalRequestedSquare">زیر بنا</label>
+                            <input type="text" class="form-control" name="TotalRequestedSquare" id="TotalRequestedSquare" [formControl]="BranchingAddress.controls['TotalRequestedSquare']" required>
+                            <small *ngIf="BranchingAddress.controls['TotalRequestedSquare'].hasError('required') && BranchingAddress.controls['TotalRequestedSquare'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="FloorCount">تعداد طبقات </label>
+                            <input type="text" class="form-control" name="FloorCount" id="FloorCount" [formControl]="BranchingAddress.controls['FloorCount']" required>
+                            <small *ngIf="BranchingAddress.controls['FloorCount'].hasError('required') && BranchingAddress.controls['FloorCount'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="BranchGeoState">شهری / روستایی</label>
+                            <select class="form-control" name="BranchGeoState" id="BranchGeoState" [formControl]="BranchingAddress.controls['BranchGeoState']" required>
+                                <option [value]="1">شهری</option>
+                                <option [value]="2">روستایی</option>
+                            </select>
+                            <small *ngIf="BranchingAddress.controls['BranchGeoState'].hasError('required') && BranchingAddress.controls['BranchGeoState'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="BranchVillageCode">کد روستا</label>
+                            <select class="form-control" name="BranchVillageCode" id="BranchVillageCode" [formControl]="BranchingAddress.controls['BranchVillageCode']" required>
+                                <option [value]="0">خانگی</option>
+                                <option [value]="1">عمومی</option>
+                            </select>
+                            <small *ngIf="BranchingAddress.controls['BranchVillageCode'].hasError('required') && BranchingAddress.controls['BranchVillageCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="BranchGeoAreaCode">محدوده جغرافیایی</label>
+                            <select class="form-control" name="BranchGeoAreaCode" id="BranchGeoAreaCode" [formControl]="BranchingAddress.controls['BranchGeoAreaCode']" required>
+                                <option value="0">داخل محدوده</option>
+                                <option value="1">خارج محدوده</option>
+                            </select>
+                            <small *ngIf="BranchingAddress.controls['BranchGeoAreaCode'].hasError('required') && BranchingAddress.controls['BranchGeoAreaCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-4" style="height:80px;">
+                        <div class="form-group">
+                            <label for="AdressBranchAddress">آدرس</label>
+                            <input class="form-control" type="text" id="AdressBranchAddress" [formControl]="BranchingAddress.controls['AdressBranchAddress']" required>
+                            <small *ngIf="BranchingAddress.controls['AdressBranchAddress'].hasError('required') && BranchingAddress.controls['AdressBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="panel-address-2">
+                <div class="row">
+                    <h5 class="col-xs-12">آدرس محل کار</h5>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                        <div clas="form-group">
+                            <label for="RegionIdOffice">نام منطقه</label> 
+                           <select id="RegionIdOffice" class="form-control" #box name="RegionIdOffice" [(ngModel)]="RegionIdOffice" [formControl]="BranchingAddress.controls['RegionIdOffice']"  (change)="setValue(box.value)">
+                                <option *ngFor="let item of result" [value]="item.id" >
+                                        {{ item.regionName + ' ' + '(' + item.id + ')'}}
+                                </option>
+                            </select>         
+                            <small *ngIf="BranchingAddress.controls['RegionIdOffice'].hasError('required') && BranchingAddress.controls['RegionIdOffice'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> 
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                        <div clas="form-group">
+                            <label for="CityidOfficeAddress">نام ناحیه</label> 
+                            <select id="CityidOfficeAddress" class="form-control" name="CityidOfficeAddress" [(ngModel)]="CityidOfficeAddress" [formControl]="BranchingAddress.controls['CityidOfficeAddress']">
+                                <option *ngFor="let item of city" [value]="item.id" >
+                                        {{ item.cityName + ' ' + '(' + item.id + ')'}}
+                                </option>
+                            </select>    
+                        </div> 
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="PoNumOfficeAddress">کد پستی</label>
+                            <input class="form-control" type="text" id="PoNumOfficeAddress" [formControl]="BranchingAddress.controls['PoNumOfficeAddress']" maxlength="10" onkeypress="return isNumber(event)">
+                            <small *ngIf="BranchingAddress.controls['PoNumOfficeAddress'].hasError('required') && BranchingAddress.controls['PoNumOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="FixedTelOfficeAddress">تلفن ثابت</label>
+                            <input class="form-control" type="text" id="FixedTelOfficeAddress" onkeypress="return isNumber(event)" [formControl]="BranchingAddress.controls['FixedTelOfficeAddress']" maxlength="11">
+                            <small *ngIf="BranchingAddress.controls['FixedTelOfficeAddress'].hasError('required') && BranchingAddress.controls['FixedTelOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="FixedTel2OfficeAddress">شماره همراه</label>
+                            <input class="form-control" type="text" id="FixedTel2OfficeAddress" onkeypress="return isNumber(event)" [formControl]="BranchingAddress.controls['FixedTel2OfficeAddress']" maxlength="11">
+                            <small *ngIf="BranchingAddress.controls['FixedTel2OfficeAddress'].hasError('required') && BranchingAddress.controls['FixedTel2OfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="Street1OfficeAddress">خیابان اصلی</label>
+                            <input class="form-control" type="text" id="Street1OfficeAddress" [formControl]="BranchingAddress.controls['Street1OfficeAddress']">
+                            <small *ngIf="BranchingAddress.controls['Street1OfficeAddress'].hasError('required') && BranchingAddress.controls['Street1OfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="Street2OfficeAddress">خیابان فرعی</label>
+                            <input class="form-control" type="text" id="Street2OfficeAddress" [formControl]="BranchingAddress.controls['Street2OfficeAddress']">
+                            <small *ngIf="BranchingAddress.controls['Street2OfficeAddress'].hasError('required') && BranchingAddress.controls['Street2OfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                            <label for="FaxOfficeAddress">دور نگار</label>
+                            <input class="form-control" type="text" id="FaxOfficeAddress" [formControl]="BranchingAddress.controls['FaxOfficeAddress']">
+                            <small *ngIf="BranchingAddress.controls['FaxOfficeAddress'].hasError('required') && BranchingAddress.controls['FaxOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div> 
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                        <div class="form-group">
+                            <label for="PlakOfficeAddress">پلاک</label>
+                            <input class="form-control" type="text" id="PlakOfficeAddress" onkeypress="return isNumber(event)" [formControl]="BranchingAddress.controls['PlakOfficeAddress']" maxlength="10">
+                            <small *ngIf="BranchingAddress.controls['PlakOfficeAddress'].hasError('required') && BranchingAddress.controls['PlakOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-9" style="height:80px;">
+                        <div class="form-group">
+                            <label for="AdressOfficeAddress">آدرس</label>
+                            <input class="form-control" type="text" id="AdressOfficeAddress" [formControl]="BranchingAddress.controls['AdressOfficeAddress']">
+                            <small *ngIf="BranchingAddress.controls['AdressOfficeAddress'].hasError('required') && BranchingAddress.controls['AdressOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <button md-raised-button type="submit" class="btn btn-success mb-1" [disabled]="!BranchingAddress.valid" (click)="SaveRequst()">ثبت</button>
+            <button md-raised-button class="btn btn-danger mb-1" (click)="resetForm()">انصراف</button>   
+        </div>
+    </div>     
+</form> 

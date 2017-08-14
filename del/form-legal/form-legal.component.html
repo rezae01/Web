@@ -1,0 +1,87 @@
+<form action="" method="post" [formGroup]="formTaghaza" name="formTaghaza" (ngSubmit)="sendformTaghaza()">
+  <input type="hidden" value="0" id="RequesterType" name="RequesterType" [formControl]="formTaghaza.controls['RequesterType']">
+  <div class="row">
+    <fieldset class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="EconomicCode">کد اقتصادی</label>
+            <input type="text" class="form-control" id="EconomicCode" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['EconomicCode']">
+            <small *ngIf="formTaghaza.controls['EconomicCode'].hasError('required') && formTaghaza.controls['EconomicCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="PostNumber">کد پستی</label>
+            <input type="text" id="PostNumber" class="form-control" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['PostNumber']">
+            <small *ngIf="formTaghaza.controls['PostNumber'].hasError('required') && formTaghaza.controls['PostNumber'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          </div>
+         </div>
+         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+           <div class="form-group">
+             <label for="ShenaseCode">شماره شناسه</label>
+             <input type="text" class="form-control" id="ShenaseCode" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['ShenaseCode']">
+             <small *ngIf="formTaghaza.controls['ShenaseCode'].hasError('required') && formTaghaza.controls['ShenaseCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+           </div>
+         </div>
+         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+           <div class="form-group">
+             <label for="FirstName">نام</label>
+             <input type="text" class="form-control" id="FirstName" [formControl]="formTaghaza.controls['FirstName']">
+             <small *ngIf="formTaghaza.controls['FirstName'].hasError('required') && formTaghaza.controls['FirstName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+           </div>
+         </div>
+         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+           <div class="form-group">
+             <label for="PhoneNumber">شماره ثابت</label>
+             <input  type="text" id="PhoneNumber" class="form-control" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['PhoneNumber']">
+             <small *ngIf="formTaghaza.controls['PhoneNumber'].hasError('required') && formTaghaza.controls['PhoneNumber'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+           </div>
+         </div>
+         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+           <div class="form-group">
+             <label for="CompanyType">نوع شرکت</label>
+             <select class="form-control" id="CompanyType" name="CompanyType" [formControl]="formTaghaza.controls['CompanyType']">
+               <option [value]="1">شرکت ها</option>
+               <option [value]="0">سازمان ها و نهاد های دولتی</option>
+             </select>
+             <small *ngIf="formTaghaza.controls['CompanyType'].hasError('required') && formTaghaza.controls['CompanyType'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+           </div>
+         </div>
+         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+           <div class="form-group">
+             <label for="MobileNo">شماره تماس</label>
+             <input type="text" class="form-control" id="MobileNo" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['MobileNo']">
+             <small *ngIf="formTaghaza.controls['MobileNo'].hasError('required') && formTaghaza.controls['MobileNo'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+           </div>
+         </div>
+         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+           <div class="form-group">
+             <label for="Email">پست الکتریکی</label>
+             <input type="email" id="Email" class="form-control" [formControl]="formTaghaza.controls['Email']">
+             <small *ngIf="formTaghaza.controls['Email'].hasError('required') && formTaghaza.controls['Email'].touched" class="mat-text-warn">فیلد شما خالی می باشد</small>
+             <small *ngIf="formTaghaza.controls['Email'].errors?.Email && formTaghaza.controls['Email'].touched" class="mat-text-warn">ایمیل شما معتبر نمیباشد</small>
+           </div>
+         </div>
+         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+           <div class="form-group">
+             <label for="Cityid">شناسه محل</label>
+             <input type="text" class="form-control" id="cityid" [formControl]="formTaghaza.controls['Cityid']">
+             <small *ngIf="formTaghaza.controls['Cityid'].hasError('required') && formTaghaza.controls['Cityid'].touched" class="mat-text-warn">فیلد شما خالی می باشد</small>
+           </div>
+         </div>
+         <div class="col-xs-12">
+           <div class="form-group">
+             <label for="Address"> آدرس </label>
+             <input type="Adress" id="Address" class="form-control" name="Adress" [formControl]="formTaghaza.controls['Address']">
+             <small *ngIf="formTaghaza.controls['Address'].hasError('required') && formTaghaza.controls['Address'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+           </div>
+         </div>
+         <div class="col-xs-12">
+           <button md-raised-button type="submit" class="btn btn-info mb-10" [disabled]="!formTaghaza.valid" (click)="SaveRequst()">ثبت</button>
+           <button md-raised-button type="reset" class="btn btn-danger mb-10">انصراف</button>
+         </div>
+       </div>
+     </fieldset>
+  </div>
+</form>

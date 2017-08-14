@@ -1,0 +1,59 @@
+<section class="parent-container pt-10 pbW-15">
+  <div id="tabInWidth">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#step-1" aria-controls="step-1" role="tab" data-toggle="tab">اطلاعات متقاضی</a></li>
+      <li role="presentation"><a href="#step-2" aria-controls="step-2" role="tab" data-toggle="tab">انشعابات موجود</a></li>
+      <li role="presentation"><a href="#step-3" aria-controls="step-3" role="tab" data-toggle="tab">عملیات</a></li>
+    </ul>
+    <!-- <p *ngIf="re=='true'">
+      داده ثبت شد
+    </p> -->
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- {{re}} -->
+      <section role="tabpanel" class="tab-pane form-listrequst active" id="step-1">
+        <div class="col-xs-12">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 vertical">
+                <div class="row">
+                  <h4 class="h6">نوع متقاضی</h4>
+                  <button md-raised-button class="btn btn-default mb-1 mt-1" id="real">حقیقی</button>
+                  <button md-raised-button class="btn btn-default mb-1 mt-1" id="legal">حقوقی</button>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-8">
+                <div class="row">
+                  <div class="btn-group pull-left">
+                    <button md-raised-button type="button" class="btn btn-default" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
+                    <button md-raised-button type="button" class="btn btn-default" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
+                    <button md-raised-button type="button" class="btn btn-default"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-form">
+            <div class="tab-content-real">
+
+              <form-real></form-real>
+              
+            </div>
+            <div class="tab-content-legal">
+
+              <form-legal></form-legal>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <section role="tabpanel" class="tab-pane form-listrequst" id="step-2">
+        <app-existing-divisions></app-existing-divisions>
+      </section>
+      <section role="tabpanel" class="tab-pane form-listrequst" id="step-3">
+        <app-operation></app-operation>
+      </section>
+    </div>
+  </div>
+</section>

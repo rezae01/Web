@@ -1,0 +1,59 @@
+  <h6 class="col-xs-12 col-sm-4">
+    <div class="row">
+       انشعاب موجود
+    </div>
+  </h6>
+  <div class="col-xs-12" style="overflow:hidden;">
+    <div class="row">
+        <div class="scroll-X-fullWidth"> 
+            <table class="table table-bordered"> 
+                <thead>
+                    <tr>
+                    <th colspan="1">نام مالک</th>
+                    <th colspan="1">رمز</th>
+                    <th colspan="1">پرونده</th>
+                    <th colspan="1">شناسایی</th>
+                    <th colspan="1">تعرفه</th>
+                    <th colspan="1">امور</th>
+                    <th colspan="1">بخش</th>
+                    <th colspan="1">فاز</th>
+                    <th colspan="1">آمپر</th>
+                    <th colspan="1">قدرت</th>
+                    <th colspan="1">تلفن</th>
+                    <th colspan="4">آدرس</th>
+                    </tr>
+                </thead><!--*ngFor="let item of tasks;let i = index"-->
+                <tbody *ngFor="let task of tasks;let i = index"> <!--*ngFor="let item of list;let i = index"-->
+                    <tr *ngFor="let task1 of task.CalculationData"><!--let item1 of item.CalculationData;let i = index" (click)="RemoveData()-->    <!--*ngFor="let task of item.CalculationData"-->
+                        <td>{{ task1.Phs }}</td>
+                        <td>{{ task1.Phs }}</td> 
+                        <td>{{ task1.TrfHCode }}</td>
+                        <td>{{ task1.Count }}</td>
+                        <td>{{ task1.PwrIcn }}</td>
+                        <td>{{ task1.PwrCnt }}</td>
+                        <td>{{ task1.VoltCode }}</td>
+                        <td>{{ task1.Amp }}</td>
+                        <td>{{ task1.FmlCode }}</td> 
+                        <td>
+                            <a md-raised-button class="btn btn-default btn-xs" (click)="editTask(task)" data-toggle="modal" data-target="#new-demand"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تغییر قدرت</a>
+                            <a md-raised-button class="btn btn-danger btn-xs" (click)="deleteTask(task)"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>حذف انشعاب</a>
+                        </td>
+                        <!-- <td></td> -->
+                        <!-- <td colspan="1">{{ item1.FullName }}</td>
+                        <td colspan="1">{{ item1.BranchCode }}</td>
+                        <td colspan="1">{{ item1.BranchSrl }}</td>
+                        <td colspan="1">{{ item1.FileNumber }}</td>
+                        <td colspan="1">{{ item1.TrfCode }}</td>
+                        <td colspan="1">{{ item1.CityNameID }}</td>
+                        <td colspan="1">{{ item1.RegionNameID }}</td>
+                        <td colspan="1">{{ item1.Phs }}</td>
+                        <td colspan="1">{{ item1.Amp }}</td>
+                        <td colspan="1">{{ item1.PwrCnt }}</td>
+                        <td colspan="1">{{ item1.PhoneNumber }}</td>
+                        <td colspan="4">{{ item1.Address }}</td>  -->
+                    </tr> 
+                </tbody> 
+            </table> 
+        </div>  
+    </div>
+  </div>

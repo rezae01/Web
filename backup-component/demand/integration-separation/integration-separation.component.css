@@ -1,0 +1,19 @@
+.dataRes .row > div[class*="col"]{
+  margin-bottom: 10px;
+}
+.dataRes > div span {
+  display: inline-block;
+  float:right;
+  font-size: 13px;
+}
+.dataRes > div strong{
+  width: 65px;
+  display: inline-block;
+  float:right;
+  font-size: 13px;
+}
+.rtlCheckbox.checkbox input[type="checkbox"]{
+  margin-top: 3px;
+  margin-left: 0;
+  margin-right: -20px;
+}

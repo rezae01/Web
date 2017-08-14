@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>سامانه امور مشترکین شرکت برق</title>
+
+  <link rel="stylesheet" href="TestcssLogin.css">
+
+
+</head>
+<body style="background-color:#f7f7f7">
+
+<div class="index ">
+  <h6>حساب کاربری</h6>
+  <div style="width:100px;height: 30px; "></div>
+
+  <div style="width:100px;height: 30px; background-color: #FFFFFF ; border: solid thin #1b6d85 ;margin: auto"></div>
+
+ <div style="width:100px;height: 30px; "></div>
+
+  <div style="width:100px;height: 30px; background-color: #FFFFFF ; border: solid thin #1b6d85 ;margin: auto"></div>
+
+  <div style="width: 16px ; height: 10px"></div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row">
+        <form method="post" [formGroup]="ChangeOwner" (ngSubmit)="ChangeOwnerRes()">
+          <input type="hidden" [formControl]="ChangeOwner.controls['FormId']">
+          <div class="col-xs-12 col-sm-4 col-md-4" style="height:80px;">
+            <label for="BranchCode">رمز</label>
+            <div class="input-group">
+              <input type="text" id="BranchCode" class="form-control" [formControl]="ChangeOwner.controls['BranchCode']" onkeypress="return isNumber(event)" #searchTerm>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default" style="font-size:11.5px" (click)="serachByPassCodeAndBillId(searchTerm)">جستجو</button>
+               </div>
+             </div>
+            <small *ngIf="ChangeOwner.controls['BranchCode'].hasError('required') && ChangeOwner.controls['BranchCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          </div>
+          <div class="col-xs-12 col-sm-8">
+            <div class="row">
+              <div class="btn-group pull-left">
+                <button md-raised-button type="button" class="btn btn-default" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
+                <button md-raised-button type="button" class="btn btn-default" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
+                <button md-raised-button type="button" class="btn btn-default"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="FirstName">نام</label>
+                  <input [ngModel]="FirstName" (keypress)="FirstName=$event.target.value" id="FirstName" class="form-control" [(value)]="FirstName" placeholder="نام" type="text" [formControl]="ChangeOwner.controls['FirstName']" required>
+                  <small *ngIf="ChangeOwner.controls['FirstName'].hasError('required') && ChangeOwner.controls['FirstName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="LastName">نام خانوادگی</label>
+                  <input  [ngModel]="LastName" (keypress)="LastName=$event.target.value"  type="text" id="LastName" [(value)]="LastName" class="form-control" placeholder="نام خانوادگی" [formControl]="ChangeOwner.controls['LastName']" required>
+                  <small *ngIf="ChangeOwner.controls['LastName'].hasError('required') && ChangeOwner.controls['LastName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="FatherName">نام پدر</label>
+                  <input [ngModel]="FatherName" (keypress)="FatherName=$event.target.value" type="text" id="FatherName" [(value)]="FatherName" placeholder="نام پدر" class="form-control" [formControl]="ChangeOwner.controls['FatherName']" required>
+                  <small *ngIf="ChangeOwner.controls['FatherName'].hasError('required') && ChangeOwner.controls['FatherName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="NationalCode">کد ملی</label>
+                  <input [ngModel]="NationalCode" (keypress)="NationalCode=$event.target.value" [(ngModel)]="NameFilter" [(value)]="NationalCode" placeholder="کد ملی" id="NationalCode" class="form-control" #postalCode maxlength="10" type="text" onkeypress="return isNumber(event)" [formControl]="ChangeOwner.controls['NationalCode']" required>
+                  <span class="pull-left">{{postalCode.value.length}} / 10</span>
+                  <small *ngIf="ChangeOwner.controls['NationalCode'].hasError('required') && ChangeOwner.controls['NationalCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                  <small *ngIf="ChangeOwner.controls['NationalCode'].hasError('minlength') && ChangeOwner.controls['NationalCode'].touched" class="mat-text-warn">کد ملی شما نامعتبر است</small>
+                  <small *ngIf="ChangeOwner.controls['NationalCode'].hasError('maxlength') && ChangeOwner.controls['NationalCode'].touched" class="mat-text-warn">کد ملی شما نامعتبر است</small>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <button md-raised-button class="btn btn-info mb-1"  [disabled]="!ChangeOwner.valid" (click)="SaveRequstChangeOwner()">تغییر مالک</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- <div class="col-xs-12 mt-1">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>نام</th>
+            <th>نام خانوادگی</th>
+            <th>نام پدر</th>
+            <th>کد ملی</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+  </div>
+</div>

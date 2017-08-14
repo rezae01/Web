@@ -1,0 +1,33 @@
+.header-form .mat-button,
+.header-form .mat-fab,
+.header-form .mat-icon-button,
+.header-form .mat-mini-fab,
+.header-form .mat-raised-button{
+    font-size: 12px !important;
+    padding:0 10px !important;
+}
+.header-form .btn-group-vertical>.btn,.header-form .btn-group>.btn{
+    float: right;
+}
+.header-form .btn-group-custom{
+    margin: 0 auto 0 auto;
+    display: block;
+}
+.btn-group-custom:after{
+    display: block;
+    clear: both;
+    content: '';
+}
+.scroll-X-fullWidth{
+  min-width: 1085px;
+  width:auto;
+  overflow-x: scroll;
+  max-height:200px;
+  overflow-y: auto;
+}
+.scroll-X-fullWidth .table-bordered{
+  width: 1500px;
+}
+.scroll-X-fullWidth .table-bordered thead{
+  border-bottom:1px solid #ddd;
+}

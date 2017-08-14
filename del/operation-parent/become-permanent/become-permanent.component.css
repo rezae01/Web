@@ -1,0 +1,13 @@
+.dataRes .row > div[class*="col"]{
+  margin-bottom: 30px;
+}
+.dataRes > div span {
+  display: inline-block;
+  float:right;
+  padding-right: 20px;
+}
+.dataRes > div strong{
+  width: 65px;
+  display: inline-block;
+  float:right;
+}

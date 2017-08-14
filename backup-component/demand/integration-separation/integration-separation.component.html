@@ -1,0 +1,98 @@
+<section class="parent-container pt-10 pbW-15" id="tabInWidth">
+  <ul class="nav nav-tabs">
+    <li><a [routerLink]="['/','forms','demand','NewDemand']">تقاضای جدید</a></li>
+    <li><a [routerLink]="['/','forms','demand','ChangeTariff']">تغییر تعرفه </a></li>
+    <li class="active"><a [routerLink]="['/','forms','demand','IntegrationSeparation']">ادغام / تفکیک</a></li>
+    <li><a [routerLink]="['/','forms','demand','BecomePermanent']">تبدیل به دائم</a></li>
+    <li><a [routerLink]="['/','forms','demand','PowerShift']">تغییر قدرت</a></li>
+    <li><a [routerLink]="['/','forms','demand','ChangeOwner']">تغییر مالک</a></li>
+  </ul>
+  <section class="form-listrequst">
+    <div class="col-xs-12">
+      <div class="col-xs-12 col-sm-4 vertical">
+        <div class="row">
+          <h4 class="h6 mb-1">ادغام / تفکیک</h4>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-8">
+        <div class="row">
+          <div class="btn-group pull-left">
+            <button md-raised-button type="button" class="btn btn-default" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
+            <button md-raised-button type="button" class="btn btn-default" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
+            <button md-raised-button type="button" class="btn btn-default"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="row">
+            <form method="post" [formGroup]="IntegraSeparation" (ngSubmit)="PowerShiftRes()">
+              <div class="col-xs-12 col-sm-4 col-md-4" style="height:80px;">
+                <label for="pass">رمز</label>
+                <div class="input-group">
+                  <input type="text" id="pass" class="form-control" [formControl]="IntegraSeparation.controls['SerachRes']" onkeypress="return isNumber(event)">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" style="font-size:11.5px">جستجو</button>
+                  </div>
+                </div>
+                <small *ngIf="IntegraSeparation.controls['SerachRes'].hasError('required') && IntegraSeparation.controls['SerachRes'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+              </div>
+              <div class="dataRes col-xs-12">
+                <div class="row">
+                  <div class="col-xs-12 col-md-3">
+                    <strong>نام مالک :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>رمز :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>پرونده :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>شناسایی :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>تعرفه :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>امور :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>فاز :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>آمپر :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>بخش :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>قدرت :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-3">
+                    <strong>تلفن :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                  <div class="col-xs-12 col-md-12">
+                    <strong>آدرس :</strong>
+                    <span>مقدار در این قسمت</span>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

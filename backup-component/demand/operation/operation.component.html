@@ -1,0 +1,52 @@
+<div class="col-xs-12 header-form">
+  <div class="btn-group pull-right">
+    <a type="button" md-raised-button class="btn btn-default" [routerLink] = "['/','forms','demand','ChangeOwner']"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle;"></i>تغییر مالک</a>
+    <a type="button" md-raised-button class="btn btn-default" [routerLink] = "['/','forms','demand','PowerShift']"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle;"></i>تغییر قدرت</a>
+    <a type="button" md-raised-button class="btn btn-default" [routerLink] = "['/','forms','demand','BecomePermanent']"><i class="fa fa-thumbs-o-up" style="margin-left:5px;vertical-align: middle;"></i>تبدیل به دائم</a>
+    <a type="button" md-raised-button class="btn btn-default" [routerLink] = "['/','forms','demand','IntegrationSeparation']"><i class="fa fa-object-ungroup" style="margin-left:5px;vertical-align: middle;"></i>ادغام / تفکیک</a>
+    <a type="button" md-raised-button class="btn btn-default" [routerLink] = "['/','forms','demand','ChangeTariff']"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle;"></i>تغییر تعرفه</a>
+    <a type="button" md-raised-button class="btn btn-default" [routerLink] = "['/','forms','demand','NewDemand']"><i class="fa fa-plus" style="margin-left:5px;vertical-align: middle;"></i>تقاضای جدید</a>
+  </div>
+  <div class="btn-group pull-left">
+    <button md-raised-button type="button" class="btn btn-default" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
+    <button md-raised-button type="button" class="btn btn-default" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
+    <button md-raised-button type="button" class="btn btn-default"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button>
+  </div>
+</div>
+<!-- <div class="col-xs-12 mt-30">
+<div class="table-respansive">
+  <table class="table table-striped">
+    <thead>
+      <tr *ngFor="let g of grid">
+        <td *ngFor="let g1 of g.gridCulomen">
+          {{ g1.columnName }}
+        </td>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of grid">
+    <tr *ngFor="let item1 of item.requstview">
+      <td *ngIf="item.gridCulomen.ColumnFieldName==usr_firstname">
+        <a href="#">{{item1.usr_firstname}}</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination CPagination">
+  <li [ngClass]="{disabled:pager.currentPage === 1}">
+    <a (click)="setPage(1)">از اول</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === 1}">
+    <a (click)="setPage(pager.currentPage - 1)">قبلی</a>
+  </li>
+  <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+    <a (click)="setPage(page)">{{page}}</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+    <a (click)="setPage(pager.currentPage + 1)">بعدی</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+    <a (click)="setPage(pager.totalPages)">از آخر</a>
+  </li>
+</ul>
+</div> -->

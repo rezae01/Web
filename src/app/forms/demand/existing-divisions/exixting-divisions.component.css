@@ -1,0 +1,31 @@
+.dataRes .row > div[class*="col"]{
+  margin-bottom: 10px;
+}
+.dataRes > div span {
+  display: inline-block;
+  float:right;
+  font-size: 13px;
+}
+.dataRes > div strong{
+  width: 65px;
+  display: inline-block;
+  float:right;
+  font-size: 13px;
+}
+.scroll-X-fullWidth{
+  width: 1085px;
+  overflow-x: scroll;
+  
+}
+.scroll-X-fullWidth .table-bordered{
+  width: 1500px;
+}
+.scroll-X-fullWidth .table-bordered thead{
+  border-bottom:1px solid #ddd;
+}
+.scroll-X-fullWidth .table-bordered thead tr th:last-child{
+   width: 350px;
+}
+.scroll-X-fullWidth .table-bordered tbody tr td:last-child{
+  width: 350px;
+}

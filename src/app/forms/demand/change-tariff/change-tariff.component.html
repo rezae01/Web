@@ -1,0 +1,93 @@
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <form method="post" [formGroup]="changeTariff" (ngSubmit)="changeTariffRes()">
+            <input type="hidden" [formControl]="changeTariff.controls['FormId']">
+            <div class="col-xs-12 col-sm-4 col-md-4" style="height:80px;">
+              <label for="BranchCode">رمز</label>
+              <div class="input-group">
+                <input type="text" id="BranchCode" class="form-control" [formControl]="changeTariff.controls['BranchCode']" (keyup.enter)="onEnter(searchTerm.value)"  onkeypress="return isNumber(event)" #searchTerm required>
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default" style="font-size:11.5px" (click)="serachByPassCodeAndBillId(searchTerm)">جستجو</button>
+                </div>
+              </div>
+              <small *ngIf="changeTariff.controls['BranchCode'].hasError('required') && changeTariff.controls['BranchCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <div class="row">
+                <div class="btn-group pull-left">
+                  <button md-raised-button type="button" class="btn btn-default" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
+                  <button md-raised-button type="button" class="btn btn-default" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
+                  <button md-raised-button type="button" class="btn btn-default"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button>
+                </div>
+              </div>
+            </div>
+            <div class="dataRes col-xs-12">
+              <div class="row">
+                <div class="col-xs-12 col-md-3">
+                  <strong>شناسایی :</strong>
+                  <span *ngIf="Cityid != null && WorkDayCode != null && RdrCode != null && RdgSrl != null">{{Cityid + '-' + WorkDayCode + '-' + RdrCode + '-' + RdgSrl}}</span>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                  <strong>تعرفه :</strong>
+                  <span *ngIf="TrfCode != null">{{ TrfCode }}</span> 
+                </div>
+                <div class="col-xs-12 col-md-3">
+                  <strong>امور :</strong>
+                   <span *ngIf="RegionName != null">{{ RegionName }}</span> 
+                </div>
+                <div class="col-xs-12 col-md-3">
+                  <strong>بخش :</strong>
+                   <span *ngIf="CityName != null">{{ CityName }}</span> 
+                </div>
+                <div class="col-xs-12 col-md-3">
+                  <strong>فاز :</strong>
+                   <span *ngIf="Phs != null">{{ Phs }}</span> 
+                </div>
+                <div class="col-xs-12 col-md-3">
+                  <strong>آمپر قدرت :</strong>
+                   <span *ngIf="Amp != null">{{ Amp }} </span> 
+                </div>
+                <!-- <div class="col-xs-12 col-md-3">
+                  <strong>روستا :</strong>
+                  <span></span>
+                </div> -->
+                <div class="col-xs-12 col-md-3">
+                  <strong>تلفن :</strong>
+                  <span *ngIf="PhoneNumber != null"> {{ PhoneNumber }} </span>
+                </div>
+                <div class="col-xs-12 col-md-12">
+                  <strong>آدرس :</strong>
+                  <span *ngIf="Adress != null">{{ Adress }} </span>
+                </div>
+              </div>
+              <hr>
+              <div class="row mt-1">
+                <div class="col-xs-12 col-sm-3">
+                  <div class="form-group">
+                    <label for="TrfHcode">تعرفه</label>
+                    <select id="TrfHcode" class="form-control" [formControl]="changeTariff.controls['TrfHcode']" required>
+                      <option [value]="1">خانگی</option>
+                      <option [value]="2">عمومی</option>
+                      <option [value]="3">کشاورزی</option>
+                      <option [value]="4">صنعت و معدن</option>
+                      <option [value]="5">سایر مصارف</option>
+                    </select>
+                    <small *ngIf="changeTariff.controls['TrfHcode'].hasError('required') && changeTariff.controls['TrfHcode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="row">
+                  <button md-raised-button class="btn btn-info mb-1" [disabled]="!changeTariff.valid" (click)="SaveRequst()">ذخیره</button>
+                  <button md-raised-button (click)="resetForm()" id="close" class="btn btn-danger mb-1" data-dismiss="modal" aria-label="Close">انصراف</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+

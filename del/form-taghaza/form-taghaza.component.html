@@ -1,0 +1,266 @@
+<section class="parent-container pt-10 pbW-15">
+  <div id="tabInWidth">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#step-1" aria-controls="step-1" role="tab" data-toggle="tab">اطلاعات متقاضی</a></li>
+      <li role="presentation"><a href="#step-2" aria-controls="step-2" role="tab" data-toggle="tab">انشعابات موجود</a></li>
+      <li role="presentation"><a href="#step-3" aria-controls="step-3" role="tab" data-toggle="tab">عملیات</a></li>
+    </ul>
+    <!-- <p *ngIf="re=='true'">
+      داده ثبت شد
+    </p> -->
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- {{re}} -->
+      <section role="tabpanel" class="tab-pane form-listrequst active" id="step-1">
+        <div class="col-xs-12">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 vertical">
+                <div class="row">
+                  <h4 class="h6">نوع متقاضی</h4>
+                  <md-radio-group>
+                    <md-radio-button value="1" id="firstH">حقیقی</md-radio-button>
+                    <md-radio-button value="2" id="lastH">حقوقی</md-radio-button>
+                  </md-radio-group>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-8">
+                <div class="row">
+                  <div class="btn-group pull-left">
+                    <button type="button" class="btn btn-default" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
+                    <button type="button" class="btn btn-default" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-form">
+            <form-real></form-real>
+            <!-- <form action="" method="post" [formGroup]="formTaghazaReal"  (ngSubmit)="sendFormTaghazaReal()">
+              <div class="row">
+                <input type="hidden" id="RequesterTypeReal" value="0" [formControl]="formTaghazaReal.controls['RequesterTypeReal']" name="RequesterTypeReal">
+                <fieldset class="col-xs-12" id="real">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput [(ngModel)]="serchFilterReal" (keypress)="serachByNationalCode($event)" id="NationalCodeReal" #postalCode maxlength="10"  placeholder="کد ملی" type="text" onkeypress="return isNumber(event);" [formControl]="formTaghazaReal.controls['NationalCodeReal']">
+                        <md-hint align="end">{{postalCode.value.length}} / 10</md-hint>
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['NationalCodeReal'].hasError('required') && formTaghazaReal.controls['NationalCodeReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      <small *ngIf="formTaghazaReal.controls['NationalCodeReal'].hasError('minlength') && formTaghazaReal.controls['NationalCodeReal'].touched" class="mat-text-warn">کد ملی شما نامعتبر است</small>
+                      <small *ngIf="formTaghazaReal.controls['NationalCodeReal'].hasError('maxlength') && formTaghazaReal.controls['NationalCodeReal'].touched" class="mat-text-warn">کد ملی شما نامعتبر است</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input  mdInput *ngIf="firstNameReal != null" type="text" placeholder="نام" [value]="firstNameReal" [disabled]="!firstNameReal.valid">
+                        <input  mdInput *ngIf="firstNameReal == null" type="text" placeholder="نام" [formControl]="formTaghazaReal.controls['FirstNameReal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['FirstNameReal'].hasError('required') && formTaghazaReal.controls['FirstNameReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput *ngIf="lastNameReal != null" type="text" placeholder="نام خانوادگی" [value]="lastNameReal" [disabled]="!lastNameReal.valid">
+                        <input mdInput *ngIf="lastNameReal == null" type="text" placeholder="نام خانوادگی" [formControl]="formTaghazaReal.controls['LastNameReal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['LastNameReal'].hasError('required') && formTaghazaReal.controls['LastNameReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;"> -->
+                      <!-- <input class="form-control" placeholder="yyyy-mm-dd"
+                              [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"> -->
+                      <!-- <span *ngIf="birthDateReal != null">{{ birthDateReal }}</span>
+                      <div *ngIf="birthDateReal == null">
+                        <md-input-container style="width:100%;" *ngIf="birthDateReal == null"> -->
+                          <!-- <input mdInput *ngIf="birthDateReal != null" type="text" [mdDatepicker]="picker2" placeholder="تاریخ تولد" [value]="birthDateReal" [disabled]="!birthDateReal.valid">
+                          <button mdSuffix *ngIf="birthDateReal != null" [mdDatepickerToggle]="picker2"></button> -->
+                          <!-- <input mdInput type="text" [mdDatepicker]="picker" id="BirthDateReal"  placeholder="تاریخ تولد" [formControl]="formTaghazaReal.controls['BirthDateReal']">
+                          <button mdSuffix [mdDatepickerToggle]="picker" style="border:1px solid red;"></button>
+                        </md-input-container> -->
+                        <!-- <md-datepicker #picker></md-datepicker> -->
+                        <!-- <small *ngIf="formTaghazaReal.controls['BirthDateReal'].hasError('required') && formTaghazaReal.controls['BirthDateReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
+                      <!-- </div> -->
+                    <!-- </div> -->
+                    <!-- <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput *ngIf="fatherNameReal != null" type="text" placeholder="نام پدر" [value]="fatherNameReal" [disabled]="!fatherNameReal.valid">
+                        <input mdInput *ngIf="fatherNameReal == null" type="text" placeholder="نام پدر" [formControl]="formTaghazaReal.controls['FatherNameReal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['FatherNameReal'].hasError('required') && formTaghazaReal.controls['FatherNameReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput *ngIf="shomareShenasnameReal != null" type="text" placeholder="شماره شناسنامه" [value]="shomareShenasnameReal" [disabled]="!shomareShenasnameReal.valid">
+                        <input mdInput *ngIf="shomareShenasnameReal == null" type="text" placeholder="شماره شناسنامه" [formControl]="formTaghazaReal.controls['shomareShenasnameReal']" onkeypress="return isNumber(event)">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['shomareShenasnameReal'].hasError('required') && formTaghazaReal.controls['shomareShenasnameReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput *ngIf="issuedFromReal != null" type="text" placeholder="محل صدور" [value]="issuedFromReal" [disabled]="!issuedFromReal.valid">
+                        <input mdInput  *ngIf="issuedFromReal == null" type="text" placeholder="محل صدور" [formControl]="formTaghazaReal.controls['IssuedFromReal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['IssuedFromReal'].hasError('required') && formTaghazaReal.controls['IssuedFromReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-select placeholder="جنسیت" style="width:100%;" name="GenderReal" [formControl]="formTaghazaReal.controls['GenderReal']">
+                        <md-option [value]="1">مرد</md-option>
+                        <md-option [value]="0">زن</md-option>
+                      </md-select>
+                      <small *ngIf="formTaghazaReal.controls['GenderReal'].hasError('required') && formTaghazaReal.controls['GenderReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width: 100%">
+                        <input mdInput *ngIf="emailReal != null" type="email" placeholder="پست الکتریکی" [value]="emailReal" [disabled]="!emailReal.valid">
+                        <input mdInput *ngIf="emailReal == null" placeholder="پست الکتریکی" [formControl]="formTaghazaReal.controls['EmailReal']" type="email">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['EmailReal'].hasError('required') && formTaghazaReal.controls['EmailReal'].touched" class="mat-text-warn">فیلد شما خالی می باشد</small>
+                      <small *ngIf="formTaghazaReal.controls['EmailReal'].errors?.EmailReal && formTaghazaReal.controls['EmailReal'].touched" class="mat-text-warn">ایمیل شما معتبر نمیباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput *ngIf="mobileNoReal != null" type="text" placeholder="شماره تماس" [value]="mobileNoReal" [disabled]="!mobileNoReal.valid">
+                        <input mdInput *ngIf="mobileNoReal == null" type="text" placeholder="شماره تماس" onkeypress="return isNumber(event)" [formControl]="formTaghazaReal.controls['MobileNoReal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['MobileNoReal'].hasError('required') && formTaghazaReal.controls['MobileNoReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput *ngIf="postNumberReal != null" type="text" placeholder="کد پستی" [value]="postNumberReal" [disabled]="!postNumberReal.valid">
+                        <input mdInput *ngIf="postNumberReal == null" type="text" id="PostNumberReal"  placeholder="کد پستی" onkeypress="return isNumber(event)" [formControl]="formTaghazaReal.controls['PostNumberReal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['PostNumberReal'].hasError('required') && formTaghazaReal.controls['PostNumberReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput *ngIf="fixedTel != null" type="text" placeholder="تلفن ثابت" [value]="fixedTel" [disabled]="!fixedTel.valid">
+                        <input mdInput *ngIf="fixedTel == null" type="text" id="FixedTel"  placeholder="تلفن ثابت" onkeypress="return isNumber(event)" [formControl]="formTaghazaReal.controls['FixedTel']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['FixedTel'].hasError('required') && formTaghazaReal.controls['FixedTel'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-select  placeholder="نام منطقه" style="width:100%;" id="CityidReal" name="CityidReal" [formControl]="formTaghazaReal.controls['CityidReal']">
+                        <md-option *ngFor="let item of region" [value]="item.id" #box (click)="setValue(box.value)">{{ item.regionName + ' ' + '(' + item.id + ')'}}</md-option>
+                      </md-select>
+                      <small *ngIf="formTaghazaReal.controls['CityidReal'].hasError('required') && formTaghazaReal.controls['CityidReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <md-select placeholder="نام ناحیه" style="width:100%;" id="CityidRealLvlTwo" name="CityidRealLvlTwo" [formControl]="formTaghazaReal.controls['CityidRealLvlTwo']">
+                        <md-option *ngFor="let item of city" [value]="item.id">{{ item.cityName + ' ' + '(' + item.id + ')'  }}</md-option>
+                      </md-select>
+                      <small *ngIf="formTaghazaReal.controls['CityidRealLvlTwo'].hasError('required') && formTaghazaReal.controls['CityidRealLvlTwo'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12">
+                      <md-input-container style="width:100%;">
+                        <textarea mdInput placeholder="آدرس" *ngIf="adressReal != null" [value]="adressReal" [disabled]="!adressReal.valid"></textarea>
+                        <textarea mdInput placeholder="آدرس" *ngIf="adressReal == null" [formControl]="formTaghazaReal.controls['AdressReal']"></textarea>
+                      </md-input-container>
+                      <small *ngIf="formTaghazaReal.controls['AdressReal'].hasError('required') && formTaghazaReal.controls['AdressReal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12">
+                      <button md-raised-button type="submit" class="btn btn-info  mb-10" [disabled]="!formTaghazaReal.valid" (click)="SaveRequstReal()">ثبت</button>
+                      <button md-raised-button type="reset" class="btn btn-danger  mb-10">انصراف</button>
+                    </div>
+                  </div>
+                </fieldset>
+             </div>
+           </form> -->
+           <form-legal></form-legal>
+           <!-- <form action="" method="post" [formGroup]="formTaghazaLegal" name="formTaghazaLegal" (ngSubmit)="sendFormTaghazaLegal()">
+             <input type="hidden" value="0" id="RequesterTypeLegal" name="RequesterTypeLegal" [formControl]="formTaghazaLegal.controls['RequesterTypeLegal']">
+             <div class="row">
+               <fieldset class="col-xs-12" id="legal">
+                 <div class="row">
+                   <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                     <md-input-container style="width:100%;">
+                       <input mdInput type="text" id="EconomicCodeLegal" [(ngModel)]="serchFilterLegal" placeholder="کد اقتصادی" (blur)="serachGetRegisteredByEconomic($event)" onkeypress="return isNumber(event)" [formControl]="formTaghazaLegal.controls['EconomicCodeLegal']">
+                     </md-input-container>
+                     <small *ngIf="formTaghazaLegal.controls['EconomicCodeLegal'].hasError('required') && formTaghazaLegal.controls['EconomicCodeLegal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                   </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput type="text" id="PostNumberLegal"  placeholder="کد پستی" onkeypress="return isNumber(event)" [formControl]="formTaghazaLegal.controls['PostNumberLegal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaLegal.controls['PostNumberLegal'].hasError('required') && formTaghazaLegal.controls['PostNumberLegal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput type="text" id="ShenaseCodeLegal"  placeholder="شماره شناسه" onkeypress="return isNumber(event)" [formControl]="formTaghazaLegal.controls['ShenaseCodeLegal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaLegal.controls['ShenaseCodeLegal'].hasError('required') && formTaghazaLegal.controls['ShenaseCodeLegal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput type="text" id="FirstNameLegal"  placeholder="نام" [formControl]="formTaghazaLegal.controls['FirstNameLegal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaLegal.controls['FirstNameLegal'].hasError('required') && formTaghazaLegal.controls['FirstNameLegal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput type="text" id="PhoneNumberLegal"  placeholder="شماره ثابت" onkeypress="return isNumber(event)" [formControl]="formTaghazaLegal.controls['PhoneNumberLegal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaLegal.controls['PhoneNumberLegal'].hasError('required') && formTaghazaLegal.controls['PhoneNumberLegal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <md-select placeholder="نوع شرکت" style="width:100%;" name="CompanyTypeLegal" [formControl]="formTaghazaLegal.controls['CompanyTypeLegal']">
+                        <md-option [value]="1">شرکت ها</md-option>
+                        <md-option [value]="0">سازمان ها و نهاد های دولتی</md-option>
+                      </md-select>
+                      <small *ngIf="formTaghazaLegal.controls['CompanyTypeLegal'].hasError('required') && formTaghazaLegal.controls['CompanyTypeLegal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <md-input-container style="width:100%;">
+                        <input mdInput type="text" id="MobileNoLegal"  placeholder="شماره تماس" onkeypress="return isNumber(event)" [formControl]="formTaghazaLegal.controls['MobileNoLegal']">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaLegal.controls['MobileNoLegal'].hasError('required') && formTaghazaLegal.controls['MobileNoLegal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <md-input-container style="width: 100%">
+                        <input mdInput placeholder="پست الکتریکی" [formControl]="formTaghazaLegal.controls['EmailLegal']" type="email">
+                      </md-input-container>
+                      <small *ngIf="formTaghazaLegal.controls['EmailLegal'].hasError('required') && formTaghazaLegal.controls['EmailLegal'].touched" class="mat-text-warn">فیلد شما خالی می باشد</small>
+                      <small *ngIf="formTaghazaLegal.controls['EmailLegal'].errors?.EmailLegal && formTaghazaLegal.controls['EmailLegal'].touched" class="mat-text-warn">ایمیل شما معتبر نمیباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <md-select  placeholder="نام منطقه" style="width:100%;" id="Cityidlegal" name="Cityidlegal" [formControl]="formTaghazaLegal.controls['Cityidlegal']">
+                        <md-option *ngFor="let item of region" [value]="item.id" #box (click)="setValue(box.value)">{{ item.regionName + ' ' + '(' + item.id + ')'}}</md-option>
+                      </md-select>
+                      <small *ngIf="formTaghazaLegal.controls['Cityidlegal'].hasError('required') && formTaghazaLegal.controls['Cityidlegal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <md-select placeholder="نام ناحیه" style="width:100%;" id="CityidLegalLvlTwo" name="CityidLegalLvlTwo" [formControl]="formTaghazaLegal.controls['CityidLegalLvlTwo']">
+                        <md-option *ngFor="let item of city" [value]="item.id">{{ item.cityName + ' ' + '(' + item.id + ')'  }}</md-option>
+                      </md-select>
+                      <small *ngIf="formTaghazaLegal.controls['CityidLegalLvlTwo'].hasError('required') && formTaghazaLegal.controls['CityidLegalLvlTwo'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <div class="col-xs-12">
+                      <md-input-container style="width:100%;">
+                        <textarea mdInput type="text" id="AdressLegal" placeholder="آدرس" [formControl]="formTaghazaLegal.controls['AdressLegal']"></textarea>
+                      </md-input-container>
+                      <small *ngIf="formTaghazaLegal.controls['AdressLegal'].hasError('required') && formTaghazaLegal.controls['AdressLegal'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                    <md-card-actions>
+                      <div class="col-xs-12 pbW-30">
+                        <button md-raised-button type="submit" class="btn btn-info  mb-10" [disabled]="!formTaghazaLegal.valid" (click)="SaveRequstLegal()">ثبت</button>
+                        <button md-raised-button type="reset" class="btn btn-danger  mb-10">انصراف</button>
+                      </div>
+                    </md-card-actions>
+                  </div>
+                </fieldset>
+             </div>
+            </form> -->
+          </div>
+        </div>
+      </section>
+      <section role="tabpanel" class="tab-pane form-listrequst" id="step-2">
+        <app-existing-divisions></app-existing-divisions>
+      </section>
+      <section role="tabpanel" class="tab-pane form-listrequst" id="step-3">
+        <app-operation></app-operation>
+      </section>
+    </div>
+  </div>
+  <!-- <app-grid>
+
+  </app-grid> -->
+</section>

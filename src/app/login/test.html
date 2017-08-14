@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+  .box-center{
+    width: 280px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate3d(-50%,-50%,0);
+    -webkit-transform: translate3d(-50%,-50%,0);
+    direction: rtl;
+    font-family: IRANSans;
+    background-color:#fff;
+    border-radius: 3px;
+  }
+  .box-center:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .box-center label{
+    display:block;
+    text-align: right;
+    margin-bottom:0px;
+    width: 100%;
+    padding-top: 8px;
+    float:right;
+  }
+  .box-center .form-control{
+    background-color:#fff;
+    display: inline-block;
+  }
+  .box-center .logoLogin{
+    width: 60px;
+    margin-top:20px;
+    margin-bottom:10px;
+  }
+  .box-center h4{
+    font-size:16px;
+  }
+  .box-center .form-group{
+    margin-bottom: 25px;
+  }
+  .box-center .help-block{
+    padding-right:95px;
+    font-size: 14px;
+    color: red;
+    font-weight: normal;
+    text-align: right;
+  }
+  .btn-success{
+    padding:6px 25px;
+  }
+  /*@media (max-width: 480px) {*/
+    /*.box-center{*/
+      /*width: 340px;*/
+    /*}*/
+    /*.box-center label{*/
+      /*display:block;*/
+      /*width: 100%;*/
+      /*margin-bottom: 10px;*/
+    /*}*/
+    /*.box-center .form-control{*/
+      /*width: 100%;*/
+    /*}*/
+  /*}*/
+  @media (min-width: 480px) {
+    .box-center{
+      width: 460px;
+    }
+  }
+  @media (min-width: 768px) {
+    .box-center{
+      width: 500px;
+    }
+    .box-center label{
+      display:block;
+      width: 20%;
+      margin-bottom: 10px;
+    }
+    .box-center .form-control{
+      width: 80%;
+    }
+  }
+  .version{
+    font-size:11px;
+  }
+</style>
+<body style="background-image: url('../../assets/css/bac.jpg');text-align: center">
+<div class="Cred" *ngIf="ERR != ''">
+  <p *ngIf="ERR =='[object ProgressEvent]'" class="mt-1" style="color:red">سرویس در دسترس نمیباشد</p>
+  <p class="alert alert-danger" *ngIf="ERR =='یوزر نیم یا پسورد اشتباه میباشد'">نام کاربری یا رمز ورود شما صحیح نمیباشد</p>
+</div>
+  <div class="box-center">
+    <p class="mt-1" style="color:red"> {{bod}}</p>
+    
+   
+
+    <div class="Cgreen">
+      <img src="../../assets/css/andcLogo2.jpg" class="logoLogin" title="" alt=""/>
+      <h4 class="mb-20">ورود به سیستم جامع خدمات مشترکین</h4>
+      <div class="cborder"><span></span></div>
+    </div>
+    
+    <div class="col-xs-12">
+      <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <div  class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <label for="username">نام کاربری :</label>
+          <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+          <div *ngIf="f.submitted && !username.valid" class="help-block">کاربر گرامی لطفا نام کاربری خود را به درستی وارد کنید</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <label for="password">رمز عبور :</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+          <div *ngIf="f.submitted && !password.valid" class="help-block">کاربر گرامی لطفا پسورد را به درستی وارد کنید</div>
+        </div>
+        <button [disabled]="loading" class="btn btn-success pull-left mb-10">ورود</button>
+        <div class="pull-right version mt-20">نسخه : 3.1</div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

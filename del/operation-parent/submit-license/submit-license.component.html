@@ -1,0 +1,166 @@
+<form action="" method="post" [formGroup]="submitLicense" (ngSubmit)="submitLicense()">
+  <!-- <h5> ثبت مجوز</h5> -->
+  <div class="row">
+    <fieldset>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test">کد مجوز</label>
+          <input type="text" id="test" class="form-control" *ngIf="test == null" [formControl]="submitLicense.controls['test']">
+          <small *ngIf="submitLicense.controls['test'].hasError('required') && submitLicense.controls['test'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test2">رمز مشترک</label>
+          <input type="text" id="test2" class="form-control" *ngIf="test2 == null" [formControl]="submitLicense.controls['test2']">
+          <small *ngIf="submitLicense.controls['test2'].hasError('required') && submitLicense.controls['test2'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test2 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="test3">تاریخ صدور مجوز</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="test3"
+                     name="test3" [(ngModel)]="model" [firstDayOfWeek]="4" ngbDatepicker #d3="ngbDatepicker" [formControl]="submitLicense.controls['test3']">
+              <div class="input-group-addon" (click)="d3.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['test3'].hasError('required') && submitLicense.controls['test3'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="test3 != null"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="test4">تاریخ انقضاء مجوز</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="test4"
+                     name="test4" [(ngModel)]="model" [firstDayOfWeek]="3" ngbDatepicker #d4="ngbDatepicker" [formControl]="submitLicense.controls['test4']">
+              <div class="input-group-addon" (click)="d4.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['test4'].hasError('required') && submitLicense.controls['test4'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="test4 != null"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test5">رمز مشترک</label>
+          <input type="text" id="test5" class="form-control" *ngIf="test5 == null" [formControl]="submitLicense.controls['test5']">
+          <small *ngIf="submitLicense.controls['test5'].hasError('required') && submitLicense.controls['test5'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test5 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test6">شماره کلاسه</label>
+          <input type="text" id="test6" class="form-control" *ngIf="test6 == null" [formControl]="submitLicense.controls['test6']">
+          <small *ngIf="submitLicense.controls['test4'].hasError('required') && submitLicense.controls['test6'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test6 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test7">نوع مجوز</label>
+          <input type="text" id="test7" class="form-control" *ngIf="test7 == null" [formControl]="submitLicense.controls['test7']">
+          <small *ngIf="submitLicense.controls['test7'].hasError('required') && submitLicense.controls['test7'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test7 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test8">کد ملی</label>
+          <input type="text" id="test8" class="form-control" *ngIf="test8 == null" [formControl]="submitLicense.controls['test8']">
+          <small *ngIf="submitLicense.controls['test8'].hasError('required') && submitLicense.controls['test8'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test8 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test9">کد ویژه</label>
+          <input type="text" id="test9" class="form-control" *ngIf="test9 == null" [formControl]="submitLicense.controls['test9']">
+          <small *ngIf="submitLicense.controls['test9'].hasError('required') && submitLicense.controls['test9'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test9 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test10">کد اختصاصی </label>
+          <input type="text" id="test10" class="form-control" *ngIf="test10 == null" [formControl]="submitLicense.controls['test10']">
+          <small *ngIf="submitLicense.controls['test10'].hasError('required') && submitLicense.controls['test10'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test10 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test11">محل نصب کنتور</label>
+          <input type="text" id="test11" class="form-control" *ngIf="test11 == null" [formControl]="submitLicense.controls['test11']">
+          <small *ngIf="submitLicense.controls['test11'].hasError('required') && submitLicense.controls['test11'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test11 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="test12">تاریخ اعتبار</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="test12"
+                     name="test12" [(ngModel)]="model" [firstDayOfWeek]="2" ngbDatepicker #d1="ngbDatepicker" [formControl]="submitLicense.controls['test12']">
+              <div class="input-group-addon" (click)="d1.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['test12'].hasError('required') && submitLicense.controls['test12'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="test12 != null"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-group">
+          <label for="test14">شماره نامه</label>
+          <input type="text" id="test14" class="form-control" *ngIf="test14 == null" [formControl]="submitLicense.controls['test14']">
+          <small *ngIf="submitLicense.controls['test14'].hasError('required') && submitLicense.controls['test14'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          <span *ngIf="test14 != null"></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="test13">تاریخ نامه</label>
+            <div class="input-group" style="width:100%;">
+              <input class="form-control" placeholder="yyyy-mm-dd" id="test13"
+                     name="test13" [(ngModel)]="model" [firstDayOfWeek]="1" ngbDatepicker #d2="ngbDatepicker" [formControl]="submitLicense.controls['test13']">
+              <div class="input-group-addon" (click)="d2.toggle()">
+                <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+            <small *ngIf="submitLicense.controls['test13'].hasError('required') && submitLicense.controls['test13'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            <span *ngIf="test13 != null"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-8 col-md-9">
+        <button md-raised-button type="button" class="btn btn-success" name="button">جدید</button>
+        <button md-raised-button type="button" class="btn btn-info" name="button">اضافه به لیست</button>
+        <button md-raised-button type="button" class="btn btn-danger" name="button">حذف</button>
+        <button md-raised-button type="button" class="btn btn-info mb-10"  data-target=".submitLicense" data-toggle="modal" >آرشیو پرونده ها</button>
+      </div>
+    </fieldset>
+  </div>
+  <div class="modal customModal fade submitLicense" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <!-- <div class="modal-content"> -->
+      <md-card class="mat-card customCard">
+        <h1>tederwshetgm,f'h,d</h1>
+      </md-card>
+
+    </div>
+  </div>
+</form>

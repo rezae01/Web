@@ -1,0 +1,375 @@
+<form action="" method="post" [formGroup]="NewDemand" name="NewDemand" (ngSubmit)="NewDemand()">
+  <h5>در خواست تقاضای جدید</h5>
+  <div class="row">
+    <fieldset class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="test1"> شماره درخواست </label>
+            <input class="form-control" type="text" id="test1" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['test1']">
+            <small *ngIf="NewDemand.controls['test1'].hasError('required') && NewDemand.controls['test1'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="test2">رمز</label>
+            <input class="form-control" type="text" id="test2" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['test2']">
+            <small *ngIf="NewDemand.controls['test2'].hasError('required') && NewDemand.controls['test2'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="">تاریخ تولد</label>
+              <div class="input-group" style="width:100%;">
+                <input class="form-control" placeholder="yyyy-mm-dd" id="BirthDate"
+                       name="BirthDate" [(ngModel)]="model" [firstDayOfWeek]="1" ngbDatepicker #d="ngbDatepicker" [formControl]="NewDemand.controls['test3']">
+                <div class="input-group-addon" (click)="d.toggle()">
+                  <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </div>
+              </div>
+              <small *ngIf="NewDemand.controls['test3'].hasError('required') && NewDemand.controls['test3'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="test4">روستایی</label>
+            <select class="form-control"  id="test4" name="test4" [formControl]="NewDemand.controls['test4']">
+              <option [value]="0">غیر روستایی</option>
+              <option [value]="1">روستایی</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="test5">محدود جغرافیایی</label>
+            <select class="form-control" id="test5" name="test5" [formControl]="NewDemand.controls['test5']">
+              <option [value]="0">خارج از محدوده</option>
+              <option [value]="1">داخل محدوده</option>
+            </select>
+          </div>
+          <small *ngIf="NewDemand.controls['test5'].hasError('required') && NewDemand.controls['test5'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <button md-raised-button type="button" class="btn btn-info mb-10"  data-target=".new-demand" data-toggle="modal" style="margin-top:21px;">تقاضای جدید</button>
+        </div>
+        <div class="col-xs-12">
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    آدرس انشعاب
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest6">کد پستی</label>
+                      <input class="form-control" type="text" id="addtest6" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['addtest6']">
+                      <small *ngIf="NewDemand.controls['addtest6'].hasError('required') && NewDemand.controls['addtest6'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest7">تلفن ثابت</label>
+                      <input class="form-control" type="text" id="addtest7" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['addtest7']">
+                      <small *ngIf="NewDemand.controls['addtest7'].hasError('required') && NewDemand.controls['addtest7'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest8">خیابان اصلی</label>
+                      <input class="form-control" type="text" id="addtest8" [formControl]="NewDemand.controls['addtest8']">
+                      <small *ngIf="NewDemand.controls['addtest8'].hasError('required') && NewDemand.controls['addtest8'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest9">خیابان فرعی</label>
+                      <input class="form-control" type="text" id="addtest9" [formControl]="NewDemand.controls['addtest9']">
+                      <small *ngIf="NewDemand.controls['addtest9'].hasError('required') && NewDemand.controls['addtest9'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest10">دور نگار</label>
+                      <input class="form-control" type="text" id="addtest10" [formControl]="NewDemand.controls['addtest10']">
+                      <small *ngIf="NewDemand.controls['addtest10'].hasError('required') && NewDemand.controls['addtest10'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest11">پلاک</label>
+                      <input class="form-control" type="text" id="addtest11" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['addtest11']">
+                      <small *ngIf="NewDemand.controls['addtest11'].hasError('required') && NewDemand.controls['addtest11'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <label for="addtest12">آدرس</label>
+                      <textarea class="form-control" type="text" id="addtest12" [formControl]="NewDemand.controls['addtest12']"></textarea>
+                      <small *ngIf="NewDemand.controls['addtest12'].hasError('required') && NewDemand.controls['addtest12'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    آدرس محل سکونت
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest13">کد پستی</label>
+                      <input class="form-control" type="text" id="addtest13" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['addtest13']">
+                      <small *ngIf="NewDemand.controls['addtest13'].hasError('required') && NewDemand.controls['addtest13'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest14">تلفن ثابت</label>
+                      <input class="form-control" type="text" id="addtest14" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['addtest14']">
+                      <small *ngIf="NewDemand.controls['addtest14'].hasError('required') && NewDemand.controls['addtest14'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest15">خیابان اصلی</label>
+                      <input class="form-control" type="text" id="addtest15" [formControl]="NewDemand.controls['addtest15']">
+                      <small *ngIf="NewDemand.controls['addtest15'].hasError('required') && NewDemand.controls['addtest15'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest16">خیابان فرعی</label>
+                      <input class="form-control" type="text" id="addtest16" [formControl]="NewDemand.controls['addtest16']">
+                      <small *ngIf="NewDemand.controls['addtest16'].hasError('required') && NewDemand.controls['addtest16'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest17">دور نگار</label>
+                      <input class="form-control" type="text" id="addtest17" [formControl]="NewDemand.controls['addtest17']">
+                      <small *ngIf="NewDemand.controls['addtest17'].hasError('required') && NewDemand.controls['addtest17'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest18">پلاک</label>
+                      <input class="form-control" type="text" id="addtest18" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['addtest18']">
+                      <small *ngIf="NewDemand.controls['addtest18'].hasError('required') && NewDemand.controls['addtest18'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <label for="addtest19">آدرس</label>
+                      <textarea class="form-control" type="text" id="addtest19" [formControl]="NewDemand.controls['addtest19']"></textarea>
+                      <small *ngIf="NewDemand.controls['addtest19'].hasError('required') && NewDemand.controls['addtest19'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    آدرس محل کار
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest20">کد پستی</label>
+                      <input class="form-control" type="text" id="addtest20" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['addtest20']">
+                      <small *ngIf="NewDemand.controls['addtest20'].hasError('required') && NewDemand.controls['addtest20'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest21">تلفن ثابت</label>
+                    </div>
+                    <input class="form-control" type="text" id="addtest21" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['addtest21']">
+                    <small *ngIf="NewDemand.controls['addtest21'].hasError('required') && NewDemand.controls['addtest21'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest22">خیابان اصلی</label>
+                      <input class="form-control" type="text" id="addtest22" [formControl]="NewDemand.controls['addtest22']">
+                      <small *ngIf="NewDemand.controls['addtest22'].hasError('required') && NewDemand.controls['addtest22'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest23">خیابان فرعی</label>
+                      <input class="form-control" type="text" id="addtest23" [formControl]="NewDemand.controls['addtest23']">
+                      <small *ngIf="NewDemand.controls['addtest23'].hasError('required') && NewDemand.controls['addtest23'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest24">دور نگار</label>
+                      <input class="form-control" type="text" id="addtest24" [formControl]="NewDemand.controls['addtest24']">
+                      <small *ngIf="NewDemand.controls['addtest24'].hasError('required') && NewDemand.controls['addtest24'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="addtest25">پلاک</label>
+                      <input class="form-control" type="text" id="addtest25" onkeypress="return isNumber(event)" [formControl]="NewDemand.controls['addtest25']">
+                      <small *ngIf="NewDemand.controls['addtest25'].hasError('required') && NewDemand.controls['addtest25'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <label for="addtest26">آدرس</label>
+                      <textarea class="form-control" type="text" id="addtest26" [formControl]="NewDemand.controls['addtest26']"></textarea>
+                      <small *ngIf="NewDemand.controls['addtest26'].hasError('required') && NewDemand.controls['addtest26'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </fieldset>
+  </div>
+  <div class="modal customModal fade new-demand" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <!-- <div class="modal-content"> -->
+        <div class="mat-card customCard">
+          <div class="col-xs-12">
+            <div class="row">
+              <h5 class="col-xs-12">انشعاب جدید</h5>
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">امور</label>
+                  <select class="form-control" id="" name=""> <!--[formControl]="NewDemand.controls['test4']"-->
+                    <option [value]="0" selected>اطلاعات فرم قبل</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">بخش</label>
+                  <select class="form-control" id="" name=""> <!--[formControl]="NewDemand.controls['test4']"-->
+                    <option [value]="0" selected>اطلاعات فرم قبل</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">تعرفه</label>
+                  <select class="form-control" id="tea" name=""> <!--[formControl]="NewDemand.controls['test4']"-->
+                    <option [value]="1">خانگی</option>
+                    <option [value]="2" id="stepOne">عمومی</option>
+                    <option [value]="3" id="stepTwo">کشاورزی</option>
+                    <option [value]="4">صنعت و معدن</option>
+                    <option [value]="5">سایر مصارف</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3 stepOne" style="height:80px;">
+                <div class="form-group">
+                  <label for="">عمومی</label>
+                  <select class="form-control" id="" name=""> <!--[formControl]="NewDemand.controls['test4']"-->
+                    <option [value]="0" selected>عادی</option>
+                    <option [value]="1">جایگاه CNG</option>
+                  </select>
+                </div>
+
+              </div>
+              <div class="col-xs-12 col-sm-3 stepTwo" style="height:80px;">
+                <div class="form-group">
+                  <label for="">کشاورزی</label>
+                  <select class="form-control" id="" name=""> <!--[formControl]="NewDemand.controls['test4']"-->
+                    <option [value]="0" selected>عادی</option>
+                    <option [value]="1">کشاورزی پمپاژ</option>
+                    <option [value]="2">صنایع کشاورزی</option>
+                    <option [value]="3">چاه کشاورزی</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">نوع مشترک</label>
+                  <select class="form-control" id="" name=""> <!--[formControl]="NewDemand.controls['test4']"-->
+                    <option [value]="0">عادی</option>
+                    <option [value]="1">دیماندی</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">نوع تعرفه</label>
+                  <select class="form-control" id="" name=""> <!--[formControl]="NewDemand.controls['test4']"-->
+                    <option [value]="0">دائم</option>
+                    <option [value]="1">آزاد (موقت)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">آمپر</label>
+                  <select class="form-control" id="" name=""> <!--[formControl]="NewDemand.controls['test4']"-->
+                    <option [value]="0">22</option>
+                    <option [value]="1">33</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">تاریخ تولد</label>
+                  <input class="form-control" type="text" id="">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">ولتاژ</label>
+                  <select class="form-control" id="" name=""> <!--[formControl]="NewDemand.controls['test4']"-->
+                    <option [value]="0">اولیه</option>
+                    <option [value]="1">ثانویه</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">قدرت درخواستی</label>
+                  <input class="form-control" type="text" id="">
+                </div>
+                <!-- <small *ngIf="NewDemand.controls['test2'].hasError('required') && NewDemand.controls['test2'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">قدرت مجاز پروانه</label>
+                  <input class="form-control" type="text" id="">
+                </div>
+                <!-- <small *ngIf="NewDemand.controls['test2'].hasError('required') && NewDemand.controls['test2'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="">تعداد</label>
+                  <input class="form-control" type="text" id="" >
+                </div>
+                <!-- <small *ngIf="NewDemand.controls['test2'].hasError('required') && NewDemand.controls['test2'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>
+</form>

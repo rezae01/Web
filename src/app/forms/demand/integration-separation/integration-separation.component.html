@@ -1,0 +1,948 @@
+<form action="" method="post" [formGroup]="IntegraSeparationStepOne" novalidate (ngSubmit)="IntegraSeparationModalTest()">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4" style="height:80px;">
+            <!-- <label for="SourceBranchCode">رمز</label> -->
+            <div class="input-group">
+              <input type="text" id="SourceBranchCode" class="form-control" [formControl]="IntegraSeparationStepOne.controls['SourceBranchCode']" onkeypress="return isNumber(event)" #searchTerm>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default" style="font-size:11.5px" (click)="serachByPassCodeAndBillId(searchTerm)">جستجو</button>
+              </div>
+            </div>
+            <small *ngIf="IntegraSeparationStepOne.controls['SourceBranchCode'].hasError('required') && IntegraSeparationStepOne.controls['SourceBranchCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+          </div>
+          <div class="col-xs-12 col-sm-8">
+            <div class="row">
+              <div class="btn-group pull-left">
+                <button md-raised-button type="button" class="btn btn-default" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
+                <button md-raised-button type="button" class="btn btn-default" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
+                <button md-raised-button type="button" class="btn btn-default"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button>
+              </div>
+            </div>
+          </div>
+             <div class="col-xs-12 col-md-3 pull-left mt-2">
+            <button type="button" (click)="responce()" [disabled]="checked" class="btn btn-default pull-left" id="separation-1" data-toggle="modal" data-target="#separation">تفکیک</button>
+            <button type="button" [disabled]="checkedAdd" class="btn btn-default pull-left" id="integration-1" style="margin-left:5px;" data-toggle="modal" data-target="#separation">ادغام</button>       
+          </div>   
+          <div class="dataRes col-xs-12">
+            <div class="row">
+              <div class="col-xs-12 col-md-2">
+                <strong>نام مالک :</strong>
+                <span>{{ FirstName + LastName }}</span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>رمز :</strong>
+                <span>{{ BranchCode }}</span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>پرونده :</strong>
+                <span> {{ BranchSrl }}</span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>شناسایی :</strong>
+                <span> {{ Cityid + '-' + WorkDayCode + '-' + RdrCode + '-' + RdgSrl }} </span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>تعرفه :</strong>
+                <span>{{ TrfCode }}</span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>امور :</strong>
+                <span>{{ RegionName }}</span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>بخش :</strong>
+                <span>{{ CityName }}</span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>فاز :</strong>
+                <span>{{ Phs }}</span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>آمپر :</strong>
+                <span>{{ Amp }}</span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>قدرت :</strong>
+                <span>{{ PwrCnt }}</span>
+              </div>
+              <div class="col-xs-12 col-md-2">
+                <strong>تلفن :</strong>
+                <span>{{ PhoneNumber }}</span>
+              </div>
+              <div class="col-xs-12 col-md-9">
+                <strong>آدرس :</strong>
+                <span>{{ Address }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="row">
+              <h6 class="col-xs-12 col-sm-4">انشعاب موجود</h6>
+              <div class="col-xs-12" style="overflow:hidden;">
+                <div class="row">
+                  <div class="scroll-X-fullWidth">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th colspan="1">انشعاب</th>
+                          <th colspan="1">نوع انشعاب</th>
+                          <th colspan="1">محدوده</th>
+                          <th colspan="1">نوع تعرفه</th>
+                          <th colspan="1">فاز</th>
+                          <th colspan="1">آمپر</th>
+                          <th colspan="1">قدرت قرار دادی</th>
+                          <th colspan="1">قدرت مجاز</th>
+                          <th colspan="3">تاریخ ایجاد انشعاب</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of list">
+                          <td><input type="checkbox" data-md-icheck (change)="clickSelected($event)" (click)="addRow(item.branchCode)"></td>
+                          <td colspan="1">{{ item.branchCode }}</td>
+                          <td colspan="1">{{ item.branchTypeCode }}</td>
+                          <td colspan="1">{{ item.geoAreaCode }}</td>
+                          <td colspan="1">{{ item.trfType }}</td>
+                          <td colspan="1">{{ item.phs }}</td>
+                          <td colspan="1">{{ item.amp }}</td>
+                          <td colspan="1">{{ item.pwrIcn }}</td>
+                          <td colspan="1">{{ item.pwrCnt }}</td>
+                          <td colspan="3">{{ item.creationDate }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <h6 class="col-xs-12">انشعاب جدید</h6>
+              <div class="col-xs-12" style="overflow:hidden;">
+                <div class="row">
+                  <div class="scroll-X-fullWidth">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th colspan="1">انشعاب</th>
+                          <th colspan="1">نوع انشعاب</th>
+                          <th colspan="1">محدوده</th>
+                          <th colspan="1">نوع تعرفه</th>
+                          <th colspan="1">فاز</th>
+                          <th colspan="1">آمپر</th>
+                          <th colspan="1">قدرت قرار دادی</th>
+                          <th colspan="1">قدرت مجاز</th>
+                          <th colspan="3">تاریخ ایجاد انشعاب</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of list">
+                          <td colspan="1">{{ item.firstName + item.lastName }}</td>
+                          <td colspan="1">{{ item.branchCode }}</td>
+                          <td colspan="1">{{ item.branchSrl }}</td>
+                          <td colspan="1">{{ item.cityId + '-' + item.workDayCode + '-' + item.rdrCode + '-' + item.rdgSrl }}</td>
+                          <td colspan="1">{{ item.trfCode }}</td>
+                          <td colspan="1">{{ item.cityName }}</td>
+                          <td colspan="1">{{ item.regionName }}</td>
+                          <td colspan="1">{{ item.phs }}</td>
+                          <td colspan="1">{{ item.phs }}</td>
+                          <td colspan="3">{{ item.creationDate }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal customModal fade submitLicense" id="separation" tabindex="-2" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="width:100%;">
+      <div class="mat-card">
+        <div class="modal-content"> 
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h6 class="modal-title" id="myModalLabel">تفکیک</h6>
+          </div> 
+          <div class="modal-body">
+            <input type="hidden" [formControl]="IntegraSeparationStepOne.controls['FormId']">  
+            <ul class="nav nav-tabs" role="tablist" id="forIdTabDemand">
+              <li role="presentation" class="active"><a  md-raised-button href="#ParentStep1" aria-controls="ParentStep1" role="tab" data-toggle="tab" class="btn btn-default">مبدا عملیات</a></li>
+              <li role="presentation"><a  md-raised-button href="#ParentStep2" aria-controls="ParentStep2" role="tab" data-toggle="tab" class="btn btn-default">اطلاعات انشعاب</a></li>
+            </ul>
+            <div class="tab-content" id="IntegraSeparation">
+              <div role="tabpanel" class="tab-pane active" id="ParentStep1">
+                <h6 class="mt-1">مبدا عملیات</h6>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="ChangePhs">فاز</label>
+                      <select class="form-control" name="ChangePhs" id="ChangePhs" [formControl]="IntegraSeparationStepOne.controls['ChangePhs']">
+                        <option [value]="1">تک فاز</option>
+                        <option [value]="3">سه فاز</option>
+                      </select>
+                      <small *ngIf="IntegraSeparationStepOne.controls['ChangePhs'].hasError('required') && IntegraSeparationStepOne.controls['ChangePhs'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="ChangeAmp">آمپر</label>
+                      <select class="form-control" name="ChangeAmp" id="ChangeAmp" [formControl]="IntegraSeparationStepOne.controls['ChangeAmp']">
+                        <option [value]="0">0</option>
+                        <option [value]="5">5</option>
+                        <option [value]="10">10</option>
+                        <option [value]="15">15</option>
+                        <option [value]="25">25</option>
+                        <option [value]="32">32</option>
+                        <option [value]="50">50</option>
+                        <option [value]="75">75</option>
+                        <option [value]="100">100</option>
+                        <option [value]="125">125</option>
+                        <option [value]="150">150</option>
+                        <option [value]="151">107</option>
+                        <option [value]="200">200</option>
+                        <option [value]="250">250</option>
+                        <option [value]="300">300</option>
+                        <option [value]="400">400</option> 
+                      </select>
+                      <small *ngIf="IntegraSeparationStepOne.controls['ChangeAmp'].hasError('required') && IntegraSeparationStepOne.controls['ChangeAmp'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="ChangeTrfHCode">سر تعرفه </label>
+                        <select id="ChangeTrfHCode" name="ChangeTrfHCode" id="ChangeTrfHCode" class="form-control" [formControl]="IntegraSeparationStepOne.controls['ChangeTrfHCode']">
+                        <option [value]="1">خانگی</option>
+                        <option [value]="2">عمومی</option>
+                        <option [value]="3">کشاورزی</option>
+                        <option [value]="4">صنعت و معدن</option>
+                        <option [value]="5">سایر مصارف</option>
+                      </select>
+                      <small *ngIf="IntegraSeparationStepOne.controls['ChangeTrfHCode'].hasError('required') && IntegraSeparationStepOne.controls['ChangeTrfHCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="ChangeTrfType">نوع انشعاب</label>
+                      <select class="form-control" name="ChangeTrfType" id="ChangeTrfType" [formControl]="IntegraSeparationStepOne.controls['ChangeTrfType']">
+                        <option [value]="1">آزاد و موقت</option>
+                        <option [value]="0">دائم</option>
+                      </select>
+                      <small *ngIf="IntegraSeparationStepOne.controls['ChangeTrfType'].hasError('required') && IntegraSeparationStepOne.controls['ChangeTrfType'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="ChangePwrCnt">قدرت قرار دادی</label>
+                      <input class="form-control" name="ChangePwrCnt" id="ChangePwrCnt" [formControl]="IntegraSeparationStepOne.controls['ChangePwrCnt']">
+                      <small *ngIf="IntegraSeparationStepOne.controls['ChangePwrCnt'].hasError('required') && IntegraSeparationStepOne.controls['ChangePwrCnt'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="ChangePwrIcn">قدرت مجاز پروانه</label>
+                      <input class="form-control" name="ChangePwrIcn" id="ChangePwrIcn" [formControl]="IntegraSeparationStepOne.controls['ChangePwrIcn']">
+                      <small *ngIf="IntegraSeparationStepOne.controls['ChangePwrIcn'].hasError('required') && IntegraSeparationStepOne.controls['ChangePwrIcn'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="ChangeFmlCode">تعداد خانوار</label>
+                      <input class="form-control" name="ChangeFmlCode" id="ChangeFmlCode" [formControl]="IntegraSeparationStepOne.controls['ChangeFmlCode']">
+                      <small *ngIf="IntegraSeparationStepOne.controls['ChangeFmlCode'].hasError('required') && IntegraSeparationStepOne.controls['ChangeFmlCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>  
+                  <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="form-group">
+                      <label for="ChangeTrfCode">تعداد خانوار</label>
+                      <input class="form-control" name="ChangeTrfCode" id="ChangeTrfCode" [formControl]="IntegraSeparationStepOne.controls['ChangeTrfCode']">
+                      <small *ngIf="IntegraSeparationStepOne.controls['ChangeTrfCode'].hasError('required') && IntegraSeparationStepOne.controls['ChangeTrfCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    </div>
+                  </div>  
+              </div>
+              <div role="tabpanel" class="tab-pane" id="ParentStep2">
+                <h6 class="mt-1 col-xs-12" style="padding-left:7.5px;padding-right:7.5px;">اطلاعات انشعاب</h6>
+                <div formArrayName="Dm">
+                  <div *ngFor="let itemrow of IntegraSeparationStepOne.controls.Dm.controls; let i=index" [formGroupName]="i">
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="BranchTypeCode">نوع مشترک</label>
+                        <select class="form-control" name="BranchTypeCode" id="BranchTypeCode" formControlName="BranchTypeCode">
+                          <option [value]="2">عادی</option>
+                          <option [value]="1">دیماندی</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="TrfHCode">سر تعرفه</label>
+                        <select id="TrfHCode" name="TrfHCode" formControlName="TrfHCode" class="form-control">
+                          <option [value]="1" class="hideOption">خانگی</option>
+                          <option [value]="2" id="stepOne">عمومی</option>
+                          <option [value]="3" id="stepTwo">کشاورزی</option>
+                          <option [value]="4" class="hideOption">صنعت و معدن</option>
+                          <option [value]="5" class="hideOption">سایر مصارف</option>  
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="Phs">فاز</label>
+                        <select id="Phs" class="form-control" name="Phs" formControlName="Phs" style="width:100%;">
+                          <option [value]="1">تک فاز</option>
+                          <option [value]="3">سه فاز</option> 
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="Amp">آمپر</label>
+                        <select id="Amp" name="Amp" formControlName="Amp" class="form-control">
+                          <option [value]="0">0</option>
+                          <option [value]="5">5</option>
+                          <option [value]="10">10</option>
+                          <option [value]="15">15</option>
+                          <option [value]="25">25</option>
+                          <option [value]="32">32</option>
+                          <option [value]="50">50</option>
+                          <option [value]="75">75</option>
+                          <option [value]="100">100</option>
+                          <option [value]="125">125</option>
+                          <option [value]="150">150</option>
+                          <option [value]="151">107</option>
+                          <option [value]="200">200</option>
+                          <option [value]="250">250</option>
+                          <option [value]="300">300</option>
+                          <option [value]="400">400</option> 
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="VoltCode">ولتاژ</label>
+                        <select class="form-control" id="VoltCode" name="VoltCode" formControlName="VoltCode">
+                          <option [value]="1">اولیه</option>
+                          <option [value]="2">ثانویه</option>
+                        </select> 
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="FmlCode">تعداد خانوار</label>
+                        <input class="form-control" name="FmlCode" id="FmlCode" formControlName="FmlCode">
+                      </div>
+                    </div> 
+                    <!-- <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="FloorCount">تعداد طبقات </label>
+                        <input type="text" class="form-control" name="FloorCount" id="FloorCount" formControlName="FloorCount">
+                      </div>
+                    </div>  -->
+                    <div class="col-xs-12 col-sm-3 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="PwrCnt">قدرت درخواستی</label>
+                        <input class="form-control" type="text" id="PwrCnt" name="PwrCnt" formControlName="PwrCnt" onkeypress="return isNumber(event)"> 
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="PwrIcn">قدرت مجاز پروانه</label>
+                        <input class="form-control" type="text" id="PwrIcn" name="PwrIcn" formControlName="PwrIcn" onkeypress="return isNumber(event)"> 
+                      </div>
+                    </div>
+                    <!-- <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="TotalRequestedSquare">زیر بنا</label>                
+                        <input type="text" class="form-control" id="TotalRequestedSquare" name="TotalRequestedSquare" formControlName="TotalRequestedSquare" onkeypress="return isNumber(event)">
+                      </div>
+                    </div> -->
+                    <!-- <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="PostType">نوع پست</label>
+                        <select class="form-control" id="PostType" name="PostType" formControlName="PostType">
+                          <option [value]="0">هوایی</option>
+                          <option [value]="1">زمینی</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="PresureCode">فشار</label>
+                        <select class="form-control" id="PresureCode" name="PresureCode" formControlName="PresureCode">
+                          <option [value]="1">قوی</option>
+                          <option [value]="2">متوسط</option>
+                          <option [value]="3">ضعیف با دیماند 30 کیلو وات به بالا</option>
+                          <option [value]="4">ضعیف با دیماند زیر 30 کیلو وات</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="SelCode">کد گزینه</label>
+                        <select class="form-control" id="SelCode" name="SelCode" formControlName="SelCode">
+                          <option [value]="1">1</option>
+                          <option [value]="2">2</option>
+                          <option [value]="3">3</option>
+                        </select>
+                      </div>
+                    </div> -->
+                    <!-- <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="BranchMojaverLeft">اشتراک چپ</label>
+                        <input type="text" class="form-control" name="BranchMojaverLeft" id="BranchMojaverLeft" formControlName="BranchMojaverLeft">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="MojaverIDLeft">شناسایی چپ</label>
+                        <input type="text" class="form-control" name="MojaverIDLeft" id="MojaverIDLeft" formControlName="MojaverIDLeft">
+                      </div>
+                    </div> -->
+                    <div class="col-xs-12 col-sm-3 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="TrfType">نوع انشعاب</label>
+                        <select class="form-control" name="TrfType" id="TrfType" formControlName="TrfType">
+                          <option [value]="0">دائم</option>
+                          <option [value]="1">آزاد و موقت</option>
+                        </select>
+                      </div>
+                    </div>
+                    <!-- <div formGroupName="AdjacentBranch">
+                      <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                          <label for="BranchMojaverLeft">اشتراک چپ</label>
+                          <input type="text" class="form-control" name="BranchMojaverLeft" id="BranchMojaverLeft" formControlName="BranchMojaverLeft">
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                        <div class="form-group">
+                          <label for="BranchMojaverRight">اشتراک راست</label>
+                          <input type="text" class="form-control" name="BranchMojaverRight" id="BranchMojaverRight" formControlName="BranchMojaverRight">
+                        </div>
+                      </div>
+                    </div> -->
+                    <div class="col-xs-12 col-sm-3 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="TrfType">نوع انشعاب</label>
+                        <select class="form-control" name="TrfType" id="TrfType" formControlName="TrfType">
+                          <option [value]="0">دائم</option>
+                          <option [value]="1">آزاد و موقت</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3" style="height:80px;">
+                      <div class="form-group">
+                        <label for="Count">تعداد</label>
+                        <input class="form-control" type="text" id="Count" name="Count" formControlName="Count" onkeypress="return isNumber(event)"> 
+                      </div>
+                    </div>
+                    <!-- <div class="clearfix"></div>
+                    <ul class="nav nav-tabs" role="tablist" id="forIdTabDemand">
+                      <li role="presentation" class="active"><a  md-raised-button href="#step1" aria-controls="step1" role="tab" data-toggle="tab" class="btn btn-default">آدرس انشعاب</a></li>
+                      <li role="presentation"><a  md-raised-button href="#step2" aria-controls="step2" role="tab" data-toggle="tab" class="btn btn-default">آدرس محل کار</a></li>
+                    </ul> -->
+                    <!-- <div class="tab-content"> -->
+                      <!-- <div role="tabpanel" class="tab-pane active" id="step1">
+                        <h5>آدرس انشعاب</h5>
+                          <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                          <div clas="form-group">
+                            <label for="RegionIdBranch">نام منطقه</label> 
+                            <select id="RegionIdBranch" class="form-control" #box name="RegionIdBranch" [(ngModel)]="RegionIdBranch" formControlName="RegionIdBranch" (change)="setValue(box.value)">
+                              <option *ngFor="let item of result" [value]="item.id" >
+                                      {{ item.regionName + ' ' + '(' + item.id + ')'}}
+                              </option>
+                            </select>
+                          </div>
+                        </div> 
+                        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                          <div clas="form-group">
+                            <label for="CityidBranchAddress">نام ناحیه</label> 
+                            <select id="CityidBranchAddress" class="form-control" name="CityidBranchAddress" [(ngModel)]="CityidBranchAddress" formControlName="CityidBranchAddress">
+                              <option *ngFor="let item of city" [value]="item.id" >
+                                      {{ item.cityName + ' ' + '(' + item.id + ')'}}
+                              </option>
+                            </select>     
+                          </div> 
+                        </div>   
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="PoNumBranchAddress">کد پستی</label>
+                            <input class="form-control" type="text" id="PoNumBranchAddress" onkeypress="return isNumber(event)" formControlName="PoNumBranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="FixedTelBranchAddress">تلفن ثابت</label>
+                            <input class="form-control" type="text" id="FixedTelBranchAddress" onkeypress="return isNumber(event)" formControlName="FixedTelBranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="FixedTel2BranchAddress">شماره همراه</label>
+                            <input class="form-control" type="text" id="FixedTel2BranchAddress" onkeypress="return isNumber(event)" formControlName="FixedTel2BranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="Street1BranchAddress">خیابان اصلی</label>
+                            <input class="form-control" type="text" id="Street1BranchAddress" formControlName="Street1BranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="Street2BranchAddress">خیابان فرعی</label>
+                            <input class="form-control" type="text" id="Street2BranchAddress" formControlName="Street2BranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="AlleyBranchAddress">کوچه اصلی</label>
+                            <input class="form-control" type="text" id="AlleyBranchAddress" formControlName="AlleyBranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="Alley1BranchAddress">کوچه اصلی</label>
+                            <input class="form-control" type="text" id="Alley1BranchAddress" formControlName="Alley1BranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="FaxBranchAddress">دور نگار</label>
+                            <input class="form-control" type="text" id="FaxBranchAddress" formControlName="FaxBranchAddress" onkeypress="return isNumber(event)">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="PlakBranchAddress">پلاک</label>
+                            <input class="form-control" type="text" id="PlakBranchAddress" onkeypress="return isNumber(event)" formControlName="PlakBranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-8" style="height:80px;">
+                          <div class="form-group">
+                            <label for="AdressBranchAddress">آدرس</label>
+                            <input class="form-control" type="text" id="AdressBranchAddress" formControlName="AdressBranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-4" style="height:80px;">
+                          <div class="form-group">
+                            <label class="col-xs-12" for="">مختصات جغرافیایی</label>
+                            <div class="col-xs-6">
+                              <input class="form-control col-xs-6" type="text" placeholder="طول" id="LongitudeyBranchAddress" formControlName="LongitudeyBranchAddress">
+                            </div>
+                            <div class="col-xs-6">
+                              <input class="form-control col-xs-6" type="text" placeholder="عرض" id="LatituexBranchAddress" formControlName="LatituexBranchAddress">
+                            </div> 
+                          </div>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane" id="step2">
+                        <h5>آدرس محل کار</h5>
+                        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                          <div clas="form-group">
+                            <label for="RegionIdOffice">نام منطقه</label> 
+                            <select id="RegionIdOffice" class="form-control" #box1 name="RegionIdOffice" [(ngModel)]="RegionIdOffice" formControlName="RegionIdOffice" (change)="setValue(box1.value)">
+                              <option *ngFor="let item of result" [value]="item.id" >
+                                      {{ item.regionName + ' ' + '(' + item.id + ')'}}
+                              </option>
+                            </select>
+                          </div>
+                        </div> 
+                        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                          <div clas="form-group">
+                            <label for="CityidOfficeAddress">نام ناحیه</label> 
+                            <select id="CityidOfficeAddress" class="form-control" name="CityidOfficeAddress" [(ngModel)]="CityidOfficeAddress" formControlName="CityidOfficeAddress">
+                              <option *ngFor="let item of city" [value]="item.id" >
+                                      {{ item.cityName + ' ' + '(' + item.id + ')'}}
+                              </option>
+                            </select>     
+                          </div> 
+                        </div>  
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="PoNumOfficeAddress">کد پستی</label>
+                            <input class="form-control" type="text" id="PoNumOfficeAddress" onkeypress="return isNumber(event)" formControlName="PoNumOfficeAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="FixedTelOfficeAddress">تلفن ثابت</label>
+                            <input class="form-control" type="text" id="FixedTelOfficeAddress" onkeypress="return isNumber(event)" formControlName="FixedTelOfficeAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="FixedTel2OfficeAddress">شماره همراه</label>
+                            <input class="form-control" type="text" id="FixedTel2OfficeAddress" onkeypress="return isNumber(event)" formControlName="FixedTel2OfficeAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="Street1OfficeAddress">خیابان اصلی</label>
+                            <input class="form-control" type="text" id="Street1OfficeAddress" formControlName="Street1OfficeAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="Street2OfficeAddress">خیابان فرعی</label>
+                            <input class="form-control" type="text" id="Street2OfficeAddress" formControlName="Street2OfficeAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="AlleyOfficeAddress">کوچه اصلی</label>
+                            <input class="form-control" type="text" id="AlleyOfficeAddress" formControlName="AlleyOfficeAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="Alley1OfficeAddress">کوچه اصلی</label>
+                            <input class="form-control" type="text" id="Alley1OfficeAddress" formControlName="Alley1OfficeAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="FaxOfficeAddress">دور نگار</label>
+                            <input class="form-control" type="text" id="FaxOfficeAddress" formControlName="FaxOfficeAddress" onkeypress="return isNumber(event)">
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                          <div class="form-group">
+                            <label for="PlakOfficeAddress">پلاک</label>
+                            <input class="form-control" type="text" id="PlakOfficeAddress" onkeypress="return isNumber(event)" formControlName="PlakOfficeAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-8" style="height:80px;">
+                          <div class="form-group">
+                            <label for="AdressBranchAddress">آدرس</label>
+                            <input class="form-control" type="text" id="AdressBranchAddress" formControlName="AdressBranchAddress">
+                          </div>
+                        </div>
+                        <div class="col-xs-4" style="height:80px;">
+                          <div class="form-group">
+                            <label class="col-xs-12" for="">مختصات جغرافیایی</label>
+                            <div class="col-xs-6">
+                              <input class="form-control col-xs-6" type="text" placeholder="طول" id="LongitudeyOfficeAddress" formControlName="LongitudeyOfficeAddress">
+                            </div>
+                            <div class="col-xs-6">
+                              <input class="form-control col-xs-6" type="text" placeholder="عرض" id="LatituexOfficeAddress" formControlName="LatituexOfficeAddress">
+                            </div> 
+                          </div>
+                        </div>
+                      </div>  -->
+                    <!-- </div>  -->
+                  </div>
+                </div>
+              </div> 
+            </div> <div class="col-xs-2">
+              <button type="submit" md-raised-button class="btn btn-success" style="margin-top:21px;">ثبت</button>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>   
+</form>     
+         <!--  <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="BranchTypeCode">نوع مشترک</label>
+                    <select class="form-control" id="BranchTypeCode" name="BranchTypeCode" [ngModel]="branchcode" (keypress)="branchcode=$event.target.er.value" [formControl]="IntegraSeparation.controls['BranchTypeCode']">
+                      <option *ngIf="branchcode != null" [value]="branchcode" #er selected>{{branchcode}}</option>
+                      <option [value]="0">عادی</option>
+                      <option [value]="1">دیماندی</option>
+                    </select>
+                  </div>
+                </div>
+                 <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="GeoState">شهری / روستایی</label>
+                    <select class="form-control" name="GeoState" id="GeoState" [formControl]="IntegraSeparation.controls['GeoState']">
+                      <option [value]="1">شهری</option>
+                      <option [value]="2">روستایی</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="TrfHCode">تعرفه</label>
+                    <select class="form-control" name="TrfHCode" id="TrfHCode" [formControl]="IntegraSeparation.controls['TrfHCode']">
+                      <option [value]="1">خانگی</option>
+                      <option [value]="2">عمومی</option>
+                      <option [value]="3">کشاورزی</option>
+                      <option [value]="4">صنعتی</option>
+                      <option [value]="5">سایر موارد</option>
+                    </select>
+                  </div>
+                </div> 
+                 <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="VillageCode">کد روستا</label>
+                    <select class="form-control" name="VillageCode" id="VillageCode" [formControl]="IntegraSeparation.controls['VillageCode']">
+                      <option [value]="0">خانگی</option>
+                      <option [value]="1">عمومی</option>
+                    </select>
+                  </div>
+                </div> 
+                 <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="GeoAreaCode">محدوده جغرافیایی</label>
+                    <select class="form-control" name="GeoAreaCode" id="GeoAreaCode" [formControl]="IntegraSeparation.controls['GeoAreaCode']">
+                      <option value="0">داخل محدوده</option>
+                      <option value="1">خارج محدوده</option>
+                    </select>
+                  </div>
+                </div> 
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="Phs">فاز</label>
+                    <select class="form-control" name="Phs" id="Phs" [formControl]="IntegraSeparation.controls['Phs']">
+                      <option [value]="1">تک فاز </option>
+                      <option [value]="3"> سه فاز</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="BranchMojaverLeft">اشتراک چپ</label>
+                    <input type="text" class="form-control" name="BranchMojaverLeft" id="BranchMojaverLeft" [formControl]="IntegraSeparation.controls['BranchMojaverLeft']">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="VoltCode">ولتاژ</label>
+                    <input type="text" class="form-control" name="VoltCode" id="VoltCode" [formControl]="IntegraSeparation.controls['VoltCode']">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="Amp">آمپر</label>
+                    <select class="form-control" name="Amp" id="Amp" [formControl]="IntegraSeparation.controls['Amp']">
+                      <option [value]="0">0</option>
+                      <option [value]="5">5</option>
+                      <option [value]="10">10</option>
+                      <option [value]="15">15</option>
+                      <option [value]="32">32</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="MojaverIDLeft">شناسایی چپ</label>
+                    <input type="text" class="form-control" name="MojaverIDLeft" id="MojaverIDLeft" [formControl]="IntegraSeparation.controls['MojaverIDLeft']">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="PwrCnt">قدرت درخواستی </label>
+                    <input type="text" class="form-control" name="PwrCnt" id="PwrCnt" [formControl]="IntegraSeparation.controls['PwrCnt']">
+                  </div>
+                </div>
+                 <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="PwrIcn">قدرت مجاز پروانه </label>
+                    <input type="text" class="form-control" name="PwrIcn" id="PwrIcn" [formControl]="IntegraSeparation.controls['PwrIcn']">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="TrfType">نوع انشعاب</label>
+                    <select class="form-control" name="TrfType" id="TrfType" [formControl]="IntegraSeparation.controls['TrfType']">
+                      <option [value]="0">دائم</option>
+                      <option [value]="1">آزاد و موقت</option>
+                    </select>
+                  </div>
+                </div> 
+                 <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="FloorCount">تعداد طبقات </label>
+                    <input type="text" class="form-control" name="FloorCount" id="FloorCount" [formControl]="IntegraSeparation.controls['FloorCount']">
+                  </div>
+                </div>  -->
+                <!-- <div class="col-xs-12 col-sm-3 col-md-2">
+                  <div class="form-group">
+                    <label for="test2">تعداد کل واحد ها</label>
+                    <input type="text" class="form-control" name="test2" id="test2" [formControl]="IntegraSeparation.controls['test2']">
+                  </div>
+                </div> -->
+                 <!-- <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="TotalRequestedSquare">زیر بنا</label>
+                    <input type="text" class="form-control" name="TotalRequestedSquare" id="TotalRequestedSquare" [formControl]="IntegraSeparation.controls['TotalRequestedSquare']">
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <label for="Count">تعداد</label>
+                    <input type="text" class="form-control" name="Count" id="Count" [formControl]="IntegraSeparation.controls['Count']">
+                  </div>
+                </div> 
+                 <div class="col-xs-12 col-sm-3 col-md-2" style="height:80px;">
+                  <div class="form-group">
+                    <div class="form-inline">
+                      <div class="form-group">
+                        <label for="AuthorizationExpDate">تاریخ انقضای پروانه</label>
+                        <div *ngIf="birthDate == null" class="input-group" style="width:100%;">
+                          <input class="form-control" placeholder="yyyy-mm-dd" id="AuthorizationExpDate"
+                                name="AuthorizationExpDate" [(ngModel)]="model" [firstDayOfWeek]="6" ngbDatepicker #d="ngbDatepicker" [formControl]="IntegraSeparation.controls['AuthorizationExpDate']">
+                          <div class="input-group-addon" (click)="d.toggle()">
+                            <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>  -->
+                <!-- <div class="col-xs-12 col-sm-3 col-md-4">
+                  <div class="form-group row">
+                    <label for="test3" class="col-xs-12">مختصات جغرافیایی</label>
+                    <div class="col-xs-12 col-sm-6">
+                      <input type="text" class="form-control" placeholder="طول"  name="test3" id="test3" [formControl]="IntegraSeparation.controls['test3']">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <input type="text" class="form-control" placeholder="عرض"  name="test4" id="test4" [formControl]="IntegraSeparation.controls['test4']">
+                    </div>
+                  </div>
+                </div>  -->
+              <!-- </div>
+              <div class="clearfix"></div>
+              <ul class="nav nav-tabs" role="tablist" id="forIdTabDemand">
+                <li role="presentation" class="active"><a  md-raised-button href="#step1" aria-controls="step1" role="tab" data-toggle="tab" class="btn btn-default">آدرس انشعاب</a></li>
+                <li role="presentation"><a  md-raised-button href="#step2" aria-controls="step2" role="tab" data-toggle="tab" class="btn btn-default">آدرس محل کار</a></li>
+              </ul>
+               <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="step1">
+                  <div class="row">
+                    <h5 class="col-xs-12">آدرس انشعاب</h5>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="PoNumBranchAddress">کد پستی</label>
+                        <input class="form-control" type="text" id="PoNumBranchAddress" onkeypress="return isNumber(event)" [formControl]="IntegraSeparation.controls['PoNumBranchAddress']">
+                        <small *ngIf="IntegraSeparation.controls['PoNumBranchAddress'].hasError('required') && IntegraSeparation.controls['PoNumBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="FixedTelBranchAddress">تلفن ثابت</label>
+                        <input class="form-control" type="text" id="FixedTelBranchAddress" onkeypress="return isNumber(event)" [formControl]="IntegraSeparation.controls['FixedTelBranchAddress']">
+                        <small *ngIf="IntegraSeparation.controls['FixedTelBranchAddress'].hasError('required') && IntegraSeparation.controls['FixedTelBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="FixedTel2BranchAddress">شماره همراه</label>
+                        <input class="form-control" type="text" id="FixedTel2BranchAddress" onkeypress="return isNumber(event)" [formControl]="IntegraSeparation.controls['FixedTel2BranchAddress']">
+                        <small *ngIf="IntegraSeparation.controls['FixedTel2BranchAddress'].hasError('required') && IntegraSeparation.controls['FixedTel2BranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="Street1BranchAddress">خیابان اصلی</label>
+                        <input class="form-control" type="text" id="Street1BranchAddress" [formControl]="IntegraSeparation.controls['Street1BranchAddress']">
+                        <small *ngIf="IntegraSeparation.controls['Street1BranchAddress'].hasError('required') && IntegraSeparation.controls['Street1BranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="Street2BranchAddress">خیابان فرعی</label>
+                        <input class="form-control" type="text" id="Street2BranchAddress" [formControl]="IntegraSeparation.controls['Street2BranchAddress']">
+                        <small *ngIf="IntegraSeparation.controls['Street2BranchAddress'].hasError('required') && IntegraSeparation.controls['Street2BranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="FaxBranchAddress">دور نگار</label>
+                        <input class="form-control" type="text" id="FaxBranchAddress" [formControl]="IntegraSeparation.controls['FaxBranchAddress']">
+                        <small *ngIf="IntegraSeparation.controls['FaxBranchAddress'].hasError('required') && IntegraSeparation.controls['FaxBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="PlakBranchAddress">پلاک</label>
+                        <input class="form-control" type="text" id="PlakBranchAddress" onkeypress="return isNumber(event)" [formControl]="IntegraSeparation.controls['PlakBranchAddress']">
+                        <small *ngIf="IntegraSeparation.controls['PlakBranchAddress'].hasError('required') && IntegraSeparation.controls['PlakBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-8" style="height:80px;">
+                      <div class="form-group">
+                        <label for="AdressBranchAddress">آدرس</label>
+                        <input class="form-control" type="text" id="AdressBranchAddress" [formControl]="IntegraSeparation.controls['AdressBranchAddress']">
+                        <small *ngIf="IntegraSeparation.controls['AdressBranchAddress'].hasError('required') && IntegraSeparation.controls['AdressBranchAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div> 
+                    <div class="col-xs-2">
+                      <button type="submit" md-raised-button class="btn btn-success pull-left" style="margin-top:21px;">ثبت</button>
+                    </div>
+                  </div> 
+                </div>
+                <div role="tabpanel" class="tab-pane" id="step2">
+                  <div class="row">
+                     <h5 class="col-xs-12">آدرس محل کار</h5>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="PoNumOfficeAddress">کد پستی</label>
+                        <input class="form-control" type="text" id="PoNumOfficeAddress" onkeypress="return isNumber(event)" [formControl]="IntegraSeparation.controls['PoNumOfficeAddress']">
+                        <small *ngIf="IntegraSeparation.controls['PoNumOfficeAddress'].hasError('required') && IntegraSeparation.controls['PoNumOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="FixedTelOfficeAddress">تلفن ثابت</label>
+                        <input class="form-control" type="text" id="FixedTelOfficeAddress" onkeypress="return isNumber(event)" [formControl]="IntegraSeparation.controls['FixedTelOfficeAddress']">
+                        <small *ngIf="IntegraSeparation.controls['FixedTelOfficeAddress'].hasError('required') && IntegraSeparation.controls['FixedTelOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="FixedTel2OfficeAddress">شماره همراه</label>
+                        <input class="form-control" type="text" id="FixedTel2OfficeAddress" onkeypress="return isNumber(event)" [formControl]="IntegraSeparation.controls['FixedTel2OfficeAddress']">
+                        <small *ngIf="IntegraSeparation.controls['FixedTel2OfficeAddress'].hasError('required') && IntegraSeparation.controls['FixedTel2OfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="Street1OfficeAddress">خیابان اصلی</label>
+                        <input class="form-control" type="text" id="Street1OfficeAddress" [formControl]="IntegraSeparation.controls['Street1OfficeAddress']">
+                        <small *ngIf="IntegraSeparation.controls['Street1OfficeAddress'].hasError('required') && IntegraSeparation.controls['Street1OfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="Street2OfficeAddress">خیابان فرعی</label>
+                        <input class="form-control" type="text" id="Street2OfficeAddress" [formControl]="IntegraSeparation.controls['Street2OfficeAddress']">
+                        <small *ngIf="IntegraSeparation.controls['Street2OfficeAddress'].hasError('required') && IntegraSeparation.controls['Street2OfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="FaxOfficeAddress">دور نگار</label>
+                        <input class="form-control" type="text" id="FaxOfficeAddress" [formControl]="IntegraSeparation.controls['FaxOfficeAddress']">
+                        <small *ngIf="IntegraSeparation.controls['FaxOfficeAddress'].hasError('required') && IntegraSeparation.controls['FaxOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
+                      <div class="form-group">
+                        <label for="PlakOfficeAddress">پلاک</label>
+                        <input class="form-control" type="text" id="PlakOfficeAddress" onkeypress="return isNumber(event)" [formControl]="IntegraSeparation.controls['PlakOfficeAddress']">
+                        <small *ngIf="IntegraSeparation.controls['PlakOfficeAddress'].hasError('required') && IntegraSeparation.controls['PlakOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>
+                    <div class="col-xs-8" style="height:80px;">
+                      <div class="form-group">
+                        <label for="AdressOfficeAddress">آدرس</label>
+                        <input class="form-control" type="text" id="AdressOfficeAddress" [formControl]="IntegraSeparation.controls['AdressOfficeAddress']">
+                        <small *ngIf="IntegraSeparation.controls['AdressOfficeAddress'].hasError('required') && IntegraSeparation.controls['AdressOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                      </div>
+                    </div>  
+                    <div class="col-xs-2">
+                      <button md-raised-button type="submit" class="btn btn-success pull-left" style="margin-top:21px;" [disabled]="!IntegraSeparation.valid" (click)="SendCalculationSepration()">ثبت</button>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+
+  -->

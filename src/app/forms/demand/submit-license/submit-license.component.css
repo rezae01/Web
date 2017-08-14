@@ -1,0 +1,37 @@
+.scroll-X-fullWidth{
+  width: 1085px;
+  overflow-x: scroll;
+}
+.scroll-X-fullWidth .table-bordered{
+  width: 1500px;
+}
+.scroll-X-fullWidth .table-bordered thead{
+  border-bottom:1px solid #ddd;
+}
+.scroll-X-fullWidth .table-bordered thead tr th:last-child{
+   width: 180px;
+}
+.scroll-X-fullWidth .table-bordered tbody tr td:last-child{
+  width: 180px;
+}
+.my-drop-zone { border: dotted 3px lightgray; }
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green; }
+.ng-valid[required], .ng-valid.required  {
+  border-right: 4px solid #42A948;
+}
+input.ng-invalid:not(form),select.ng-invalid:not(form)   {
+  border-right: 4px solid #a94442;
+}
+.form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+} 
+#UI-Valid-Panel.ng-invalid .panel-default .panel-heading{
+  background-color: #f2dede;
+}
+#UI-Valid-Panel.ng-valid .panel-default .panel-heading{
+  background-color: #dff0d8;
+}

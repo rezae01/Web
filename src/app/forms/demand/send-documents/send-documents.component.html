@@ -1,0 +1,59 @@
+<div class="col-xs-12">
+  <div class="col-xs-12">
+    <div class="row">
+      <ul class="nav tabCustom-2">
+        <li class="active"><a md-raised-button class="btn btn-default" href="#ab" data-toggle="tab"><span>آرشیو پرونده ها</span></a></li>
+        <li><a href="#cd" md-raised-button class="btn btn-default" data-toggle="tab"><span>ارسال مدارک</span></a></li>
+      </ul>
+    </div>
+  </div>
+    <div class="tab-content mb-1">
+      <div class="tab-pane active" id="ab">
+        <div class="row">
+          <div id="example-2" class="thumbs">
+            <div class="col-xs-12 col-sm-4 col-md-3">
+              <a href="assets/img/test-1.jpg">
+                <img class="img-responsive" src="assets/img/test-1.jpg"/>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+              <a href="assets/img/test-2.jpg">
+                <img class="img-responsive" src="assets/img/test-2.jpg"/>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+              <a href="assets/img/test-3.jpg">
+                <img class="img-responsive" src="assets/img/test-3.jpg"/>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+              <a href="assets/img/test-3.jpg">
+                <img class="img-responsive" src="assets/img/test-3.jpg"/>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="cd">
+        <form [formGroup]="sendform" name="sendform" (ngSubmit)="DtValue()">  
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+              <label for="file">آپلود عکس</label>
+              <input type="file" nmae="file" id="file" #fileInput/>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+              <label for="">نام عکس</label>
+              <select class="form-control" [formControl]="sendform.controls['TypeFileUpload']" required>
+                <option [value]="1">کپی کارت ملی</option>
+                <option [value]="2">کپی شناسنامه</option>
+                <option [value]="3">سایر مدارک</option>
+              </select>
+            </div>
+          </div>
+          <button (click)="addFile()" md-raised-button class="btn btn-default" style="margin-top:20px;">ارسال</button>
+        </form> 
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,59 @@
+<section class="parent-container pt-10 pbW-15">
+  <h2 class="title-section">لیست متقاضی ها</h2>
+  <div class="col-sm-12 form-listrequst">
+    <div class="col-sm-12">
+      <div class="col-xs-12 col-sm-4 col-md-4" style="height:60px;">
+        <label class="sr-only" for="search">جستجو</label>
+        <div class="input-group">
+          <input *ngIf="config.filtering" placeholder="جستجو"
+                [ngTableFiltering]="config.filtering"
+                class="form-control"
+                (tableChanged)="onChangeTable(config)"/>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default" style="font-size:11.5px">جستجو</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-8">
+        <a md-raised-button [routerLink]="['/','forms','demand','ApplicantList']" (click)="removeLocal()" class="btn btn-tip-1 pull-right">
+          <i class="fa fa-plus" style="vertical-align: middle;margin-left: 5px;"></i>جدید
+        </a>
+        <div class="btn-group pull-left">
+          <button md-raised-button type="button" class="btn btn-default" data-toggle="modal" data-target=".support">
+            <img src="../../../assets/images/icon/support.png" height="20" width="20"/>
+            پشتیبانی
+          </button>
+          <button md-raised-button type="button" class="btn btn-default" data-toggle="modal" data-target=".movie">
+            <i class="fa fa-play" style="vertical-align: middle;"></i>
+            فیلم
+          </button>
+          <button md-raised-button type="button" class="btn btn-default">
+            <i class="fa fa-file-text" style="vertical-align: middle;"></i>
+            متن
+          </button>
+        </div>
+      </div>
+      <br>
+       <div class="table-responsive-ml"> 
+        <ng-table [config]="config"
+                  (tableChanged)="onChangeTable(config)"
+                  (cellClicked)="onCellClick($event)"
+                  [rows]="rows" [columns]="columns">
+        </ng-table>
+       </div> 
+
+      <pagination *ngIf="config.paging"
+                  class="pagination-sm"
+                  [(ngModel)]="page"
+                  [totalItems]="length"
+                  [itemsPerPage]="itemsPerPage"
+                  [maxSize]="maxSize"
+                  [boundaryLinks]="true"
+                  [rotate]="false"
+                  (pageChanged)="onChangeTable(config, $event)"
+                  (numPages)="numPages = $event">
+      </pagination>
+      <pre *ngIf="config.paging" class="card card-block card-header mt-1">صفحه : {{page}} / {{numPages}}</pre>
+    </div>
+  </div>
+</section>

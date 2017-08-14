@@ -1,0 +1,65 @@
+<section class="parent-container pt-10 pbW-15">
+  <h2 class="title-section">ثبت متقاضی</h2>
+  <div class="col-sm-12 form-listrequst">
+    <div class="col-xs-12 col-sm-4">
+      <div class="form-group has-feedback">
+        <label class="sr-only" for="search">جستجو</label>
+        <input type="search" class="form-control" id="search" placeholder="جستجو">
+        <span class="glyphicon glyphicon-search form-control-feedback silver"></span>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <a [routerLink] = "['/','forms','demand','ApplicantList']" class="btn btn-tip-1 pull-right">
+        <i class="fa fa-plus" style="vertical-align: middle;margin-left: 5px;"></i>نوع تقاضا
+      </a>
+      <div class="btn-group pull-left">
+        <button md-raised-button type="button" class="btn btn-default" data-toggle="modal" data-target=".support">
+          <img src="../../../assets/images/icon/support.png" height="20" width="20"/>
+          پشتیبانی
+        </button>
+        <button md-raised-button type="button" class="btn btn-default" data-toggle="modal" data-target=".movie">
+          <i class="fa fa-play" style="vertical-align: middle;"></i>
+          فیلم
+        </button>
+        <button md-raised-button type="button" class="btn btn-default">
+          <i class="fa fa-file-text" style="vertical-align: middle;"></i>
+          متن
+        </button>
+      </div>
+    </div>
+    <!-- <table-demo></table-demo> -->
+    <!-- <div class="col-xs-12 mt-30">
+      <div class="table-respansive">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th *ngFor="let g of grid">{{g.columnName}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of pagedItems">
+           <td>{{item.id}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination CPagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">از اول</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">قبلی</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">بعدی</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)">از آخر</a>
+        </li>
+      </ul>
+    </div> -->
+  </div>
+</section>

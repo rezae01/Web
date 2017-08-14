@@ -1,0 +1,48 @@
+.dataRes .row > div[class*="col"]{
+  margin-bottom: 10px;
+}
+.dataRes > div span {
+  display: inline-block;
+  float:right;
+  font-size: 13px;
+}
+.dataRes > div strong{
+  width: 60px;
+  display: inline-block;
+  float:right;
+  font-size: 13px;
+}
+.rtlCheckbox.checkbox input[type="checkbox"]{
+  margin-top: 3px;
+  margin-left: 0;
+  margin-right: -20px;
+}
+.modal-body:after{
+  content: '';
+  display: block;
+  clear:both;
+}
+.scroll-X-fullWidth{
+  min-width: 1085px;
+  width:auto;
+  overflow-x: scroll;
+  max-height:100px;
+  overflow-y: auto;
+}
+
+.scroll-X-fullWidth .table-bordered{
+  width: 1500px;
+}
+.scroll-X-fullWidth .table-bordered thead{
+  border-bottom:1px solid #ddd;
+}
+.scroll-X-fullWidth .table-bordered thead tr th:last-child{
+   width: 150px;
+}
+.scroll-X-fullWidth .table-bordered tbody tr td:last-child{
+  width: 150px;
+}
+/* #IntegraSeparation .tab-pane div[class*="col-"]{
+  padding-left:7.5px !important;
+  padding-right:7.5px !important;
+} */
