@@ -12,7 +12,7 @@ export class UserService {
 list: any;
 public  Url_app: string;
   constructor(private http: Http) {
-  this.Url_app='http://localhost:1920';
+  this.Url_app='http://localhost:1922';
  }
 
 Crtableuser(): Observable <post[]> {

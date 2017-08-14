@@ -180,7 +180,7 @@ export class MenuItems {
 
   }
   getAll(): Observable< Menu[]> {
-    return this.http.get('http://localhost:1920/api/Caretable/getmenu', this.jwt()).map(res => res.json());
+    return this.http.get('http://localhost:1922/api/Caretable/getmenu', this.jwt()).map(res => res.json());
   }
   private jwt() {
     // create authorization header with jwt token
