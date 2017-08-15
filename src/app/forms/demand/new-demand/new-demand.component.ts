@@ -165,7 +165,7 @@ export class NewDemandComponent implements OnInit {
     // });
     this.NewDemand = this.fb.group({
       id: this.id,
-      RequesterId: new FormControl(2),
+      RequesterId: new FormControl(1),
       FormId: new FormControl(9),
       ProcessId: new FormControl(1),
       CalculationData: this.fb.array([this.initItemRows()]),

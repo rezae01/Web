@@ -6,18 +6,19 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
-const URL = 'http://localhost:1920/api/Public/UploadFile';
+// const URL = 'http://localhost:1920/api/Public/UploadFile';
 
 declare var $: any;
 
 import { UserService } from '../../../_service/user.service';
 import './../../../../assets/javascript/jquery.tosrus.all.min.js';
 import './../../../../assets/css/jquery.tosrus.all.css';
+
 @Component({
-//   moduleId: module.id,
   selector: 'app-send-documents',
   templateUrl: './send-documents.component.html',
-  styleUrls: ['./send-documents.component.css']
+  styleUrls: ['./send-documents.component.css'],
+  providers: [ UserService ]
 })
 export class SendDocumentsComponent implements OnInit {
 
@@ -36,15 +37,35 @@ re:any;
 //   public myForm: FormGroup;
 
   public sendform:FormGroup;
-  userservice: UserService;
+  public userservice: UserService;
   md:any;
   private isUploadBtn: boolean = true;
   TypeFileUpload:any;
-//   public myForm: FormGroup;
-  constructor(private fb: FormBuilder, userservice: UserService, private http: Http) { 
-      
-  }
 
+
+
+   resImg: any;
+   resImg1: any;
+   resImg2: any;
+   
+//   public myForm: FormGroup;
+  constructor(
+    private fb: FormBuilder,
+    public _userservice: UserService,
+    private http: Http,
+  ) { //public userservice: UserService
+    this._userservice.getImageSend().subscribe(
+      post => {
+      this.resImg = post;
+      this.resImg1 = this.resImg.result;
+      // this.resImg2 = this.resImg1.completePath;
+      // console.log(this.resImg);
+      console.log(this.resImg1);
+      // console.log(this.resImg2);
+      }
+    );
+  }
+  
 
     // addFile(): void {
     //     alert('121212212')
@@ -120,7 +141,7 @@ re:any;
         alert(valueRow);
         this.upload(fileToUpload, valueRow)
             .subscribe(res => {
-                console.log(res);
+                // console.log(res);
         });
     }
     // console.log(this.sendform.value);
@@ -139,8 +160,8 @@ re:any;
     }
 
     DtValue(){
-        console.log(this.sendform);
-        console.log(this.sendform.value);
+        // console.log(this.sendform);
+        // console.log(this.sendform.value);
     }
     SaveNamefile(){
         // const formObj = this.sendform.getRawValue();

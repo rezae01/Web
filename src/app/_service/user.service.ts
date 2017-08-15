@@ -55,7 +55,7 @@ Crtableuser(): Observable <post[]> {
     let headers = new Headers({ 'Authorization': 'Bearer ' + reza.access_token });
     headers.append("Content-Type", 'application/json');
     let options = new RequestOptions({ headers: headers });
-    return this.http.post( this.Url_app +'/api/Billing/RegisterBranch', JSON.stringify(data) , options).map(
+    return this.http.post( this.Url_app +'/api/Billing/RegisterBranchInFirstStep', JSON.stringify(data) , options).map(
      (res: Response) => res.json() || {}
     );
   }
@@ -94,6 +94,11 @@ Crtableuser(): Observable <post[]> {
     return this.http.get(this.Url_app + '/api/Caretable/GridData?listid='+ 600 + '&userid=' + localStorage.getItem('userId'), this.jwt()).map(res => res.json());
   }
 
+  getImageSend(): Observable<any[]>{
+    // return null
+    // return this.http.get(this.Url_app + 'api/Public/GetUploadFile?BranchCode='+ data, this.jwt()).map(res => res.json());
+    return this.http.get(this.Url_app + '/api/Public/GetUploadFile?BranchCode=1', this.jwt()).map(res => res.json());
+  }
 
   //----------------------------------------  سازمان صادر کننده
   GetParameter(): Observable<any[]>{
@@ -137,6 +142,26 @@ Crtableuser(): Observable <post[]> {
     headers.append("Content-Type", 'application/json');
     let options = new RequestOptions({ headers: headers });
     return this.http.post( this.Url_app +'/api/Billing/ChangeRequstBranchDetail', JSON.stringify(data) , options).map(
+     (res: Response) => res.json() || {}
+    );
+  }
+  //--------------------------------------- for address
+  SaveRequstAdressRes(data): Observable<any[]> {
+    let reza = JSON.parse(localStorage.getItem('currentUser'));
+    let headers = new Headers({ 'Authorization': 'Bearer ' + reza.access_token });
+    headers.append("Content-Type", 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post( this.Url_app +'/api/Billing/InsertAddressToTemp', JSON.stringify(data) , options).map(
+     (res: Response) => res.json() || {}
+    );
+  }
+  //--------------------------------------- submit end
+  SaveSubmit(data): Observable<any[]> {
+    let reza = JSON.parse(localStorage.getItem('currentUser'));
+    let headers = new Headers({ 'Authorization': 'Bearer ' + reza.access_token });
+    headers.append("Content-Type", 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post( this.Url_app +'/api/Billing/FinalRegisterRequest', JSON.stringify(data) , options).map(
      (res: Response) => res.json() || {}
     );
   }

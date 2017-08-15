@@ -48,7 +48,7 @@ import { BranchingAddressComponent } from './branching-address/branching-address
 
 import { OperationComponent } from './operation/operation.component';
 import { TasksComponent } from './operation/tasks/tasks.component';
-
+import { SplitTasksComponent } from './operation/split-tasks/split-tasks.component';
 import { NewDemandComponent} from './new-demand/new-demand.component';
 
 import { EditNewDemandComponent } from './new-demand/edit-new-demand.component';
@@ -96,6 +96,7 @@ import { AlertCenterModule } from './../../../../node_modules/ng2-alert-center/a
     ExistingDivisionsComponent,
 
     OperationComponent,
+    SplitTasksComponent,
     TasksComponent,
 
     SubmitDemandComponent,

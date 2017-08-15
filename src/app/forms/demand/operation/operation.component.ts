@@ -46,8 +46,22 @@ export class OperationComponent implements OnInit {
   constructor(public userservice: UserService) {
     this.list = JSON.parse( localStorage.getItem('NewDemand'));
     // console.log(this.list);
-   }
+  }
+  value:any;
+  city1:any;
+  city:any;
+  SaveSubmit(value: string){
+    this.value = value;
+    this.userservice.SaveSubmit(1).subscribe(
+      post => {
+        this.city1 = post;
+        this.city = this.city1.result;
+      }
+    );
+  }
 
-  public ngOnInit() {}
+  public ngOnInit() {
+  
+  }
 
 }

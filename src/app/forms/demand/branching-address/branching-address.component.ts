@@ -43,11 +43,37 @@ export class BranchingAddressComponent implements OnInit {
   AfterRow: any;
   JsonError: any;
   JsonErrorMessage: any;
+
+
+
+  region:any;
+  result:any;
+  value:any;
+  city1:any;
+  city:any;
   constructor(
     private _service: NotificationsService,
     private fb: FormBuilder,
     public userservice: UserService
-  ) { }
+  ) {
+    this.userservice.getcity().subscribe(
+      post => {
+        this.region = post;
+        this.result = this.region.result;
+      }
+    );
+
+   }
+
+  setValue(value: string) {
+    this.value = value;
+    this.userservice.getcitylvl2(this.value).subscribe(
+      post => {
+        this.city1 = post;
+        this.city = this.city1.result;
+      }
+    );
+  }
   create() {
     if (this.JsonRow.resultStatus === 200) {
       this._service.success(
@@ -86,7 +112,8 @@ export class BranchingAddressComponent implements OnInit {
   }
   ngOnInit() {
     this.BranchingAddress = this.fb.group({
-      // FormId: [1024],
+      FormId: [1029],
+      RequesterId:[1],
       // FormName:[2],
       RegionIdBranch: [null, Validators.compose([Validators.required])],// امور
       CityidBranchAddress: [null, Validators.compose([Validators.required])], //  بخش
@@ -142,7 +169,7 @@ export class BranchingAddressComponent implements OnInit {
   }
   SaveRequst(){
     const formObj = this.BranchingAddress.getRawValue();
-    this.userservice.SaveRequstTariff(formObj).subscribe(
+    this.userservice.SaveRequstAdressRes(formObj).subscribe(
       res => {
         this.JsonRow = res;
         this.AfterRow = this.JsonRow.resultStatus;
