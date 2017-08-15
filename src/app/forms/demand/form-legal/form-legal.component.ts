@@ -34,7 +34,6 @@ export class FormLegalComponent implements OnInit {
   EconomicCode: any = '';
   FirstName: any = '';
   CompanyType: any = '';
-  RequesterType: any = '';
   Email: any = '';
   MobileNo: any = '';
   PoNum: any = '';
@@ -111,10 +110,11 @@ export class FormLegalComponent implements OnInit {
   }
   ngOnInit() {
     this.formTaghaza = this.fb.group({
+      FormId:[1035],
       EconomicCode: [null, Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(11)])],
       FirstName: [null, Validators.compose([Validators.required, Validators.maxLength(30)])],
       CompanyType: ['', Validators.compose([Validators.required])],
-      RequesterType: ['1'],
+      RequesterType: [1],
       Email: [null, Validators.compose([CustomValidators.email, Validators.maxLength(40)])],
       PoNum: [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10)])],
       Adress: [null, Validators.compose([Validators.required, Validators.maxLength(1024)])],
@@ -147,7 +147,6 @@ export class FormLegalComponent implements OnInit {
           this.EconomicCode = this.serch['economicCode'];
           this.FirstName = this.serch['firstName'];
           this.CompanyType = this.serch['companyType'];
-          this.RequesterType = this.serch['requesterType'];
           this.Email = this.serch['email'];
           this.MobileNo = this.serch['mobileNo'];
           this.PoNum = this.serch['poNum'];
@@ -174,11 +173,8 @@ export class FormLegalComponent implements OnInit {
         this.JsonErrorMessage = this.JsonError.errorMessage;
         if (this.JsonRow.resultStatus === 200) {
 
-
           this.disabledLink = false;
           this.changeBool.emit(this.disabledLink);
-
-
           this.serch = JSON.parse( JSON.stringify(this.JsonRow.result));
           this.requesterId = this.serch['requesterId'];
           localStorage.setItem('requesterId', this.requesterId);
@@ -187,7 +183,6 @@ export class FormLegalComponent implements OnInit {
           this.EconomicCode = this.serch['economicCode'];
           this.FirstName = this.serch['firstName'];
           this.CompanyType = this.serch['companyType'];
-          this.RequesterType = this.serch['requesterType'];
           this.Email = this.serch['email'];
           this.MobileNo = this.serch['mobileNo'];
           this.PoNum = this.serch['poNum'];

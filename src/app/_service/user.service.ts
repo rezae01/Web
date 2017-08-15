@@ -12,7 +12,7 @@ export class UserService {
 list: any;
 public  Url_app: string;
   constructor(private http: Http) {
-  this.Url_app='http://localhost:1922';
+  this.Url_app='http://localhost:1920';
  }
 
 Crtableuser(): Observable <post[]> {
@@ -86,12 +86,12 @@ Crtableuser(): Observable <post[]> {
   //---------------------------------------- gridCoulumens
   GETgridculomens(data: any): Observable<any[]>{
     // alert(data);
-    return this.http.get(this.Url_app + '/api/Caretable/GridCoulumens?listid='+ data + '&userid=' + localStorage.getItem('userId'), this.jwt()).map(res => res.json());
+    return this.http.get(this.Url_app + '/api/Caretable/GridCoulumens?listid='+ localStorage.getItem('getitem') + '&userid=' + localStorage.getItem('userId'), this.jwt()).map(res => res.json());
   }
   //----------------------------------------gridCoulumens in gird
   GETgridculomensGrid(data: any): Observable<any[]>{
     // alert(data);
-    return this.http.get(this.Url_app + '/api/Caretable/GridData?listid='+ data + '&userid=' + localStorage.getItem('userId'), this.jwt()).map(res => res.json());
+    return this.http.get(this.Url_app + '/api/Caretable/GridData?listid='+ 600 + '&userid=' + localStorage.getItem('userId'), this.jwt()).map(res => res.json());
   }
 
 

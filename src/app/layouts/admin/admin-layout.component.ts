@@ -14,7 +14,6 @@ import * as Ps from 'perfect-scrollbar';
 export class AdminLayoutComponent implements OnInit, OnDestroy {
   id: number;
   id2: any;
-
   private sub: any;
 
   private _router: Subscription;
@@ -28,6 +27,8 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   compactSidebar: boolean;
   currentLang = 'en';
   po: any;
+  po2: any;
+  po3:any;
 
   public columns: Array<any> = [];
   private data: Array<any> = [];
@@ -50,6 +51,14 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     // this.sub = this.route.params.subscribe(params => {
     //   this.id = + params['id'];
     //   alert(JSON.stringify(this.id));
+    // });
+
+    
+    // window.addEventListener('load', function (e) {
+    //   if (window.sessionStorage !== null && (window.location.href.indexOf('/login') === -1 &&  window.location.href.indexOf('confirm-user') === -1)) {
+    //     window.sessionStorage.clear();
+    //     window.location.href = '/login';
+    //   }
     // });
 
 
@@ -75,20 +84,33 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
       }
     );
 
-
+    
     const browserLang: string = translate.getBrowserLang();
     this.dark = false;
 
     this.menuItems.getAll().subscribe(
       post => {
         this.po = post;
-
-        console.log(this.po)
+        // this.po2 = this.po.children;
+        // this.po3 = this.po2.formliatcode
+      
+        console.log(this.po);
+        // console.log(this.po2);
       }
     );
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
-  }
 
+// data = JSON.parse( localStorage.getItem('getParameter'))
+  }
+// te(data:any){
+//   localStorage.setItem('getitem', data);
+//    this.myEvent.emit(null);
+// }
+  // sendParamter() {
+  //   let getParameter: number;
+  //   getParameter = JSON.parse( localStorage.getItem('getParameter'));
+  //   localStorage.setItem('getParameter', JSON.stringify( getParameter ));
+  // }
   public logout(route: ActivatedRouteSnapshot) {
     localStorage.removeItem('');
     this.router.navigate(['/login']);

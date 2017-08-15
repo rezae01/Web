@@ -35,8 +35,8 @@
                         <td>{{ task1.Amp }}</td>
                         <td>{{ task1.FmlCode }}</td> 
                         <td>
-                            <a md-raised-button class="btn btn-default btn-xs" (click)="editTask(task)" data-toggle="modal" data-target="#new-demand"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تغییر قدرت</a>
-                            <a md-raised-button class="btn btn-danger btn-xs" (click)="deleteTask(task)"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>حذف انشعاب</a>
+                            <a md-raised-button class="btn btn-default btn-xs" (click)="editTask(task)" data-toggle="modal" data-target="#new-demand"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>ویرایش</a>
+                            <a md-raised-button class="btn btn-danger btn-xs" (click)="deleteTask(task)"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>حذف</a>
                         </td>
                         <!-- <td></td> -->
                         <!-- <td colspan="1">{{ item1.FullName }}</td>
@@ -52,7 +52,21 @@
                         <td colspan="1">{{ item1.PhoneNumber }}</td>
                         <td colspan="4">{{ item1.Address }}</td>  -->
                     </tr> 
-                </tbody> 
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
             </table> 
         </div>  
     </div>

@@ -30,7 +30,7 @@ export class TasksComponent implements OnInit {
     deleteTask(task: Task) {
         this.tasks.splice(this.tasks.indexOf(task) ,  1);
         this.tasksChange.emit(this.tasks);
-        console.log(task);
+        // console.log(task);
     }
     editTask(tasks: Task) {
         this.taskEdit.emit(tasks);

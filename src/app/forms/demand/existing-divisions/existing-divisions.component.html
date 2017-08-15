@@ -32,10 +32,10 @@
             <small *ngIf="existing.controls['BranchCode'].hasError('required') && existing.controls['BranchCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
           </div>
           <div class="dataRes col-xs-12">
-            <div class="row">
+              <div class="row">
               <div class="col-xs-12 col-sm-3 col-md-2">
                 <div class="form-group">
-                  <label for="">نام مالک :</label>
+                  <label for="FullName">نام مالک :</label>
                   <input 
                   [(ngModel)]="FullName" 
                   [(value)]="FullName" 
@@ -44,17 +44,17 @@
                   (keypress)="FullName=$event.target.value">
                 </div>
               </div>
-               <div class="col-xs-12 col-sm-3 col-md-2">
-                <div class="form-group">
-                  <label for="">رمز :</label>
+              <div class="col-xs-12 col-sm-3 col-md-2">
+                 <div class="form-group">
+                  <label for="BranchCodeView">رمز :</label>
                   <input 
-                  [(ngModel)]="BranchCode" 
-                  [(value)]="BranchCode"
-                  [formControl]="existing.controls['BranchCode']"
-                  (keypress)="BranchCode=$event.target.value"
+                  [(ngModel)]="BranchCodeView" 
+                  [(value)]="BranchCodeView"
+                  [formControl]="existing.controls['BranchCodeView']"
+                  (keypress)="BranchCodeView=$event.target.value"
                   class="form-control" disabled="disabled">
-                </div>
-              </div> 
+                </div> 
+              </div>   
                <div class="col-xs-12 col-sm-3 col-md-2">
                 <div class="form-group">
                   <label for="">پرونده :</label>
@@ -68,7 +68,7 @@
               </div> 
               <div class="col-xs-12 col-sm-3 col-md-2">
                 <div class="form-group">
-                  <label for="">شناسایی :</label>
+                  <label for="FileNumber">شناسایی :</label>
                   <input 
                   [(ngModel)]="FileNumber" 
                   [(value)]="FileNumber"
@@ -87,7 +87,7 @@
                   (keypress)="TrfCode=$event.target.value"
                   class="form-control" disabled="disabled">
                 </div>
-              </div> 
+              </div>  
               <div class="col-xs-12 col-sm-3 col-md-2">
                 <div class="form-group">
                   <label for="RegionNameID">امور :</label>
@@ -154,33 +154,33 @@
                   class="form-control" disabled="disabled">
                 </div>
               </div>
-               <div class="col-xs-12 col-sm-3 col-md-2">
+              <div class="col-xs-12 col-sm-3 col-md-2">
                 <div class="form-group">
-                  <label for="PhoneNumber">کد روستا :</label>
+                  <label for="VillageCode">کد روستا :</label>
                   <input                   
-                  [(ngModel)]="VillageName" 
-                  [(value)]="VillageName"
-                  [formControl]="existing.controls['VillageName']"
-                  (keypress)="VillageName=$event.target.value"
+                  [(ngModel)]="VillageCode" 
+                  [(value)]="VillageCode"
+                  [formControl]="existing.controls['VillageCode']"
+                  (keypress)="VillageCode=$event.target.value"
                   class="form-control" disabled="disabled">
                 </div>
               </div> 
               <div class="col-xs-12 col-md-12">
                 <div class="form-group">
-                  <label for="Adress">آدرس :</label>
+                  <label for="Address">آدرس :</label>
                   <input
-                  [(ngModel)]="Adress" 
-                  [(value)]="Adress"
-                  [formControl]="existing.controls['Adress']"
-                  (keypress)="Adress=$event.target.value"
+                  [(ngModel)]="Address" 
+                  [(value)]="Address"
+                  [formControl]="existing.controls['Address']"
+                  (keypress)="Address=$event.target.value"
                   class="form-control" disabled="disabled">
                 </div>
               </div>
-             </div>  
+            </div>    
             <div class="col-xs-12">
               <div class="row">
                 <button md-raised-button type="button" class="btn btn-info mb-10" [disabled]="!existing.valid" (click)="SaveRequst()">اضافه به لیست</button>
-                <button md-raised-button type="button" class="btn btn-info mb-10">حذف کردن لیست</button> 
+                <!-- <button md-raised-button type="button" class="btn btn-info mb-10">حذف کردن لیست</button>  -->
               </div>
             </div>
           </div> 

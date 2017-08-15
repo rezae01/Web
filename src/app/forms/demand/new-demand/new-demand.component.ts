@@ -165,62 +165,35 @@ export class NewDemandComponent implements OnInit {
     // });
     this.NewDemand = this.fb.group({
       id: this.id,
-      RequesterId: [12],
-      FormId: [9],
-      ProcessId: [1],
+      RequesterId: new FormControl(2),
+      FormId: new FormControl(9),
+      ProcessId: new FormControl(1),
       CalculationData: this.fb.array([this.initItemRows()]),
-      AdjacentBranch: new FormGroup({
-        AuthorizationNum: new FormControl('', <any>Validators.required),
-        AuthorizationIssueDate: new FormControl('', <any>Validators.required),
-        AuthorizationExpDate: new FormControl('', <any>Validators.required),
-        AuthorizationIssuer: new FormControl('', <any>Validators.required),
-        AuthorizationType: new FormControl('', <any>Validators.required),
-        LetterNum: new FormControl('', <any>Validators.required),
-        NationalCode: new FormControl('', <any>Validators.required),
-        Phase: new FormControl('', <any>Validators.required),
-        Amper: new FormControl('', <any>Validators.required),
-        DocumentType: new FormControl('', <any>Validators.required)
-      }),
-      // PoNumBranchAddress: ['', Validators.compose([Validators.required])],
-      // FixedTelBranchAddress: ['', Validators.compose([Validators.required])],
-      // FixedTel2BranchAddress: ['', Validators.compose([Validators.required])],
-      // Street1BranchAddress: ['', Validators.compose([Validators.required])],
-      // Street2BranchAddress: ['', Validators.compose([Validators.required])],
-      // PlakBranchAddress: ['', Validators.compose([Validators.required])],
-      // AdressBranchAddress: ['', Validators.compose([Validators.required])],
-      // FaxBranchAddress: ['', Validators.compose([Validators.required])],
-
-
-      // TotalRequestedSquare: ['', Validators.compose([Validators.required])],
-      // GeoAreaCode: ['' , Validators.compose([Validators.required])],
-      // GeoState: ['' , Validators.compose([Validators.required])],
-      // FloorCount: ['', Validators.compose([Validators.required])],
-      // CityidParent: ['', Validators.compose([Validators.required])],
-      // CityidBranchAddress: ['', Validators.compose([Validators.required])],
-
-      // CityidOfficeAddressParent: ' ',
-      // CityidOfficeAddress: ' ',
-      // PoNumOfficeAddress: ' ',
-      // FixedTelOfficeAddress: ' ',
-      // FixedTel2OfficeAddress: ' ',
-      // Street1OfficeAddress: ' ',
-      // Street2OfficeAddress: ' ',
-      // PlakOfficeAddress: ' ',
-      // AdressOfficeAddress: ' ',
-      // FaxOfficeAddress: ' ',
+      // AdjacentBranch: new FormGroup({
+      //   AuthorizationNum: new FormControl('', <any>Validators.required),
+      //   AuthorizationIssueDate: new FormControl('', <any>Validators.required),
+      //   AuthorizationExpDate: new FormControl('', <any>Validators.required),
+      //   AuthorizationIssuer: new FormControl('', <any>Validators.required),
+      //   AuthorizationType: new FormControl('', <any>Validators.required),
+      //   LetterNum: new FormControl('', <any>Validators.required),
+      //   NationalCode: new FormControl('', <any>Validators.required),
+      //   Phase: new FormControl('', <any>Validators.required),
+      //   Amper: new FormControl('', <any>Validators.required),
+      //   DocumentType: new FormControl('', <any>Validators.required)
+      // }),
     });
   }
   initItemRows() {
     return this.fb.group({
-      TrfType: ['' , <any>Validators.required],
-      Phs: ['' , <any>Validators.required],
-      TrfHCode: ['' , <any>Validators.required],
-      Count: ['' , <any>Validators.required],
-      PwrIcn: ['' , <any>Validators.required],
-      PwrCnt: ['' , <any>Validators.required],
-      VoltCode: ['' , <any>Validators.required],
-      Amp: ['' , <any>Validators.required],
-      FmlCode: [],
+      TrfType: new FormControl('',Validators.required),
+      Phs: new FormControl('',Validators.required),
+      TrfHCode: new FormControl('',Validators.required),
+      Count: new FormControl('',Validators.required),
+      PwrIcn: new FormControl('',Validators.required),
+      PwrCnt: new FormControl('',Validators.required),
+      VoltCode: new FormControl('',Validators.required),
+      Amp: new FormControl('',Validators.required),
+      FmlCode: new FormControl(''),
     });
   }
   AddDemand() {
@@ -303,6 +276,35 @@ export class NewDemandComponent implements OnInit {
     this.addTask.emit(this.NewDemand.value);
     console.log(this.NewDemand.value);
     // this.NewDemand.reset();
+
+
+
+
+    const formObj = this.NewDemand.getRawValue();
+    this.userservice.SaverequstNewDemand(formObj).subscribe(
+      res => {
+        this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+
+        // localStorage.setItem('requestId', this.re.result.requestId);
+        // localStorage.setItem('branchCode', this.re.branchCode);
+        console.log(this.JsonRow);
+        // console.log(this.JsonRow.result.requestId);
+
+        this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+        // console.log(this.JsonErrorMessage);
+        if (this.JsonRow.resultStatus === 200) {
+          this.NewDemand.reset();
+        }
+        this.create();
+      }
+    );
+
   }
 
 

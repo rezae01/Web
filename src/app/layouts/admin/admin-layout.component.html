@@ -74,7 +74,7 @@
           </a>
           <md-nav-list class="sub-menu" *ngIf="menuitem.type === 'sub'">
             <md-list-item *ngFor="let childitem of menuitem.children" routerLinkActive="open">
-              <a [routerLink]="['/', menuitem.state ,'demand', childitem.state]" class="relative" md-ripple>{{ childitem.name | translate }}</a>
+              <a [routerLink]="['/', menuitem.state ,'demand', childitem.state ]" class="relative" md-ripple >{{ childitem.name | translate }}</a> <!-- (myEvent)="A()" (click)="te(childitem.formliatcode)"-->
             </md-list-item>
             <!--, childitem.formliatcode-->
           </md-nav-list>

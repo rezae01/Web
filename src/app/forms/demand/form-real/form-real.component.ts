@@ -126,6 +126,7 @@ export class FormRealComponent implements OnInit {
   }
   ngOnInit() {
     this.formTaghaza = this.fb.group({
+      FormId:[1032],
       NationalCode: [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
       FirstName: [null, Validators.compose([Validators.required, Validators.maxLength(40)])],
       LastName: [null, Validators.compose([Validators.required, Validators.maxLength(255)])],

@@ -88,8 +88,10 @@ export class ChangeTariffComponent implements OnInit {
   }
   ngOnInit() {
     this.changeTariff = this.fb.group({
+      RequesterId: new FormControl(2),
+      FormId: new FormControl(1024),
+      ProcessId: new FormControl(1),
       BranchCode: [null, Validators.compose([Validators.required])],
-      FormId: [1024],
       FormName:[2],
       TrfHcode: [null, Validators.compose([Validators.required])],
     });

@@ -1,9 +1,9 @@
-<form action="" method="post" [formGroup]="NewDemand" novalidate  name="NewDemand" (ngSubmit)="createTask()" >
-  <ul class="nav nav-tabs" role="tablist" id="forIdTabDemand">
+ <form action="" method="post" [formGroup]="EditNewDemand" novalidate  name="EditNewDemand"> <!-- (ngSubmit)="edit()" -->
+   <!-- <ul class="nav nav-tabs" role="tablist" id="forIdTabDemand">
     <li role="presentation" class="active"><a  md-raised-button href="#Parent-Step1" aria-controls="ParentStep1" role="tab" data-toggle="tab" class="btn btn-default">انشعاب جدید</a></li>
     <li role="presentation"><a  md-raised-button href="#Parent-Step2" aria-controls="ParentStep2" role="tab" data-toggle="tab" class="btn btn-default">مشمول تخفیف</a></li>
-  </ul>
-  <div class="tab-content" id="IntegraSeparation">
+  </ul>  -->
+   <div class="tab-content" id="IntegraSeparation">
     <div role="tabpanel" class="tab-pane active" id="Parent-Step1">
       <h5 class="col-xs-12 mt-1">ویرایش انشعاب</h5>
       <div class="col-xs-12">
@@ -43,10 +43,10 @@
       </div>
       <fieldset class="col-xs-12">
           <div id="UI-Valid-Panel" formArrayName="CalculationData">
-            <div class="panel panel-default" *ngFor="let itemrow of NewDemand.controls.CalculationData.controls; let i=index">
+            <div class="panel panel-default" *ngFor="let itemrow of EditNewDemand.controls.CalculationData.controls; let i=index">
               <div class="panel-heading">
                 <span>فرم شماره  {{i + 1}}</span>
-                <span class="glyphicon glyphicon-remove pull-left" *ngIf="NewDemand.controls.CalculationData.controls.length > 1" (click)="RemoveDemand(i)"></span>
+                <span class="glyphicon glyphicon-remove pull-left" *ngIf="EditNewDemand.controls.CalculationData.controls.length > 1" (click)="RemoveDemand(i)"></span>
               </div> 
               <div class="panel-body" [formGroupName]="i">
                 <div class="col-xs-12 col-sm-3" style="height:80px;">
@@ -56,7 +56,7 @@
                       <option [value]="1">آزاد و موقت</option>
                       <option [value]="0">دائم </option>
                     </select>
-                    <small *ngIf="NewDemand.controls.CalculationData.controls[i].controls.TrfType.touched && NewDemand.controls.CalculationData.controls[i].controls.TrfType.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>  
+                    <small *ngIf="EditNewDemand.controls.CalculationData.controls[i].controls.TrfType.touched && EditNewDemand.controls.CalculationData.controls[i].controls.TrfType.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>  
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-3" style="height:80px;">
@@ -66,12 +66,12 @@
                       <option [value]="1">تک فاز</option>
                       <option [value]="3">سه فاز</option> 
                     </select>
-                    <small *ngIf="NewDemand.controls.CalculationData.controls[i].controls.Phs.touched && NewDemand.controls.CalculationData.controls[i].controls.Phs.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    <small *ngIf="EditNewDemand.controls.CalculationData.controls[i].controls.Phs.touched && EditNewDemand.controls.CalculationData.controls[i].controls.Phs.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-3" style="height:80px;">
                   <div class="form-group">
-                    <label for="Amper">آمپر</label>
+                    <label for="Amp">آمپر</label>
                     <select id="Amp" name="Amp" formControlName="Amp" class="form-control" required>
                       <option [value]="0">0</option>
                       <option [value]="5">5</option>
@@ -90,7 +90,7 @@
                       <option [value]="300">300</option>
                       <option [value]="400">400</option> 
                     </select>
-                    <small *ngIf="NewDemand.controls.CalculationData.controls[i].controls.Amp.touched && NewDemand.controls.CalculationData.controls[i].controls.Amp.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    <small *ngIf="EditNewDemand.controls.CalculationData.controls[i].controls.Amp.touched && EditNewDemand.controls.CalculationData.controls[i].controls.Amp.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-3" style="height:80px;">
@@ -103,7 +103,7 @@
                       <option [value]="4" class="hideOption">صنعت و معدن</option>
                       <option [value]="5" class="hideOption">سایر مصارف</option>  
                     </select>
-                    <small *ngIf="NewDemand.controls.CalculationData.controls[i].controls.TrfHCode.touched && NewDemand.controls.CalculationData.controls[i].controls.TrfHCode.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    <small *ngIf="EditNewDemand.controls.CalculationData.controls[i].controls.TrfHCode.touched && EditNewDemand.controls.CalculationData.controls[i].controls.TrfHCode.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-3" style="height:80px;">
@@ -113,40 +113,40 @@
                       <option [value]="1">اولیه</option>
                       <option [value]="2">ثانویه</option>
                     </select> 
-                    <small *ngIf="NewDemand.controls.CalculationData.controls[i].controls.VoltCode.touched && NewDemand.controls.CalculationData.controls[i].controls.VoltCode.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    <small *ngIf="EditNewDemand.controls.CalculationData.controls[i].controls.VoltCode.touched && EditNewDemand.controls.CalculationData.controls[i].controls.VoltCode.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-3" style="height:80px;">
                   <div class="form-group">
                     <label for="PwrCnt">قدرت درخواستی</label>
                     <input class="form-control" type="text" id="PwrCnt" name="PwrCnt" formControlName="PwrCnt" onkeypress="return isNumber(event)" required>
-                    <small *ngIf="NewDemand.controls.CalculationData.controls[i].controls.PwrCnt.touched && NewDemand.controls.CalculationData.controls[i].controls.PwrCnt.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    <small *ngIf="EditNewDemand.controls.CalculationData.controls[i].controls.PwrCnt.touched && EditNewDemand.controls.CalculationData.controls[i].controls.PwrCnt.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-3" style="height:80px;">
                   <div class="form-group">
                     <label for="PwrIcn">قدرت مجاز پروانه</label>
                     <input class="form-control" type="text" id="PwrIcn" name="PwrIcn" formControlName="PwrIcn" onkeypress="return isNumber(event)" required>
-                    <small *ngIf="NewDemand.controls.CalculationData.controls[i].controls.PwrIcn.touched && NewDemand.controls.CalculationData.controls[i].controls.PwrIcn.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    <small *ngIf="EditNewDemand.controls.CalculationData.controls[i].controls.PwrIcn.touched && EditNewDemand.controls.CalculationData.controls[i].controls.PwrIcn.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-3" style="height:80px;">
                   <div class="form-group">
                     <label for="Count">تعداد انشعاب</label>
                     <input class="form-control" type="text" id="Count" name="Count" formControlName="Count" onkeypress="return isNumber(event)" required>
-                    <small *ngIf="NewDemand.controls.CalculationData.controls[i].controls.Count.touched && NewDemand.controls.CalculationData.controls[i].controls.Count.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                    <small *ngIf="EditNewDemand.controls.CalculationData.controls[i].controls.Count.touched && EditNewDemand.controls.CalculationData.controls[i].controls.Count.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <button md-raised-button type="button" (click)="AddDemand()" class="btn btn-info pull-left mb-10">فرم جدید</button>
-          <button md-raised-button type="button" (click)="RemoveDemand()" class="btn btn-danger pull-left mb-10">
+           <!-- <button md-raised-button type="button" (click)="RemoveDemand()" class="btn btn-danger pull-left mb-10"> 
             حذف فرم
-          </button> 
+          </button>  -->
       </fieldset>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="Parent-Step2">
+    </div> 
+    <!-- <div role="tabpanel" class="tab-pane" id="Parent-Step2">
       <h5 class="col-xs-12 mt-1">مشمول تخفیف</h5>
       <fieldset class="col-xs-12">
         <div class="row">
@@ -155,7 +155,7 @@
               <div class="form-group">
                 <label for="AuthorizationNum">کد مجوز</label>
                 <input type="text" required class="form-control" id="AuthorizationNum" name="AuthorizationNum" formControlName="AuthorizationNum" onkeypress="return isNumber(event)" required>
-                <small *ngIf="NewDemand.controls.AdjacentBranch.controls.AuthorizationNum.hasError('required') && NewDemand.controls.AdjacentBranch.controls.AuthorizationNum.touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                <small *ngIf="EditNewDemand.controls.AdjacentBranch.controls.AuthorizationNum.hasError('required') && NewDemand.controls.AdjacentBranch.controls.AuthorizationNum.touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
               </div>
             </div>
             <div class="col-xs-12 col-sm-3" style="height:80px;">
@@ -244,15 +244,13 @@
           </div>  
         </div>
       </fieldset>
-    </div>
-    <div class="col-xs-12">
+    </div> -->
+     <div class="col-xs-12">
       <div class="col-xs-12">
         <div class="row">
-          <button md-raised-button type="button" class="btn btn-success mb-10" [disabled]="!NewDemand.valid" (click)="createTask()">اضافه به لیست</button>
-        </div>
-          <!-- <pre>Is myForm valid?: <br>{{NewDemand.valid | json}}</pre>
-          <pre>form value: <br>{{NewDemand.value | json}}</pre> -->
+          <button md-raised-button type="button" class="btn btn-success mb-10" [disabled]="!EditNewDemand.valid" (click)="createTask()">اضافه به لیست</button>
+        </div> 
       </div>
     </div>
   </div>
-</form>
+ </form>

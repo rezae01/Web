@@ -35,9 +35,9 @@ export class OperationComponent implements OnInit {
     this.lastTaskId = tasks.id + 1;
   }
   showEditTask(tasks: Task) {
-    console.log(tasks);
+    // console.log(tasks);
     this.task = tasks;
-    console.log(this.task)
+    // console.log(this.task)
     this.edit = true;
   }
   showTask() {
@@ -45,7 +45,7 @@ export class OperationComponent implements OnInit {
   }
   constructor(public userservice: UserService) {
     this.list = JSON.parse( localStorage.getItem('NewDemand'));
-    console.log(this.list);
+    // console.log(this.list);
    }
 
   public ngOnInit() {}

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray  } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { User } from './new-demand';
@@ -24,7 +24,10 @@ declare var $: any;
 })
 
 export class EditNewDemandComponent implements OnInit {
-
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   // console.log(changes);
+  //   // this.TrfType.setValue(changes.tasks.currentValue.TrfType);
+  // }
 
 //   tasks: Task[];
 //   @Output() addTask = new EventEmitter();
@@ -33,12 +36,11 @@ export class EditNewDemandComponent implements OnInit {
 
 
 
-  public NewDemand: FormGroup;
+  public EditNewDemand: FormGroup;
   re: any;
   private today: NgbDateStruct;
   model: NgbDateStruct;
   id2: any;
-
   private sub: any;
   trf: any;
   trfType: any;
@@ -62,18 +64,11 @@ export class EditNewDemandComponent implements OnInit {
   value: any;
   value1: any;
   d: any;
-
   CalculationData: Array<any> = [];
-
-
-
   JsonRow: any;
   AfterRow: any;
   JsonError: any;
   JsonErrorMessage: any;
-
-
-
   t1: any;
   t2: any;
   list: any;
@@ -94,6 +89,10 @@ export class EditNewDemandComponent implements OnInit {
       }
     );
   }
+
+
+
+
   create() {
     if (this.JsonRow.resultStatus === 200) {
       this._service.success(
@@ -130,58 +129,45 @@ export class EditNewDemandComponent implements OnInit {
       );
     }
   }
-  // tslint:disable-next-line:member-ordering
   id = new FormControl('');
 
   public ngOnInit() {
-    this.NewDemand = this.fb.group({
+    this.EditNewDemand = this.fb.group({
       id: this.id,
-      RequesterId: [12],
-      FormId: [9],
-      ProcessId: [1],
+      RequesterId: new FormControl(''),
+      FormId: new FormControl(9),
+      ProcessId: new FormControl(1),
       CalculationData: this.fb.array([this.initItemRows()]),
-      AdjacentBranch: new FormGroup({
-        AuthorizationNum: new FormControl('', <any>Validators.required),
-        AuthorizationIssueDate: new FormControl('', <any>Validators.required),
-        AuthorizationExpDate: new FormControl('', <any>Validators.required),
-        AuthorizationIssuer: new FormControl('', <any>Validators.required),
-        AuthorizationType: new FormControl('', <any>Validators.required),
-        LetterNum: new FormControl('', <any>Validators.required),
-        NationalCode: new FormControl('', <any>Validators.required),
-        Phase: new FormControl('', <any>Validators.required),
-        Amper: new FormControl('', <any>Validators.required),
-        DocumentType: new FormControl('', <any>Validators.required)
-      }),
     });
   }
   initItemRows() {
     return this.fb.group({
-      TrfType: ['' , <any>Validators.required],
-      Phs: ['' , <any>Validators.required],
-      TrfHCode: ['' , <any>Validators.required],
-      Count: ['' , <any>Validators.required],
-      PwrIcn: ['' , <any>Validators.required],
-      PwrCnt: ['' , <any>Validators.required],
-      VoltCode: ['' , <any>Validators.required],
-      Amp: ['' , <any>Validators.required],
-      FmlCode: [],
+      TrfType: new FormControl('',Validators.required),
+      Phs: new FormControl('',Validators.required),
+      TrfHCode: new FormControl('',Validators.required),
+      Count: new FormControl('',Validators.required),
+      PwrIcn: new FormControl('',Validators.required),
+      PwrCnt: new FormControl('',Validators.required),
+      VoltCode: new FormControl('',Validators.required),
+      Amp: new FormControl('',Validators.required),
+      FmlCode: new FormControl(''),
     });
   }
   AddDemand() {
-      const control = <FormArray>this.NewDemand.controls['CalculationData'];
+      const control = <FormArray>this.EditNewDemand.controls['CalculationData'];
       control.push(this.initItemRows());
   }
   RemoveDemand(i: number) {
-        const control = <FormArray>this.NewDemand.controls['CalculationData'];
+        const control = <FormArray>this.EditNewDemand.controls['CalculationData'];
         control.removeAt(i);
   }
   resetForm() {
-    this.NewDemand.reset();
-    // localStorage.removeItem('NewDemand');
+    this.EditNewDemand.reset();
+    // localStorage.removeItem('EditNewDemand');
   }
 
   SaveRequst() {
-    const formObj = this.NewDemand.getRawValue();
+    const formObj = this.EditNewDemand.getRawValue();
     this.userservice.SaverequstNewDemand(formObj).subscribe(
       res => {
         this.JsonRow = res;
@@ -191,7 +177,7 @@ export class EditNewDemandComponent implements OnInit {
 
         // localStorage.setItem('requestId', this.re.result.requestId);
         // localStorage.setItem('branchCode', this.re.branchCode);
-        console.log(this.JsonRow);
+        // console.log(this.JsonRow);
         // console.log(this.JsonRow.result.requestId);
 
         this.JsonRow = res;
@@ -200,11 +186,15 @@ export class EditNewDemandComponent implements OnInit {
         this.JsonErrorMessage = this.JsonError.errorMessage;
         // console.log(this.JsonErrorMessage);
         if (this.JsonRow.resultStatus === 200) {
-          this.NewDemand.reset();
+          this.EditNewDemand.reset();
         }
         this.create();
       }
     );
+  }
+
+  edit() {
+    
   }
 
 }

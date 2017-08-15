@@ -193,7 +193,7 @@
             <div role="tabpanel" class="tab-pane" id="panel-address-2">
                 <div class="row">
                     <h5 class="col-xs-12">آدرس محل کار</h5>
-                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
                         <div clas="form-group">
                             <label for="RegionIdOffice">نام منطقه</label> 
                            <select id="RegionIdOffice" class="form-control" #box name="RegionIdOffice" [(ngModel)]="RegionIdOffice" [formControl]="BranchingAddress.controls['RegionIdOffice']"  (change)="setValue(box.value)">
@@ -204,7 +204,7 @@
                             <small *ngIf="BranchingAddress.controls['RegionIdOffice'].hasError('required') && BranchingAddress.controls['RegionIdOffice'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> 
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
                         <div clas="form-group">
                             <label for="CityidOfficeAddress">نام ناحیه</label> 
                             <select id="CityidOfficeAddress" class="form-control" name="CityidOfficeAddress" [(ngModel)]="CityidOfficeAddress" [formControl]="BranchingAddress.controls['CityidOfficeAddress']">

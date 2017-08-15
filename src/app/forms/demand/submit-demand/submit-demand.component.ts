@@ -1,4 +1,4 @@
-import { Component, OnInit, Output , ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output , ViewEncapsulation ,Input} from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
@@ -45,9 +45,8 @@ export class SubmitDemandComponent implements OnInit {
   constructor(
     private http: Http,
     public  userservice: UserService,
-    private route: ActivatedRoute,
-    
-  ) {
+    private route: ActivatedRoute,) 
+  {
     this.length = this.data.length;
     // this.sub = this.route.params.subscribe(params => {
     //   this.id = + params['id'];
@@ -69,10 +68,13 @@ export class SubmitDemandComponent implements OnInit {
     );
   }
 
-
+A(){
+  alert("");
+}
 
 // پاک کردن لوکان استوریج گرید انشعاب موجود
   removeLocal(){
+    
     localStorage.removeItem('grid');
   }
 

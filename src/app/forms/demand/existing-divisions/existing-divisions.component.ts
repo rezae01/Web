@@ -16,6 +16,7 @@ export class ExistingDivisionsComponent implements OnInit {
   re: any;
 
   // serch
+  BranchCodeView: any = '';
   serchFilter: any;
   serchFilip: any;
   serch: any;
@@ -40,6 +41,8 @@ export class ExistingDivisionsComponent implements OnInit {
   CreationDate: any = '';
   id: any;
 
+
+  VillageCode: any = '';
   databind: any[] = [];
 
   FileNumber: any = '';
@@ -97,20 +100,20 @@ export class ExistingDivisionsComponent implements OnInit {
   }
   ngOnInit() {
     this.existing = this.fb.group({
-      BranchCode: [],
-      FullName:[],
-      PhoneNumber: [],
-      Adress: [],
-      FileNumber: [],
-      CityNameID: [],
-      RegionNameID: [],
-      BranchCodeView: [],
-      BranchSrl: [],
-      Phs: [],
-      Amp: [],
-      TrfCode: [],
-      PwrCnt: [],
-      VillageName:[],
+      BranchCode: new FormControl('',Validators.required),
+      FullName:new FormControl(''),
+      PhoneNumber: new FormControl(''),
+      Address: new FormControl(''),
+      FileNumber: new FormControl(''),
+      CityNameID: new FormControl(''),
+      RegionNameID: new FormControl(''),
+      BranchCodeView: new FormControl(''),
+      BranchSrl: new FormControl(''),
+      Phs: new FormControl(''),
+      Amp: new FormControl(''),
+      TrfCode: new FormControl(''),
+      PwrCnt: new FormControl(''),
+      VillageCode:new FormControl(''),
       // BillId: [],
 
       // CreationDate: [],
@@ -142,9 +145,9 @@ onEnter(searchTerm: string) {
           this.RegionNameID = this.serch['regionName'] + '(' + this.serch['regionId'] + ')';
           this.FileNumber = this.serch['cityId'] + '/' + this.serch['workDayCode'] + '/' + this.serch['rdrCode'] + '/' + this.serch['rdgSrl'];
           this.FullName = this.serch['firstName'] + this.serch['lastName'];
-          this.VillageName = this.serch['villageName'];
+          this.VillageCode = this.serch['villageCode'];
 
-          // this.BranchCodeView = this.serch['branchCode'];
+          this.BranchCodeView = this.serch['branchCode'];
           // this.BillId = this.serch['BillId'];
           // this.CreationDate = this.serch['creationDate'];
           // console.log(this.databind);
@@ -180,11 +183,12 @@ onEnter(searchTerm: string) {
           this.TrfCode = this.serch['trfCode'];
           this.PwrCnt = this.serch['pwrCnt'];
           this.BranchCode = this.serch['branchCode'];
+          this.BranchCodeView = this.serch['branchCode'];
           this.CityNameID = this.serch['cityName'] + '(' + this.serch['cityId'] + ')';
           this.RegionNameID = this.serch['regionName'] + '(' + this.serch['regionId'] + ')';
           this.FileNumber = this.serch['cityId'] + '/' + this.serch['workDayCode'] + '/' + this.serch['rdrCode'] + '/' + this.serch['rdgSrl'];
           this.FullName = this.serch['firstName'] + this.serch['lastName'];
-          this.VillageName = this.serch['villageName'];
+          this.VillageCode = this.serch['villageCode'];
 
           // this.BranchCodeView = this.serch['branchCode'];
           // this.BillId = this.serch['BillId'];
