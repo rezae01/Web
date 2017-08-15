@@ -84,7 +84,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
       }
     );
 
-    
+
     const browserLang: string = translate.getBrowserLang();
     this.dark = false;
 

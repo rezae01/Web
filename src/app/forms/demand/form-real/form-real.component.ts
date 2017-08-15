@@ -47,13 +47,16 @@ export class FormRealComponent implements OnInit {
   FixedTel: any = '';
   city1: any;
   private today: NgbDateStruct;
-  model: any = '';
+  model;
   date: any;
   err: any;
 
 
   d: any;
   requesterId: any;
+
+
+
 
 
   @Input() disabledLink: boolean;
@@ -71,7 +74,12 @@ export class FormRealComponent implements OnInit {
     config: NgbDatepickerConfig,
     public userservice: UserService,
   ) {
-    this.today = calendar.getToday();
+    // customize default values of datepickers used by this component tree
+    config.minDate = {year: 1300, month: 1, day: 1};
+    config.maxDate = {year: 1378, month: 12, day: 31};
+    config.outsideDays = 'hidden';
+
+    
     this.userservice.getcity().subscribe(
       post => {
         this.region = post;

@@ -49,11 +49,18 @@
           </div>
         </div>
         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
-          <div class="form-group">
-            <label for="IssuedFrom">محل صدور</label>
-            <input [(ngModel)]="IssuedFrom" [(value)]="IssuedFrom" maxlength="50" #IssuedFromR (keypress)="IssuedFrom=$event.target.value" type="text" id="IssuedFrom" class="form-control" [formControl]="formTaghaza.controls['IssuedFrom']" required>
-            <small *ngIf="formTaghaza.controls['IssuedFrom'].hasError('required') && formTaghaza.controls['IssuedFrom'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
-             <span class="pull-left">{{IssuedFromR.value.length}} / 50</span> 
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="">تاریخ تولد</label>
+              <div class="input-group" style="width:100%;">
+                <input  class="form-control" placeholder="yyyy-mm-dd" id="BirthDate" [(value)]="BirthDate" (keypress)="BirthDate=$event.target.value" required
+                       name="BirthDate" [(ngModel)]="BirthDate1" [firstDayOfWeek]="6" ngbDatepicker #d="ngbDatepicker" [formControl]="formTaghaza.controls['BirthDate']">
+                <div class="input-group-addon" (click)="d.toggle()">
+                  <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </div>
+              </div>
+              <small *ngIf="formTaghaza.controls['BirthDate'].hasError('required') && formTaghaza.controls['BirthDate'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
           </div>
         </div>
         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
@@ -85,22 +92,15 @@
             <small *ngIf="formTaghaza.controls['MobileNo'].hasError('maxlength') && formTaghaza.controls['MobileNo'].touched" class="mat-text-warn">شماره تلفن شما 8 تا 11 عدد باید باشد</small>
             <span class="pull-left">{{mobileNoR.value.length}} / 11</span> 
           </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
-          <div class="form-inline">
-            <div class="form-group">
-              <label for="">تاریخ تولد</label>
-              <div class="input-group" style="width:100%;">
-                <input  class="form-control" placeholder="yyyy-mm-dd" id="BirthDate" [(value)]="BirthDate" (keypress)="BirthDate=$event.target.value" required
-                       name="BirthDate" [(ngModel)]="BirthDate1" [firstDayOfWeek]="6" ngbDatepicker #d="ngbDatepicker" [formControl]="formTaghaza.controls['BirthDate']">
-                <div class="input-group-addon" (click)="d.toggle()">
-                  <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
-                </div>
-              </div>
-              <small *ngIf="formTaghaza.controls['BirthDate'].hasError('required') && formTaghaza.controls['BirthDate'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
-            </div>
-          </div>
         </div> 
+        <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+          <div class="form-group">
+            <label for="IssuedFrom">محل صدور</label>
+            <input [(ngModel)]="IssuedFrom" [(value)]="IssuedFrom" maxlength="50" #IssuedFromR (keypress)="IssuedFrom=$event.target.value" type="text" id="IssuedFrom" class="form-control" [formControl]="formTaghaza.controls['IssuedFrom']" required>
+            <small *ngIf="formTaghaza.controls['IssuedFrom'].hasError('required') && formTaghaza.controls['IssuedFrom'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+             <span class="pull-left">{{IssuedFromR.value.length}} / 50</span> 
+          </div>
+        </div>
         <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
           <div class="form-group">
             <label for="PostNumber">کد پستی</label>
@@ -153,9 +153,25 @@
         </div>
         <div class="col-xs-12">
           <button md-raised-button type="submit" class="btn btn-info" (click)="SaveRequst()" [disabled]="!formTaghaza.valid">ثبت</button>
-          <button md-raised-button class="btn btn-danger" (click)="resetForm()">انصراف</button> 
+          <button md-raised-button class="btn btn-danger" (click)="resetForm()">انصراف</button>
+          <button md-raised-button class="btn btn-danger pull-left" data-toggle="modal" data-target="#FormRealLegal">نماینده حقوقی</button> 
         </div>
       </div>
     </fieldset>
  </div>
 </form>
+<div class="modal customModal fade submitLicense" id="FormRealLegal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document" style="width:100%;">
+    <div class="mat-card">
+      <div class="modal-content"> 
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h6 class="modal-title" id="myModalLabel">اشخاص حقوقی</h6>
+        </div> 
+        <div class="modal-body">  
+          <app-form-real-legal></app-form-real-legal>  
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>

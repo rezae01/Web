@@ -1,10 +1,13 @@
+.parent-scroll{
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
 .scroll-X-fullWidth{
   min-width: 1085px;
   width:auto;
-  overflow-x: scroll;
   min-height:120px;
+  height: auto;
   max-height:200px;
-  overflow-y: auto;
 }
 .scroll-X-fullWidth thead tr th{
     font-weight: bold;

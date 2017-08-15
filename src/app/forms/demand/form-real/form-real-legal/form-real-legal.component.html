@@ -1,0 +1,201 @@
+<form action="" method="post" [formGroup]="formTaghazaRealLegal" novalidate  name="formTaghazaRealLegal">
+    <fieldset class="col-xs-12">
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="FirstName">نام</label>
+                <input type="text" class="form-control" name="FirstName" onkeypress="return isNumber(event)" [formControl]="formTaghazaRealLegal.controls['FirstName']" required>
+                <small *ngIf="formTaghazaRealLegal.controls['FirstName'].hasError('required') && formTaghazaRealLegal.controls['FirstName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="LastName">نام خانوادگی</label>
+                <input type="text" class="form-control" name="LastName" onkeypress="return isNumber(event)" [formControl]="formTaghazaRealLegal.controls['LastName']" required>
+                <small *ngIf="formTaghazaRealLegal.controls['LastName'].hasError('required') && formTaghazaRealLegal.controls['LastName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="NameManger">نام مدیر عامل </label>
+                <input type="text" class="form-control" name="NameManger" onkeypress="return isNumber(event)" [formControl]="formTaghazaRealLegal.controls['NameManger']" required>
+                <small *ngIf="formTaghazaRealLegal.controls['NameManger'].hasError('required') && formTaghazaRealLegal.controls['NameManger'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="NationalCode">شناسه ملی</label>
+                <input type="text" class="form-control" name="NationalCode" onkeypress="return isNumber(event)" [formControl]="formTaghazaRealLegal.controls['NationalCode']" required>
+                <small *ngIf="formTaghazaRealLegal.controls['NationalCode'].hasError('required') && formTaghazaRealLegal.controls['NationalCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="EconomicCode"> کد اقتصادی</label>
+                <input type="text" class="form-control" name="EconomicCode" onkeypress="return isNumber(event)" [formControl]="formTaghazaRealLegal.controls['EconomicCode']" required>
+                <small *ngIf="formTaghazaRealLegal.controls['EconomicCode'].hasError('required') && formTaghazaRealLegal.controls['EconomicCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="submitNumber">شماره ثابت</label>
+                <input type="text" class="form-control" name="submitNumber" onkeypress="return isNumber(event)" [formControl]="formTaghazaRealLegal.controls['submitNumber']" required>
+                <small *ngIf="formTaghazaRealLegal.controls['submitNumber'].hasError('required') && formTaghazaRealLegal.controls['submitNumber'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="SubmitLocation">شماره ثابت</label>
+                <input type="text" class="form-control" name="SubmitLocation" onkeypress="return isNumber(event)" [formControl]="formTaghazaRealLegal.controls['SubmitLocation']" required>
+                <small *ngIf="formTaghazaRealLegal.controls['SubmitLocation'].hasError('required') && formTaghazaRealLegal.controls['SubmitLocation'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="National">ملیت</label>
+                <input type="text" class="form-control" name="National" onkeypress="return isNumber(event)" [formControl]="formTaghazaRealLegal.controls['National']" required>
+                <small *ngIf="formTaghazaRealLegal.controls['National'].hasError('required') && formTaghazaRealLegal.controls['National'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label for="activity">زمینه فعالیت</label>
+                <input type="text" class="form-control" name="activity" onkeypress="return isNumber(event)" [formControl]="formTaghazaRealLegal.controls['activity']" required>
+                <small *ngIf="formTaghazaRealLegal.controls['activity'].hasError('required') && formTaghazaRealLegal.controls['activity'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h6>دارندگان امضاء مجاز</h6>
+                </div>
+                <div class="col-xs-6">
+                    <button md-raised-button type="button" (click)="AddInitItemRowsOne()" class="btn btn-info pull-left">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        ایجاد فرم
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12" id="UI-Valid-Panel" formArrayName="credit">
+            <div class="row">
+                <div class="panel panel-default" *ngFor="let itemrow of formTaghazaRealLegal.controls.credit.controls; let i=index">
+                    <div class="panel-heading">
+                        <span>فرم  {{i + 1}}</span>
+                        <span class="glyphicon glyphicon-remove pull-left" *ngIf="formTaghazaRealLegal.controls.credit.controls.length > 1" (click)="RemoveInitItemRowsOne(i)"></span>
+                    </div> 
+                    <div class="panel-body" [formGroupName]="i">
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="FirstName">نام</label>
+                                <input type="text" id="FirstName" class="form-control" name="FirstName" formControlName="FirstName" style="width:100%;" required> 
+                                <small *ngIf="formTaghazaRealLegal.controls.credit.controls[i].controls.FirstName.touched && formTaghazaRealLegal.controls.credit.controls[i].controls.FirstName.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>  
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="LastName">نام خانوادگی</label>
+                                <input type="text" id="LastName" class="form-control" name="LastName" formControlName="LastName" style="width:100%;" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.credit.controls[i].controls.LastName.touched && formTaghazaRealLegal.controls.credit.controls[i].controls.LastName.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="FatherName">نام پدر</label>
+                                <input type="text" id="FatherName" name="FatherName" formControlName="FatherName" class="form-control" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.credit.controls[i].controls.FatherName.touched && formTaghazaRealLegal.controls.credit.controls[i].controls.FatherName.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="shomareShenasname">شناسه شناسنامه</label>
+                                <input type="text" id="shomareShenasname" name="shomareShenasname" formControlName="shomareShenasname" class="form-control" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.credit.controls[i].controls.shomareShenasname.touched && formTaghazaRealLegal.controls.credit.controls[i].controls.shomareShenasname.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="IssuedFrom">محل صدور</label>
+                                <input type="text" class="form-control" id="IssuedFrom" name="IssuedFrom" formControlName="IssuedFrom" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.credit.controls[i].controls.IssuedFrom.touched && formTaghazaRealLegal.controls.credit.controls[i].controls.IssuedFrom.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="Address">آدرس شحص حقوقی</label>
+                                <input class="form-control" type="text" id="Address" name="Address" formControlName="Address" onkeypress="return isNumber(event)" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.credit.controls[i].controls.Address.touched && formTaghazaRealLegal.controls.credit.controls[i].controls.Address.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="PoNum">کد پستی</label>
+                                <input class="form-control" type="text" id="PoNum" name="PoNum" formControlName="PoNum" onkeypress="return isNumber(event)" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.credit.controls[i].controls.PoNum.touched && formTaghazaRealLegal.controls.credit.controls[i].controls.PoNum.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="NamaBar">نمابر</label>
+                                <input class="form-control" type="text" id="NamaBar" name="NamaBar" formControlName="NamaBar" onkeypress="return isNumber(event)" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.credit.controls[i].controls.NamaBar.touched && formTaghazaRealLegal.controls.credit.controls[i].controls.NamaBar.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button md-raised-button type="button" (click)="AddInitItemRowsTwe()" class="btn btn-info pull-left">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+             ایجاد فرم
+        </button>
+        <div class="col-xs-12" id="UI-Valid-Panel-2" formArrayName="BankProfile">
+            <div class="row">
+                <div class="panel panel-default" *ngFor="let itemrow of formTaghazaRealLegal.controls.BankProfile.controls; let i=index">
+                    <div class="panel-heading">
+                        <span>فرم  {{i + 1}}</span>
+                        <span class="glyphicon glyphicon-remove pull-left" *ngIf="formTaghazaRealLegal.controls.BankProfile.controls.length > 1" (click)="RemoveInitItemRowsTwe(i)"></span>
+                    </div> 
+                    <div class="panel-body" [formGroupName]="i">
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="BankName">بانک</label>
+                                <input type="text" id="BankName" class="form-control" name="BankName" formControlName="BankName" style="width:100%;" required> 
+                                <small *ngIf="formTaghazaRealLegal.controls.BankProfile.controls[i].controls.BankName.touched && formTaghazaRealLegal.controls.BankProfile.controls[i].controls.BankName.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>  
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="beranchBank">شعبه</label>
+                                <input type="text" id="beranchBank" class="form-control" name="beranchBank" formControlName="beranchBank" style="width:100%;" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.BankProfile.controls[i].controls.beranchBank.touched && formTaghazaRealLegal.controls.BankProfile.controls[i].controls.beranchBank.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="beranchBankCode">کد شعبه</label>
+                                <input type="text" id="beranchBankCode" name="beranchBankCode" formControlName="beranchBankCode" class="form-control" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.BankProfile.controls[i].controls.beranchBankCode.touched && formTaghazaRealLegal.controls.BankProfile.controls[i].controls.beranchBankCode.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="height:80px;">
+                            <div class="form-group">
+                                <label for="Cvv">شماره حساب</label>
+                                <input type="text" id="Cvv" name="Cvv" formControlName="Cvv" class="form-control" required>
+                                <small *ngIf="formTaghazaRealLegal.controls.BankProfile.controls[i].controls.Cvv.touched && formTaghazaRealLegal.controls.BankProfile.controls[i].controls.Cvv.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="col-xs-12">
+        <div class="row">
+            <button md-raised-button type="button" class="btn btn-success mb-10" [disabled]="!formTaghazaRealLegal.valid" (click)="createTask()">
+                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                ثبت
+            </button>
+        </div>
+    </div>
+</form>
+

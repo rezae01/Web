@@ -34,6 +34,7 @@ import { ApplicantListComponent } from './applicant-list/applicant-list.componen
 import { SubmitDemandComponent } from './submit-demand/submit-demand.component';
 import { FormRealComponent } from './form-real/form-real.component';
 import { FormLegalComponent } from './form-legal/form-legal.component';
+import { FormRealLegalComponent } from './form-real/form-real-legal/form-real-legal.component';
 
 import { ExistingDivisionsComponent } from './existing-divisions/existing-divisions.component';
 
@@ -92,6 +93,7 @@ import { AlertCenterModule } from './../../../../node_modules/ng2-alert-center/a
     DemandComponent,
     ApplicantListComponent,
     FormRealComponent,
+    FormRealLegalComponent,
     FormLegalComponent,
     ExistingDivisionsComponent,
 
