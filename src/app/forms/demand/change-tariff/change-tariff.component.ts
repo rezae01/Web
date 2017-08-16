@@ -93,7 +93,7 @@ export class ChangeTariffComponent implements OnInit {
       );
     }
   }
-  id = new FormControl('');
+  id = new FormControl(0);
   ngOnInit() {
     this.changeTariff = this.fb.group({
       id: this.id,
@@ -218,34 +218,35 @@ export class ChangeTariffComponent implements OnInit {
     console.log(this.changeTariff.value);
     // this.changeTariff.reset();
 
+}
 
 
 
-  const formObj = this.changeTariff.getRawValue();
-    this.userservice.SaveRequstTariff(formObj).subscribe(
-      res => {
-        this.JsonRow = res;
-        this.AfterRow = this.JsonRow.resultStatus;
-        this.JsonError = this.JsonRow.error;
-        this.JsonErrorMessage = this.JsonError.errorMessage;
+  // const formObj = this.changeTariff.getRawValue();
+  //   this.userservice.SaveRequstTariff(formObj).subscribe(
+  //     res => {
+  //       this.JsonRow = res;
+  //       this.AfterRow = this.JsonRow.resultStatus;
+  //       this.JsonError = this.JsonRow.error;
+  //       this.JsonErrorMessage = this.JsonError.errorMessage;
 
-        // localStorage.setItem('requestId', this.re.result.requestId);
-        // localStorage.setItem('branchCode', this.re.branchCode);
-        console.log(this.JsonRow);
-        // console.log(this.JsonRow.result.requestId);
+  //       // localStorage.setItem('requestId', this.re.result.requestId);
+  //       // localStorage.setItem('branchCode', this.re.branchCode);
+  //       console.log(this.JsonRow);
+  //       // console.log(this.JsonRow.result.requestId);
 
-        this.JsonRow = res;
-        this.AfterRow = this.JsonRow.resultStatus;
-        this.JsonError = this.JsonRow.error;
-        this.JsonErrorMessage = this.JsonError.errorMessage;
-        // console.log(this.JsonErrorMessage);
-        if (this.JsonRow.resultStatus === 200) {
-          this.changeTariff.reset();
-        }
-        this.create();
-      }
-    );
+  //       this.JsonRow = res;
+  //       this.AfterRow = this.JsonRow.resultStatus;
+  //       this.JsonError = this.JsonRow.error;
+  //       this.JsonErrorMessage = this.JsonError.errorMessage;
+  //       // console.log(this.JsonErrorMessage);
+  //       if (this.JsonRow.resultStatus === 200) {
+  //         this.changeTariff.reset();
+  //       }
+  //       this.create();
+  //     }
+  //   );
 
-  }
+  // }
 
 }

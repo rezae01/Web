@@ -12,6 +12,7 @@ import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { IntegrationComponent } from './integration/integration.component';
 
 import {
   MdCardModule,
@@ -105,6 +106,8 @@ import { AlertCenterModule } from './../../../../node_modules/ng2-alert-center/a
     FormWizardComponent,
     PowerShiftComponent,
     IntegrationSeparationComponent,
+    IntegrationComponent,
+    
     BecomePermanentComponent,
     ChangeTariffComponent,
     ChangeOwnerComponent,

@@ -19,11 +19,10 @@ import { Task } from '../../demand/model/task';
 export class OperationComponent implements OnInit {
   list: any;
 
-
   tasks: Task[] = [
-    new Task(1, 8 , 5 , 53 , [] , {}),
-    new Task(2, 8 , 5 , 53 , [] , {}),
-    new Task(3, 8 , 5 , 53 , [] , {}),
+    new Task(1,0,0,0,[],{}),
+    // new Task(2, 8 , 5 , 53 , [] , {}),
+    // new Task(3, 8 , 5 , 53 , [] , {}),
   ];
 
   lastTaskId: number = this.tasks[this.tasks.length - 1].id;
@@ -31,8 +30,10 @@ export class OperationComponent implements OnInit {
   edit: boolean = false;
   task: Task;
   addTask(tasks: Task) {
+    
     this.tasks.push(tasks);
     this.lastTaskId = tasks.id + 1;
+    console.log(this.lastTaskId)
   }
   showEditTask(tasks: Task) {
     // console.log(tasks);

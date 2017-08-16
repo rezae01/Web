@@ -30,29 +30,29 @@ export class AdjacentBranch {
         this.NationalCode = NationalCode ;
         this.Phase = Phase ;
         this.Amper = Amper ;
-        this.DocumentType =  DocumentType;
+        this.DocumentType = DocumentType;
     }
 }
 export class CalculationData {
-    TrfType: number;
-    Phs: number;
-    TrfHCode: number;
-    Count: number;
-    PwrIcn: number;
-    PwrCnt: number;
-    VoltCode: number;
-    Amp: number;
-    FmlCode: number;
+    TrfType?: number;
+    Phs?: number;
+    TrfHCode?: number;
+    Count?: number;
+    PwrIcn?: number;
+    PwrCnt?: number;
+    VoltCode?: number;
+    Amp?: number;
+    FmlCode?: number;
     constructor(
-        TrfType: number,
-        Phs: number,
-        TrfHCode: number,
-        Count: number,
-        PwrIcn: number,
-        PwrCnt: number,
-        VoltCode: number,
-        Amp: number,
-        FmlCode: number,
+        TrfType?: number,
+        Phs?: number,
+        TrfHCode?: number,
+        Count?: number,
+        PwrIcn?: number,
+        PwrCnt?: number,
+        VoltCode?: number,
+        Amp?: number,
+        FmlCode?: number,
     ) {
         this.TrfType = TrfType;
         this.Phs = Phs;
@@ -70,7 +70,7 @@ export class Task {
     RequesterId: number;
     FormId: number;
     ProcessId: number;
-    CalculationDatas: CalculationData[] = [];
+    CalculationDatas?: CalculationData[] = [];
     AdjacentBranch?: {
 
     };
@@ -97,23 +97,7 @@ export class Task {
         this.RequesterId = RequesterId;
         this.FormId = FormId;
         this.ProcessId = ProcessId;
-        this.AdjacentBranch = {
-             'AuthorizationNum': 'test',
-             'AuthorizationIssueDate': 'test2',
-             'AuthorizationExpDate': 'test3',
-             'AuthorizationIssuer': 'AuthorizationIssuer',
-             'AuthorizationType': 'AuthorizationType',
-             'LetterNum': 'LetterNum',
-             'NationalCode': 'NationalCode',
-             'Phase': 'Phase',
-             'Amper': 'Amper',
-             'DocumentType': 'DocumentType',
-        };
-
-        this.CalculationDatas = [
-            new CalculationData(1 , 1 , 1 , 1 , 1 , 1 , 1 , 1, 1),
-            new CalculationData(1 , 1 , 1 , 1 , 1 , 1 , 1 , 1, 1),
-            new CalculationData(1 , 1 , 1 , 1 , 1 , 1 , 1 , 1, 1),
-        ];
+        this.AdjacentBranch = {};
+        this.CalculationDatas = [];
     }
 }

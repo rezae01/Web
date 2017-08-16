@@ -5,7 +5,7 @@
 .scroll-X-fullWidth{
   min-width: 1085px;
   width:auto;
-  min-height:120px;
+  min-height:100px;
   height: auto;
   max-height:200px;
 }

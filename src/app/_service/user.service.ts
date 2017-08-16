@@ -97,6 +97,7 @@ Crtableuser(): Observable <post[]> {
   getImageSend(): Observable<any[]>{
     // return null
     // return this.http.get(this.Url_app + 'api/Public/GetUploadFile?BranchCode='+ data, this.jwt()).map(res => res.json());
+    
     return this.http.get(this.Url_app + '/api/Public/GetUploadFile?BranchCode=1', this.jwt()).map(res => res.json());
   }
 

@@ -185,7 +185,7 @@ export class IntegrationSeparationComponent implements OnInit {
       Dm: this.fb.array([this.initItemRows()]),
     });
   }
-    initItemRows() {
+  initItemRows() {
     return this.fb.group({
       Count: [],
       Phs: [],
@@ -194,57 +194,9 @@ export class IntegrationSeparationComponent implements OnInit {
       PwrCnt: [],
       PwrIcn: [],
       TrfType: [],
-      // PresureCode: [],
-      // PostType:[],
-      // SelCode: [],
       FmlCode: [],
       BranchTypeCode: [],
       VoltCode: [],
-
-      // GeoState: [],
-      // GeoAreaCode: [],
-      // FloorCount: [],
-      // BranchMojaverLeft: [],
-      // MojaverIDLeft:[],
-      // TotalRequestedSquare:[],
-      
-      //  VillageCode: [],
-
-      //  Flag: [],
-
-      // AdjacentBranch: new FormGroup({
-
-      // }),
-      //  RequesterId: [],  local
-      // RegionIdBranch: [],
-      // CityidBranchAddress: [],
-      // PoNumBranchAddress: [],
-      // FixedTelBranchAddress: [],
-      // AdressBranchAddress: [],
-      // FaxBranchAddress: [],
-      // FixedTel2BranchAddress: [],
-      // Street1BranchAddress: [],
-      // Street2BranchAddress: [],
-      // AlleyBranchAddress: [],
-      // Alley1BranchAddress: [],
-      // PlakBranchAddress: [],
-      // LongitudeyBranchAddress:[],
-      // LatituexBranchAddress:[],
-
-      // RegionIdOffice: [],
-      // CityidOfficeAddress: [],
-      // PoNumOfficeAddress: [],
-      // FixedTelOfficeAddress: [],
-      // FixedTel2OfficeAddress: [],
-      // AdressOfficeAddress: [],
-      // Street1OfficeAddress: [],
-      // Street2OfficeAddress: [],
-      // AlleyOfficeAddress: [],
-      // Alley1OfficeAddress: [],
-      // PlakOfficeAddress: [],
-      // FaxOfficeAddress: [],
-      // LongitudeyOfficeAddress: [],
-      // LatituexOfficeAddress: []
     });
   }
   // test(){

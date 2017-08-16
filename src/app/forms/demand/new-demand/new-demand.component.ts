@@ -139,7 +139,7 @@ export class NewDemandComponent implements OnInit {
     }
   }
   // tslint:disable-next-line:member-ordering
-  id = new FormControl('');
+  id = new FormControl();
   public ngOnInit() {
     // $(function(){
     //   $('.stepOne').hide();

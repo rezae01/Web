@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild  } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { DomSanitizer } from '@angular/platform-browser';
 // import { Customer } from './interface';
 // import {Observable} from 'rxjs';
 import { Observable } from 'rxjs/Observable';
@@ -52,7 +53,7 @@ re:any;
   constructor(
     private fb: FormBuilder,
     public _userservice: UserService,
-    private http: Http,
+    private http: Http,private sanitizer:DomSanitizer
   ) { //public userservice: UserService
     this._userservice.getImageSend().subscribe(
       post => {
@@ -60,7 +61,8 @@ re:any;
       this.resImg1 = this.resImg.result;
       // this.resImg2 = this.resImg1.completePath;
       // console.log(this.resImg);
-      console.log(this.resImg1);
+      console.log(this.sanitizer.bypassSecurityTrustStyle(this.resImg1));
+      
       // console.log(this.resImg2);
       }
     );
