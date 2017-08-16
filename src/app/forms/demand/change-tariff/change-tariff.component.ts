@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output , EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { UserService } from '../../../_service/user.service';
 import { NotificationsService } from 'angular2-notifications';
+import { Task } from '../../demand/model/task';
 
 @Component({
   selector: 'app-change-tariff',
@@ -38,6 +39,12 @@ export class ChangeTariffComponent implements OnInit {
   RegionName:any;
   CityName:any;
   BillId:any;
+
+
+  tasks: Task[];
+  @Output() addTask = new EventEmitter();
+  @Input() lastTaskId: number;
+
 
   JsonRow: any;
   AfterRow: any;
@@ -86,8 +93,10 @@ export class ChangeTariffComponent implements OnInit {
       );
     }
   }
+  id = new FormControl('');
   ngOnInit() {
     this.changeTariff = this.fb.group({
+      id: this.id,
       RequesterId: new FormControl(2),
       FormId: new FormControl(1024),
       ProcessId: new FormControl(1),
@@ -200,4 +209,43 @@ export class ChangeTariffComponent implements OnInit {
       }
     );
   }
+
+
+
+  createTask() {
+    this.id.setValue(this.lastTaskId);
+    this.addTask.emit(this.changeTariff.value);
+    console.log(this.changeTariff.value);
+    // this.changeTariff.reset();
+
+
+
+
+  const formObj = this.changeTariff.getRawValue();
+    this.userservice.SaveRequstTariff(formObj).subscribe(
+      res => {
+        this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+
+        // localStorage.setItem('requestId', this.re.result.requestId);
+        // localStorage.setItem('branchCode', this.re.branchCode);
+        console.log(this.JsonRow);
+        // console.log(this.JsonRow.result.requestId);
+
+        this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+        // console.log(this.JsonErrorMessage);
+        if (this.JsonRow.resultStatus === 200) {
+          this.changeTariff.reset();
+        }
+        this.create();
+      }
+    );
+
+  }
+
 }

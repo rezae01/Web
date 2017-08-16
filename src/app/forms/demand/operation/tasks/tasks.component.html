@@ -41,19 +41,12 @@
                     </tr> 
                 </tbody>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr *ngFor="let task of tasks;let i = index">>
+                        <td>{{task.id}}</td>
+                        <td>{{task.RequesterId}}</td>
+                        <td>{{task.FormId}}</td>
+                        <td>{{task.ProcessId}}</td>
+                        <td>{{task.BranchCode}}</td>
                     </tr>
                 </tbody>
             </table> 
