@@ -8,7 +8,7 @@ import { UserService } from '../../../_service/user.service';
 
 declare var $: any;
 
-import { Task } from '../../demand/model/task';
+import { Task, CalculationData } from '../../demand/model/task';
 
 @Component({
   selector: 'app-operation',
@@ -18,23 +18,26 @@ import { Task } from '../../demand/model/task';
 })
 export class OperationComponent implements OnInit {
   list: any;
-
-  tasks: Task[] = [
-    new Task(1,0,0,0,[],{}),
-    // new Task(2, 8 , 5 , 53 , [] , {}),
-    // new Task(3, 8 , 5 , 53 , [] , {}),
-  ];
-
-  lastTaskId: number = this.tasks[this.tasks.length - 1].id;
-  // tslint:disable-next-line:no-inferrable-types
+  lastTaskId: number = 1;
+  tasks: Task[] = [];
+  CalculationData: CalculationData[] = [];
   edit: boolean = false;
   task: Task;
-  addTask(tasks: Task) {
-    
+
+
+  rowTable: any;
+  rowTable2: any;
+  addTask(tasks: Task, CalculationDatas: CalculationData) {
     this.tasks.push(tasks);
     this.lastTaskId = tasks.id + 1;
-    console.log(this.lastTaskId)
+    // console.log(this.lastTaskId);
+    this.rowTable = this.tasks;
+    this.rowTable2 = this.rowTable.CalculationData;
+    this.lastTaskId = this.rowTable2.id2 + 1;
+    console.log(this.lastTaskId);
   }
+  
+
   showEditTask(tasks: Task) {
     // console.log(tasks);
     this.task = tasks;
@@ -44,9 +47,16 @@ export class OperationComponent implements OnInit {
   showTask() {
     this.edit = false;
   }
+   
   constructor(public userservice: UserService) {
-    this.list = JSON.parse( localStorage.getItem('NewDemand'));
-    // console.log(this.list);
+    // this.list = JSON.parse( localStorage.getItem('NewDemand'));
+    //  console.log(this.lastTaskId); // console.log(this.list);
+    // this.lastTaskId = this.tasks[this.tasks.length - 1].id;
+    let list: string[] = [];
+
+    // json..forEach(element => {
+    //     list.push(element.Id);
+    // });
   }
   value:any;
   city1:any;

@@ -23,7 +23,7 @@
                     <th colspan="4">آدرس</th><!--let item1 of item.CalculationData;let i = index" (click)="RemoveData()-->    <!--*ngFor="let task of item.CalculationData"-->
                     </tr>
                 </thead><!--*ngFor="let item of tasks;let i = index"-->
-                <!-- <tbody *ngFor="let task of tasks;let i = index">
+                 <tbody *ngFor="let task of tasks;let i = index">
                     <tr *ngFor="let task1 of task.CalculationData">
                         <td>{{ task1.Phs }}</td>
                         <td>{{ task1.Phs }}</td> 
@@ -39,8 +39,8 @@
                             <a md-raised-button class="btn btn-danger btn-xs" (click)="deleteTask(task)"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>حذف</a>
                         </td>
                     </tr> 
-                </tbody> -->
-                <tbody>
+                </tbody> 
+                <!-- <tbody>
                     <tr *ngFor="let task of tasks;let i = index">
                         <td> {{ i + 1 }} </td>
                         <td>{{ task.id }}</td>
@@ -49,7 +49,7 @@
                         <td>{{ task.ProcessId }}</td>
                         <td>{{ task.BranchCode }}</td>
                     </tr>
-                </tbody>
+                </tbody> -->
             </table> 
         </div>  
     </div>
