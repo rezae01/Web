@@ -26,12 +26,17 @@ export class OperationComponent implements OnInit {
   CalculationData: CalculationData[] = [];
   public sendform: FormGroup;
 
+
+  JsonRow: any;
+  AfterRow: any;
+  JsonError: any;
+  JsonErrorMessage: any;
+
   // lastTaskId: number = this.tasks[this.tasks.length - 1].id;
   // tslint:disable-next-line:no-inferrable-types
 
   edit: boolean = false;
   task: Task;
-  JsonRow: any;
   value: any;
   city1: any;
   city: any;
@@ -111,24 +116,10 @@ export class OperationComponent implements OnInit {
       FormId: [2]
     });
   }
-<<<<<<< HEAD
-  JsonRow: any;
-  AfterRow: any;
-  JsonError: any;
-  JsonErrorMessage: any;
-=======
 
-  // finalSubmit(){
-  //   console.log(this.FinalSubmit.value);
-  //   const formObj = this.FinalSubmit.getRawValue();
-  //   this.userservice.SaveSubmit(formObj).subscribe(
-  //     res => {
-  //       this.JsonRow = res;
-  //     }
-  //   );
-  // }
->>>>>>> 76d4facc9406629d3b12c08bc726380da2d51d9e
-  SaveSubmit(){
+
+
+  SaveSubmit() {
     console.log(this.FinalSubmit.value);
     const formObj = this.FinalSubmit.getRawValue();
     this.userservice.SaveSubmit(formObj).subscribe(
