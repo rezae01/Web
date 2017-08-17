@@ -61,7 +61,7 @@ re:any;
       this.resImg1 = this.resImg.result;
       // this.resImg2 = this.resImg1.completePath;
       // console.log(this.resImg);
-      console.log(this.sanitizer.bypassSecurityTrustStyle(this.resImg1));
+      console.log(this.resImg1);
       
       // console.log(this.resImg2);
       }
@@ -103,8 +103,6 @@ re:any;
         //     nameImage: ['', [Validators.required, Validators.minLength(5)]],
         //     // addresses: this._fb.array([])
         // });
-
-
         this.sendform = this.fb.group({
           TypeFileUpload:[null , Validators.compose([Validators.required])],
           // TypeFileUpload: [null],
@@ -112,6 +110,8 @@ re:any;
           file: [''],
           
         })
+
+
 
 
     // this.addAddress();

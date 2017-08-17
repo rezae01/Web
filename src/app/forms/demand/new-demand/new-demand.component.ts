@@ -169,18 +169,6 @@ export class NewDemandComponent implements OnInit {
       FormId: new FormControl(9),
       ProcessId: new FormControl(1),
       CalculationData: this.fb.array([this.initItemRows()]),
-      // AdjacentBranch: new FormGroup({
-      //   AuthorizationNum: new FormControl('', <any>Validators.required),
-      //   AuthorizationIssueDate: new FormControl('', <any>Validators.required),
-      //   AuthorizationExpDate: new FormControl('', <any>Validators.required),
-      //   AuthorizationIssuer: new FormControl('', <any>Validators.required),
-      //   AuthorizationType: new FormControl('', <any>Validators.required),
-      //   LetterNum: new FormControl('', <any>Validators.required),
-      //   NationalCode: new FormControl('', <any>Validators.required),
-      //   Phase: new FormControl('', <any>Validators.required),
-      //   Amper: new FormControl('', <any>Validators.required),
-      //   DocumentType: new FormControl('', <any>Validators.required)
-      // }),
     });
   }
   initItemRows() {
@@ -188,6 +176,7 @@ export class NewDemandComponent implements OnInit {
       TrfType: new FormControl('',Validators.required),
       Phs: new FormControl('',Validators.required),
       TrfHCode: new FormControl('',Validators.required),
+      TrfDetailCode: new FormControl('',Validators.required),
       Count: new FormControl('',Validators.required),
       PwrIcn: new FormControl('',Validators.required),
       PwrCnt: new FormControl('',Validators.required),
@@ -276,9 +265,6 @@ export class NewDemandComponent implements OnInit {
     this.addTask.emit(this.NewDemand.value);
     console.log(this.NewDemand.value);
     // this.NewDemand.reset();
-
-
-
 
     const formObj = this.NewDemand.getRawValue();
     this.userservice.SaverequstNewDemand(formObj).subscribe(

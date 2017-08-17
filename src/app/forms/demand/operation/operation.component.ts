@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
 import { TableData } from './../data-grid/table/table-data';
@@ -18,6 +19,7 @@ import { Task } from '../../demand/model/task';
 })
 export class OperationComponent implements OnInit {
   list: any;
+  public sendform:FormGroup;
 
   tasks: Task[] = [
     new Task(1,0,0,0,[],{}),
@@ -44,25 +46,42 @@ export class OperationComponent implements OnInit {
   showTask() {
     this.edit = false;
   }
-  constructor(public userservice: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    public userservice: UserService) {
     this.list = JSON.parse( localStorage.getItem('NewDemand'));
     // console.log(this.list);
   }
   value:any;
   city1:any;
   city:any;
-  SaveSubmit(value: string){
-    this.value = value;
-    this.userservice.SaveSubmit(1).subscribe(
-      post => {
-        this.city1 = post;
-        this.city = this.city1.result;
+  public FinalSubmit:FormGroup;
+
+
+  public ngOnInit() {
+    this.FinalSubmit = this.fb.group({
+      RequesterId: [1],
+      FormId: [2]
+    })
+  }
+  JsonRow: any;
+  // finalSubmit(){
+  //   console.log(this.FinalSubmit.value);
+  //   const formObj = this.FinalSubmit.getRawValue();
+  //   this.userservice.SaveSubmit(formObj).subscribe(
+  //     res => {
+  //       this.JsonRow = res;
+  //     }
+  //   );
+  // }
+  SaveSubmit(){
+    console.log(this.FinalSubmit.value);
+    const formObj = this.FinalSubmit.getRawValue();
+    console.log(formObj)
+    this.userservice.SaveSubmit(formObj).subscribe(
+      res => {
+        this.JsonRow = res;
       }
     );
   }
-
-  public ngOnInit() {
-  
-  }
-
 }

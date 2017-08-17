@@ -50,8 +50,6 @@ Crtableuser(): Observable <post[]> {
   //---------------------------------------- requst for form component from new demand
   SaverequstNewDemand(data): Observable<any[]> {
     let reza = JSON.parse(localStorage.getItem('currentUser'));
-    // alert(JSON.stringify(data));
-    // console.log(JSON.stringify(data));
     let headers = new Headers({ 'Authorization': 'Bearer ' + reza.access_token });
     headers.append("Content-Type", 'application/json');
     let options = new RequestOptions({ headers: headers });
