@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { TableData } from './../data-grid/table/table-data';
 
 import { UserService } from '../../../_service/user.service';
+import { NotificationsService } from 'angular2-notifications';
+
 
 declare var $: any;
 
@@ -46,9 +48,47 @@ export class OperationComponent implements OnInit {
   showTask() {
     this.edit = false;
   }
+  create() {
+    if (this.JsonRow.resultStatus === 200) {
+      this._service.success(
+          'کاربر گرامی',
+          this.JsonErrorMessage,
+          {
+              showProgressBar: true,
+              pauseOnHover: true,
+              clickToClose: true,
+              maxLength: 200
+          }
+      );
+    } else if (this.JsonRow.resultStatus === 400) {
+      this._service.error(
+          'کاربر گرامی',
+          this.JsonErrorMessage,
+          {
+              showProgressBar: true,
+              pauseOnHover: true,
+              clickToClose: true,
+              maxLength: 200
+          }
+      );
+    } else if (this.JsonRow.resultStatus === 300) {
+      this._service.warn(
+          'کاربر گرامی',
+          this.JsonErrorMessage,
+          {
+              showProgressBar: true,
+              pauseOnHover: true,
+              clickToClose: true,
+              maxLength: 200
+          }
+      );
+    }
+  }
   constructor(
     private fb: FormBuilder,
-    public userservice: UserService) {
+    public userservice: UserService,
+    private _service: NotificationsService,
+  ) {
     this.list = JSON.parse( localStorage.getItem('NewDemand'));
     // console.log(this.list);
   }
@@ -60,27 +100,35 @@ export class OperationComponent implements OnInit {
 
   public ngOnInit() {
     this.FinalSubmit = this.fb.group({
-      RequesterId: [1],
+      RequesterId: [2],
       FormId: [2]
     })
   }
   JsonRow: any;
-  // finalSubmit(){
-  //   console.log(this.FinalSubmit.value);
-  //   const formObj = this.FinalSubmit.getRawValue();
-  //   this.userservice.SaveSubmit(formObj).subscribe(
-  //     res => {
-  //       this.JsonRow = res;
-  //     }
-  //   );
-  // }
+  AfterRow: any;
+  JsonError: any;
+  JsonErrorMessage: any;
   SaveSubmit(){
     console.log(this.FinalSubmit.value);
     const formObj = this.FinalSubmit.getRawValue();
-    console.log(formObj)
     this.userservice.SaveSubmit(formObj).subscribe(
       res => {
         this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+
+        // localStorage.setItem('requestId', this.re.result.requestId);
+        // localStorage.setItem('branchCode', this.re.branchCode);
+        console.log(this.JsonRow);
+        // console.log(this.JsonRow.result.requestId);
+
+        this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+        // console.log(this.JsonErrorMessage);
+        this.create();
       }
     );
   }

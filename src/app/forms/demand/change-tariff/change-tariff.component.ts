@@ -216,7 +216,32 @@ export class ChangeTariffComponent implements OnInit {
     this.id.setValue(this.lastTaskId);
     this.addTask.emit(this.changeTariff.value);
     console.log(this.changeTariff.value);
-    // this.changeTariff.reset();
+    const formObj = this.changeTariff.getRawValue();
+    this.userservice.SaveRequstTariff(formObj).subscribe(
+      res => {
+        console.log(formObj);
+        this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+
+        // localStorage.setItem('requestId', this.re.result.requestId);
+        // localStorage.setItem('branchCode', this.re.branchCode);
+        console.log(this.JsonRow);
+        // console.log(this.JsonRow.result.requestId);
+
+        this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+        // console.log(this.JsonErrorMessage);
+        if (this.JsonRow.resultStatus === 200) {
+          this.changeTariff.reset();
+        }
+        console.log(this.JsonRow.resultStatus);
+        this.create();
+      }
+    );
 
 }
 
