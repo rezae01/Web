@@ -9,7 +9,7 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="panel-address-1">
                 <div class="row">
-                    <h5 class="col-xs-12">آدرس انشعاب</h5>
+                    <h5 class="col-xs-12 mt-1 mb-1" style="font-size:13px">آدرس انشعاب</h5>
                     <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
                         <div clas="form-group">
                             <label for="RegionIdBranch">نام منطقه</label> 
@@ -192,7 +192,7 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="panel-address-2">
                 <div class="row">
-                    <h5 class="col-xs-12">آدرس محل کار</h5>
+                    <h6 class="col-xs-12 mt-1 mb-1" style="font-size:13px;">آدرس محل کار</h6>
                     <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
                         <div clas="form-group">
                             <label for="RegionIdOffice">نام منطقه</label> 
@@ -256,14 +256,14 @@
                             <small *ngIf="BranchingAddress.controls['FaxOfficeAddress'].hasError('required') && BranchingAddress.controls['FaxOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
                         </div>
                     </div> 
-                    <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
+                    <div class="col-xs-12 col-sm-4 col-md-2" style="height:80px;">
                         <div class="form-group">
                             <label for="PlakOfficeAddress">پلاک</label>
                             <input class="form-control" type="text" id="PlakOfficeAddress" onkeypress="return isNumber(event)" [formControl]="BranchingAddress.controls['PlakOfficeAddress']" maxlength="10">
                             <small *ngIf="BranchingAddress.controls['PlakOfficeAddress'].hasError('required') && BranchingAddress.controls['PlakOfficeAddress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-8 col-md-9" style="height:80px;">
+                    <div class="col-xs-12 col-sm-8 col-md-6" style="height:80px;">
                         <div class="form-group">
                             <label for="AdressOfficeAddress">آدرس</label>
                             <input class="form-control" type="text" id="AdressOfficeAddress" [formControl]="BranchingAddress.controls['AdressOfficeAddress']">

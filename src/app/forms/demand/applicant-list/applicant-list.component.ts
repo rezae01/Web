@@ -39,8 +39,6 @@ export class ApplicantListComponent implements OnInit {
   public columns: Array<any> = [];
   private data: Array<any> = [];
 
-
-  
   disabledLink: boolean = false;
 
   constructor(

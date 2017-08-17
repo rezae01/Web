@@ -1,7 +1,7 @@
 <section class="parent-container pt-10 pbW-15">
   <div id="tabInWidth">
     <ul class="nav nav-tabs tab-top" role="tablist" style="padding-left:8px;padding-right:8px;">
-      <li role="presentation"> <!-- [ngClass]="{'disabled': disabledLink}" -->
+      <li role="presentation">
         <a [routerLink]="['/','forms','demand','SubmitDemand']" title="کاربر گرامی در هنگام وارد شدن به این قسمت تمام اطلاعات پر شده در فرم ها پاک خواهد شد">لیست متقاضی ها 
           <i class="fa fa-info-circle pull-right" aria-hidden="true" style="color:black;font-size:14px;vertical-align: middle;"></i>
         </a>
@@ -15,27 +15,6 @@
       <li role="presentation" [ngClass]="{'disabled': disabledLink}">
         <a (click)="dataA(data)" href="#step-3" aria-controls="step-3" role="tab" data-toggle="tab">عملیات</a>
       </li>
-      <!-- <li role="presentation" [ngClass]="{'disabled': disabledLink}">
-        <a (click)="dataA(data)" href="#step-4" aria-controls="step-4" role="tab" data-toggle="tab" [hidden]="change">تغییر تعرفه</a>
-      </li> -->
-      <!-- <li role="presentation" [ngClass]="{'disabled': disabledLink}">
-        <a (click)="dataA(data)" href="#step-5" aria-controls="step-5" role="tab" data-toggle="tab" [hidden]="change">ادغام / تفکیک</a>
-      </li>
-      <li role="presentation" [ngClass]="{'disabled': disabledLink}">
-        <a (click)="dataA(data)" href="#step-6" aria-controls="step-6" role="tab" data-toggle="tab" [hidden]="change">تبدیل به دائم</a>
-      </li>
-      <li role="presentation" [ngClass]="{'disabled': disabledLink}">
-        <a (click)="dataA(data)" href="#step-7" aria-controls="step-7" role="tab" data-toggle="tab" [hidden]="change">تغییر قدرت</a>
-      </li>
-      <li role="presentation" [ngClass]="{'disabled': disabledLink}">
-        <a (click)="dataA(data)" href="#step-8" aria-controls="step-8" role="tab" data-toggle="tab" [hidden]="change">تغییر مالک</a>
-      </li>
-      <li role="presentation" [ngClass]="{'disabled': disabledLink, 'pull-left' : true}">
-        <a (click)="dataA(data); clicktab()" href="#step-9" aria-controls="step-9" role="tab" data-toggle="tab" [hidden]="change">مدارک ضمیمه</a>
-      </li>
-      <li role="presentation" [ngClass]="{'disabled': disabledLink, 'pull-left' : true}">
-        <a (click)="dataA(data)" href="#step-10" aria-controls="step-10" role="tab" data-toggle="tab" [hidden]="change">ثبت مجوز</a>
-      </li> -->
     </ul>
     <div class="tab-content">
       <section role="tabpanel" class="tab-pane form-listrequst active" id="step-1">
@@ -77,7 +56,6 @@
                   <table class="table table-bordered">
                     <thead>
                       <tr>
-                        <!-- <th colspan="1">ردیف</th> -->
                         <th colspan="1">نام مالک </th>
                         <th colspan="1">رمز</th>
                         <th colspan="1">پرونده</th>
@@ -93,8 +71,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let item of list"><!--*ngFor="let index = index"-->
-                        <!-- <td >{{ 1 }}</td> -->
+                      <tr *ngFor="let item of list">
                         <td colspan="1">{{ item.firstName + item.lastName }}</td>
                         <td colspan="1">{{ item.branchCode }}</td>
                         <td colspan="1">{{ item.branchSrl }}</td>
@@ -122,27 +99,6 @@
       <section role="tabpanel" class="tab-pane form-listrequst" id="step-3">
         <app-operation></app-operation>
       </section>
-      <!-- <section role="tabpanel" class="tab-pane form-listrequst" id="step-4">
-        <app-operation></app-operation>
-      </section> -->
-      <!-- <section role="tabpanel" class="tab-pane form-listrequst" id="step-5">
-        <app-integration-separation></app-integration-separation>
-      </section>
-      <section role="tabpanel" class="tab-pane form-listrequst" id="step-6">
-        <app-become-permanent></app-become-permanent>
-      </section>
-      <section role="tabpanel" class="tab-pane form-listrequst" id="step-7">
-        <app-power-shift></app-power-shift>
-      </section>
-      <section role="tabpanel" class="tab-pane form-listrequst" id="step-8">
-        <app-change-owner></app-change-owner>
-      </section>
-      <section role="tabpanel" class="tab-pane form-listrequst" id="step-9">
-        <send-documents></send-documents>
-      </section>
-      <section role="tabpanel" class="tab-pane form-listrequst" id="step-10">
-        <submit-license></submit-license>
-      </section> -->
     </div>
   </div>
 </section>

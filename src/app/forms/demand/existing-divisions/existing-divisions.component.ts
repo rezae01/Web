@@ -100,8 +100,8 @@ export class ExistingDivisionsComponent implements OnInit {
   }
   ngOnInit() {
     this.existing = this.fb.group({
-      BranchCode: new FormControl('',Validators.required),
-      FullName:new FormControl(''),
+      BranchCode: new FormControl('', Validators.required),
+      FullName: new FormControl(''),
       PhoneNumber: new FormControl(''),
       Address: new FormControl(''),
       FileNumber: new FormControl(''),
@@ -113,7 +113,7 @@ export class ExistingDivisionsComponent implements OnInit {
       Amp: new FormControl(''),
       TrfCode: new FormControl(''),
       PwrCnt: new FormControl(''),
-      VillageCode:new FormControl(''),
+      VillageCode: new FormControl(''),
       // BillId: [],
 
       // CreationDate: [],
@@ -143,6 +143,7 @@ onEnter(searchTerm: string) {
           this.BranchCode = this.serch['branchCode'];
           this.CityNameID = this.serch['cityName'] + '(' + this.serch['cityId'] + ')';
           this.RegionNameID = this.serch['regionName'] + '(' + this.serch['regionId'] + ')';
+          // tslint:disable-next-line:max-line-length
           this.FileNumber = this.serch['cityId'] + '/' + this.serch['workDayCode'] + '/' + this.serch['rdrCode'] + '/' + this.serch['rdgSrl'];
           this.FullName = this.serch['firstName'] + this.serch['lastName'];
           this.VillageCode = this.serch['villageCode'];
@@ -203,10 +204,10 @@ onEnter(searchTerm: string) {
       }
     );
   }
-  t1:any;
-  t2:any;
-  list:any[];
-  formObj:any;
+  t1: any;
+  t2: any;
+  list: any[];
+  // formObj: any;
   SaveRequst(){
     console.log(this.existing.value);
     this.t1 = this.existing.value;
@@ -226,9 +227,7 @@ onEnter(searchTerm: string) {
     console.log(this.list);
   }
 
-  RemoveData(list, index){
-    alert(this.list);
-    this.list.push();
+  RemoveData(list, index) {
     this.list.splice(index, 1);
     if (this.list.length < 1) {
        localStorage.removeItem('existing');
