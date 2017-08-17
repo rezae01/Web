@@ -171,22 +171,11 @@ export class NewDemandComponent implements OnInit {
       FormId: new FormControl(9),
       ProcessId: new FormControl(1),
       CalculationData: this.fb.array([this.initItemRows()]),
-      // AdjacentBranch: new FormGroup({
-      //   AuthorizationNum: new FormControl('', <any>Validators.required),
-      //   AuthorizationIssueDate: new FormControl('', <any>Validators.required),
-      //   AuthorizationExpDate: new FormControl('', <any>Validators.required),
-      //   AuthorizationIssuer: new FormControl('', <any>Validators.required),
-      //   AuthorizationType: new FormControl('', <any>Validators.required),
-      //   LetterNum: new FormControl('', <any>Validators.required),
-      //   NationalCode: new FormControl('', <any>Validators.required),
-      //   Phase: new FormControl('', <any>Validators.required),
-      //   Amper: new FormControl('', <any>Validators.required),
-      //   DocumentType: new FormControl('', <any>Validators.required)
-      // }),
     });
   }
   initItemRows() {
     return this.fb.group({
+<<<<<<< HEAD
       // id2: this.id2,
       TrfType: new FormControl('', Validators.required),
       Phs: new FormControl('', Validators.required),
@@ -196,6 +185,17 @@ export class NewDemandComponent implements OnInit {
       PwrCnt: new FormControl('', Validators.required),
       VoltCode: new FormControl('', Validators.required),
       Amp: new FormControl('', Validators.required),
+=======
+      TrfType: new FormControl('',Validators.required),
+      Phs: new FormControl('',Validators.required),
+      TrfHCode: new FormControl('',Validators.required),
+      TrfDetailCode: new FormControl('',Validators.required),
+      Count: new FormControl('',Validators.required),
+      PwrIcn: new FormControl('',Validators.required),
+      PwrCnt: new FormControl('',Validators.required),
+      VoltCode: new FormControl('',Validators.required),
+      Amp: new FormControl('',Validators.required),
+>>>>>>> 3f594018c363adc7f701a9d8a7e50ca21a486c61
       FmlCode: new FormControl(''),
     });
   }
@@ -284,6 +284,7 @@ export class NewDemandComponent implements OnInit {
     console.log(this.rowTable2);
     // this.NewDemand.reset();
 
+<<<<<<< HEAD
     var convArrToObj = function(array){
         var thisEleObj = new Object();
         if(typeof array == "object"){
@@ -293,6 +294,28 @@ export class NewDemandComponent implements OnInit {
             }
         }else {
             thisEleObj = array;
+=======
+    const formObj = this.NewDemand.getRawValue();
+    this.userservice.SaverequstNewDemand(formObj).subscribe(
+      res => {
+        this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+
+        // localStorage.setItem('requestId', this.re.result.requestId);
+        // localStorage.setItem('branchCode', this.re.branchCode);
+        console.log(this.JsonRow);
+        // console.log(this.JsonRow.result.requestId);
+
+        this.JsonRow = res;
+        this.AfterRow = this.JsonRow.resultStatus;
+        this.JsonError = this.JsonRow.error;
+        this.JsonErrorMessage = this.JsonError.errorMessage;
+        // console.log(this.JsonErrorMessage);
+        if (this.JsonRow.resultStatus === 200) {
+          this.NewDemand.reset();
+>>>>>>> 3f594018c363adc7f701a9d8a7e50ca21a486c61
         }
         return thisEleObj;
     }

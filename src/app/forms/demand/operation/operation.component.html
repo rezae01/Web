@@ -7,7 +7,6 @@
       <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#integration"><i class="fa fa-object-ungroup" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>ادغام / تفکیک</a>
       <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#become-permanent"><i class="fa fa-thumbs-o-up" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تبدیل به دائم</a>
       <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#power-shift"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تغییر قدرت</a>
-
       <a md-raised-button (click)="showTask()" class="btn btn-default pull-left" data-toggle="modal" data-target="#submit-license"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>ثبت مجوز</a>
       <a md-raised-button (click)="showTask()" class="btn btn-default pull-left" data-toggle="modal" data-target="#send-documents"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>مدارک ضمیمه</a>
       <a md-raised-button (click)="showTask()" class="btn btn-default pull-left" data-toggle="modal" data-target="#change-owner"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تغییر مالک</a>
@@ -28,8 +27,10 @@
   <app-tasks [(tasks)]="tasks" (taskEdit)="showEditTask($event)"></app-tasks> <!-- [(tasks)]="tasks" -->
 </div>
 <div class="col-xs-12 mt-1">
-  <a md-raised-button (click)="showTask()" class="btn btn-default pull-right" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>امضاء</a>
-  <a md-raised-button (click)="SaveSubmit()" class="btn btn-default pull-right" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>ثبت نهایی</a>
+  <form  [formGroup]="FinalSubmit" (ngSubmit)="finalSubmit()">
+    <a md-raised-button (click)="showTask()" class="btn btn-default pull-right" data-toggle="modal" data-target="#"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>امضاء</a>
+    <a md-raised-button (click)="SaveSubmit()" class="btn btn-default pull-right"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>ثبت نهایی</a>
+  </form>
 </div>
 <div class="modal customModal fade submitLicense" id="new-demand" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document" style="width:100%;">
@@ -81,7 +82,7 @@
     </div>
   </div>
 </div>  
-<!-- <div class="modal customModal fade submitLicense" id="change-tariff" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal customModal fade submitLicense" id="change-tariff" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document" style="width:100%;">
     <div class="mat-card">
       <div class="modal-content"> 
@@ -95,8 +96,8 @@
       </div>  
     </div>
   </div>
-</div> -->
-<!-- <div class="modal customModal fade submitLicense" id="integration-separation" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+</div>
+<div class="modal customModal fade submitLicense" id="integration-separation" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document" style="width:100%;">
     <div class="mat-card">
       <div class="modal-content"> 
@@ -200,4 +201,4 @@
       </div>  
     </div>
   </div>
-</div> -->
+</div>

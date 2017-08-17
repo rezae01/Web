@@ -62,9 +62,7 @@ export class BranchingAddressComponent implements OnInit {
         this.result = this.region.result;
       }
     );
-
    }
-
   setValue(value: string) {
     this.value = value;
     this.userservice.getcitylvl2(this.value).subscribe(
@@ -129,32 +127,32 @@ export class BranchingAddressComponent implements OnInit {
       PlakBranchAddress: [null, Validators.compose([Validators.required])],
       LongitudeyBranchAddress:[null, Validators.compose([Validators.required])],
       LatituexBranchAddress:[null, Validators.compose([Validators.required])],
-      BranchMojaverLeft: [],
-      BranchMojaverRight:[],
-      MojaverIDLeft:[],
-      MojaverIDRight:[],
-      TotalRequestedSquare:[],
-      BranchGeoState: [],
-      BranchGeoAreaCode: [],
-      BranchVillageCode: [],
-      FloorCount: [],
+      BranchMojaverLeft: [''],
+      BranchMojaverRight:[''],
+      MojaverIDLeft:[''],
+      MojaverIDRight:[''],
+      TotalRequestedSquare:[''],
+      BranchGeoState: [''],
+      BranchGeoAreaCode: [''],
+      // BranchVillageCode: [''],
+      FloorCount: [''],
 
-      // GeoStateOffice:[],
-      // GeoAreaCodeOffice:[],
-      RegionIdOffice: [],
-      CityidOfficeAddress: [],
-      PoNumOfficeAddress: [],
-      FixedTelOfficeAddress: [],
-      FixedTel2OfficeAddress: [],
-      AdressOfficeAddress: [],
-      Street1OfficeAddress: [],
-      Street2OfficeAddress: [],
-      // AlleyOfficeAddress: [],  //
-      // Alley1OfficeAddress: [], //
-      PlakOfficeAddress: [],
-      FaxOfficeAddress: [],
-      // LongitudeyOfficeAddress: [],
-      // LatituexOfficeAddress: []
+      // GeoStateOffice:[''],
+      // GeoAreaCodeOffice:[''],
+      RegionIdOffice: [''],
+      CityidOfficeAddress: [''],
+      PoNumOfficeAddress: [''],
+      FixedTelOfficeAddress: [''],
+      FixedTel2OfficeAddress: [''],
+      AdressOfficeAddress: [''],
+      Street1OfficeAddress: [''],
+      Street2OfficeAddress: [''],
+      // AlleyOfficeAddress: [''],  //
+      // Alley1OfficeAddress: [''], //
+      PlakOfficeAddress: [''],
+      FaxOfficeAddress: [''],
+      // LongitudeyOfficeAddress: [''],
+      // LatituexOfficeAddress: ['']
 
 
 
