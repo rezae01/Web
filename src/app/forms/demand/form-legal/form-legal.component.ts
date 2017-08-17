@@ -110,7 +110,7 @@ export class FormLegalComponent implements OnInit {
   }
   ngOnInit() {
     this.formTaghaza = this.fb.group({
-      FormId:[1035],
+      FormId: [1035],
       EconomicCode: [null, Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(11)])],
       FirstName: [null, Validators.compose([Validators.required, Validators.maxLength(30)])],
       CompanyType: ['', Validators.compose([Validators.required])],

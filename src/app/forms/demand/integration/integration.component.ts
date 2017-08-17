@@ -25,8 +25,12 @@ declare var $: any;
 })
 
 export class IntegrationComponent implements OnInit {
-    public Integration : FormGroup;
-    constructor(private http: Http,public  userservice: UserService,private fb: FormBuilder) {
+    public Integration: FormGroup;
+    constructor(
+        private http: Http,
+        public userservice: UserService,
+        private fb: FormBuilder,
+    ) {
 
     }
 
@@ -60,5 +64,12 @@ export class IntegrationComponent implements OnInit {
             VoltCode: [],
         });
     }
-    
+    AddIntegration() {
+        const control = <FormArray>this.Integration.controls['Dm'];
+        control.push(this.initItemRows());
+    }
+    RemoveIntegration(i: number) {
+    const control = <FormArray>this.Integration.controls['Dm'];
+    control.removeAt(i);
+    }
 }

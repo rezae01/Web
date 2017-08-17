@@ -36,7 +36,7 @@ export class NewDemandComponent implements OnInit {
   re: any;
   private today: NgbDateStruct;
   model: NgbDateStruct;
-  id2: any;
+  // id2: any;
 
   private sub: any;
   trf: any;
@@ -75,7 +75,7 @@ export class NewDemandComponent implements OnInit {
 
   t1: any;
   t2: any;
-  list: any;
+  // list: any;
   constructor(
     private fb: FormBuilder,
     calendar: NgbCalendar,
@@ -140,6 +140,8 @@ export class NewDemandComponent implements OnInit {
   }
   // tslint:disable-next-line:member-ordering
   id = new FormControl();
+  // tslint:disable-next-line:member-ordering
+  // id2 = new FormControl();
   public ngOnInit() {
     // $(function(){
     //   $('.stepOne').hide();
@@ -173,25 +175,26 @@ export class NewDemandComponent implements OnInit {
   }
   initItemRows() {
     return this.fb.group({
-      TrfType: new FormControl('',Validators.required),
-      Phs: new FormControl('',Validators.required),
-      TrfHCode: new FormControl('',Validators.required),
-      TrfDetailCode: new FormControl('',Validators.required),
-      Count: new FormControl('',Validators.required),
-      PwrIcn: new FormControl('',Validators.required),
-      PwrCnt: new FormControl('',Validators.required),
-      VoltCode: new FormControl('',Validators.required),
-      Amp: new FormControl('',Validators.required),
+      // id2: this.id2;
+      TrfType: new FormControl('', Validators.required),
+      Phs: new FormControl('', Validators.required),
+      TrfHCode: new FormControl('', Validators.required),
+      TrfDetailCode: new FormControl('', Validators.required),
+      Count: new FormControl('', Validators.required),
+      PwrIcn: new FormControl('', Validators.required),
+      PwrCnt: new FormControl('', Validators.required),
+      VoltCode: new FormControl('', Validators.required),
+      Amp: new FormControl('', Validators.required),
       FmlCode: new FormControl(''),
     });
   }
   AddDemand() {
-      const control = <FormArray>this.NewDemand.controls['CalculationData'];
-      control.push(this.initItemRows());
+    const control = <FormArray>this.NewDemand.controls['CalculationData'];
+    control.push(this.initItemRows());
   }
   RemoveDemand(i: number) {
-        const control = <FormArray>this.NewDemand.controls['CalculationData'];
-        control.removeAt(i);
+    const control = <FormArray>this.NewDemand.controls['CalculationData'];
+    control.removeAt(i);
   }
 
 
@@ -259,13 +262,21 @@ export class NewDemandComponent implements OnInit {
   //   this.list = JSON.parse( localStorage.getItem('NewDemand'));
   //   console.log(this.list);
   // }
+  // tslint:disable-next-line:member-ordering
+  rowTable: any;
+  // tslint:disable-next-line:member-ordering
+  rowTable2: any;
 
+  // tslint:disable-next-line:member-ordering
+  list: any[];
   createTask() {
     this.id.setValue(this.lastTaskId);
     this.addTask.emit(this.NewDemand.value);
     console.log(this.NewDemand.value);
-    // this.NewDemand.reset();
+    this.rowTable = this.NewDemand.value;
 
+    this.rowTable2 = this.rowTable.CalculationData;
+    console.log(this.rowTable2);
     const formObj = this.NewDemand.getRawValue();
     this.userservice.SaverequstNewDemand(formObj).subscribe(
       res => {
@@ -287,9 +298,33 @@ export class NewDemandComponent implements OnInit {
         if (this.JsonRow.resultStatus === 200) {
           this.NewDemand.reset();
         }
-        this.create();
       }
     );
+  
+    // const formObj = this.NewDemand.getRawValue();
+    // this.userservice.SaverequstNewDemand(formObj).subscribe(
+    //   res => {
+    //     this.JsonRow = res;
+    //     this.AfterRow = this.JsonRow.resultStatus;
+    //     this.JsonError = this.JsonRow.error;
+    //     this.JsonErrorMessage = this.JsonError.errorMessage;
+
+    //     // localStorage.setItem('requestId', this.re.result.requestId);
+    //     // localStorage.setItem('branchCode', this.re.branchCode);
+    //     console.log(this.JsonRow);
+    //     // console.log(this.JsonRow.result.requestId);
+
+    //     this.JsonRow = res;
+    //     this.AfterRow = this.JsonRow.resultStatus;
+    //     this.JsonError = this.JsonRow.error;
+    //     this.JsonErrorMessage = this.JsonError.errorMessage;
+    //     // console.log(this.JsonErrorMessage);
+    //     if (this.JsonRow.resultStatus === 200) {
+    //       this.NewDemand.reset();
+    //     }
+    //     this.create();
+    //   }
+    // );
 
   }
 

@@ -34,6 +34,7 @@ export class AdjacentBranch {
     }
 }
 export class CalculationData {
+    id2?: number;
     TrfType?: number;
     Phs?: number;
     TrfHCode?: number;
@@ -44,6 +45,7 @@ export class CalculationData {
     Amp?: number;
     FmlCode?: number;
     constructor(
+        id2?: number,
         TrfType?: number,
         Phs?: number,
         TrfHCode?: number,
@@ -54,6 +56,7 @@ export class CalculationData {
         Amp?: number,
         FmlCode?: number,
     ) {
+        this.id2 = id2;
         this.TrfType = TrfType;
         this.Phs = Phs;
         this.TrfHCode = TrfHCode;
