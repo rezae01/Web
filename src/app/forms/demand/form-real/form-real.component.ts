@@ -151,8 +151,22 @@ export class FormRealComponent implements OnInit {
       Cityid: ['', Validators.compose([Validators.required])],
       CityidLvlTwo: [''],
       FixedTel: [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(11)])],
+      legalRepresentative: this.fb.group({
+        text1: ['', Validators.required],
+        text2: ['', Validators.required],
+        te: this.fb.array([this.initItemRows()])
+      }),
+
+      
     });
   }
+  initItemRows() {
+    return this.fb.group({
+        street: ['', Validators.required],
+ 
+    });
+}
+
   onEnter(searchTerm: string) {
     this.serchFilter = searchTerm;
     this.userservice.serachByNationalCode(this.serchFilter).subscribe(

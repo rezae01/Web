@@ -159,6 +159,32 @@
       </div>
     </fieldset>
  </div>
+ <fieldset formGroupName="legalRepresentative">
+    <label>test:</label>
+    <input type="text" formControlName="text1">
+    <label>test2:</label>
+    <input type="text" formControlName="text2">
+    <div id="UI-Valid-Panel" formArrayName="te">
+        <div class="panel panel-default" *ngFor="let itemrow of formTaghaza.controls.legalRepresentative.controls.te.controls; let i=index">
+          <div class="panel-heading">
+            <span>فرم  {{i + 1}}</span>
+            <span class="glyphicon glyphicon-remove pull-left" *ngIf="formTaghaza.controls.legalRepresentative.controls.te.controls.length > 1" (click)="RemoveDemand(i)"></span>
+          </div> 
+          <div class="panel-body" [formGroupName]="i">
+            <div class="col-xs-12 col-sm-3" style="height:80px;">
+              <div class="form-group">
+                <label for="street">تست</label>
+                <select id="street" class="form-control" name="street" formControlName="street" style="width:100%;" required> 
+                  <option [value]="1">آزاد و موقت</option>
+                  <option [value]="0">دائم </option>
+                </select>
+                <!-- <small *ngIf="legalRepresentative.controls.te.controls[i].controls.street.touched && legalRepresentative.controls.CalculationData.controls[i].controls.street.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>   -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </fieldset>
 </form>
 <div class="modal customModal fade submitLicense" id="FormRealLegal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document" style="width:100%;">
