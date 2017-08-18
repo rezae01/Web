@@ -85,7 +85,7 @@ export class IntegrationComponent implements OnInit {
             TrfType: [null, Validators.compose([Validators.required])], // نوع انشعاب
             Phs: [null, Validators.compose([Validators.required])], // فاز
             Amp: [null, Validators.compose([Validators.required])], // آمپر
-            TrfHCode: [null, Validators.compose([Validators.required])], // سر تعرفه 
+            TrfHCode: [null, Validators.compose([Validators.required])], // سر تعرفه
             PwrCnt: [null, Validators.compose([Validators.required])], // قدرت قرار دادی
             PwrIcn: [null, Validators.compose([Validators.required])], // قدرت مجاز پروانه
             FmlCode: [null, Validators.compose([Validators.required])], // تعداد خانوار
@@ -94,12 +94,12 @@ export class IntegrationComponent implements OnInit {
     }
     initItemRows() {
         return this.fb.group({
-            TrfDetailCode: [null, Validators.compose([Validators.required])],
             Count: [null, Validators.compose([Validators.required])],
             Phs: [null, Validators.compose([Validators.required])],
             Amp: [null, Validators.compose([Validators.required])],
             TrfHCode: [null, Validators.compose([Validators.required])],
             PwrCnt: [null, Validators.compose([Validators.required])],
+            TrfDetailCode: [null, Validators.compose([Validators.required])],
             PwrIcn: [null, Validators.compose([Validators.required])],
             TrfType: [null, Validators.compose([Validators.required])],
             FmlCode: [null, Validators.compose([Validators.required])],
@@ -116,17 +116,20 @@ export class IntegrationComponent implements OnInit {
     control.removeAt(i);
     }
 
-
+    SendSaveRequst() {
+        // tslint:disable-next-line:no-unused-expression
+        this.Integration.value;
+        console.log(this.Integration.value);
+    }
     SaveRequst() {
         const formObj = this.Integration.getRawValue();
         console.log(formObj);
-        this.userservice.Saverequst(formObj).subscribe(
+        this.userservice.Integration(formObj).subscribe(
           res => {
             this.JsonRow = res;
             this.AfterRow = this.JsonRow.resultStatus;
             this.JsonError = this.JsonRow.error;
             this.JsonErrorMessage = this.JsonError.errorMessage;
-
             this.create();
           }
         );
