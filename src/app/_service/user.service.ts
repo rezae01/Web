@@ -64,6 +64,15 @@ Crtableuser(): Observable <post[]> {
      (res: Response) => res.json() || {}
     );
   }
+  Separation(data): Observable<any[]> {
+    let reza = JSON.parse(localStorage.getItem('currentUser'));
+    let headers = new Headers({ 'Authorization': 'Bearer ' + reza.access_token });
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post( this.Url_app + '/api/IntegrationandSeparation/SeparationRequest', JSON.stringify(data) , options).map(
+     (res: Response) => res.json() || {}
+    );
+  }
   //---------------------------------------- name file 
     // sendNameFile1(data): Observable<any[]> {
     //   let reza = JSON.parse(localStorage.getItem('currentUser'));
@@ -290,19 +299,19 @@ Crtableuser(): Observable <post[]> {
   }
 
 
-  serachByPassPwr(data): Observable<any>{
+  serachByPassPwr(data): Observable<any> {
     return this.http.get(this.Url_app + '/api/Billing/GetPwr?branchCode=' + data + '&FormName=1', this.jwt()).map(res => res.json());
   }
-  serachByPassTariff(data): Observable<any>{
+  serachByPassTariff(data): Observable<any> {
     return this.http.get(this.Url_app + '/api/Billing/GetPwr?branchCode=' + data + '&FormName=2' ,this.jwt()).map(res => res.json());
   }
-  serachByPassOwner(data): Observable<any>{
+  serachByPassOwner(data): Observable<any> {
     return this.http.get(this.Url_app + '/api/Billing/GetPwr?branchCode=' + data + '&FormName=3', this.jwt()).map(res => res.json());
   }
-  serachByPassBecome(data): Observable<any>{
+  serachByPassBecome(data): Observable<any> {
     return this.http.get(this.Url_app + '/api/Billing/GetPwr?branchCode=' + data + '&FormName=4', this.jwt()).map(res => res.json());
   }
-  serachByPassExisting(data): Observable<any>{
+  serachByPassExisting(data): Observable<any> {
     return this.http.get(this.Url_app + '/api/Billing/GetPwr?branchCode=' + data + '&FormName=5', this.jwt()).map(res => res.json());
   }
   //------------------------ Response for change tariff

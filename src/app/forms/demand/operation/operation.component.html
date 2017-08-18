@@ -4,7 +4,8 @@
       <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#new-demand"><i class="fa fa-plus" style="margin-left:5px;vertical-align: middle;margin-top: 2px;"></i>انشعاب جدید</a>
       <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#branching-address"><i class="fa fa-thumbs-o-up" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>آدرس ها</a>
       <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#change-tariff"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تغییر تعرفه</a>
-      <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#integration"><i class="fa fa-object-ungroup" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>ادغام / تفکیک</a>
+      <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#integration"><i class="fa fa-object-ungroup" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تفکیک</a>
+      <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#separation"><i class="fa fa-object-ungroup" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>ادغام</a>
       <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#become-permanent"><i class="fa fa-thumbs-o-up" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تبدیل به دائم</a>
       <a md-raised-button (click)="showTask()" class="btn btn-default" data-toggle="modal" data-target="#power-shift"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تغییر قدرت</a>
       <a md-raised-button (click)="showTask()" class="btn btn-default pull-left" data-toggle="modal" data-target="#submit-license"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>ثبت مجوز</a>
@@ -62,6 +63,21 @@
         </div> 
         <div class="modal-body"> 
           <app-integration></app-integration>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+<div class="modal customModal fade submitLicense" id="separation" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document" style="width:100%;">
+    <div class="mat-card">
+      <div class="modal-content"> 
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h6 class="modal-title" id="myModalLabel">ادغام</h6>
+        </div> 
+        <div class="modal-body"> 
+          <app-separation></app-separation>
         </div>
       </div>  
     </div>

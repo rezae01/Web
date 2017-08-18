@@ -162,10 +162,10 @@ export class BranchingAddressComponent implements OnInit {
     console.log(this.BranchingAddress);
     console.log(this.BranchingAddress.value);
   }
-  resetForm(){
+  resetForm() {
     this.BranchingAddress.reset();
   }
-  SaveRequst(){
+  SaveRequst() {
     const formObj = this.BranchingAddress.getRawValue();
     this.userservice.SaveRequstAdressRes(formObj).subscribe(
       res => {

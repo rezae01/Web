@@ -42,6 +42,7 @@ import { ExistingDivisionsComponent } from './existing-divisions/existing-divisi
 import { FormWizardComponent } from './form-wizard/form-wizard.component';
 import { PowerShiftComponent } from './power-shift/power-shift.component';
 import { IntegrationSeparationComponent } from './integration-separation/integration-separation.component';
+import { SeparationComponent } from './separation/separation.component';
 import { BecomePermanentComponent } from './become-permanent/become-permanent.component';
 import { ChangeTariffComponent } from './change-tariff/change-tariff.component';
 import { ChangeOwnerComponent } from './change-owner/change-owner.component';
@@ -107,7 +108,8 @@ import { AlertCenterModule } from './../../../../node_modules/ng2-alert-center/a
     PowerShiftComponent,
     IntegrationSeparationComponent,
     IntegrationComponent,
-    
+    SeparationComponent,
+
     BecomePermanentComponent,
     ChangeTariffComponent,
     ChangeOwnerComponent,

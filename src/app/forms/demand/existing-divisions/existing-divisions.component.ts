@@ -61,7 +61,9 @@ export class ExistingDivisionsComponent implements OnInit {
     private _service: NotificationsService,
     private fb: FormBuilder,
     public userservice: UserService,
-  ) {}
+  ) {
+
+  }
   create() {
     if (this.JsonRow.resultStatus === 200) {
       this._service.success(
@@ -120,7 +122,7 @@ export class ExistingDivisionsComponent implements OnInit {
     });
   }
 
-onEnter(searchTerm: string) {
+  onEnter(searchTerm: string) {
     this.serchFilter = searchTerm;
     this.userservice.serachByPassExisting(this.serchFilter).subscribe(
       post => {
@@ -130,7 +132,6 @@ onEnter(searchTerm: string) {
         console.log(this.JsonRow);
         if (this.JsonRow.resultStatus === 200) {
           this.serch = JSON.parse( JSON.stringify(this.JsonRow.result));
-
           // this.FirstName = this.serch['firstName'];
           // this.LastName = this.serch['lastName'];
           this.PhoneNumber = this.serch['phoneNumber'];
@@ -151,11 +152,7 @@ onEnter(searchTerm: string) {
           this.BranchCodeView = this.serch['branchCode'];
           // this.BillId = this.serch['BillId'];
           // this.CreationDate = this.serch['creationDate'];
-          // console.log(this.databind);
-          console.log(this.FileNumber);
-          console.log(this.CityNameID);
-          console.log(this.RegionNameID);
-          console.log(this.FullName);
+          console.log(this.databind);
         } else {
           this.existing.reset();
         }
@@ -187,6 +184,7 @@ onEnter(searchTerm: string) {
           this.BranchCodeView = this.serch['branchCode'];
           this.CityNameID = this.serch['cityName'] + '(' + this.serch['cityId'] + ')';
           this.RegionNameID = this.serch['regionName'] + '(' + this.serch['regionId'] + ')';
+          // tslint:disable-next-line:max-line-length
           this.FileNumber = this.serch['cityId'] + '/' + this.serch['workDayCode'] + '/' + this.serch['rdrCode'] + '/' + this.serch['rdgSrl'];
           this.FullName = this.serch['firstName'] + this.serch['lastName'];
           this.VillageCode = this.serch['villageCode'];
@@ -194,8 +192,8 @@ onEnter(searchTerm: string) {
           // this.BranchCodeView = this.serch['branchCode'];
           // this.BillId = this.serch['BillId'];
           // this.CreationDate = this.serch['creationDate'];
-          // console.log(this.databind);
-          console.log(this.JsonRow.result);
+          console.log(this.databind);
+          // console.log(this.JsonRow.result);
         } else {
           this.existing.reset();
         }
@@ -236,6 +234,7 @@ onEnter(searchTerm: string) {
         localStorage.setItem('existing', JSON.stringify( this.list ));
       }
     console.log(this.list);
+    alert(JSON.stringify(this.list));
  }
 
 }

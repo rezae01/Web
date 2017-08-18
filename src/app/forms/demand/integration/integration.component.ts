@@ -76,7 +76,7 @@ export class IntegrationComponent implements OnInit {
               }
           );
         }
-      }
+    }
     public ngOnInit() {
         this.Integration = this.fb.group({
             SourceBranchCode: [null , Validators.compose([Validators.required])],
@@ -112,10 +112,9 @@ export class IntegrationComponent implements OnInit {
         control.push(this.initItemRows());
     }
     RemoveIntegration(i: number) {
-    const control = <FormArray>this.Integration.controls['Dm'];
-    control.removeAt(i);
+        const control = <FormArray>this.Integration.controls['Dm'];
+        control.removeAt(i);
     }
-
     SendSaveRequst() {
         // tslint:disable-next-line:no-unused-expression
         this.Integration.value;
@@ -125,13 +124,13 @@ export class IntegrationComponent implements OnInit {
         const formObj = this.Integration.getRawValue();
         console.log(formObj);
         this.userservice.Integration(formObj).subscribe(
-          res => {
-            this.JsonRow = res;
-            this.AfterRow = this.JsonRow.resultStatus;
-            this.JsonError = this.JsonRow.error;
-            this.JsonErrorMessage = this.JsonError.errorMessage;
-            this.create();
-          }
+            res => {
+                this.JsonRow = res;
+                this.AfterRow = this.JsonRow.resultStatus;
+                this.JsonError = this.JsonRow.error;
+                this.JsonErrorMessage = this.JsonError.errorMessage;
+                this.create();
+            }
         );
-      }
+    }
 }
