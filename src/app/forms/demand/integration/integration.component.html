@@ -1,21 +1,22 @@
-<form action="" method="post" [formGroup]="Integration" novalidate  name="Integration" (ngSubmit)="createTask()" >
+<form action="" method="post" [formGroup]="Integration" novalidate  name="Integration" (ngSubmit)="SaveRequst()">
+  <input type="hidden" formControlName="FormId" [value]="1023">
   <div class="tab-content" id="IntegraSeparation">
     <div role="tabpanel" class="tab-pane active" id="Parent-Step1">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
-              <div class="form-group">
-                  <label for="requesterId"> شماره درخواست </label>
-                  <input class="form-control" type="text" id="requesterId" formControlName="requesterId" name="requesterId" required>
-                  <small *ngIf="Integration.controls['requesterId'].hasError('required') && Integration.controls['requesterId'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
-              </div>
+          <div class="col-xs-12 col-sm-3" style="height:80px;">
+            <div class="form-group">
+              <label for="requesterId"> شماره درخواست </label>
+              <input class="form-control" type="text" id="requesterId" formControlName="requesterId" name="requesterId" required>
+              <small *ngIf="Integration.controls['requesterId'].hasError('required') && Integration.controls['requesterId'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
           </div>
           <div class="col-xs-12 col-sm-3" style="height:80px;">
-              <div class="form-group">
-                  <label for="SourceBranchCode"> رمز </label>
-                  <input class="form-control" name="SourceBranchCode" id="SourceBranchCode" formControlName="SourceBranchCode" required>
-                  <small *ngIf="Integration.controls['SourceBranchCode'].hasError('required') && Integration.controls['SourceBranchCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
-              </div>
+            <div class="form-group">
+              <label for="SourceBranchCode"> رمز </label>
+              <input class="form-control" name="SourceBranchCode" id="SourceBranchCode" formControlName="SourceBranchCode" required>
+              <small *ngIf="Integration.controls['SourceBranchCode'].hasError('required') && Integration.controls['SourceBranchCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
           </div>
           <div class="col-xs-12 col-sm-3" style="height:80px;">
             <div class="form-group">
@@ -43,56 +44,56 @@
           </div>
           <div class="col-xs-12 col-sm-3" style="height:80px;">
               <div class="form-group">
-                  <label for="TrfHCode">سر تعرفه</label>
-                  <select id="TrfHCode" name="TrfHCode" formControlName="TrfHCode" class="form-control" required>
-                      <option [value]="1" class="hideOption">خانگی</option>
-                      <option [value]="2" id="stepOne">عمومی</option>
-                      <option [value]="3" id="stepTwo">کشاورزی</option>
-                      <option [value]="4" class="hideOption">صنعت و معدن</option>
-                      <option [value]="5" class="hideOption">سایر مصارف</option>  
-                  </select>
-                  <small *ngIf="Integration.controls['TrfHCode'].hasError('required') && Integration.controls['TrfHCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                <label for="TrfHCode">سر تعرفه</label>
+                <select id="TrfHCode" name="TrfHCode" formControlName="TrfHCode" class="form-control" required>
+                  <option [value]="1" class="hideOption">خانگی</option>
+                  <option [value]="2" id="stepOne">عمومی</option>
+                  <option [value]="3" id="stepTwo">کشاورزی</option>
+                  <option [value]="4" class="hideOption">صنعت و معدن</option>
+                  <option [value]="5" class="hideOption">سایر مصارف</option>  
+                </select>
+                <small *ngIf="Integration.controls['TrfHCode'].hasError('required') && Integration.controls['TrfHCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
               </div>
           </div>
           <div class="col-xs-12 col-sm-3" style="height:80px;">
-              <div class="form-group">
-                  <label for="Phs">فاز</label>
-                  <select id="Phs" class="form-control" name="Phs" formControlName="Phs" style="width:100%;" required>
-                      <option [value]="1">تک فاز</option>
-                      <option [value]="3">سه فاز</option> 
-                  </select>
-                  <small *ngIf="Integration.controls['Phs'].hasError('required') && Integration.controls['Phs'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
-              </div>
+            <div class="form-group">
+              <label for="Phs">فاز</label>
+              <select id="Phs" class="form-control" name="Phs" formControlName="Phs" style="width:100%;" required>
+                <option [value]="1">تک فاز</option>
+                <option [value]="3">سه فاز</option> 
+              </select>
+              <small *ngIf="Integration.controls['Phs'].hasError('required') && Integration.controls['Phs'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-3" style="height:80px;">
+            <div class="form-group">
+              <label for="TrfType">نوع انشعاب</label>
+              <select id="TrfType" class="form-control" name="TrfType" formControlName="TrfType" style="width:100%;" required> 
+                <option [value]="1">آزاد و موقت</option>
+                <option [value]="0">دائم </option>
+              </select>
+              <small *ngIf="Integration.controls['TrfType'].hasError('required') && Integration.controls['TrfType'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-3" style="height:80px;">
+            <div class="form-group">
+              <label for="PwrCnt">قدرت قرار دادی</label>
+              <input id="PwrCnt" class="form-control" name="PwrCnt" formControlName="PwrCnt" style="width:100%;" required>
+              <small *ngIf="Integration.controls['PwrCnt'].hasError('required') && Integration.controls['PwrCnt'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-3" style="height:80px;">
+            <div class="form-group">
+              <label for="PwrIcn">قئرت مجاز پروانه</label>
+              <input id="PwrIcn" class="form-control" name="PwrIcn" formControlName="PwrIcn" style="width:100%;" required>
+              <small *ngIf="Integration.controls['PwrIcn'].hasError('required') && Integration.controls['PwrIcn'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+            </div>
           </div>
           <div class="col-xs-12 col-sm-3" style="height:80px;">
               <div class="form-group">
-                  <label for="TrfType">نوع انشعاب</label>
-                  <select id="TrfType" class="form-control" name="TrfType" formControlName="TrfType" style="width:100%;" required> 
-                      <option [value]="1">آزاد و موقت</option>
-                      <option [value]="0">دائم </option>
-                  </select>
-                  <small *ngIf="Integration.controls['TrfType'].hasError('required') && Integration.controls['TrfType'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-3" style="height:80px;">
-              <div class="form-group">
-                  <label for="PwrCnt">قدرت قرار دادی</label>
-                  <input id="PwrCnt" class="form-control" name="PwrCnt" formControlName="PwrCnt" style="width:100%;" required>
-                  <small *ngIf="Integration.controls['PwrCnt'].hasError('required') && Integration.controls['PwrCnt'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-3" style="height:80px;">
-              <div class="form-group">
-                  <label for="PwrIcn">قئرت مجاز پروانه</label>
-                  <input id="PwrIcn" class="form-control" name="PwrIcn" formControlName="PwrIcn" style="width:100%;" required>
-                  <small *ngIf="Integration.controls['PwrIcn'].hasError('required') && Integration.controls['PwrIcn'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-3" style="height:80px;">
-              <div class="form-group">
-                  <label for="FmlCode">تعداد خانوار</label>
-                  <input id="FmlCode" class="form-control" name="FmlCode" formControlName="FmlCode" style="width:100%;" required>
-                  <small *ngIf="Integration.controls['FmlCode'].hasError('required') && Integration.controls['FmlCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+                <label for="FmlCode">تعداد خانوار</label>
+                <input id="FmlCode" class="form-control" name="FmlCode" formControlName="FmlCode" style="width:100%;" required>
+                <small *ngIf="Integration.controls['FmlCode'].hasError('required') && Integration.controls['FmlCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
               </div>
           </div>
         </div>
@@ -105,6 +106,16 @@
               <span class="glyphicon glyphicon-remove pull-left" *ngIf="Integration.controls.Dm.controls.length > 1" (click)="RemoveIntegration(i)"></span>
             </div> 
             <div class="panel-body" [formGroupName]="i">
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
+                <div class="form-group">
+                  <label for="BranchTypeCode">نوع انشعاب</label>
+                  <select id="BranchTypeCode" class="form-control" formControlName="BranchTypeCode" name="BranchTypeCode" required>
+                    <option [value]="1">عادی</option>
+                    <option [value]="2">دیماندی</option>
+                  </select>
+                  <small *ngIf="Integration.controls.Dm.controls[i].controls.BranchTypeCode.touched && Integration.controls.Dm.controls[i].controls.BranchTypeCode.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>  
+                </div>
+              </div>
               <div class="col-xs-12 col-sm-3" style="height:80px;">
                 <div class="form-group">
                   <label for="TrfType">نوع انشعاب</label>
@@ -162,6 +173,19 @@
                   <small *ngIf="Integration.controls.Dm.controls[i].controls.TrfHCode.touched && Integration.controls.Dm.controls[i].controls.TrfHCode.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                 </div>
               </div>
+              <div class="col-xs-12 col-sm-3 stepOne" style="height:80px;">
+                <div class="form-group">
+                  <label for="TrfDetailCode">ریز تعرفه</label>
+                  <select class="form-control" id="TrfDetailCode" name="TrfDetailCode" formControlName="TrfDetailCode">
+                    <option [value]="0" selected>عادی</option>
+                    <option [value]="1">جایگاه CNG</option>
+                    <option [value]="1">کشاورزی پمپاژ</option>
+                    <option [value]="2">صنایع کشاورزی</option>
+                    <option [value]="3">چاه کشاورزی</option>
+                  </select>
+                  <small *ngIf="Integration.controls.Dm.controls[i].controls.TrfDetailCode.touched && Integration.controls.Dm.controls[i].controls.TrfDetailCode.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>                  
+                </div>
+              </div>
               <div class="col-xs-12 col-sm-3" style="height:80px;">
                 <div class="form-group">
                   <label for="VoltCode">ولتاژ</label>
@@ -186,16 +210,16 @@
                   <small *ngIf="Integration.controls.Dm.controls[i].controls.PwrIcn.touched && Integration.controls.Dm.controls[i].controls.PwrIcn.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                 </div>
               </div>
-                <div class="col-xs-12 col-sm-3" style="height:80px;">
+              <div class="col-xs-12 col-sm-3" style="height:80px;">
                 <div class="form-group">
-                  <label for="PwrIcn">تعداد خانوار</label>
+                  <label for="FmlCode">تعداد خانوار</label>
                   <input class="form-control" type="text" id="FmlCode" name="FmlCode" formControlName="FmlCode" onkeypress="return isNumber(event)" required>
                   <small *ngIf="Integration.controls.Dm.controls[i].controls.FmlCode.touched && Integration.controls.Dm.controls[i].controls.FmlCode.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                 </div>
               </div>  
               <div class="col-xs-12 col-sm-3" style="height:80px;">
                 <div class="form-group">
-                  <label for="Phs">تعداد انشعاب</label>
+                  <label for="Count">تعداد انشعاب</label>
                   <input class="form-control" type="text" id="Count" name="Count" formControlName="Count" onkeypress="return isNumber(event)" required>
                   <small *ngIf="Integration.controls.Dm.controls[i].controls.Count.touched && Integration.controls.Dm.controls[i].controls.Count.hasError('required')" class="mat-text-warn">فیلد شما خالی میباشد</small>
                 </div>
@@ -212,7 +236,7 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
             انشعاب جدید
           </button>
-          <button md-raised-button type="button" class="btn btn-success mb-10" [disabled]="!Integration.valid" (click)="createTask()">
+          <button md-raised-button type="button" class="btn btn-success mb-10" [disabled]="!Integration.valid" (click)="SaveRequst()">
             <i class="fa fa-check-square-o" aria-hidden="true"></i>
             ثبت
           </button>

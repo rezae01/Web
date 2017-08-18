@@ -78,8 +78,6 @@ export class FormRealComponent implements OnInit {
     config.minDate = {year: 1300, month: 1, day: 1};
     config.maxDate = {year: 1378, month: 12, day: 31};
     config.outsideDays = 'hidden';
-
-    
     this.userservice.getcity().subscribe(
       post => {
         this.region = post;
@@ -134,7 +132,7 @@ export class FormRealComponent implements OnInit {
   }
   ngOnInit() {
     this.formTaghaza = this.fb.group({
-      FormId:[1032],
+      FormId: [1032],
       NationalCode: [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
       FirstName: [null, Validators.compose([Validators.required, Validators.maxLength(40)])],
       LastName: [null, Validators.compose([Validators.required, Validators.maxLength(255)])],
@@ -152,18 +150,15 @@ export class FormRealComponent implements OnInit {
       CityidLvlTwo: [''],
       FixedTel: [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(11)])],
       legalRepresentative: this.fb.group({
-        text1: ['', Validators.required],
-        text2: ['', Validators.required],
+        // FirstName: ['', Validators.required],
+        // LastName: ['', Validators.required],
         te: this.fb.array([this.initItemRows()])
       }),
-
-      
     });
   }
   initItemRows() {
     return this.fb.group({
         street: ['', Validators.required],
- 
     });
 }
 
