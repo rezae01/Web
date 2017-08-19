@@ -72,7 +72,7 @@ export class FormLegalComponent implements OnInit {
       }
     );
   }
-   create() {
+  create() {
     if (this.JsonRow.resultStatus === 200) {
       this._service.success(
           'کاربر گرامی',
@@ -122,6 +122,35 @@ export class FormLegalComponent implements OnInit {
       CityidLvlTwo: [null],
       FixedTel: [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(11)])],
       MobileNo: [null, Validators.compose([Validators.minLength(8), Validators.maxLength(11)])],
+      legalRepresentative: this.fb.group({
+      //   ManagerFirstName: ['', Validators.required],
+      //   ManagerLastName: ['', Validators.required],
+      //   NationalCode: ['', Validators.required],
+      //   EconomicCode: ['', Validators.required],
+      //   cityId: ['', Validators.required],
+      //   ActType: ['', Validators.required],
+      //   RegNum: ['', Validators.required],
+      //   Nationality: ['', Validators.required],
+      //   te: this.fb.array([this.loopOne()]),
+      //   te2: this.fb.array([this.loopTwo()])
+      }),
+    });
+  }
+  loopOne() {
+    return this.fb.group({
+      FirstName: ['', Validators.required],
+      LastName: ['', Validators.required],
+      FatherName: ['', Validators.required],
+      shomareShenasname: ['', Validators.required],
+      IssuedFrom: ['', Validators.required],
+    });
+  }
+  loopTwo() {
+    return this.fb.group({
+      bank: ['', Validators.required],
+      FatherName: ['', Validators.required],
+      shomareShenasname: ['', Validators.required],
+      IssuedFrom: ['', Validators.required],
     });
   }
   // 10380284790
@@ -193,7 +222,6 @@ export class FormLegalComponent implements OnInit {
         } else {
           this.disabledLink = true;
           this.changeBool.emit(this.disabledLink);
-
           this.formTaghaza.reset();
         }
         this.create();

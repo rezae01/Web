@@ -132,8 +132,8 @@ export class BecomePermanentComponent implements OnInit {
     this.become.reset();
   }
   BecomeRes() {
-    console.log(this.become);
-    console.log(this.become.value);
+    // console.log(this.become);
+    // console.log(this.become.value);
   }
   SaveRequstBecome() {
     const formObj = this.become.getRawValue();

@@ -18,27 +18,27 @@ export class ChangeTariffComponent implements OnInit {
 
   submitted: boolean;
   re: any;
-  serchFilter:any;
-  serchFilip:any;
-  serch:any;
-  FirstName:any;
-  LastName:any;
-  PhoneNumber:any;
-  Adress:any;
-  Cityid:any;
-  WorkDayCode:any;
-  RdrCode:any;
-  RdgSrl:any;
-  BranchSrl:any;
-  Phs:any;
-  Amp:any;
-  TrfCode:any;
-  PwrCnt:any;
-  BranchCode:any;
-  RegionId:any;
-  RegionName:any;
-  CityName:any;
-  BillId:any;
+  serchFilter: any;
+  serchFilip: any;
+  serch: any;
+  FirstName: any;
+  LastName: any;
+  PhoneNumber: any;
+  Adress: any;
+  Cityid: any;
+  WorkDayCode: any;
+  RdrCode: any;
+  RdgSrl: any;
+  BranchSrl: any;
+  Phs: any;
+  Amp: any;
+  TrfCode: any;
+  PwrCnt: any;
+  BranchCode: any;
+  RegionId: any;
+  RegionName: any;
+  CityName: any;
+  BillId: any;
 
 
   tasks: Task[];
@@ -93,6 +93,7 @@ export class ChangeTariffComponent implements OnInit {
       );
     }
   }
+  // tslint:disable-next-line:member-ordering
   id = new FormControl(0);
   ngOnInit() {
     this.changeTariff = this.fb.group({
@@ -101,7 +102,7 @@ export class ChangeTariffComponent implements OnInit {
       FormId: new FormControl(1024),
       ProcessId: new FormControl(1),
       BranchCode: [null, Validators.compose([Validators.required])],
-      FormName:[2],
+      FormName: [2],
       TrfHcode: [null, Validators.compose([Validators.required])],
     });
   }
@@ -113,25 +114,25 @@ export class ChangeTariffComponent implements OnInit {
         this.JsonError = this.JsonRow.error;
         this.JsonErrorMessage = this.JsonError.errorMessage;
         if (this.JsonRow.resultStatus === 200) {
-          this.serch =JSON.parse( JSON.stringify(this.JsonRow.result));
-          this.FirstName = this.serch["firstName"];
-          this.LastName = this.serch["lastName"];
-          this.PhoneNumber = this.serch["phoneNumber"];
-          this.Adress = this.serch["address"];
-          this.Cityid = this.serch["cityId"];
-          this.CityName = this.serch["cityName"];
-          this.WorkDayCode = this.serch["workDayCode"];
-          this.RdrCode = this.serch["rdrCode"];
-          this.RdgSrl = this.serch["rdgSrl"];
-          this.BranchSrl = this.serch["branchSrl"];
-          this.Phs = this.serch["phs"];
-          this.Amp = this.serch["amp"];
-          this.TrfCode = this.serch["trfCode"];
-          this.PwrCnt = this.serch["pwrCnt"];
-          this.BranchCode = this.serch["branchCode"];
-          this.BillId = this.serch["BillId"];
-          this.RegionId = this.serch["regionId"];
-          this.RegionName = this.serch["regionName"];
+          this.serch = JSON.parse( JSON.stringify(this.JsonRow.result));
+          this.FirstName = this.serch['firstName'];
+          this.LastName = this.serch['lastName'];
+          this.PhoneNumber = this.serch['phoneNumber'];
+          this.Adress = this.serch['address'];
+          this.Cityid = this.serch['cityId'];
+          this.CityName = this.serch['cityName'];
+          this.WorkDayCode = this.serch['workDayCode'];
+          this.RdrCode = this.serch['rdrCode'];
+          this.RdgSrl = this.serch['rdgSrl'];
+          this.BranchSrl = this.serch['branchSrl'];
+          this.Phs = this.serch['phs'];
+          this.Amp = this.serch['amp'];
+          this.TrfCode = this.serch['trfCode'];
+          this.PwrCnt = this.serch['pwrCnt'];
+          this.BranchCode = this.serch['branchCode'];
+          this.BillId = this.serch['BillId'];
+          this.RegionId = this.serch['regionId'];
+          this.RegionName = this.serch['regionName'];
           console.log(this.serch);
         } else {
           this.changeTariff.reset();
@@ -148,26 +149,26 @@ export class ChangeTariffComponent implements OnInit {
         this.JsonError = this.JsonRow.error;
         this.JsonErrorMessage = this.JsonError.errorMessage;
         if (this.JsonRow.resultStatus === 200) {
-          this.serch =JSON.parse( JSON.stringify(this.JsonRow.result));
-          this.FirstName = this.serch["firstName"];
-          this.LastName = this.serch["lastName"];
-          this.PhoneNumber = this.serch["phoneNumber"];
-          this.Adress = this.serch["address"];
-          this.Cityid = this.serch["cityId"];
-          this.CityName = this.serch["cityName"];
-          this.WorkDayCode = this.serch["workDayCode"];
-          this.RdrCode = this.serch["rdrCode"];
-          this.RdgSrl = this.serch["rdgSrl"];
-          this.BranchSrl = this.serch["branchSrl"];
-          this.Phs = this.serch["phs"];
-          this.Amp = this.serch["amp"];
-          this.TrfCode = this.serch["trfCode"];
-          this.PwrCnt = this.serch["pwrCnt"];
-          this.BranchCode = this.serch["branchCode"];
-          this.BillId = this.serch["BillId"];
-          this.RegionId = this.serch["regionId"];
-          this.RegionName = this.serch["regionName"];
-          console.log(this.serch);
+          this.serch = JSON.parse( JSON.stringify(this.JsonRow.result));
+          this.FirstName = this.serch['firstName'];
+          this.LastName = this.serch['lastName'];
+          this.PhoneNumber = this.serch['phoneNumber'];
+          this.Adress = this.serch['address'];
+          this.Cityid = this.serch['cityId'];
+          this.CityName = this.serch['cityName'];
+          this.WorkDayCode = this.serch['workDayCode'];
+          this.RdrCode = this.serch['rdrCode'];
+          this.RdgSrl = this.serch['rdgSrl'];
+          this.BranchSrl = this.serch['branchSrl'];
+          this.Phs = this.serch['phs'];
+          this.Amp = this.serch['amp'];
+          this.TrfCode = this.serch['trfCode'];
+          this.PwrCnt = this.serch['pwrCnt'];
+          this.BranchCode = this.serch['branchCode'];
+          this.BillId = this.serch['BillId'];
+          this.RegionId = this.serch['regionId'];
+          this.RegionName = this.serch['regionName'];
+          // console.log(this.serch);
         } else {
           this.changeTariff.reset();
         }
@@ -175,11 +176,11 @@ export class ChangeTariffComponent implements OnInit {
       }
     );
   }
-  changeTariffRes(){
+  changeTariffRes() {
     console.log(this.changeTariff);
     console.log(this.changeTariff.value);
   }
-  resetForm(){
+  resetForm() {
     this.changeTariff.reset();
     this.TrfCode = '';
     this.WorkDayCode = '';
@@ -193,7 +194,7 @@ export class ChangeTariffComponent implements OnInit {
     this.PhoneNumber = '';
     this.Adress = '';
   }
-  SaveRequst(){
+  SaveRequst() {
     const formObj = this.changeTariff.getRawValue();
     this.userservice.SaveRequstTariff(formObj).subscribe(
       res => {
@@ -204,7 +205,7 @@ export class ChangeTariffComponent implements OnInit {
         console.log(this.JsonErrorMessage);
         if (this.JsonRow.resultStatus === 200) {
           this.changeTariff.reset();
-        } 
+        }
         this.create();
       }
     );
@@ -215,11 +216,11 @@ export class ChangeTariffComponent implements OnInit {
   createTask() {
     this.id.setValue(this.lastTaskId);
     this.addTask.emit(this.changeTariff.value);
-    console.log(this.changeTariff.value);
+    // console.log(this.changeTariff.value);
     const formObj = this.changeTariff.getRawValue();
     this.userservice.SaveRequstTariff(formObj).subscribe(
       res => {
-        console.log(formObj);
+        // console.log(formObj);
         this.JsonRow = res;
         this.AfterRow = this.JsonRow.resultStatus;
         this.JsonError = this.JsonRow.error;

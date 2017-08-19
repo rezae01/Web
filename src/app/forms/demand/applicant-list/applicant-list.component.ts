@@ -52,19 +52,19 @@ export class ApplicantListComponent implements OnInit {
         localStorage.setItem('session', this.a);
     }
 
-    this.userservice.GETgridculomens(this.id).subscribe(
-      post => {
-      this.columns = post;
-        console.log(post);
-      }
+    // this.userservice.GETgridculomens(this.id).subscribe(
+    //   post => {
+    //   this.columns = post;
+    //     console.log(post);
+    //   }
 
-    );
-    this.userservice.GETgridculomensGrid(this.id).subscribe(
-      post => {
-        this.data = post;
-        console.log(post);
-      }
-    );
+    // );
+    // this.userservice.GETgridculomensGrid(this.id).subscribe(
+    //   post => {
+    //     this.data = post;
+    //     console.log(post);
+    //   }
+    // );
   }
   changeBool(val: boolean) {
     this.disabledLink = val;
@@ -74,14 +74,14 @@ export class ApplicantListComponent implements OnInit {
     this.userservice.paramter(data).subscribe(
       post => {
         this.city = post;
-        console.log(post);
+        // console.log(post);
       }
     );
   }
    clicktab(): void {
         this.test()
             .subscribe(res => {
-                console.log(res);
+                // console.log(res);
         });
    }
   test() {

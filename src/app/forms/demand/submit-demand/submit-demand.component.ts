@@ -1,4 +1,4 @@
-import { Component, OnInit, Output , ViewEncapsulation ,Input} from '@angular/core';
+import { Component, OnInit, Output , ViewEncapsulation , Input} from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
@@ -34,7 +34,7 @@ export class SubmitDemandComponent implements OnInit {
     className: ['table-striped', 'table-bordered']
   };
 
-  private data: Array<any> = []; //TableData;
+  private data: Array<any> = []; // TableData;
 
   // constructor(private route: ActivatedRoute) {
   //    this.sub = this.route.params.subscribe(params => {
@@ -45,22 +45,21 @@ export class SubmitDemandComponent implements OnInit {
   constructor(
     private http: Http,
     public  userservice: UserService,
-    private route: ActivatedRoute,) 
-  {
+    private route: ActivatedRoute) {
     this.length = this.data.length;
     // this.sub = this.route.params.subscribe(params => {
     //   this.id = + params['id'];
     //   alert(JSON.stringify(this.id));
     // });
 
-    this.userservice.GETgridculomens(this.id).subscribe(
+    this.userservice.GETgridculomens(600).subscribe(
       post => {
       this.columns = post;
         console.log(post);
       }
 
     );
-    this.userservice.GETgridculomensGrid(this.id).subscribe(
+    this.userservice.GETgridculomensGrid(600).subscribe(
       post => {
         this.data = post;
         console.log(post);
@@ -68,21 +67,16 @@ export class SubmitDemandComponent implements OnInit {
     );
   }
 
-A(){
-  alert("");
-}
+// A(){
+//   alert("");
+// }
 
 // پاک کردن لوکان استوریج گرید انشعاب موجود
-  removeLocal(){
-    
+  removeLocal() {
     localStorage.removeItem('grid');
   }
 
-
-
-
-  
-  ngOnInit():void {
+  ngOnInit(): void {
     this.onChangeTable(this.config);
   }
   public changePage(page:any, data:Array<any> = this.data):Array<any> {
@@ -97,8 +91,8 @@ A(){
     }
 
     let columns = this.config.sorting.columns || [];
-    let columnName:string = void 0;
-    let sort:string = void 0;
+    let columnName: string = void 0;
+    let sort: string = void 0;
 
     for (let i = 0; i < columns.length; i++) {
       if (columns[i].sort !== '' && columns[i].sort !== false) {
@@ -111,8 +105,7 @@ A(){
       return data;
     }
 
-    // simple sorting
-    return data.sort((previous:any, current:any) => {
+    return data.sort((previous:any, current: any) => {
       if (previous[columnName] > current[columnName]) {
         return sort === 'desc' ? -1 : 1;
       } else if (previous[columnName] < current[columnName]) {
@@ -122,11 +115,11 @@ A(){
     });
   }
 
-  public changeFilter(data:any, config:any):any {
-    let filteredData:Array<any> = data;
-    this.columns.forEach((column:any) => {
+  public changeFilter(data: any, config: any): any {
+    let filteredData: Array<any> = data;
+    this.columns.forEach((column: any) => {
       if (column.filtering) {
-        filteredData = filteredData.filter((item:any) => {
+        filteredData = filteredData.filter((item: any) => {
           return item[column.name].match(column.filtering.filterString);
         });
       }
@@ -137,14 +130,14 @@ A(){
     }
 
     if (config.filtering.columnName) {
-      return filteredData.filter((item:any) =>
+      return filteredData.filter((item: any) =>
         item[config.filtering.columnName].match(this.config.filtering.filterString));
     }
 
-    let tempArray:Array<any> = [];
-    filteredData.forEach((item:any) => {
+    let tempArray: Array<any> = [];
+    filteredData.forEach((item: any) => {
       let flag = false;
-      this.columns.forEach((column:any) => {
+      this.columns.forEach((column: any) => {
         if (item[column.name].toString().match(this.config.filtering.filterString)) {
           flag = true;
         }
@@ -158,7 +151,7 @@ A(){
     return filteredData;
   }
 
-  public onChangeTable(config:any, page:any = {page: this.page, itemsPerPage: this.itemsPerPage}):any {
+  public onChangeTable(config: any, page: any = {page: this.page, itemsPerPage: this.itemsPerPage}): any {
     if (config.filtering) {
       Object.assign(this.config.filtering, config.filtering);
     }

@@ -27,56 +27,54 @@ export class SendDocumentsComponent implements OnInit {
 //     url: URL,
 //     isHTML5: true
 //   });
-re:any;
- a:any[]=[ {  
-    "IefileName": "akbar",  
-    "title": "Angular 2 - Getting Started",  
-    "summary": "In this article, you will learn how to start working with Angular 2."  
+re: any;
+ a: any[]= [{
+    'IefileName': 'akbar',
+    'title': 'Angular 2 - Getting Started',
+    'summary': 'In this article, you will learn how to start working with Angular 2.'
 }];
+
+  // tslint:disable-next-line:no-input-rename
   @Input('group')
   // @ViewChild("fileInput") fileInput;
 //   public myForm: FormGroup;
 
-  public sendform:FormGroup;
+  public sendform: FormGroup;
   public userservice: UserService;
-  md:any;
+  md: any;
   private isUploadBtn: boolean = true;
-  TypeFileUpload:any;
+  TypeFileUpload: any;
 
 
 
    resImg: any;
    resImg1: any;
    resImg2: any;
-   
 //   public myForm: FormGroup;
   constructor(
     private fb: FormBuilder,
     public _userservice: UserService,
-    private http: Http,private sanitizer:DomSanitizer
-  ) { //public userservice: UserService
+    private http: Http, private sanitizer: DomSanitizer
+  ) { // public userservice: UserService
     this._userservice.getImageSend().subscribe(
       post => {
       this.resImg = post;
       this.resImg1 = this.resImg.result;
       // this.resImg2 = this.resImg1.completePath;
       // console.log(this.resImg);
-      console.log(this.resImg1);
-      
+      // console.log(this.resImg1);
       // console.log(this.resImg2);
       }
     );
   }
-  
 
     // addFile(): void {
     //     alert('121212212')
-    //     let fi = this.fileInput.nativeElement;  
-              
-    //     if (fi.files && fi.files[0]) {    
-    //         alert(fi.files[0])  
+    //     let fi = this.fileInput.nativeElement;
+    //     if (fi.files && fi.files[0]) {
+    //         alert(fi.files[0])
     //         let fileToUpload = fi.files[0];//fileToUpload
-    //         alert(fileToUpload) 
+    //         alert(fileToUpload)
     //         this.userservice.upload(fileToUpload).subscribe(res => {
     //             console.log(res);
     //         });
@@ -104,12 +102,11 @@ re:any;
         //     // addresses: this._fb.array([])
         // });
         this.sendform = this.fb.group({
-          TypeFileUpload:[null , Validators.compose([Validators.required])],
+          TypeFileUpload: [null , Validators.compose([Validators.required])],
           // TypeFileUpload: [null],
           // nh:[null, [Validators.required]],
           file: [''],
-          
-        })
+        });
 
 
 
@@ -126,8 +123,9 @@ re:any;
         });
     })
   }
-  //-------------------------------------------------------------
-  @ViewChild("fileInput") fileInput;
+  // -------------------------------------------------------------
+  // tslint:disable-next-line:member-ordering
+  @ViewChild('fileInput') fileInput;
     // @ViewChild("TypeFileUpload") TypeFileUpload;
    addFile(): void {
     let fi = this.fileInput.nativeElement;
@@ -150,15 +148,14 @@ re:any;
    }
     upload(fileToUpload: any, md) {
       let input = new FormData();
-      input.append("file", fileToUpload);
-      // input.append("IefileName",this.TypeFileUpload);
-      input.append("TypeFileUpload", md);
-      input.append("BranchCode", md);
-      input.append("RequestId", md);
-      //کوشیار جا ن الان این دوتا داخل ویو مدل هم میان به جای این مقادیر سلکت بزار و مقاذیرشو بفرست
+      input.append('file', fileToUpload);
+      // input.append('IefileName',this.TypeFileUpload);
+      input.append('TypeFileUpload', md);
+      input.append('BranchCode', md);
+      input.append('RequestId', md);
+      // کوشیار جا ن الان این دوتا داخل ویو مدل هم میان به جای این مقادیر سلکت بزار و مقاذیرشو بفرست
 
-      return this.http.post("http://localhost:1920/api/Public/UploadFile", input);
-      
+      return this.http.post('http://localhost:1920/api/Public/UploadFile', input);
     }
 
     DtValue(){
@@ -172,10 +169,8 @@ re:any;
     }
     // ngOnInit() {
 
-        
     //     // add address
     //     this.addAddress();
-        
     //     /* subscribe to addresses value changes */
     //     // this.myForm.controls['addresses'].valueChanges.subscribe(x => {
     //     //   console.log(x);
@@ -192,9 +187,7 @@ re:any;
     // addAddress() {
     //     const control = <FormArray>this.myForm.controls['addresses'];
     //     const addrCtrl = this.initAddress();
-        
     //     control.push(addrCtrl);
-        
     //     /* subscribe to individual address value changes */
     //     // addrCtrl.valueChanges.subscribe(x => {
     //     //   console.log(x);

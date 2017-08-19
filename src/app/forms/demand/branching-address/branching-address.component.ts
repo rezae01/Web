@@ -46,11 +46,11 @@ export class BranchingAddressComponent implements OnInit {
 
 
 
-  region:any;
-  result:any;
-  value:any;
-  city1:any;
-  city:any;
+  region: any;
+  result: any;
+  value: any;
+  city1: any;
+  city: any;
   constructor(
     private _service: NotificationsService,
     private fb: FormBuilder,
@@ -111,9 +111,9 @@ export class BranchingAddressComponent implements OnInit {
   ngOnInit() {
     this.BranchingAddress = this.fb.group({
       FormId: [1029],
-      RequesterId:[1],
+      RequesterId: [1],
       // FormName:[2],
-      RegionIdBranch: [null, Validators.compose([Validators.required])],// امور
+      RegionIdBranch: [null, Validators.compose([Validators.required])], // امور
       CityidBranchAddress: [null, Validators.compose([Validators.required])], //  بخش
       PoNumBranchAddress: [null, Validators.compose([Validators.required])],
       FixedTelBranchAddress: [null, Validators.compose([Validators.required])],
@@ -125,13 +125,13 @@ export class BranchingAddressComponent implements OnInit {
       AlleyBranchAddress: [null, Validators.compose([Validators.required])],
       Alley1BranchAddress: [null, Validators.compose([Validators.required])],
       PlakBranchAddress: [null, Validators.compose([Validators.required])],
-      LongitudeyBranchAddress:[null, Validators.compose([Validators.required])],
-      LatituexBranchAddress:[null, Validators.compose([Validators.required])],
+      LongitudeyBranchAddress: [null, Validators.compose([Validators.required])],
+      LatituexBranchAddress: [null, Validators.compose([Validators.required])],
       BranchMojaverLeft: [''],
-      BranchMojaverRight:[''],
-      MojaverIDLeft:[''],
-      MojaverIDRight:[''],
-      TotalRequestedSquare:[''],
+      BranchMojaverRight: [''],
+      MojaverIDLeft: [''],
+      MojaverIDRight: [''],
+      TotalRequestedSquare: [''],
       BranchGeoState: [''],
       BranchGeoAreaCode: [''],
       // BranchVillageCode: [''],
@@ -158,9 +158,9 @@ export class BranchingAddressComponent implements OnInit {
 
     });
   }
-  BranchingAddressRes(){
-    console.log(this.BranchingAddress);
-    console.log(this.BranchingAddress.value);
+  BranchingAddressRes() {
+    // console.log(this.BranchingAddress);
+    // console.log(this.BranchingAddress.value);
   }
   resetForm() {
     this.BranchingAddress.reset();
@@ -173,10 +173,10 @@ export class BranchingAddressComponent implements OnInit {
         this.AfterRow = this.JsonRow.resultStatus;
         this.JsonError = this.JsonRow.error;
         this.JsonErrorMessage = this.JsonError.errorMessage;
-        console.log(this.JsonErrorMessage);
+        // console.log(this.JsonErrorMessage);
         if (this.JsonRow.resultStatus === 200) {
           this.BranchingAddress.reset();
-        } 
+        }
         this.create();
       }
     );

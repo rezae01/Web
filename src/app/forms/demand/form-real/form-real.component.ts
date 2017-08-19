@@ -150,17 +150,20 @@ export class FormRealComponent implements OnInit {
       CityidLvlTwo: [''],
       FixedTel: [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(11)])],
       legalRepresentative: this.fb.group({
-        // FirstName: ['', Validators.required],
-        // LastName: ['', Validators.required],
-        te: this.fb.array([this.initItemRows()])
+        NationalCode: [null, Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(11)])],
+        FirstName: [null, Validators.compose([Validators.required, Validators.maxLength(30)])],
+        CompanyType: ['', Validators.compose([Validators.required])],
+        RequesterType: [1],
+        Email: [null, Validators.compose([CustomValidators.email, Validators.maxLength(40)])],
+        PoNum: [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10)])],
+        Adress: [null, Validators.compose([Validators.required, Validators.maxLength(1024)])],
+        Cityid: [null, Validators.compose([Validators.required])],
+        CityidLvlTwo: [null],
+        FixedTel: [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(11)])],
+        MobileNo: [null, Validators.compose([Validators.minLength(8), Validators.maxLength(11)])],
       }),
     });
   }
-  initItemRows() {
-    return this.fb.group({
-        street: ['', Validators.required],
-    });
-}
 
   onEnter(searchTerm: string) {
     this.serchFilter = searchTerm;

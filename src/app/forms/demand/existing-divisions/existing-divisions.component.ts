@@ -202,11 +202,14 @@ export class ExistingDivisionsComponent implements OnInit {
       }
     );
   }
+  // tslint:disable-next-line:member-ordering
   t1: any;
+  // tslint:disable-next-line:member-ordering
   t2: any;
+  // tslint:disable-next-line:member-ordering
   list: any[];
   // formObj: any;
-  SaveRequst(){
+  SaveRequst() {
     console.log(this.existing.value);
     this.t1 = this.existing.value;
     // this.formObj = this.existing.getRawValue();
@@ -217,7 +220,7 @@ export class ExistingDivisionsComponent implements OnInit {
     if (existing != null) {
       existingSend = JSON.parse(localStorage.getItem('existing'));
     }
-    let exist: any = this.t1;
+    const exist: any = this.t1;
     // console.log([exist]);
     existingSend.push(exist);
     localStorage.setItem('existing', JSON.stringify( existingSend ));

@@ -91,8 +91,8 @@ export class ChangeOwnerComponent implements OnInit {
     }
   }
   ChangeOwnerRes() {
-    console.log(this.ChangeOwner);
-    console.log(this.ChangeOwner.value);
+    // console.log(this.ChangeOwner);
+    // console.log(this.ChangeOwner.value);
   }
   serachByPassCodeAndBillId(searchTerm: HTMLInputElement) {
     this.serchFilter = searchTerm.value;
@@ -108,7 +108,7 @@ export class ChangeOwnerComponent implements OnInit {
           this.FirstName = this.serch['firstName'];
           this.LastName = this.serch['lastName'];
           this.FatherName = this.serch['fatherName'];
-          console.log(this.serch);
+          // console.log(this.serch);
         } else {
           this.ChangeOwner.reset();
         }
@@ -124,7 +124,7 @@ export class ChangeOwnerComponent implements OnInit {
         this.AfterRow = this.JsonRow.resultStatus;
         this.JsonError = this.JsonRow.error;
         this.JsonErrorMessage = this.JsonError.errorMessage;
-        console.log(this.JsonErrorMessage);
+        // console.log(this.JsonErrorMessage);
         this.create();
       }
     );

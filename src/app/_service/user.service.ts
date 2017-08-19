@@ -2,23 +2,24 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { MenuItems } from '../shared/menu-items/menu-items';
 import {UserViewModel} from './Menu2';
+// tslint:disable-next-line:import-blacklist
 import {Observable} from 'rxjs';
 import {post} from './post';
-import {json} from "ng2-validation/dist/json";
-import {any} from "codelyzer/util/function";
+import {json} from 'ng2-validation/dist/json';
+import {any} from 'codelyzer/util/function';
 
 @Injectable()
 export class UserService {
 list: any;
 public  Url_app: string;
   constructor(private http: Http) {
-  this.Url_app='http://localhost:1920';
+  this.Url_app = 'http://localhost:1920';
  }
 
 Crtableuser(): Observable <post[]> {
   return this.http.get(this.Url_app + '/api/Caretable/CartableUser', this.jwt()).map(res => res.json());
 }
- UserId(): Observable<any>{
+ UserId(): Observable<any> {
     return this.http.get(this.Url_app + '/api/Public/GetLoginUserId', this.jwt()).map(res => res.json());
  }
 //--------------------------
@@ -91,13 +92,13 @@ Crtableuser(): Observable <post[]> {
     let headers = new Headers({ 'Authorization': 'Bearer ' + reza.access_token });
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
-    return this.http.post( this.Url_app +'/api/Billing/ChangeRequstBranchDetail', JSON.stringify(data) , options).map(
+    return this.http.post( this.Url_app + '/api/Billing/ChangeRequstBranchDetail', JSON.stringify(data) , options).map(
      (res: Response) => res.json() || {}
     );
   }
   //---------------------------------------- gridCoulumens
-  GETgridculomens(data: any): Observable<any[]>{
-    return this.http.get(this.Url_app + '/api/Caretable/GridCoulumens?listid=' + localStorage.getItem('getitem') + '&userid=' + localStorage.getItem('userId'), this.jwt()).map(res => res.json());
+  GETgridculomens(data: any): Observable<any[]> {// localStorage.getItem('getitem') 
+    return this.http.get(this.Url_app + '/api/Caretable/GridCoulumens?listid=' + 600 + '&userid=' + localStorage.getItem('userId'), this.jwt()).map(res => res.json());
   }
   //----------------------------------------gridCoulumens in gird
   GETgridculomensGrid(data: any): Observable<any[]>{
@@ -111,10 +112,10 @@ Crtableuser(): Observable <post[]> {
   }
 
   //----------------------------------------  سازمان صادر کننده
-  GetParameter(): Observable<any[]>{
+  GetParameter(): Observable<any[]> {
     return this.http.get(this.Url_app + '/api/Billing/GetParameter?maincode=1129', this.jwt()).map(res => res.json());
   }
-  GetParameterTwo(): Observable<any[]>{
+  GetParameterTwo(): Observable<any[]> {
     return this.http.get(this.Url_app + '/api/Billing/GetParameter?maincode=1071', this.jwt()).map(res => res.json());
   }
   //---------------------------------------- for upload file
@@ -139,7 +140,6 @@ Crtableuser(): Observable <post[]> {
 //     return this.http.post(url, data, {
 //         headers: headers
 //     }).map(res=>res.json());
-        
 //         // .then(this.extractData)
 //         // .catch(this.handleError);
 // }
@@ -169,7 +169,7 @@ Crtableuser(): Observable <post[]> {
     let headers = new Headers({ 'Authorization': 'Bearer ' + reza.access_token });
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
-    return this.http.post( this.Url_app +'/api/Billing/FinalRegisterRequest', JSON.stringify(data) , options).map(
+    return this.http.post( this.Url_app + '/api/Billing/FinalRegisterRequest', JSON.stringify(data) , options).map(
      (res: Response) => res.json() || {}
     );
   }
@@ -181,7 +181,7 @@ Crtableuser(): Observable <post[]> {
     let headers = new Headers({ 'Authorization': 'Bearer ' + reza.access_token });
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
-    return this.http.post( this.Url_app +'/api/Billing/ChangeRequstBranchDetail', JSON.stringify(data) , options).map(
+    return this.http.post( this.Url_app + '/api/Billing/ChangeRequstBranchDetail', JSON.stringify(data) , options).map(
      (res: Response) => res.json() || {}
     );
   }
@@ -242,10 +242,10 @@ Crtableuser(): Observable <post[]> {
   //     return this.http.post( this.Url_app +'/api/Public/UploadFile', JSON.stringify(data) , options).map(
   //    (res: Response) => res.json() || {}
   //   );
-      
   //   }
   //
   paramterBeranchCode(data): Observable<any[]> {
+    // tslint:disable-next-line:max-line-length
     return this.http.get(this.Url_app + '/api/IntegrationandSeparation/GetBranchDetailsForSepration?BranchCode=' + data, this.jwt()).map(res => res.json());
   }
   //--------------------------- Response for Phs Amp Pwr Tariff 
@@ -271,11 +271,11 @@ Crtableuser(): Observable <post[]> {
   //   return this.http.get(this.Url_app +'/api/Calculation/ValidTrfcode' + TrfType + '&TrfType' + Phase + '&Phase' + Amper + 'Amper' + powercnt + '&powercnt' + powerIcn + '&powerIcn' + Trfhcode + '&Trfhcode' , this.jwt()).map(res => res.json());
   // }
   //--------------------------- Response For Serach nationalCode && Response for serach Economic 
-  serachByNationalCode(data): Observable<any>{
-    return this.http.get(this.Url_app +'/api/Billing/GetRegisteredByNatCode?natcode='+ data, this.jwt()).map(res => res.json());
+  serachByNationalCode(data): Observable<any> {
+    return this.http.get(this.Url_app + '/api/Billing/GetRegisteredByNatCode?natcode='+ data, this.jwt()).map(res => res.json());
   }
   serachGetRegisteredByEconomic(data): Observable<any>{
-    return this.http.get(this.Url_app +'/api/Billing/GetRegisteredByEconomic?economic='+ data, this.jwt()).map(res => res.json());
+    return this.http.get(this.Url_app + '/api/Billing/GetRegisteredByEconomic?economic='+ data, this.jwt()).map(res => res.json());
   }
   // serachByPass(data): Observable<any>{
   //   return this.http.get(this.Url_app +'/api/Billing/GetIdentityByBranchcode?branchcode='+ data, this.jwt()).map(res => res.json());
@@ -295,7 +295,8 @@ Crtableuser(): Observable <post[]> {
     );
   }
   serachByIntegrationSeparation(data): Observable<any>{
-    return this.http.get(this.Url_app + '/api/IntegrationandSeparation/GetBranchDetails?BranchCode='+ data, this.jwt()).map(res => res.json());
+    // tslint:disable-next-line:max-line-length
+    return this.http.get(this.Url_app + '/api/IntegrationandSeparation/GetBranchDetails?BranchCode=' + data, this.jwt()).map(res => res.json());
   }
 
 
@@ -322,8 +323,7 @@ Crtableuser(): Observable <post[]> {
   // serachGetRegisteredByBecomePaermanent(data): Observable<any>{
   //   return this.http.get(this.Url_app +'/api/Billing/'+data, this.jwt()).map(res => res.json());
   // }
-  //------------------------ Sevice For Serach
-  
+  // ------------------------ Sevice For Serach
   //------------------------
   private jwt() {
     // create authorization header with jwt token
