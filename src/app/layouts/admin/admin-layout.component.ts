@@ -48,12 +48,6 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {
 
-    // this.sub = this.route.params.subscribe(params => {
-    //   this.id = + params['id'];
-    //   alert(JSON.stringify(this.id));
-    // });
-
-    
     // window.addEventListener('load', function (e) {
     //   if (window.sessionStorage !== null && (window.location.href.indexOf('/login') === -1 &&  window.location.href.indexOf('confirm-user') === -1)) {
     //     window.sessionStorage.clear();
@@ -62,25 +56,12 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     // });
 
 
-    this._userservice.GETgridculomens(this.id).subscribe(
-      post => {
-      this.columns = post;
-        console.log(post);
-      }
-
-    );
-    this._userservice.GETgridculomensGrid(this.id).subscribe(
-      post => {
-        this.data = post;
-        console.log(post);
-      }
-    );
     this._userservice.UserId().subscribe(
       post => {
         this.UserId = post;
         this.UserIdResult = this.UserId.result;
         localStorage.setItem('userId', this.UserIdResult.userId);
-        console.log(localStorage.getItem('userId'));
+        // console.log(localStorage.getItem('userId'));
       }
     );
 
@@ -93,8 +74,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
         this.po = post;
         // this.po2 = this.po.children;
         // this.po3 = this.po2.formliatcode
-      
-        console.log(this.po);
+        // console.log(this.po);
         // console.log(this.po2);
       }
     );

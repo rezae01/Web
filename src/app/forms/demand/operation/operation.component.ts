@@ -11,7 +11,7 @@ import { NotificationsService } from 'angular2-notifications';
 
 declare var $: any;
 
-import { Task, CalculationData } from '../../demand/model/task';
+// import { Task, CalculationData } from '../../demand/model/task';
 
 @Component({
   selector: 'app-operation',
@@ -22,8 +22,8 @@ import { Task, CalculationData } from '../../demand/model/task';
 export class OperationComponent implements OnInit {
   list: any;
   lastTaskId: number = 1;
-  tasks: Task[] = [];
-  CalculationData: CalculationData[] = [];
+  // tasks: Task[] = [];
+  // CalculationData: CalculationData[] = [];
   public sendform: FormGroup;
 
 
@@ -36,7 +36,7 @@ export class OperationComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
 
   edit: boolean = false;
-  task: Task;
+  // task: Task;
   value: any;
   city1: any;
   city: any;
@@ -44,22 +44,22 @@ export class OperationComponent implements OnInit {
 
   rowTable: any;
   rowTable2: any;
-  addTask(tasks: Task, CalculationDatas: CalculationData) {
-    this.tasks.push(tasks);
-    this.lastTaskId = tasks.id + 1;
-    // console.log(this.lastTaskId);
-    this.rowTable = this.tasks;
-    this.rowTable2 = this.rowTable.CalculationData;
-    this.lastTaskId = this.rowTable2.id2 + 1;
-    console.log(this.lastTaskId);
-  }
+  // addTask(tasks: Task, CalculationDatas: CalculationData) {
+  //   this.tasks.push(tasks);
+  //   this.lastTaskId = tasks.id + 1;
+  //   // console.log(this.lastTaskId);
+  //   this.rowTable = this.tasks;
+  //   this.rowTable2 = this.rowTable.CalculationData;
+  //   this.lastTaskId = this.rowTable2.id2 + 1;
+  //   console.log(this.lastTaskId);
+  // }
 
-  showEditTask(tasks: Task) {
+  // showEditTask(tasks: Task) {
     // console.log(tasks);
-    this.task = tasks;
+    // this.task = tasks;
     // console.log(this.task)
-    this.edit = true;
-  }
+    // this.edit = true;
+  // }
   showTask() {
     this.edit = false;
   }

@@ -51,20 +51,6 @@ export class ApplicantListComponent implements OnInit {
         alert(this.a);
         localStorage.setItem('session', this.a);
     }
-
-    // this.userservice.GETgridculomens(this.id).subscribe(
-    //   post => {
-    //   this.columns = post;
-    //     console.log(post);
-    //   }
-
-    // );
-    // this.userservice.GETgridculomensGrid(this.id).subscribe(
-    //   post => {
-    //     this.data = post;
-    //     console.log(post);
-    //   }
-    // );
   }
   changeBool(val: boolean) {
     this.disabledLink = val;
@@ -93,11 +79,12 @@ export class ApplicantListComponent implements OnInit {
     return this.http.post('http://localhost:1920/api/Public/UploadFile', this.input);
   }
   ngOnInit() {
-
     $(function(){
       $('#real,#legal').hide();
       $('#real-nav').click(function(){
         $('#real').show();
+        $('.tab-content-legal input[required],.tab-content-legal select[required]').addClass('ng-invalid');
+        $('.tab-content-legal input[required],.tab-content-legal select[required]').removeClass('ng-valid');
         $('#legal').hide();
         $('.tab-content-real').show();
         $('.tab-content-legal input, .tab-content-legal select,.tab-content-legal textarea').val('');
@@ -105,6 +92,8 @@ export class ApplicantListComponent implements OnInit {
       $('#legal-nav').click(function(){
         $('#legal').show();
         $('#real').hide();
+        $('.tab-content-real input[required],.tab-content-real select[required]').addClass('ng-invalid');
+        $('.tab-content-real input[required],.tab-content-real select[required]').removeClass('ng-valid');
         $('.tab-content-real').hide();
         $('.tab-content-legal').show();
         $('.tab-content-real input, .tab-content-real select,.tab-content-real textarea').val('');

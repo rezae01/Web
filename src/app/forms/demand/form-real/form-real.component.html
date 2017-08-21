@@ -125,7 +125,7 @@
           <div clas="form-group">
             <label for="Cityid">نام منطقه</label> 
             <select id="Cityid" class="form-control" #box name="Cityid" [(ngModel)]="Cityid" [formControl]="formTaghaza.controls['Cityid']"  (change)="setValue(box.value)" required>
-              <option *ngFor="let item of result" [value]="item.id" [selected]="item.regionName">
+              <option *ngFor="let item of regionValChild" [value]="item.id" [selected]="item.regionName">
                       {{ item.regionName + ' ' + '(' + item.id + ')'}}
               </option>
             </select>         
@@ -136,7 +136,7 @@
           <div clas="form-group">
             <label for="CityidLvlTwo">نام ناحیه</label> 
             <select id="CityidLvlTwo" class="form-control" name="CityidLvlTwo" [(ngModel)]="CityidLvlTwo" [formControl]="formTaghaza.controls['CityidLvlTwo']" required>
-              <option *ngFor="let item of city" [value]="item.id" [selected]="item.cityName">
+              <option *ngFor="let item of cityValChild" [value]="item.id" [selected]="item.cityName">
                       {{ item.cityName + ' ' + '(' + item.id + ')'}}
               </option>
             </select>    
@@ -168,42 +168,36 @@
           <h6 class="modal-title" id="myModalLabel">اشخاص حقوقی</h6>
         </div> 
         <div class="modal-body">  
-          <fieldset formGroupName="legalRepresentative">
+          <!-- <fieldset formGroupName="legalRepresentative">
             <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
               <label for="NationalCode">کد ملی</label>
               <div class="input-group">
-                <input type="text" id="NationalCode" class="form-control" #searchTerm1 maxlength="10" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls.legalRepresentative.controls['NationalCode']"> <!---->
+                <input type="text" id="NationalCode" class="form-control" #searchTerm1 maxlength="10" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls.legalRepresentative.controls['NationalCode']">
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-default" style="font-size:11.5px" (click)="serachByNationalCode(searchTerm1)">جستجو</button>
                 </div>
               </div>
               <span class="pull-left">{{searchTerm1.value.length}} / 10</span>
-              <small *ngIf="formTaghaza.controls.legalRepresentative.controls['NationalCode'].hasError('required') && formTaghaza.controls.legalRepresentative.controls['NationalCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
-              <small *ngIf="formTaghaza.controls.legalRepresentative.controls['NationalCode'].hasError('minlength') && formTaghaza.controls.legalRepresentative.controls['NationalCode'].touched" class="mat-text-warn">کد ملی شما نامعتبر است</small>
-              <small *ngIf="formTaghaza.controls.legalRepresentative.controls['NationalCode'].hasError('maxlength') && formTaghaza.controls.legalRepresentative.controls['NationalCode'].touched" class="mat-text-warn">کد ملی شما نامعتبر است</small>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
               <div class="form-group">
                 <label for="firstName">نام</label>
                 <input [(ngModel)]="FirstName" [(value)]="FirstName" maxlength="30" #FirstNameRH (keypress)="FirstName=$event.target.value" class="form-control" type="text" id="firstName"  [formControl]="formTaghaza.controls['FirstName']"> 
-                <!-- <small *ngIf="formTaghaza.controls['FirstName'].hasError('required') && formTaghaza.controls['FirstName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
-                  <span class="pull-left">{{FirstNameRH.value.length}} / 30</span> 
+                <span class="pull-left">{{FirstNameRH.value.length}} / 30</span> 
               </div>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
               <div class="form-group">
                 <label for="lastName">نام خانوادگی</label>
                 <input [(ngModel)]="LastName" [(value)]="LastName" maxlength="250" #LastNameRH (keypress)="LastName=$event.target.value" type="text" id="lastName" class="form-control" [formControl]="formTaghaza.controls['LastName']">
-                <!-- <small *ngIf="formTaghaza.controls['LastName'].hasError('required') && formTaghaza.controls['LastName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
-                  <span class="pull-left">{{LastNameRH.value.length}} / 250</span> 
+                <span class="pull-left">{{LastNameRH.value.length}} / 250</span> 
               </div>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
               <div class="form-group">
                 <label for="FatherName">نام پدر</label>
                 <input [(ngModel)]="FatherName" type="text" id="FatherName" #FatherNameRH maxlength="40"  [(value)]="FatherName" (keypress)="FatherName=$event.target.value" class="form-control" name="FatherName" [formControl]="formTaghaza.controls['FatherName']">
-                <!-- <small *ngIf="formTaghaza.controls['FatherName'].hasError('required') && formTaghaza.controls['FatherName'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
-                  <span class="pull-left">{{FatherNameRH.value.length}} / 40</span> 
+                <span class="pull-left">{{FatherNameRH.value.length}} / 40</span> 
               </div>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
@@ -224,7 +218,6 @@
                       <img src="./../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
                     </div>
                   </div>
-                  <!-- <small *ngIf="formTaghaza.controls['BirthDate'].hasError('required') && formTaghaza.controls['BirthDate'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
                 </div>
               </div>
             </div>
@@ -237,14 +230,12 @@
                   <option [value]="1">مرد</option>
                   <option [value]="0">زن</option> 
                 </select>
-                <!-- <small *ngIf="formTaghaza.controls['Gender'].hasError('required') && formTaghaza.controls['Gender'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
               </div>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
               <div class="form-group">
                 <label for="Email">پست الکتریکی</label>
                 <input class="form-control" [(ngModel)]="Email" maxlength="40" id="Email" #EmailRH [formControl]="formTaghaza.controls['Email']" type="email" [value]="Email">
-                <!-- <small *ngIf="formTaghaza.controls['Email'].errors?.email && formTaghaza.controls['Email'].touched" class="mat-text-warn">ایمیل شما معتبر نمیباشد</small> -->
                 <span class="pull-left">{{EmailR.value.length}} / 40</span> 
               </div>
             </div>
@@ -252,9 +243,6 @@
               <div class="form-group">
                 <label for="MobileNo">شماره همراه</label>
                 <input type="text" [(ngModel)]="MobileNo" id="MobileNo" maxlength="11" #mobileNoRH class="form-control" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['MobileNo']" [value]="MobileNo">
-                <!-- <small *ngIf="formTaghaza.controls['MobileNo'].hasError('required') && formTaghaza.controls['MobileNo'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
-                <!-- <small *ngIf="formTaghaza.controls['MobileNo'].hasError('minlength') && formTaghaza.controls['MobileNo'].touched" class="mat-text-warn">شماره تلفن شما 8 تا 11 عدد باید باشد</small> -->
-                <!-- <small *ngIf="formTaghaza.controls['MobileNo'].hasError('maxlength') && formTaghaza.controls['MobileNo'].touched" class="mat-text-warn">شماره تلفن شما 8 تا 11 عدد باید باشد</small> -->
                 <span class="pull-left">{{mobileNoR.value.length}} / 11</span> 
               </div>
             </div> 
@@ -262,17 +250,13 @@
               <div class="form-group">
                 <label for="IssuedFrom">محل صدور</label>
                 <input [(ngModel)]="IssuedFrom" [(value)]="IssuedFrom" maxlength="50" #IssuedFromRH (keypress)="IssuedFrom=$event.target.value" type="text" id="IssuedFrom" class="form-control" [formControl]="formTaghaza.controls['IssuedFrom']">
-                <!-- <small *ngIf="formTaghaza.controls['IssuedFrom'].hasError('required') && formTaghaza.controls['IssuedFrom'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
-                  <span class="pull-left">{{IssuedFromR.value.length}} / 50</span> 
+                <span class="pull-left">{{IssuedFromR.value.length}} / 50</span> 
               </div>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
               <div class="form-group">
                 <label for="PostNumber">کد پستی</label>
                 <input [(ngModel)]="PoNum" type="text" id="PostNumber" maxlength="10" #PostNumberRH class="form-control" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['PoNum']" [value]="PoNum">
-                <!-- <small *ngIf="formTaghaza.controls['PoNum'].hasError('required') && formTaghaza.controls['PoNum'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
-                <!-- <small *ngIf="formTaghaza.controls['PoNum'].hasError('minlength') && formTaghaza.controls['PoNum'].touched" class="mat-text-warn">کد پستی باید 10 رقم باشد</small> -->
-                <!-- <small *ngIf="formTaghaza.controls['PoNum'].hasError('maxlength') && formTaghaza.controls['PoNum'].touched" class="mat-text-warn">کد پستی باید 10 رقم باشد</small> -->
                 <span class="pull-left">{{PostNumberRH.value.length}} / 10</span> 
               </div>
             </div>
@@ -280,10 +264,7 @@
               <div class="form-group">
                 <label for="FixedTel">تلفن ثابت</label>
                 <input [(ngModel)]="FixedTel" type="text" maxlength="11" #FixedTelRH id="FixedTel" class="form-control" onkeypress="return isNumber(event)" [formControl]="formTaghaza.controls['FixedTel']" [value]="FixedTel">
-                <!-- <small *ngIf="formTaghaza.controls['FixedTel'].hasError('required') && formTaghaza.controls['FixedTel'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
-                <!-- <small *ngIf="formTaghaza.controls['FixedTel'].hasError('minlength') && formTaghaza.controls['FixedTel'].touched" class="mat-text-warn">تلفن ثابت باید بین 8 تا 11 عدد باشد</small> -->
-                <!-- <small *ngIf="formTaghaza.controls['FixedTel'].hasError('maxlength') && formTaghaza.controls['FixedTel'].touched" class="mat-text-warn">تلفن ثابت باید بین 8 تا 11 عدد باشد</small> -->
-                  <span class="pull-left">{{FixedTelRH.value.length}} / 11</span> 
+                <span class="pull-left">{{FixedTelRH.value.length}} / 11</span> 
               </div>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
@@ -294,7 +275,6 @@
                           {{ item.regionName + ' ' + '(' + item.id + ')'}}
                   </option>
                 </select>         
-                <!-- <small *ngIf="formTaghaza.controls['Cityid'].hasError('required') && formTaghaza.controls['Cityid'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>  -->
               </div>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-3" style="height:80px;">
@@ -311,109 +291,17 @@
               <div class="form-group"> 
                 <label for="Adress">آدرس</label>
                 <input [(ngModel)]="Address" id="Adress" type="text" #AdressRH maxlength="1024" class="form-control" name="Adress" [formControl]="formTaghaza.controls['Adress']" [value]="Address">
-                <!-- <small *ngIf="formTaghaza.controls['Adress'].hasError('required') && formTaghaza.controls['Adress'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small> -->
                 <span class="pull-left">{{AdressRH.value.length}} / 1024</span> 
               </div>
             </div>
-            <div calss="">
+            <div class="col-xs-12">
                 <button type="button" class="btn btn-success"> ثبت </button>
                 <button type="button" class="btn btn-danger"> انصراف </button>
             </div>
-      <!--      <div class="col-xs-12 col-sm-4 col-md-3">
-              <div class="form-group">
-                <label for=""></label>
-                <input type="text" class="form-control" formControlName="text1">
-                <span></span>
-              </div>      
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-              <div class="form-group">
-                <label for=""></label>
-                <input type="text" class="form-control" formControlName="text2">
-                <span></span>
-              </div>      
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-              <div class="form-group">
-                <label for=""></label>
-                <input type="text" class="form-control" formControlName="text2">
-                <span></span>
-              </div>      
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-              <div class="form-group">
-                <label for=""></label>
-                <input type="text" class="form-control" formControlName="text2">
-                <span></span>
-              </div>      
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-              <div class="form-group">
-                <label for=""></label>
-                <input type="text" class="form-control" formControlName="text2">
-                <span></span>
-              </div>      
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-              <div class="form-group">
-                <label for=""></label>
-                <input type="text" class="form-control" formControlName="text2">
-                <span></span>
-              </div>      
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-              <div class="form-group">
-                <label for=""></label>
-                <input type="text" class="form-control" formControlName="text2">
-                <span></span>
-              </div>      
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-              <div class="form-group">
-                <label for=""></label>
-                <input type="text" class="form-control" formControlName="text2">
-                <span></span>
-              </div>      
-            </div> -->
-
-            
-              <!-- <div id="UI-Valid-Panel" formArrayName="te">
-                <div class="panel panel-default" *ngFor="let itemrow of formTaghaza.controls.legalRepresentative.controls.te.controls; let i=index">
-                  <div class="panel-heading">
-                    <span>فرم  {{i + 1}}</span>
-                    <span class="glyphicon glyphicon-remove pull-left" *ngIf="formTaghaza.controls.legalRepresentative.controls.te.controls.length > 1" (click)="RemoveDemand(i)"></span>
-                  </div> 
-                  <div class="panel-body" [formGroupName]="i">
-                    <div class="col-xs-12 col-sm-3" style="height:80px;">
-                      <div class="form-group">
-                        <label for="street">تست</label>
-                        <select id="street" class="form-control" name="street" formControlName="street" style="width:100%;" required> 
-                          <option [value]="1">آزاد و موقت</option>
-                          <option [value]="0">دائم </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-          </fieldset>
+          </fieldset> -->
         </div>
       </div>  
     </div>
   </div>
-</div>
+ </div>
 </form>
-<!-- <div class="modal customModal fade submitLicense" id="FormRealLegal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document" style="width:100%;">
-    <div class="mat-card">
-      <div class="modal-content"> 
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h6 class="modal-title" id="myModalLabel">اشخاص حقوقی</h6>
-        </div> 
-        <div class="modal-body">  
-        </div>
-      </div>  
-    </div>
-  </div>
-</div> -->

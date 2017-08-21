@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   model: any = {};
   loading = false;
   ERR: any;
-  bod:any;
-  titel:string;
+  bod: any;
+  titel: string;
   returnUrl: string;
 constructor(private router: Router, private authenticationService: AuthenticationService) {
   this.titel="sadsadsadsad";

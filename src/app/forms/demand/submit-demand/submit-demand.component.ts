@@ -35,13 +35,6 @@ export class SubmitDemandComponent implements OnInit {
   };
 
   private data: Array<any> = []; // TableData;
-
-  // constructor(private route: ActivatedRoute) {
-  //    this.sub = this.route.params.subscribe(params => {
-  //      this.id = +params['id'];
-  //   });
-  //  }
-
   constructor(
     private http: Http,
     public  userservice: UserService,
@@ -55,14 +48,14 @@ export class SubmitDemandComponent implements OnInit {
     this.userservice.GETgridculomens(600).subscribe(
       post => {
       this.columns = post;
-        console.log(post);
+        // console.log(post);
       }
 
     );
     this.userservice.GETgridculomensGrid(600).subscribe(
       post => {
         this.data = post;
-        console.log(post);
+        // console.log(post);
       }
     );
   }
@@ -169,19 +162,4 @@ export class SubmitDemandComponent implements OnInit {
   public onCellClick(data: any): any {
     console.log(data);
   }
-
-  // ngOnInit() {
-  //   this.onChangeTable(this.config);
-  //   // get dummy data
-  //   this.http.get('https://jsonplaceholder.typicode.com/photos')
-  //     .map((response: Response) => response.json())
-  //     .subscribe(data => {
-  //       // set items to json response
-  //       this.allItems = data;
-    
-  //       // initialize to page 1
-  //       this.setPage(1);
-  //     });
-  // }
-
 }

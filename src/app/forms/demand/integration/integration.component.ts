@@ -13,7 +13,9 @@ import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../../_service/user.service';
 
 import { Task } from '../../demand/model/task';
+
 declare var $: any;
+
 @Component({
   selector: 'app-integration',
   templateUrl: './integration.component.html',

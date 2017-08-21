@@ -1,16 +1,16 @@
 import { Component, OnInit, Output, Input, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray  } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { User } from './new-demand';
+
 
 import { NgbDateStruct, NgbCalendar, NgbDatepickerI18n, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCalendarPersian } from 'ng2-datepicker-jalali/persian/ngb-calendar-persian';
 import { NgbDatepickerI18nPersian } from 'ng2-datepicker-jalali/persian/ngb-datepicker-i18n-persian';
 
-import { UserService } from '../../../_service/user.service';
+import { UserService } from '../../../../_service/user.service';
 import { NotificationsService } from 'angular2-notifications';
 
-import { Task } from '../../demand/model/task';
+// import { Task } from '../../../demand/model/task';
 declare var $: any;
 @Component({
   selector: 'app-edit-new-demand',
@@ -32,10 +32,10 @@ export class EditNewDemandComponent implements OnInit {
 //   tasks: Task[];
 //   @Output() addTask = new EventEmitter();
 //   @Input() lastTaskId: number;
-  @Input() task: Task;
+  // @Input() task: Task;
 
 
-
+  id = new FormControl('');
   public EditNewDemand: FormGroup;
   re: any;
   private today: NgbDateStruct;
@@ -129,7 +129,6 @@ export class EditNewDemandComponent implements OnInit {
       );
     }
   }
-  id = new FormControl('');
 
   public ngOnInit() {
     this.EditNewDemand = this.fb.group({

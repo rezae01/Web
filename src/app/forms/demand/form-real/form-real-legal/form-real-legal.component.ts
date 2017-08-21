@@ -53,12 +53,6 @@ export class FormRealLegalComponent implements OnInit {
     d: any;
     requesterId: any;
 
-
-
-
-
-    // @Input() disabledLink: boolean;
-    // @Output() changeBool = new EventEmitter;
     JsonRow: any;
     AfterRow: any;
     JsonError: any;

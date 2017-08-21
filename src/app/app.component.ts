@@ -5,8 +5,6 @@ import { NotificationsService } from 'angular2-notifications';
 @Component({
   selector: 'app-root',
   template: `
-  <!-- <button (click)="create()">Create</button>
-       <simple-notifications [options]="options"></simple-notifications> -->
   <router-outlet></router-outlet>`
 })
 export class AppComponent {
@@ -21,24 +19,5 @@ export class AppComponent {
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
 
   }
-    // public options = {
-    //     position: ["top", "left"],
-    //     timeOut: 5000,
-    //     lastOnBottom: true,
-    // };
-
-
-    // create() {
-    //     this._service.error(
-    //         'Some Title',
-    //         'Some Content',
-    //         {
-    //             showProgressBar: true,
-    //             pauseOnHover: true,
-    //             clickToClose: true,
-    //             maxLength: 1
-    //         }
-    //     )
-    // }
 
 }

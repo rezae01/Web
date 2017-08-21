@@ -1,0 +1,46 @@
+<div class="row mt-1">
+    <div class="col-xs-12" style="overflow:hidden;">
+      <div class="scroll-X-fullWidth">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="1">ردیف</th>
+                    <th colspan="1">عملیات</th>
+                    <th colspan="1">نام مالک </th>
+                    <th colspan="1">رمز</th>
+                    <th colspan="1">پرونده</th>
+                    <th colspan="1">شناسایی</th>
+                    <th colspan="1">تعرفه</th>
+                    <th colspan="1">امور</th>
+                    <th colspan="1">بخش</th>
+                    <th colspan="1">فاز</th>
+                    <th colspan="1">آمپر</th>
+                    <th colspan="1">قدرت</th>
+                    <th colspan="1">تلفن</th>
+                    <th colspan="4">آدرس</th>
+                </tr>
+            </thead>
+            <tbody id="exist">
+                <tr *ngFor="let SplitInformation of SplitInformations;let i = index">
+                    <td colspan="1">{{ i }}</td>
+                    <td colspan="1">
+                        <button md-raised-button type="button" class="btn btn-danger btn-xs" (click)="deleteTask(SplitInformation)">حذف</button>
+                    </td>
+                    <td colspan="1">{{ SplitInformation.FullName }}</td>
+                    <td colspan="1">{{ SplitInformation.BranchCode }}</td>
+                    <td colspan="1">{{ SplitInformation.BranchSrl }}</td>
+                    <td colspan="1">{{ SplitInformation.FileNumber }}</td>
+                    <td colspan="1">{{ SplitInformation.TrfCode }}</td>
+                    <td colspan="1">{{ SplitInformation.CityNameID }}</td>
+                    <td colspan="1">{{ SplitInformation.RegionNameID }}</td>
+                    <td colspan="1">{{ SplitInformation.Phs }}</td>
+                    <td colspan="1">{{ SplitInformation.Amp }}</td>
+                    <td colspan="1">{{ SplitInformation.PwrCnt }}</td>
+                    <td colspan="1">{{ SplitInformation.PhoneNumber }}</td>
+                    <td colspan="4">{{ SplitInformation.Address }}</td>
+                </tr> 
+            </tbody> 
+        </table>
+      </div>
+    </div>
+  </div>

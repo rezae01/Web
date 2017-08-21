@@ -298,8 +298,6 @@ Crtableuser(): Observable <post[]> {
     // tslint:disable-next-line:max-line-length
     return this.http.get(this.Url_app + '/api/IntegrationandSeparation/GetBranchDetails?BranchCode=' + data, this.jwt()).map(res => res.json());
   }
-
-
   serachByPassPwr(data): Observable<any> {
     return this.http.get(this.Url_app + '/api/Billing/GetPwr?branchCode=' + data + '&FormName=1', this.jwt()).map(res => res.json());
   }

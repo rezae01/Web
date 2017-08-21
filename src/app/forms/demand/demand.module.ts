@@ -38,6 +38,8 @@ import { FormLegalComponent } from './form-legal/form-legal.component';
 import { FormRealLegalComponent } from './form-real/form-real-legal/form-real-legal.component';
 
 import { ExistingDivisionsComponent } from './existing-divisions/existing-divisions.component';
+import { FormDataExistingComponent } from './existing-divisions/form-data/form-data-existing.component'
+import { TableExistingComponent } from './existing-divisions/table/table-existing.component';
 
 import { FormWizardComponent } from './form-wizard/form-wizard.component';
 import { PowerShiftComponent } from './power-shift/power-shift.component';
@@ -52,9 +54,16 @@ import { BranchingAddressComponent } from './branching-address/branching-address
 import { OperationComponent } from './operation/operation.component';
 import { TasksComponent } from './operation/tasks/tasks.component';
 import { SplitTasksComponent } from './operation/split-tasks/split-tasks.component';
-import { NewDemandComponent} from './new-demand/new-demand.component';
 
-import { EditNewDemandComponent } from './new-demand/edit-new-demand.component';
+
+
+import { NewDemandComponent } from './new-demand/new-demand.component';
+import { FormDataDemandComponent } from './new-demand/form-data/form-data-demand.component';
+import { NewDemandTableComponent } from './new-demand/table/new-demand-table.component';
+import { EditNewDemandComponent } from './new-demand/edit-form/edit-new-demand.component';
+
+
+
 import { SubmitLicenseComponent } from './submit-license/submit-license.component';
 import { SendDocumentsComponent  } from './send-documents/send-documents.component';
 import { Ng2TableModule } from './data-grid/components/ng-table-module';
@@ -97,7 +106,10 @@ import { AlertCenterModule } from './../../../../node_modules/ng2-alert-center/a
     FormRealComponent,
     FormRealLegalComponent,
     FormLegalComponent,
+
     ExistingDivisionsComponent,
+    TableExistingComponent,
+    FormDataExistingComponent,
 
     OperationComponent,
     SplitTasksComponent,
@@ -116,6 +128,8 @@ import { AlertCenterModule } from './../../../../node_modules/ng2-alert-center/a
 
     NewDemandComponent,
     EditNewDemandComponent,
+    FormDataDemandComponent,
+    NewDemandTableComponent,
 
     SubmitLicenseComponent,
     SendDocumentsComponent,

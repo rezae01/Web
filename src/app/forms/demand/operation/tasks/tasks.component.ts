@@ -6,10 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../../../_service/user.service';
 import { Task } from '../../../demand/model/task';
 declare var $: any;
-
-// export class Task {
-//     id: number;
-// }
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -18,9 +14,9 @@ declare var $: any;
 })
 export class TasksComponent implements OnInit {
 
-@Input() tasks: Task[];
-@Output() tasksChange = new EventEmitter();
-@Output() taskEdit = new EventEmitter();
+    @Input() tasks: Task[];
+    @Output() tasksChange = new EventEmitter();
+    @Output() taskEdit = new EventEmitter();
 
     constructor(public userservice: UserService) { }
     public ngOnInit() {
@@ -28,14 +24,12 @@ export class TasksComponent implements OnInit {
     }
 
     deleteTask(task: Task) {
-        this.tasks.splice(this.tasks.indexOf(task) ,  1);
+        this.tasks.splice(this.tasks.indexOf(task) - 1);
         this.tasksChange.emit(this.tasks);
-        // console.log(task);
+
     }
     editTask(tasks: Task) {
         this.taskEdit.emit(tasks);
-        // console.log(tasks)
-        // this.taskEdit;
     }
 // tslint:disable-next-line:eofline
 }

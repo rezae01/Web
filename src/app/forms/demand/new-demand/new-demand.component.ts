@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray  } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { User } from './new-demand';
 
 import { NgbDateStruct, NgbCalendar, NgbDatepickerI18n, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCalendarPersian } from 'ng2-datepicker-jalali/persian/ngb-calendar-persian';
@@ -10,7 +9,8 @@ import { NgbDatepickerI18nPersian } from 'ng2-datepicker-jalali/persian/ngb-date
 import { UserService } from '../../../_service/user.service';
 import { NotificationsService } from 'angular2-notifications';
 
-import { Task } from '../../demand/model/task';
+import { CalculationData, NewDemand } from '../../demand/model/new-demand';
+
 declare var $: any;
 @Component({
   selector: 'app-new-demand',
@@ -25,44 +25,51 @@ declare var $: any;
 
 export class NewDemandComponent implements OnInit {
 
+  @Output() addSplitInformations = new EventEmitter();
+  // NewDemands: NewDemand[] = [
+  //   new NewDemand(0 , 0 , 1024 , 1 , [
+  //     new CalculationData(0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+  //   ])
+  // ]
+  CalculationDatas: CalculationData[] = [
+    new CalculationData(),
+  ];
+  CalculationData: CalculationData;
+  lastCalculationDataId = this.CalculationDatas[this.CalculationDatas.length - 1].id;
+  addData(CalculationData: CalculationData) {
+    this.lastCalculationDataId = CalculationData.id + 1;
+    this.CalculationDatas.push(CalculationData);
+  }
 
-  tasks: Task[];
-  @Output() addTask = new EventEmitter();
-  @Input() lastTaskId: number;
+  // public NewDemand: FormGroup;
+  // re: any;
+  // private today: NgbDateStruct;
+  // model: NgbDateStruct;
+  // private sub: any;
+  // trf: any;
+  // trfType: any;
+  // amp: any;
+  // Amper: any;
+  // TrfType: any;
+  // Phase: any;
+  // region: any;
+  // region1: any;
+  // Phs: any;
+  // result: any;
+  // city1: any;
+  // city: any;
+  // arr: any;
+  // requestId: any = '';
+  // regionName: any = '';
+  // cityName: any = '';
+  // requestDate: any = '';
+  // test: any;
+  // test1: any;
+  // value: any;
+  // value1: any;
+  // d: any;
 
-
-
-  public NewDemand: FormGroup;
-  re: any;
-  private today: NgbDateStruct;
-  model: NgbDateStruct;
-  // id2: any;
-
-  private sub: any;
-  trf: any;
-  trfType: any;
-  amp: any;
-  Amper: any;
-  TrfType: any;
-  Phase: any;
-  region: any;
-  region1: any;
-  Phs: any;
-  result: any;
-  city1: any;
-  city: any;
-  arr: any;
-  requestId: any = '';
-  regionName: any = '';
-  cityName: any = '';
-  requestDate: any = '';
-  test: any;
-  test1: any;
-  value: any;
-  value1: any;
-  d: any;
-
-  CalculationData: Array<any> = [];
+  // CalculationData: Array<any> = [];
 
 
 
@@ -73,25 +80,24 @@ export class NewDemandComponent implements OnInit {
 
 
 
-  t1: any;
-  t2: any;
-  // list: any;
+  // t1: any;
+  // t2: any;
   constructor(
-    private fb: FormBuilder,
-    calendar: NgbCalendar,
-    config: NgbDatepickerConfig,
+    // private fb: FormBuilder,
+    // calendar: NgbCalendar,
+    // config: NgbDatepickerConfig,
     public  userservice: UserService,
     private _service: NotificationsService,
   ) {
-    this.today = calendar.getToday();
-    this.d = localStorage.getItem('requesterId');
+    // this.today = calendar.getToday();
+    // this.d = localStorage.getItem('requesterId');
 
-    this.userservice.getcity().subscribe(
-      post => {
-        this.region = post;
-        this.result = this.region.result;
-      }
-    );
+    // this.userservice.getcity().subscribe(
+    //   post => {
+    //     this.region = post;
+    //     this.result = this.region.result;
+    //   }
+    // );
   }
   // setValue(value: string) {
   //   this.value = value;
@@ -165,69 +171,69 @@ export class NewDemandComponent implements OnInit {
     //       }
     //   });
     // });
-    this.NewDemand = this.fb.group({
-      id: this.id,
-      RequesterId: new FormControl(1),
-      FormId: new FormControl(9),
-      ProcessId: new FormControl(1),
-      CalculationData: this.fb.array([this.initItemRows()]),
-    });
-  }
-  initItemRows() {
-    return this.fb.group({
-      // id2: this.id2;
-      TrfType: new FormControl('', Validators.required),
-      Phs: new FormControl('', Validators.required),
-      TrfHCode: new FormControl('', Validators.required),
-      TrfDetailCode: new FormControl('', Validators.required),
-      Count: new FormControl('', Validators.required),
-      PwrIcn: new FormControl('', Validators.required),
-      PwrCnt: new FormControl('', Validators.required),
-      VoltCode: new FormControl('', Validators.required),
-      Amp: new FormControl('', Validators.required),
-      FmlCode: new FormControl(''),
-    });
-  }
-  AddDemand() {
-    const control = <FormArray>this.NewDemand.controls['CalculationData'];
-    control.push(this.initItemRows());
-  }
-  RemoveDemand(i: number) {
-    const control = <FormArray>this.NewDemand.controls['CalculationData'];
-    control.removeAt(i);
-  }
+  //   this.NewDemand = this.fb.group({
+  //     id: this.id,
+  //     RequesterId: new FormControl(1),
+  //     FormId: new FormControl(9),
+  //     ProcessId: new FormControl(1),
+  //     CalculationData: this.fb.array([this.initItemRows()]),
+  //   });
+  // }
+  // initItemRows() {
+  //   return this.fb.group({
+  //     // id2: this.id2;
+  //     TrfType: new FormControl('', Validators.required),
+  //     Phs: new FormControl('', Validators.required),
+  //     TrfHCode: new FormControl('', Validators.required),
+  //     TrfDetailCode: new FormControl('', Validators.required),
+  //     Count: new FormControl('', Validators.required),
+  //     PwrIcn: new FormControl('', Validators.required),
+  //     PwrCnt: new FormControl('', Validators.required),
+  //     VoltCode: new FormControl('', Validators.required),
+  //     Amp: new FormControl('', Validators.required),
+  //     FmlCode: new FormControl(''),
+  //   });
+  // }
+  // AddDemand() {
+  //   const control = <FormArray>this.NewDemand.controls['CalculationData'];
+  //   control.push(this.initItemRows());
+  // }
+  // RemoveDemand(i: number) {
+  //   const control = <FormArray>this.NewDemand.controls['CalculationData'];
+  //   control.removeAt(i);
+  // }
 
 
 
-  resetForm() {
-    this.NewDemand.reset();
-    // localStorage.removeItem('NewDemand');
-  }
-  SaveRequst() {
-    const formObj = this.NewDemand.getRawValue();
-    this.userservice.SaverequstNewDemand(formObj).subscribe(
-      res => {
-        this.JsonRow = res;
-        this.AfterRow = this.JsonRow.resultStatus;
-        this.JsonError = this.JsonRow.error;
-        this.JsonErrorMessage = this.JsonError.errorMessage;
+  // resetForm() {
+  //   this.NewDemand.reset();
+  //   // localStorage.removeItem('NewDemand');
+  // }
+  // SaveRequst() {
+  //   const formObj = this.NewDemand.getRawValue();
+  //   this.userservice.SaverequstNewDemand(formObj).subscribe(
+  //     res => {
+  //       this.JsonRow = res;
+  //       this.AfterRow = this.JsonRow.resultStatus;
+  //       this.JsonError = this.JsonRow.error;
+  //       this.JsonErrorMessage = this.JsonError.errorMessage;
 
-        // localStorage.setItem('requestId', this.re.result.requestId);
-        // localStorage.setItem('branchCode', this.re.branchCode);
-        console.log(this.JsonRow);
-        // console.log(this.JsonRow.result.requestId);
+  //       // localStorage.setItem('requestId', this.re.result.requestId);
+  //       // localStorage.setItem('branchCode', this.re.branchCode);
+  //       console.log(this.JsonRow);
+  //       // console.log(this.JsonRow.result.requestId);
 
-        this.JsonRow = res;
-        this.AfterRow = this.JsonRow.resultStatus;
-        this.JsonError = this.JsonRow.error;
-        this.JsonErrorMessage = this.JsonError.errorMessage;
-        // console.log(this.JsonErrorMessage);
-        if (this.JsonRow.resultStatus === 200) {
-          this.NewDemand.reset();
-        }
-        this.create();
-      }
-    );
+  //       this.JsonRow = res;
+  //       this.AfterRow = this.JsonRow.resultStatus;
+  //       this.JsonError = this.JsonRow.error;
+  //       this.JsonErrorMessage = this.JsonError.errorMessage;
+  //       // console.log(this.JsonErrorMessage);
+  //       if (this.JsonRow.resultStatus === 200) {
+  //         this.NewDemand.reset();
+  //       }
+  //       this.create();
+  //     }
+  //   );
 
 
 
@@ -263,43 +269,43 @@ export class NewDemandComponent implements OnInit {
   //   console.log(this.list);
   // }
   // tslint:disable-next-line:member-ordering
-  rowTable: any;
+  // rowTable: any;
   // tslint:disable-next-line:member-ordering
-  rowTable2: any;
+  // rowTable2: any;
 
   // tslint:disable-next-line:member-ordering
-  list: any[];
-  createTask() {
-    this.id.setValue(this.lastTaskId);
-    this.addTask.emit(this.NewDemand.value);
-    console.log(this.NewDemand.value);
-    this.rowTable = this.NewDemand.value;
+  // list: any[];
+  // createTask() {
+  //   this.id.setValue(this.lastTaskId);
+  //   this.addTask.emit(this.NewDemand.value);
+  //   console.log(this.NewDemand.value);
+  //   this.rowTable = this.NewDemand.value;
 
-    this.rowTable2 = this.rowTable.CalculationData;
-    console.log(this.rowTable2);
-    const formObj = this.NewDemand.getRawValue();
-    this.userservice.SaverequstNewDemand(formObj).subscribe(
-      res => {
-        this.JsonRow = res;
-        this.AfterRow = this.JsonRow.resultStatus;
-        this.JsonError = this.JsonRow.error;
-        this.JsonErrorMessage = this.JsonError.errorMessage;
+  //   this.rowTable2 = this.rowTable.CalculationData;
+  //   console.log(this.rowTable2);
+  //   const formObj = this.NewDemand.getRawValue();
+  //   this.userservice.SaverequstNewDemand(formObj).subscribe(
+  //     res => {
+  //       this.JsonRow = res;
+  //       this.AfterRow = this.JsonRow.resultStatus;
+  //       this.JsonError = this.JsonRow.error;
+  //       this.JsonErrorMessage = this.JsonError.errorMessage;
 
-        // localStorage.setItem('requestId', this.re.result.requestId);
-        // localStorage.setItem('branchCode', this.re.branchCode);
-        console.log(this.JsonRow);
-        // console.log(this.JsonRow.result.requestId);
+  //       // localStorage.setItem('requestId', this.re.result.requestId);
+  //       // localStorage.setItem('branchCode', this.re.branchCode);
+  //       console.log(this.JsonRow);
+  //       // console.log(this.JsonRow.result.requestId);
 
-        this.JsonRow = res;
-        this.AfterRow = this.JsonRow.resultStatus;
-        this.JsonError = this.JsonRow.error;
-        this.JsonErrorMessage = this.JsonError.errorMessage;
-        // console.log(this.JsonErrorMessage);
-        if (this.JsonRow.resultStatus === 200) {
-          this.NewDemand.reset();
-        }
-      }
-    );
+  //       this.JsonRow = res;
+  //       this.AfterRow = this.JsonRow.resultStatus;
+  //       this.JsonError = this.JsonRow.error;
+  //       this.JsonErrorMessage = this.JsonError.errorMessage;
+  //       // console.log(this.JsonErrorMessage);
+  //       if (this.JsonRow.resultStatus === 200) {
+  //         this.NewDemand.reset();
+  //       }
+  //     }
+  //   );
     // const formObj = this.NewDemand.getRawValue();
     // this.userservice.SaverequstNewDemand(formObj).subscribe(
     //   res => {
@@ -325,7 +331,7 @@ export class NewDemandComponent implements OnInit {
     //   }
     // );
 
-  }
+  // }
 
 
 }

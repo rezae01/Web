@@ -13,13 +13,13 @@
       <a md-raised-button (click)="showTask()" class="btn btn-default pull-left" data-toggle="modal" data-target="#change-owner"><i class="fa fa-pencil-square-o" style="margin-left:5px;vertical-align: middle; font-size:12px;"></i>تغییر مالک</a>
     </div>
   </div>
-  <div class="row mt-1">
+  <!-- <div class="row mt-1">
     <div class="btn-group btn-group-custom col-xs-12">
       <button md-raised-button type="button" class="btn btn-default pull-left" data-target=".support" data-toggle="modal"><img height="20" src="../../../../assets/images/icon/support.png" width="20" style="margin-left:5px;">پشتیبانی</button>
       <button md-raised-button type="button" class="btn btn-default pull-left" data-target=".movie" data-toggle="modal"><i class="fa fa-play" style="vertical-align: middle;margin-left:5px;"></i>فیلم</button>
       <button md-raised-button type="button" class="btn btn-default pull-left"><i class="fa fa-file-text" style="vertical-align: middle;margin-left:5px;"></i>متن</button> 
     </div>
-  </div>
+  </div> -->
 </div>
 <div class="col-xs-12">
   <app-split-tasks></app-split-tasks>
@@ -43,10 +43,10 @@
         </div> 
         <div class="modal-body"> 
           <div *ngIf="!edit; else editDemand">
-            <app-new-demand (addTask)="addTask($event)" [lastTaskId]="lastTaskId"></app-new-demand>  
+            <app-new-demand></app-new-demand>  <!--(addTask)="addTask($event)" [lastTaskId]="lastTaskId"-->
           </div>
           <ng-template #editDemand>
-            <app-edit-new-demand [task]="task"></app-edit-new-demand>  
+            <app-edit-new-demand></app-edit-new-demand>   <!-- [task]="task" -->
           </ng-template>  
         </div>
       </div>  

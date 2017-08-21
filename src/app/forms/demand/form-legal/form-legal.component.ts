@@ -14,14 +14,18 @@ import { NotificationsService } from 'angular2-notifications';
 ]
 })
 export class FormLegalComponent implements OnInit {
-  re: any;
-  public result: any;
-  region: any;
-  serch: any;
+
+  cityValParent: any;
+  cityValChild: any;
+
+  regionValParent: any;
+  regionValChild: any;
+
   value: any;
-  city: any;
-  city1: any;
-  serchFilter: any;
+
+  searchContainer: any;
+  searchFilter: any;
+
 
   serchFilip: any;
   d: any;
@@ -58,8 +62,8 @@ export class FormLegalComponent implements OnInit {
   ) {
     this.userservice.getcity().subscribe(
       post => {
-        this.region = post;
-        this.result = this.region.result;
+        this.regionValParent = post;
+        this.regionValChild = this.regionValParent.result;
       }
     );
   }
@@ -67,8 +71,8 @@ export class FormLegalComponent implements OnInit {
     this.value = value;
     this.userservice.getcitylvl2(this.value).subscribe(
       post => {
-        this.city1 = post;
-        this.city = this.city1.result;
+        this.cityValParent = post;
+        this.cityValChild = this.cityValParent.result;
       }
     );
   }
@@ -122,7 +126,7 @@ export class FormLegalComponent implements OnInit {
       CityidLvlTwo: [null],
       FixedTel: [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(11)])],
       MobileNo: [null, Validators.compose([Validators.minLength(8), Validators.maxLength(11)])],
-      legalRepresentative: this.fb.group({
+      // legalRepresentative: this.fb.group({
       //   ManagerFirstName: ['', Validators.required],
       //   ManagerLastName: ['', Validators.required],
       //   NationalCode: ['', Validators.required],
@@ -133,7 +137,7 @@ export class FormLegalComponent implements OnInit {
       //   Nationality: ['', Validators.required],
       //   te: this.fb.array([this.loopOne()]),
       //   te2: this.fb.array([this.loopTwo()])
-      }),
+      // }),
     });
   }
   loopOne() {
@@ -155,8 +159,8 @@ export class FormLegalComponent implements OnInit {
   }
   // 10380284790
   onEnter(searchTerm: string) {
-    this.serchFilter = searchTerm;
-    this.userservice.serachGetRegisteredByEconomic(this.serchFilter).subscribe(
+    this.searchFilter = searchTerm;
+    this.userservice.serachGetRegisteredByEconomic(this.searchFilter).subscribe(
       post => {
         this.JsonRow = post;
         this.JsonError = this.JsonRow.error;
@@ -164,25 +168,24 @@ export class FormLegalComponent implements OnInit {
         this.JsonErrorMessage = this.JsonError.errorMessage;
         if (this.JsonRow.resultStatus === 200) {
 
-
           this.disabledLink = false;
           this.changeBool.emit(this.disabledLink);
 
-          this.serch = JSON.parse( JSON.stringify(this.JsonRow.result));
+          this.searchContainer = JSON.parse( JSON.stringify(this.JsonRow.result));
           localStorage.setItem('requesterId', this.requesterId);
-          this.requesterId = this.serch['requesterId'];
+          this.requesterId = this.searchContainer['requesterId'];
           this.d = localStorage.getItem('requesterId');
-          this.ShenaseCode = this.serch['shenaseCode'];
-          this.EconomicCode = this.serch['economicCode'];
-          this.FirstName = this.serch['firstName'];
-          this.CompanyType = this.serch['companyType'];
-          this.Email = this.serch['email'];
-          this.MobileNo = this.serch['mobileNo'];
-          this.PoNum = this.serch['poNum'];
-          this.Address = this.serch['adress'];
-          this.FixedTel = this.serch['fixedTel'];
-          this.CityidLvlTwo = this.serch['cityidLegalLvlTwo'];
-          this.Cityid = this.serch['cityid'];
+          this.ShenaseCode = this.searchContainer['shenaseCode'];
+          this.EconomicCode = this.searchContainer['economicCode'];
+          this.FirstName = this.searchContainer['firstName'];
+          this.CompanyType = this.searchContainer['companyType'];
+          this.Email = this.searchContainer['email'];
+          this.MobileNo = this.searchContainer['mobileNo'];
+          this.PoNum = this.searchContainer['poNum'];
+          this.Address = this.searchContainer['adress'];
+          this.FixedTel = this.searchContainer['fixedTel'];
+          this.CityidLvlTwo = this.searchContainer['cityidLegalLvlTwo'];
+          this.Cityid = this.searchContainer['cityid'];
         } else {
           this.disabledLink = true;
           this.changeBool.emit(this.disabledLink);
@@ -194,8 +197,8 @@ export class FormLegalComponent implements OnInit {
     );
   }
   serachByEconomicCode(searchTerm: HTMLInputElement) {
-    this.serchFilter = searchTerm.value;
-    this.userservice.serachGetRegisteredByEconomic(this.serchFilter).subscribe(
+    this.searchFilter = searchTerm.value;
+    this.userservice.serachGetRegisteredByEconomic(this.searchFilter).subscribe(
       post => {
         this.JsonRow = post;
         this.JsonError = this.JsonRow.error;
@@ -204,21 +207,21 @@ export class FormLegalComponent implements OnInit {
 
           this.disabledLink = false;
           this.changeBool.emit(this.disabledLink);
-          this.serch = JSON.parse( JSON.stringify(this.JsonRow.result));
-          this.requesterId = this.serch['requesterId'];
+          this.searchContainer = JSON.parse( JSON.stringify(this.JsonRow.result));
+          this.requesterId = this.searchContainer['requesterId'];
           localStorage.setItem('requesterId', this.requesterId);
           this.d = localStorage.getItem('requesterId');
-          this.ShenaseCode = this.serch['shenaseCode'];
-          this.EconomicCode = this.serch['economicCode'];
-          this.FirstName = this.serch['firstName'];
-          this.CompanyType = this.serch['companyType'];
-          this.Email = this.serch['email'];
-          this.MobileNo = this.serch['mobileNo'];
-          this.PoNum = this.serch['poNum'];
-          this.Address = this.serch['adress'];
-          this.FixedTel = this.serch['fixedTel'];
-          this.CityidLvlTwo = this.serch['cityidLegalLvlTwo'];
-          this.Cityid = this.serch['cityid'];
+          this.ShenaseCode = this.searchContainer['shenaseCode'];
+          this.EconomicCode = this.searchContainer['economicCode'];
+          this.FirstName = this.searchContainer['firstName'];
+          this.CompanyType = this.searchContainer['companyType'];
+          this.Email = this.searchContainer['email'];
+          this.MobileNo = this.searchContainer['mobileNo'];
+          this.PoNum = this.searchContainer['poNum'];
+          this.Address = this.searchContainer['adress'];
+          this.FixedTel = this.searchContainer['fixedTel'];
+          this.CityidLvlTwo = this.searchContainer['cityidLegalLvlTwo'];
+          this.Cityid = this.searchContainer['cityid'];
         } else {
           this.disabledLink = true;
           this.changeBool.emit(this.disabledLink);

@@ -1,0 +1,20 @@
+.scroll-X-fullWidth{
+    width: 1085px;
+    overflow-x: scroll;
+    
+}
+.scroll-X-fullWidth .table-bordered{
+    width: 1500px;
+}
+.scroll-X-fullWidth .table-bordered thead{
+    border-bottom:1px solid #ddd;
+}
+.scroll-X-fullWidth .table-bordered thead tr th:last-child{
+    width: 350px;
+}
+.scroll-X-fullWidth .table-bordered tbody tr td:last-child{
+    width: 350px;
+}
+tbody#exist tr:first-child{
+    display: none !important;
+}

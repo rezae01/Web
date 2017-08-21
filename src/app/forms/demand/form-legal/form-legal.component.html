@@ -79,7 +79,7 @@
           <div clas="form-group">
             <label for="Cityid">نام منطقه</label> 
             <select id="Cityid" class="form-control" #box name="Cityid" [(ngModel)]="Cityid" [formControl]="formTaghaza.controls['Cityid']"  (change)="setValue(box.value)" required>
-              <option *ngFor="let item of result" [value]="item.id" [selected]="item.regionName">
+              <option *ngFor="let item of regionValChild" [value]="item.id" [selected]="item.regionName">
                       {{ item.regionName + ' ' + '(' + item.id + ')'}}
               </option>
             </select>         
@@ -90,7 +90,7 @@
           <div clas="form-group">
             <label for="CityidLvlTwo">نام ناحیه</label> 
             <select id="CityidLvlTwo" class="form-control" name="CityidLvlTwo" [(ngModel)]="CityidLvlTwo" [formControl]="formTaghaza.controls['CityidLvlTwo']" required>
-              <option *ngFor="let item of city" [value]="item.id" [selected]="item.cityName">
+              <option *ngFor="let item of cityValChild" [value]="item.id" [selected]="item.cityName">
                       {{ item.cityName + ' ' + '(' + item.id + ')'}}
               </option>
             </select>    

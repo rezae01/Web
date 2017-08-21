@@ -1,0 +1,164 @@
+<form [formGroup]="existing" (ngSubmit)="ExistingRes()" #existingForm="ngForm">
+    <div class="col-xs-12 col-sm-4 col-md-4" style="height:80px;">
+      <label for="BranchCode">شماره قبض / رمز</label>
+      <div class="input-group">
+        <input type="text" id="BranchCode" class="form-control" [formControl]="existing.controls['BranchCode']" (keyup.enter)="onEnter(searchTerm.value)" #searchTerm required>
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-default" (click)="serachByPassCodeAndBillId(searchTerm)" style="font-size:11.5px">جستجو</button>
+        </div>
+      </div>
+      <small *ngIf="existing.controls['BranchCode'].hasError('required') && existing.controls['BranchCode'].touched" class="mat-text-warn">فیلد شما خالی میباشد</small>
+    </div>
+    <div class="dataRes col-xs-12">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="FullName">نام مالک :</label>
+            <input 
+            [(ngModel)]="FullName" 
+            [(value)]="FullName" 
+            class="form-control"
+            [formControl]="existing.controls['FullName']" [readonly]="isReadonly"
+            (keypress)="FullName=$event.target.value">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+           <div class="form-group">
+            <label for="BranchCodeView">رمز :</label>
+            <input 
+            [(ngModel)]="BranchCodeView" 
+            [(value)]="BranchCodeView"
+            [formControl]="existing.controls['BranchCodeView']"
+            (keypress)="BranchCodeView=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div> 
+        </div>   
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="">پرونده :</label>
+            <input
+            [(ngModel)]="BranchSrl" 
+            [(value)]="BranchSrl"
+            [formControl]="existing.controls['BranchSrl']"
+            (keypress)="BranchSrl=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div> 
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="FileNumber">شناسایی :</label>
+            <input 
+            [(ngModel)]="FileNumber" 
+            [(value)]="FileNumber"
+            [formControl]="existing.controls['FileNumber']"
+            (keypress)="FileNumber=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="TrfCode">تعرفه :</label>
+            <input
+            [(ngModel)]="TrfCode" 
+            [(value)]="TrfCode"
+            [formControl]="existing.controls['TrfCode']"
+            (keypress)="TrfCode=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div>  
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="RegionNameID">امور :</label>
+            <input
+            [(ngModel)]="RegionNameID" 
+            [(value)]="RegionNameID"
+            [formControl]="existing.controls['RegionNameID']"
+            (keypress)="RegionNameID=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="CityNameID">بخش :</label>
+            <input
+            [(ngModel)]="CityNameID" 
+            [(value)]="CityNameID"
+            [formControl]="existing.controls['CityNameID']"
+            (keypress)="CityNameID=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="Phs">فاز :</label>
+            <input
+            [(ngModel)]="Phs" 
+            [(value)]="Phs"
+            [formControl]="existing.controls['Phs']"
+            (keypress)="Phs=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="Amp">آمپر :</label>
+            <input
+            [(ngModel)]="Amp" 
+            [(value)]="Amp"
+            [formControl]="existing.controls['Amp']"
+            (keypress)="Amp=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="PwrCnt">قدرت :</label>
+            <input 
+            [(ngModel)]="PwrCnt" 
+            [(value)]="PwrCnt"
+            [formControl]="existing.controls['PwrCnt']"
+            (keypress)="PwrCnt=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="PhoneNumber">تلفن :</label>
+            <input                   
+            [(ngModel)]="PhoneNumber" 
+            [(value)]="PhoneNumber"
+            [formControl]="existing.controls['PhoneNumber']"
+            (keypress)="PhoneNumber=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-2">
+          <div class="form-group">
+            <label for="VillageCode">کد روستا :</label>
+            <input                   
+            [(ngModel)]="VillageCode" 
+            [(value)]="VillageCode"
+            [formControl]="existing.controls['VillageCode']"
+            (keypress)="VillageCode=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div> 
+        <div class="col-xs-12 col-md-12">
+          <div class="form-group">
+            <label for="Address">آدرس :</label>
+            <input
+            [(ngModel)]="Address" 
+            [(value)]="Address"
+            [formControl]="existing.controls['Address']"
+            (keypress)="Address=$event.target.value" [readonly]="isReadonly"
+            class="form-control">
+          </div>
+        </div>
+      </div>    
+      <div class="col-xs-12">
+        <div class="row">
+          <button md-raised-button type="button" class="btn btn-info mb-10" [disabled]="!existingForm.form.valid" (click)="createTable()">اضافه به لیست</button>
+        </div>
+      </div>
+    </div> 
+  </form>
